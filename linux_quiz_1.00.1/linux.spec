@@ -5,7 +5,7 @@ a = Analysis(
     ['linux.py'],
     pathex=[],
     binaries=[],
-    datas=[],
+    datas=[('linux_questions', 'linux_questions'), ('linuxbook.pdf', '.')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
@@ -35,5 +35,5 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon=['icon\\linux_icon.ico'],
+    icon=['linux_icon.ico'],
 )
