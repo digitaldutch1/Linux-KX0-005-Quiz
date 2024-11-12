@@ -1,0 +1,741 @@
+
+
+
+{
+    "chapters": [
+        {
+            "chapter": 1,
+            "description": "Assessment Questions",
+            "questions": [
+                {
+                    "number": 1,
+                    "question": "What software package allows a Linux server to share folders and printers with Windows and Mac clients?",
+                    "options": ["Postfix", "Apache", "Samba", "Kerberos", "Docker"],
+                    "answer": "Samba",
+                    "explanation": {
+                        "Postfix": "The Postfix software package provides email service for Linux servers, not Windows services.",
+                        "Apache": "The Apache package is a web server; it doesn't allow Linux servers to share folders with Windows and Mac clients.",
+                        "Samba": "The Samba software package allows Linux servers and clients to communicate with Windows and Mac clients or servers using the Microsoft SMB protocol.",
+                        "Kerberos": "The Kerberos package provides authentication services; it does not allow Linux servers to share folders.",
+                        "Docker": "The Docker package provides container services for deploying applications on a Linux server; it does not allow the Linux server to share folders with Windows or Mac clients."
+                    }
+                },
+                {
+                    "number": 2,
+                    "question": "Which software package allows developers to deploy applications using the exact same environment in which they were developed?",
+                    "options": ["Postfix", "Apache", "Samba", "Kerberos", "Docker"],
+                    "answer": "Docker",
+                    "explanation": {
+                        "Postfix": "The Postfix package provides email services for a Linux server; it doesn't deploy applications.",
+                        "Apache": "The Apache package provides web server services for a Linux server; it doesn't deploy application environments.",
+                        "Samba": "The Samba package allows a Linux server to interact in a Windows network with Windows clients and servers; it does not provide an environment for deploying applications.",
+                        "Kerberos": "The Kerberos package provides authentication services for Linux servers; it doesn't deploy applications.",
+                        "Docker": "The Docker package provides a method for developers to capture the entire development environment for an application and deploy it into a production environment as a container."
+                    }
+                },
+                {
+                    "number": 3,
+                    "question": "The cat -n File.txt command is entered at the command line. What will be the result?",
+                    "options": ["The text file File.txt will be displayed.", "The text file File.txt will be displayed along with any special hidden characters in the file.", "The text file File.txt will be displayed along with any special symbols representing end-of-line characters.", "The text file File.txt will be displayed along with line numbers.", "The text file File.txt will be displayed in reverse order."],
+                    "answer": "The text file File.txt will be displayed along with line numbers.",
+                    "explanation": {
+                        "The text file File.txt will be displayed.": "This command will simply display the File.txt file.",
+                        "The text file File.txt will be displayed along with any special hidden characters in the file.": "To see any special hidden characters within the File.txt file, you would need to enter the command cat -A File.txt.",
+                        "The text file File.txt will be displayed along with any special symbols representing end-of-line characters.": "End-of-line characters need a different cat command option, such as the -E switch.",
+                        "The text file File.txt will be displayed along with line numbers.": "The cat -n File.txt command will display the File.txt text file along with line numbers.",
+                        "The text file File.txt will be displayed in reverse order.": "The cat command does not have a switch that will allow a text file's contents to be displayed in reverse order."
+                    }
+                },
+                {
+                    "number": 4,
+                    "question": "Which of the following are stream editors? (Choose all that apply.)",
+                    "options": ["vim", "sed", "awk", "gawk", "nano"],
+                    "answer": ["sed", "awk", "gawk"],
+                    "explanation": {
+                        "vim": "Both vim and nano are considered to be text editors.",
+                        "sed": "The sed utility is a stream editor.",
+                        "awk": "The awk utility is a stream editor.",
+                        "gawk": "The gawk utility is also a stream editor.",
+                        "nano": "Nano is considered to be a text editor."
+                    }
+                },
+                {
+                    "number": 5,
+                    "question": "Which command in GRUB2 defines the location of the /boot folder to the first partition on the first hard drive on the system?",
+                    "options": ["set root=hd(0,1)", "set root=hd(1,0)", "set root=hd(1,1)", "set root=hd(0,0)", "set root=first"],
+                    "answer": "set root=hd(0,1)",
+                    "explanation": {
+                        "set root=hd(0,1)": "GRUB2 identifies the hard drives starting at 0, but the partitions start at 1, so the first partition on the first hard drive would be 0,1.",
+                        "set root=hd(1,0)": "This defines the second hard drive and an incorrect partition number.",
+                        "set root=hd(1,1)": "This defines the first partition but the second hard drive.",
+                        "set root=hd(0,0)": "This defines the first hard drive but an incorrect partition.",
+                        "set root=first": "This uses the keyword first, which is not recognized by GRUB2."
+                    }
+                },
+                {
+                    "number": 6,
+                    "question": "If you see read or write errors appear in the system log, what tool should you use to correct any bad sections of the hard drive?",
+                    "options": ["mount", "unmount", "fsck", "dmesg", "mkinitrd"],
+                    "answer": "fsck",
+                    "explanation": {
+                        "mount": "The mount program is used to append a partition to a virtual directory; it can't correct a partition that contains errors.",
+                        "unmount": "The unmount command removes a partition from the virtual directory.",
+                        "fsck": "The fsck program can perform a filesystem check and repair multiple types of filesystems on partitions.",
+                        "dmesg": "The dmesg command displays boot messages.",
+                        "mkinitrd": "The mkinitrd command creates an initrd RAM disk."
+                    }
+                },
+                {
+                    "number": 7,
+                    "question": "The init program is started on a Linux system and has a process ID number. What typically is that process's ID number?",
+                    "options": ["0", "1", "2", "10", "Unknown"],
+                    "answer": "1",
+                    "explanation": {
+                        "0": "The Linux kernel has the 0 PID number.",
+                        "1": "The init program is typically started immediately after the Linux system has traversed the boot process, and it has a process ID (PID) number of 1.",
+                        "2": "This is incorrect.",
+                        "10": "This is incorrect.",
+                        "Unknown": "This is incorrect."
+                    }
+                },
+                {
+                    "number": 8,
+                    "question": "You need to determine the default target of a systemd system. Which of the following commands should you use?",
+                    "options": ["grep initdefault /etc/inittab", "runlevel", "systemctl is-enabled", "systemd get-target", "systemctl get-default"],
+                    "answer": "systemctl get-default",
+                    "explanation": {
+                        "grep initdefault /etc/inittab": "This command will extract the default runlevel for a SysV init system.",
+                        "runlevel": "This command will display a SysV init system's previous and current runlevel.",
+                        "systemctl is-enabled": "This shows whether or not a particular service is configured to start at system boot.",
+                        "systemd get-target": "This is a made-up command.",
+                        "systemctl get-default": "This command will display a systemd system's default target."
+                    }
+                },
+                {
+                    "number": 9,
+                    "question": "The Cinnamon desktop environment uses which window manager?",
+                    "options": ["Mutter", "Muffin", "Nemo", "Dolphin", "LightDM"],
+                    "answer": "Muffin",
+                    "explanation": {
+                        "Mutter": "Mutter is the window manager for the GNOME Shell desktop environment.",
+                        "Muffin": "The Cinnamon desktop environment uses the Muffin window manager.",
+                        "Nemo": "Nemo is the file manager for Cinnamon.",
+                        "Dolphin": "Dolphin is the file manager for the KDE Plasma desktop environment.",
+                        "LightDM": "LightDM is the display manager for Cinnamon."
+                    }
+                },
+                {
+                    "number": 10,
+                    "question": "Your X11 session has become hung. What keystrokes do you use to restart the session?",
+                    "options": ["Ctrl+C", "Ctrl+Z", "Ctrl+Q", "Ctrl+Alt+Delete", "Ctrl+Alt+Backspace"],
+                    "answer": "Ctrl+Alt+Backspace",
+                    "explanation": {
+                        "Ctrl+C": "This combination sends an interrupt signal but does not restart an X11 session.",
+                        "Ctrl+Z": "This sends a stop signal, but it will not restart the X11 session.",
+                        "Ctrl+Q": "This will not restart an X11 session.",
+                        "Ctrl+Alt+Delete": "This can bring up a shutdown, logout, or reboot menu, but does not restart the X11 session.",
+                        "Ctrl+Alt+Backspace": "This will kill your X11 session and then restart it, putting you at the login screen."
+                    }
+                },
+                {
+                    "number": 11,
+                    "question": "What folder contains the time zone template files in Linux?",
+                    "options": ["/etc/timezone", "/etc/localtime", "/usr/share/zoneinfo", "/usr/share/timezone", "/usr/share/localtime"],
+                    "answer": "/usr/share/zoneinfo",
+                    "explanation": {
+                        "/etc/timezone": "This file contains the current time zone for Debian- and Red Hat–based systems.",
+                        "/etc/localtime": "This file contains the current time zone for Debian- and Red Hat–based systems.",
+                        "/usr/share/zoneinfo": "Both Debian-based and Red Hat–based Linux distributions store the time zone template files in this folder.",
+                        "/usr/share/timezone": "This folder does not exist in either Debian-based or Red Hat–based Linux distributions.",
+                        "/usr/share/localtime": "This folder does not exist in either Debian-based or Red Hat–based Linux distributions."
+                    }
+                },
+                {
+                    "number": 12,
+                    "question": "What systemd command allows you to view and change the time, date, and time zone?",
+                    "options": ["timedatectl", "localectl", "date", "time", "locale"],
+                    "answer": "timedatectl",
+                    "explanation": {
+                        "timedatectl": "This program allows you to view and change the current time, date, and time zone for the Linux system.",
+                        "localectl": "This program handles localization information, not time and date.",
+                        "date": "This command allows you to view and change the time and date but not the time zone setting.",
+                        "time": "This command displays the elapsed CPU time used by an application.",
+                        "locale": "This command allows you to view the localization settings for the Linux system."
+                    }
+                },
+                {
+                    "number": 13,
+                    "question": "Which of the following files contain user account creation directives used by the useradd command? (Choose all that apply.)",
+                    "options": ["/etc/default/useradd", "/etc/useradd", "/etc/adduser.conf", "/etc/login.defs", "/etc/login.def"],
+                    "answer": ["/etc/default/useradd", "/etc/login.defs"],
+                    "explanation": {
+                        "/etc/default/useradd": "This file contains user account creation directives used by the useradd command.",
+                        "/etc/useradd": "This is a made-up file name.",
+                        "/etc/adduser.conf": "This file is only on Linux distributions that use the adduser utility to create accounts.",
+                        "/etc/login.defs": "This file contains user account creation directives used by the useradd command.",
+                        "/etc/login.def": "This is a made-up file name."
+                    }
+                },
+                {
+                    "number": 14,
+                    "question": "You need to display the various quotas on all your filesystems employing quota limits. Which of the following commands should you use?",
+                    "options": ["edquota -t", "quotaon -a", "quotacheck -cu", "quotacheck -cg", "repquota -a"],
+                    "answer": "repquota -a",
+                    "explanation": {
+                        "edquota -t": "This command will edit quota grace periods for the system.",
+                        "quotaon -a": "This command will automatically turn on quotas for all mounted non-NFS filesystems in the /etc/fstab file.",
+                        "quotacheck -cu": "This utility creates either the aquota.group or aquota.user file but does nothing for displaying filesystems' quotas.",
+                        "quotacheck -cg": "This utility creates either the aquota.group or aquota.user file but does nothing for displaying filesystems' quotas.",
+                        "repquota -a": "This command will display the various quotas on all your filesystems employing quota limits."
+                    }
+                },
+                {
+                    "number": 15,
+                    "question": "What drive and partition does the raw device file /dev/sdb1 reference?",
+                    "options": ["The first partition on the second SCSI storage device", "The second partition on the first SCSI storage device", "The first partition on the second PATA storage device", "The second partition on the first PATA storage device", "The second partition on the second SATA storage device"],
+                    "answer": "The first partition on the second SCSI storage device",
+                    "explanation": {
+                        "The first partition on the second SCSI storage device": "Linux uses the /dev/sdxx format for SCSI and SATA raw devices. The device is represented by a letter, starting with a, and the partition is represented by a number, starting at 1.",
+                        "The second partition on the first SCSI storage device": "This would be referenced by the /dev/sda2 file.",
+                        "The first partition on the second PATA storage device": "This would be referenced by the /dev/hdb1 file.",
+                        "The second partition on the first PATA storage device": "This would be referenced by /dev/hda2.",
+                        "The second partition on the second SATA storage device": "This would be referenced by /dev/sdb2."
+                    }
+                },
+                {
+                    "number": 16,
+                    "question": "What tool creates a logical volume from multiple physical partitions?",
+                    "options": ["mkfs", "pvcreate", "lvcreate", "fdisk", "vgcreate"],
+                    "answer": "lvcreate",
+                    "explanation": {
+                        "mkfs": "This program creates a filesystem on a partition but doesn't create a logical volume.",
+                        "pvcreate": "This program identifies a physical volume from a partition but doesn't create the logical volume.",
+                        "lvcreate": "This program creates a logical volume from multiple partitions that you can use as a single logical device.",
+                        "fdisk": "This program creates and modifies physical partitions, not logical volumes.",
+                        "vgcreate": "This program creates a volume group for grouping physical partitions but doesn't create the logical volume."
+                    }
+                },
+                {
+                    "number": 17,
+                    "question": "Which of the following can be used as backup utilities? (Choose all that apply.)",
+                    "options": ["The gzip utility", "The zip utility", "The tar utility", "The rsync utility", "The dd utility"],
+                    "answer": ["The zip utility", "The tar utility", "The rsync utility", "The dd utility"],
+                    "explanation": {
+                        "The gzip utility": "This utility can be used after a backup is created or employed through tar options to compress a backup.",
+                        "The zip utility": "This utility can be used to create data backups.",
+                        "The tar utility": "This utility can be used to create data backups.",
+                        "The rsync utility": "This utility can be used to create data backups.",
+                        "The dd utility": "This utility can be used to create data backups."
+                    }
+                },
+                {
+                    "number": 18,
+                    "question": "A system administrator has created a backup archive and transferred the file to another system across the network. Which utilities can be used to check the archive files integrity? (Choose all that apply.)",
+                    "options": ["The rsync utility", "The md5sum utility", "The sftp utility", "The scp utility", "The sha512sum utility"],
+                    "answer": ["The md5sum utility", "The sha512sum utility"],
+                    "explanation": {
+                        "The rsync utility": "This utility allows you to securely transfer files.",
+                        "The md5sum utility": "This utility produces hashes on files, which can be compared to determine if file corruption occurred.",
+                        "The sftp utility": "This utility allows you to securely transfer files.",
+                        "The scp utility": "This utility allows you to securely transfer files.",
+                        "The sha512sum utility": "This utility produces hashes on files, which can be compared to determine if file corruption occurred."
+                    }
+                },
+                {
+                    "number": 19,
+                    "question": "What tool should you use to install a DEB package file?",
+                    "options": ["dpkg", "tar", "gcc", "rpm", "gzip"],
+                    "answer": "dpkg",
+                    "explanation": {
+                        "dpkg": "This program is used for installing and removing Debian-based packages that use the DEB file format.",
+                        "tar": "This program is used for creating and extracting tape archive formatted files.",
+                        "gcc": "This program is used for compiling source code into executable programs.",
+                        "rpm": "This program is used for installing and removing Red Hat–based packages.",
+                        "gzip": "This program compresses files."
+                    }
+                },
+                {
+                    "number": 20,
+                    "question": "What tool do you use to install an RPM package file?",
+                    "options": ["dpkg", "tar", "gcc", "rpm", "gzip"],
+                    "answer": "rpm",
+                    "explanation": {
+                        "dpkg": "This program is used for installing and removing Debian-based packages.",
+                        "tar": "This program is used for creating and extracting tape archive formatted files.",
+                        "gcc": "This program is used for compiling source code into executable programs.",
+                        "rpm": "This program is used for installing and removing Red Hat–based packages.",
+                        "gzip": "This program compresses files."
+                    }
+                },
+                {
+                    "number": 21,
+                    "question": "The lsmod utility provides the same information as what other utility or file(s)?",
+                    "options": ["The modinfo utility", "/proc/modules file", "/etc/modules.conf file", "The insmod utility", "/run/modprobe.d/*.conf files"],
+                    "answer": "/proc/modules file",
+                    "explanation": {
+                        "The modinfo utility": "This utility provides detailed module data.",
+                        "/proc/modules file": "This file has the same information displayed by the lsmod utility.",
+                        "/etc/modules.conf file": "This is a kernel module configuration file.",
+                        "The insmod utility": "This command is used to dynamically load kernel modules.",
+                        "/run/modprobe.d/*.conf files": "These are kernel module configuration files."
+                    }
+                },
+                {
+                    "number": 22,
+                    "question": "Which utility should be used to remove a module along with any dependent modules?",
+                    "options": ["The rmmod utility", "The modinfo utility", "The cut utility", "The depmod utility", "The modprobe utility"],
+                    "answer": "The modprobe utility",
+                    "explanation": {
+                        "The rmmod utility": "This utility will remove a kernel module but not any of its dependencies.",
+                        "The modinfo utility": "This command displays detailed information concerning a specified module.",
+                        "The cut utility": "This utility is used to filter text files.",
+                        "The depmod utility": "This utility is used to create a list of modules and their dependencies.",
+                        "The modprobe utility": "This command is used for removing (unloading) a kernel module along with any of its dependencies."
+                    }
+                },
+                {
+                    "number": 23,
+                    "question": "What special bit should you set to prevent users from deleting shared files created by someone else?",
+                    "options": ["SUID", "GUID", "Sticky bit", "Read", "Write"],
+                    "answer": "Sticky bit",
+                    "explanation": {
+                        "SUID": "The SUID bit allows a standard user to run an application with the file owner permissions.",
+                        "GUID": "The GUID bit ensures that all files created in the directory have the same group as the directory.",
+                        "Sticky bit": "The sticky bit restricts all of the files in that directory so that only the file owner can delete the file.",
+                        "Read": "The Read permission does not block users from deleting a file.",
+                        "Write": "The Write permission does not block users from deleting a file."
+                    }
+                },
+                {
+                    "number": 24,
+                    "question": "What command can you use to change the owner assigned to a file?",
+                    "options": ["chmod", "chown", "chage", "ulimit", "chgrp"],
+                    "answer": "chown",
+                    "explanation": {
+                        "chmod": "This command allows you to change permissions for the file.",
+                        "chown": "This command allows you to set both the owner and group assigned to a file.",
+                        "chage": "This command manages password aging for user accounts.",
+                        "ulimit": "This command restricts system resources assigned to users.",
+                        "chgrp": "This command allows you to change the group assigned to a file but not the owner."
+                    }
+                },
+                {
+                    "number": 25,
+                    "question": "Which directory contains the various PAM configuration files?",
+                    "options": ["/etc/pam/", "/etc/pam_modules/", "/etc/modules/", "/etc/pam.d/", "/etc/pam_modules.d/"],
+                    "answer": "/etc/pam.d/",
+                    "explanation": {
+                        "/etc/pam/ directory": "This is not the correct directory for PAM configuration files.",
+                        "/etc/pam_modules/ directory": "This directory does not exist for PAM configuration files.",
+                        "/etc/modules/ directory": "This directory does not exist for PAM configuration files.",
+                        "/etc/pam.d/ directory": "This directory contains the various PAM configuration files.",
+                        "/etc/pam_modules.d/ directory": "This directory does not exist for PAM configuration files."
+                    }
+                },
+                {
+                    "number": 26,
+                    "question": "Which of the following can override the settings in the ~/.ssh/config file?",
+                    "options": ["/etc/ssh/ssh_config file", "ssh utility's command-line options", "You cannot override the settings in this file.", "/etc/ssh/sshd_config file", "sshd daemon's configuration file"],
+                    "answer": "ssh utility's command-line options",
+                    "explanation": {
+                        "/etc/ssh/ssh_config file": "The settings in this file can be overridden by both the settings in the ~/.ssh/config file and the ssh utility's command-line options.",
+                        "ssh utility's command-line options": "The settings within the ~/.ssh/config file can be overridden by various ssh utility options.",
+                        "You cannot override the settings in this file.": "This statement is incorrect.",
+                        "/etc/ssh/sshd_config file": "This file deals with providing the SSH services, not in setting the configuration for the SSH client.",
+                        "sshd daemon's configuration file": "This file deals with providing the SSH services, not in setting the configuration for the SSH client."
+                    }
+                },
+                {
+                    "number": 27,
+                    "question": "What command can you use to display new entries in a log file in real time as they occur?",
+                    "options": ["head", "tail", "tail -f", "head -f", "vi"],
+                    "answer": "tail -f",
+                    "explanation": {
+                        "head": "This command will list the existing entries in a file.",
+                        "tail": "This command will list the existing entries in a file.",
+                        "tail -f": "This command displays new additions to a file in real time.",
+                        "head -f": "This command does not support the -f option.",
+                        "vi": "This command only displays existing data in a file and not newly added data."
+                    }
+                },
+                {
+                    "number": 28,
+                    "question": "What command do you use to display entries in the systemd-journald journal?",
+                    "options": ["journalctl", "syslogd", "klogd", "systemd-journald", "vi"],
+                    "answer": "journalctl",
+                    "explanation": {
+                        "journalctl": "This command is used to read the systemd-journald journal.",
+                        "syslogd": "This application is a syslog logger and not able to read the systemd-journald journal file.",
+                        "klogd": "This application is a syslog logger and not able to read the systemd-journald journal file.",
+                        "systemd-journald": "This application only adds event messages to the journal and doesn't read it.",
+                        "vi": "You can't read the journal file using standard text editor programs."
+                    }
+                },
+                {
+                    "number": 29,
+                    "question": "The /etc/services file may be used by firewalls for what purpose?",
+                    "options": ["To designate what remote services to block", "To store their ACL rules", "To map a service name to a port and protocol", "To determine if the port can be accessed", "To designate what local services can send out packets"],
+                    "answer": "To map a service name to a port and protocol",
+                    "explanation": {
+                        "To designate what remote services to block": "This is incorrect.",
+                        "To store their ACL rules": "This is incorrect.",
+                        "To map a service name to a port and protocol": "This file may be used by a firewall to map a particular service name to its port and protocol.",
+                        "To determine if the port can be accessed": "This is incorrect.",
+                        "To designate what local services can send out packets": "This is incorrect."
+                    }
+                },
+                {
+                    "number": 30,
+                    "question": "Which of the following is true about netfilter? (Choose all that apply.)",
+                    "options": ["It is used by firewalld.", "It is used by UFW.", "It provides code hooks into the Linux kernel for firewall technologies to use.", "It is used by iptables.", "It provides firewall services without the need for other applications."],
+                    "answer": ["It is used by firewalld.", "It is used by UFW.", "It provides code hooks into the Linux kernel for firewall technologies to use.", "It is used by iptables."],
+                    "explanation": {
+                        "It is used by firewalld.": "This statement is correct.",
+                        "It is used by UFW.": "This statement is correct.",
+                        "It provides code hooks into the Linux kernel for firewall technologies to use.": "This statement is correct.",
+                        "It is used by iptables.": "This statement is correct.",
+                        "It provides firewall services without the need for other applications.": "This statement is incorrect."
+                    }
+                },
+                {
+                    "number": 31,
+                    "question": "Which of the following is a measurement of the maximum amount of data that can be transferred over a particular network segment?",
+                    "options": ["Bandwidth", "Throughput", "Saturation", "Latency", "Routing"],
+                    "answer": "Bandwidth",
+                    "explanation": {
+                        "Bandwidth": "This is a measurement of the maximum data amount that can be transferred between two network points over a period of time.",
+                        "Throughput": "This is a measurement of the actual data amount that is transferred between two network points.",
+                        "Saturation": "This occurs when network traffic exceeds capacity.",
+                        "Latency": "This is the time between a source sending a packet and the packet's destination receiving it.",
+                        "Routing": "This is the process of forwarding IP packets to the appropriate destination."
+                    }
+                },
+                {
+                    "number": 32,
+                    "question": "Which tool will allow you to view disk I/O specific to swapping?",
+                    "options": ["ipcs -m", "cat /proc/meminfo", "free", "swapon -s", "vmstat"],
+                    "answer": "vmstat",
+                    "explanation": {
+                        "ipcs -m": "This command allows you to see shared memory segments instead of disk I/O specific to swapping.",
+                        "cat /proc/meminfo": "This command displays detailed information concerning a system's RAM.",
+                        "free": "This command shows memory items such as free memory, used memory, and buffer/cache usage.",
+                        "swapon -s": "This command displays swap space elements such as type, name, and priority.",
+                        "vmstat": "This utility provides a lot of memory statistics, including disk I/O specific to swapping."
+                    }
+                },
+                {
+                    "number": 33,
+                    "question": "What command-line command allows you to view the applications currently running on the Linux system?",
+                    "options": ["lsof", "kill", "ps", "w", "nice"],
+                    "answer": "ps",
+                    "explanation": {
+                        "lsof": "This command displays the files currently open by applications.",
+                        "kill": "This command stops a running application based on its process ID.",
+                        "ps": "This command with the proper options displays the active applications running on the Linux system.",
+                        "w": "This command displays all of the current users on the system.",
+                        "nice": "This command allows you to start a new application with a specified priority level."
+                    }
+                },
+                {
+                    "number": 34,
+                    "question": "What command-line commands allow you to send process signals to running applications? (Choose two.)",
+                    "options": ["renice", "pkill", "nice", "kill", "pgrep"],
+                    "answer": ["pkill", "kill"],
+                    "explanation": {
+                        "renice": "This command allows you to change the priority level of a running application but not send process signals to it.",
+                        "pkill": "This command allows you to send process signals to running applications.",
+                        "nice": "This command allows you to start an application with a specified priority level but not send process signals.",
+                        "kill": "This command allows you to send process signals to running applications.",
+                        "pgrep": "This command allows you to display running applications but doesn't send process signals."
+                    }
+                },
+                {
+                    "number": 35,
+                    "question": "Annika puts the file line PS1=\"My Prompt: \" into her account's $HOME/.bash_profile file. This setting changes her prompt the next time she logs into the system. However, when she starts a subshell, it is not working properly. What does Annika need to do to fix this issue?",
+                    "options": ["Add the file line to the $HOME/.profile file instead.", "Nothing. A user's prompt cannot be changed in a subshell.", "Add export prior to PS1 on the same line in the file.", "Change her default shell to /bin/dash for this to work.", "Change the last field in her password record to /sbin/false."],
+                    "answer": "Add export prior to PS1 on the same line in the file.",
+                    "explanation": {
+                        "Add the file line to the $HOME/.profile file instead.": "This is not needed since the .bash_profile is already being used.",
+                        "Nothing. A user's prompt cannot be changed in a subshell.": "This statement is incorrect.",
+                        "Add export prior to PS1 on the same line in the file.": "This will ensure that the new prompt setting is recognized in subshells.",
+                        "Change her default shell to /bin/dash for this to work.": "This won't fix the issue.",
+                        "Change the last field in her password record to /sbin/false.": "This will prevent her from logging in."
+                    }
+                },
+                {
+                    "number": 36,
+                    "question": "A user, who is not the owner or a group member of a particular directory, attempts to use the ls command on the directory and gets a permission error. What does this mean?",
+                    "options": ["The directory does not have display (d) set for other permissions.", "The directory does not have execute (x) set for other permissions.", "The directory does not have write (w) set for other permissions.", "The directory does not have list (l) set for other permissions.", "The directory does not have read (r) set for other permissions."],
+                    "answer": "The directory does not have read (r) set for other permissions.",
+                    "explanation": {
+                        "The directory does not have display (d) set for other permissions.": "This is incorrect; there is no display permission.",
+                        "The directory does not have execute (x) set for other permissions.": "This is incorrect; execute permission allows access to the directory.",
+                        "The directory does not have write (w) set for other permissions.": "This is incorrect; write permission allows creating files.",
+                        "The directory does not have list (l) set for other permissions.": "This is incorrect; there is no list permission.",
+                        "The directory does not have read (r) set for other permissions.": "This is correct; in order for a user to list files in a directory, it needs to have read set."
+                    }
+                },
+                {
+                    "number": 37,
+                    "question": "Which directories contain dynamic files that display kernel and system information? (Choose two.)",
+                    "options": ["/dev", "/proc", "/etc", "/sys", "/dev/mapper"],
+                    "answer": ["/proc", "/sys"],
+                    "explanation": {
+                        "/dev": "This directory contains device files used to send and receive data from devices.",
+                        "/proc": "This directory contains dynamic files that contain information about the kernel and system.",
+                        "/etc": "This directory contains application configuration files.",
+                        "/sys": "This directory contains dynamic files that contain information about the kernel and system.",
+                        "/dev/mapper": "This directory is used for virtual files mapped to physical device files for LVM and LUKS."
+                    }
+                },
+                {
+                    "number": 38,
+                    "question": "What directory contains configuration information for the X Windows System in Linux?",
+                    "options": ["/dev", "/proc", "/etc/X11", "/sys", "/proc/interrupts"],
+                    "answer": "/etc/X11",
+                    "explanation": {
+                        "/dev": "This directory contains device files used to send and receive data from devices.",
+                        "/proc": "This directory contains dynamic files that show kernel and system information.",
+                        "/etc/X11": "This directory contains configuration files used by the X Windows System.",
+                        "/sys": "This directory contains dynamic files that show kernel and system information.",
+                        "/proc/interrupts": "This file contains information about hardware interrupts currently used by hardware devices."
+                    }
+                },
+                {
+                    "number": 39,
+                    "question": "How would you fix a 'mount point does not exist' problem?",
+                    "options": ["Employ the fsck utility to fix the bad disk sector.", "Employ the badblocks utility to fix the bad disk sector.", "Use super user privileges, if needed, and create the directory via the vgchange command.", "Use super user privileges, if needed, and create the directory via the mkdir command.", "Use super user privileges, if needed, and create the directory via the mountpoint command."],
+                    "answer": "Use super user privileges, if needed, and create the directory via the mkdir command.",
+                    "explanation": {
+                        "Employ the fsck utility to fix the bad disk sector.": "This is incorrect; this problem concerns a missing directory.",
+                        "Employ the badblocks utility to fix the bad disk sector.": "This is incorrect; this problem concerns a missing directory.",
+                        "Use super user privileges, if needed, and create the directory via the vgchange command.": "This is incorrect; you would employ this command for a missing volume in a logical volume.",
+                        "Use super user privileges, if needed, and create the directory via the mkdir command.": "This is correct; this will create the missing directory.",
+                        "Use super user privileges, if needed, and create the directory via the mountpoint command.": "This is incorrect; this command does not allow you to create a missing directory."
+                    }
+                },
+                {
+                    "number": 40,
+                    "question": "Peter is trying to complete his network application, Spider, but is running into a problem with accessing a remote server's files and there are no network problems occurring at this time. He thinks it has something to do with the remote server's ACLs being too restrictive. You need to investigate this issue. Which of the following might you use for troubleshooting this problem? (Choose all that apply.)",
+                    "options": ["The firewall-cmd command", "The ufw command", "The iptables command", "The getacl command", "The setacl command"],
+                    "answer": ["The firewall-cmd command", "The ufw command", "The iptables command"],
+                    "explanation": {
+                        "The firewall-cmd command": "This command can be used for troubleshooting firewall access control lists (ACLs).",
+                        "The ufw command": "This command can be used for troubleshooting firewall access control lists (ACLs).",
+                        "The iptables command": "This command can be used for troubleshooting firewall access control lists (ACLs).",
+                        "The getacl command": "This command deals with file inheritance issues.",
+                        "The setacl command": "This command deals with file inheritance issues."
+                    }
+                },
+                {
+                    "number": 41,
+                    "question": "Which Bash shell script command allows you to iterate through a series of data until the data is complete?",
+                    "options": ["if", "case", "for", "exit", "$()"],
+                    "answer": "for",
+                    "explanation": {
+                        "if": "This command performs a single test on an object to determine if a block of commands should be run.",
+                        "case": "This command performs a single test on an object to determine if a block of commands should be run.",
+                        "for": "This command allows you to iterate through a series of data one by one until the data set is exhausted.",
+                        "exit": "This command stops the shell script and exits to the parent shell.",
+                        "$()": "This command redirects the output of a command to a variable in the shell script."
+                    }
+                },
+                {
+                    "number": 42,
+                    "question": "Which environment variable allows you to retrieve the numeric user ID value for the user account running a shell script?",
+                    "options": ["$USER", "$UID", "$BASH", "$HOME", "$1"],
+                    "answer": "$UID",
+                    "explanation": {
+                        "$USER": "This variable contains the text user name of the user account running the shell script.",
+                        "$UID": "This variable contains the numeric user ID value of the user account running the shell script.",
+                        "$BASH": "This variable contains the path to the executable Bash shell.",
+                        "$HOME": "This variable contains the location of the home directory of the user account running the shell.",
+                        "$1": "This variable contains the first parameter listed on the command-line command when the shell script was run."
+                    }
+                },
+                {
+                    "number": 43,
+                    "question": "What does placing an ampersand sign (&) after a command on the command line do?",
+                    "options": ["Disconnects the command from the console session", "Schedules the command to run later", "Runs the command in background mode", "Redirects the output to another command", "Redirects the output to a file"],
+                    "answer": "Runs the command in background mode",
+                    "explanation": {
+                        "Disconnects the command from the console session": "This is incorrect; the nohup command does this.",
+                        "Schedules the command to run later": "This is incorrect; the at command does this.",
+                        "Runs the command in background mode": "This is correct; the ampersand tells the shell to run the specified command in background mode.",
+                        "Redirects the output to another command": "This is incorrect; the pipe symbol does this.",
+                        "Redirects the output to a file": "This is incorrect; the greater-than symbol does this."
+                    }
+                },
+                {
+                    "number": 44,
+                    "question": "When will the cron table entry 0 0 1 * * myscript run the specified command?",
+                    "options": ["At 1 a.m. every day", "At midnight on the first day of every month", "At midnight on the first day of every week", "At 1 p.m. every day", "At midnight every day"],
+                    "answer": "At midnight on the first day of every month",
+                    "explanation": {
+                        "At 1 a.m. every day": "This is incorrect; it runs at midnight.",
+                        "At midnight on the first day of every month": "This is correct; it runs at 00:00 (midnight) on the first day of the month.",
+                        "At midnight on the first day of every week": "This is incorrect.",
+                        "At 1 p.m. every day": "This is incorrect.",
+                        "At midnight every day": "This is incorrect."
+                    }
+                },
+                {
+                    "number": 45,
+                    "question": "Which of the following packages will provide you with the utilities to set up Git VCS on a system?",
+                    "options": ["git-vcs", "GitHub", "gitlab", "Bitbucket", "git"],
+                    "answer": "git",
+                    "explanation": {
+                        "git-vcs": "This package is made up.",
+                        "GitHub": "This is a cloud-based remote repository used with Git.",
+                        "gitlab": "This is a cloud-based remote repository used with Git.",
+                        "Bitbucket": "This is a cloud-based remote repository used with Git.",
+                        "git": "This package provides utilities to set up Git VCS on a system."
+                    }
+                },
+                {
+                    "number": 46,
+                    "question": "If you do not tack on the -m option with an argument to the git commit command, what will happen?",
+                    "options": ["The command will throw an error message and fail.", "The commit will take place, but no tracking will occur.", "You are placed in an editor for the COMMIT_EDITMSG file.", "Your commit will fail, and the file is removed from the index.", "Nothing. This is an optional switch."],
+                    "answer": "You are placed in an editor for the COMMIT_EDITMSG file.",
+                    "explanation": {
+                        "The command will throw an error message and fail.": "This is incorrect; it will not fail.",
+                        "The commit will take place, but no tracking will occur.": "This is incorrect.",
+                        "You are placed in an editor for the COMMIT_EDITMSG file.": "This is correct.",
+                        "Your commit will fail, and the file is removed from the index.": "This is incorrect.",
+                        "Nothing. This is an optional switch.": "This is incorrect; you will be placed in the editor."
+                    }
+                },
+                {
+                    "number": 47,
+                    "question": "At a virtualization conference, you overhear someone talking about using blobs on their cloud-based virtualization service. Which virtualization service are they using?",
+                    "options": ["Amazon Web Services", "KVM", "Digital Ocean", "GitHub", "Microsoft Azure"],
+                    "answer": "Microsoft Azure",
+                    "explanation": {
+                        "Amazon Web Services": "This is a cloud-based virtualization service but does not employ blobs.",
+                        "KVM": "This is a hypervisor, not a cloud-based virtualization service.",
+                        "Digital Ocean": "This is a cloud-based virtualization service but does not employ blobs.",
+                        "GitHub": "This is a cloud-based remote repository used in version control.",
+                        "Microsoft Azure": "This cloud-based virtualization service provides blobs for unstructured data storage."
+                    }
+                },
+                {
+                    "number": 48,
+                    "question": "What is a networking method for controlling and managing network communications via software that consists of a controller program as well as two APIs?",
+                    "options": ["Thick provisioning", "Thin provisioning", "SDN", "NAT", "VLAN"],
+                    "answer": "SDN",
+                    "explanation": {
+                        "Thick provisioning": "This refers to virtual storage configurations.",
+                        "Thin provisioning": "This refers to virtual storage configurations.",
+                        "SDN": "This is the correct answer; it is a networking method for controlling and managing network communications via software.",
+                        "NAT": "This is a virtualization network adapter configuration.",
+                        "VLAN": "This is a virtual (logical) LAN configuration."
+                    }
+                },
+                {
+                    "number": 49,
+                    "question": "Your company decides it needs an orchestration system (also called an engine). Which of the following is one you could choose? (Choose all that apply.)",
+                    "options": ["Mesos", "Kubernetes", "Splunk", "Swarm", "AWS"],
+                    "answer": ["Kubernetes", "Swarm"],
+                    "explanation": {
+                        "Mesos": "This needs Marathon to implement an orchestration engine.",
+                        "Kubernetes": "This is an orchestration system.",
+                        "Splunk": "This is a monitoring tool, not an orchestration system.",
+                        "Swarm": "This is an orchestration system.",
+                        "AWS": "This is cloud-based virtualization services, not an orchestration engine."
+                    }
+                },
+                {
+                    "number": 50,
+                    "question": "Which of the following is used in container orchestration? (Choose all that apply.)",
+                    "options": ["Automated configuration management", "Self-healing", "DevOps", "Agentless monitoring", "Build automation"],
+                    "answer": ["Automated configuration management", "Self-healing", "Build automation"],
+                    "explanation": {
+                        "Automated configuration management": "This is used in container orchestration.",
+                        "Self-healing": "This is used in container orchestration.",
+                        "DevOps": "This benefits from container orchestration but is not used within it.",
+                        "Agentless monitoring": "This is not used in container orchestration.",
+                        "Build automation": "This is used in container orchestration."
+                    }
+                },
+                {
+                    "number": 51,
+                    "question": "What type of cloud service provides the full application environment so that everyone on the Internet can run it?",
+                    "options": ["PaaS", "Private", "Public", "SaaS", "Hybrid"],
+                    "answer": "SaaS",
+                    "explanation": {
+                        "PaaS": "This does not include an application; you must provide it yourself.",
+                        "Private": "This is a method of implementing cloud services.",
+                        "Public": "This is a method of implementing cloud services.",
+                        "SaaS": "This type provides full applications, allowing anyone to connect to your application.",
+                        "Hybrid": "This is a method of implementing cloud services."
+                    }
+                },
+                {
+                    "number": 52,
+                    "question": "What type of hypervisor is the Oracle VirtualBox application?",
+                    "options": ["PaaS", "SaaS", "Type II", "Type I", "Private"],
+                    "answer": "Type II",
+                    "explanation": {
+                        "PaaS": "This is a type of cloud service.",
+                        "SaaS": "This is a type of cloud service.",
+                        "Type II": "This hypervisor installs on top of a host operating system.",
+                        "Type I": "This is not applicable as Oracle VirtualBox is Type II.",
+                        "Private": "This is a method of implementing cloud services."
+                    }
+                },
+                {
+                    "number": 53,
+                    "question": "What file should you place console and terminal filenames in to prevent users from logging into the Linux system as the root user account from those locations?",
+                    "options": ["/etc/cron.deny", "/etc/hosts.deny", "/etc/securetty", "/etc/login.warn", "/etc/motd"],
+                    "answer": "/etc/securetty",
+                    "explanation": {
+                        "/etc/cron.deny": "This file prevents users from scheduling jobs.",
+                        "/etc/hosts.deny": "This file blocks access from remote network hosts.",
+                        "/etc/securetty": "This file provides a list of locations from which users can't log in using the root user account.",
+                        "/etc/login.warn": "This file contains messages displayed at login time.",
+                        "/etc/motd": "This file contains messages displayed at login time."
+                    }
+                },
+                {
+                    "number": 54,
+                    "question": "What Linux program logs user file and directory access?",
+                    "options": ["chroot", "LUKS", "auditd", "klist", "kinit"],
+                    "answer": "auditd",
+                    "explanation": {
+                        "chroot": "This utility restricts applications to a specific location in the virtual filesystem.",
+                        "LUKS": "This system encrypts disk partitions.",
+                        "auditd": "This program monitors system activity, including user file and directory access.",
+                        "klist": "This command is used for Kerberos user authentication.",
+                        "kinit": "This command is used for Kerberos user authentication."
+                    }
+                },
+                {
+                    "number": 55,
+                    "question": "You've moved your present working directory to a new location in the Linux virtual directory structure and need to go back to the previous directory where you were just located. Which command should you employ?",
+                    "options": ["cd", "exit", "cd ~", "cd -", "return"],
+                    "answer": "cd -",
+                    "explanation": {
+                        "cd": "This command returns your process to your home directory.",
+                        "exit": "This command causes your process to exit its current shell.",
+                        "cd ~": "This command returns your process to your home directory.",
+                        "cd -": "This command will return your process to its previous directory.",
+                        "return": "This command is used in Bash shell scripts to return from a function."
+                    }
+                },
+                {
+                    "number": 56,
+                    "question": "To copy a directory with the cp command, which option do you need to use?",
+                    "options": ["-i", "-R", "-v", "-u", "-f"],
+                    "answer": "-R",
+                    "explanation": {
+                        "-i": "This option will ask before overwriting a preexisting directory.",
+                        "-R": "This option allows you to copy a directory's contents recursively.",
+                        "-v": "This option provides verbose information for the copy.",
+                        "-u": "This option will only overwrite preexisting files if the files being copied are newer.",
+                        "-f": "This option forces a copy to occur and overwrites any preexisting files, but does not force a recursive copy."
+                    }
+                }
+            ]
+        }
+    ]
+}

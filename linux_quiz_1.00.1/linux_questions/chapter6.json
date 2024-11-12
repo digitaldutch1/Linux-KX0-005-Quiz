@@ -1,0 +1,309 @@
+
+
+
+{
+    "chapters": [
+        {
+            "chapter": 6,
+            "description": "Maintaining System Startup and Services",
+            "questions": [
+                {
+                    "number": 1,
+                    "question": "The init program may be located in which of the following directories? (Choose all that apply.)",
+                    "options": ["/etc/rc.d/", "/etc/", "/sbin/", "/usr/lib/systemd/", "/bin/"],
+                    "answer": ["/etc/", "/sbin/", "/bin/"],
+                    "explanation": {
+                        "/etc/rc.d/": "This directory is used in SysV init systems and is not a location for the init program.",
+                        "/etc/": "The init program may exist here, depending on your distribution and its version.",
+                        "/sbin/": "The init program may exist here, depending on your distribution and its version.",
+                        "/usr/lib/systemd/": "This directory is the location of the systemd program.",
+                        "/bin/": "The init program may exist here, depending on your distribution and its version."
+                    }
+                },
+                {
+                    "number": 2,
+                    "question": "Which of the following is true concerning systemd service units? (Choose all that apply.)",
+                    "options": [
+                        "Services can be started at system boot time.",
+                        "Services can be started in parallel.",
+                        "A service can be started based on a timer.",
+                        "A service can be started after all other services are started.",
+                        "A service can be prevented from starting at system boot time."
+                    ],
+                    "answer": [
+                        "Services can be started at system boot time.",
+                        "Services can be started in parallel.",
+                        "A service can be started based on a timer.",
+                        "A service can be started after all other services are started.",
+                        "A service can be prevented from starting at system boot time."
+                    ],
+                    "explanation": {
+                        "Services can be started at system boot time.": "This is true.",
+                        "Services can be started in parallel.": "This is true.",
+                        "A service can be started based on a timer.": "This is true.",
+                        "A service can be started after all other services are started.": "This is true.",
+                        "A service can be prevented from starting at system boot time.": "This is true."
+                    }
+                },
+                {
+                    "number": 3,
+                    "question": "Which of the following is not a systemd target unit?",
+                    "options": ["runlevel7.target", "emergency.target", "graphical.target", "multi-user.target", "rescue.target"],
+                    "answer": "runlevel7.target",
+                    "explanation": {
+                        "runlevel7.target": "There is no runlevel7.target. The legitimate systemd targets go from runlevel0.target through runlevel6.target.",
+                        "emergency.target": "This is a valid systemd target unit.",
+                        "graphical.target": "This is a valid systemd target unit.",
+                        "multi-user.target": "This is a valid systemd target unit.",
+                        "rescue.target": "This is a valid systemd target unit."
+                    }
+                },
+                {
+                    "number": 4,
+                    "question": "You need to modify a systemd service unit configuration. Where should the modified file be located?",
+                    "options": [
+                        "/etc/system/systemd/",
+                        "/usr/lib/system/systemd/",
+                        "/etc/systemd/system/",
+                        "/usr/lib/systemd/system/",
+                        "/run/system/systemd/"
+                    ],
+                    "answer": "/etc/systemd/system/",
+                    "explanation": {
+                        "/etc/system/systemd/": "This directory is made up.",
+                        "/usr/lib/system/systemd/": "This directory is made up.",
+                        "/etc/systemd/system/": "This is where any modified systemd service unit configuration file should be stored.",
+                        "/usr/lib/systemd/system/": "This directory should only store unmodified unit files provided by default.",
+                        "/run/system/systemd/": "This directory is also made up."
+                    }
+                },
+                {
+                    "number": 5,
+                    "question": "On your server, you need Service-B to start immediately before Service-A. Within the systemd Service-A unit configuration file, what directive should you check and potentially modify?",
+                    "options": ["Conflicts", "Wants", "Requires", "Before", "After"],
+                    "answer": "After",
+                    "explanation": {
+                        "Conflicts": "This directive sets the unit to not start with designated units.",
+                        "Wants": "This directive sets the unit to start together with designated units.",
+                        "Requires": "This directive sets the unit to start together with designated units.",
+                        "Before": "This directive sets this unit to start before the designated units.",
+                        "After": "This is the correct directive to use."
+                    }
+                },
+                {
+                    "number": 6,
+                    "question": "For setting environment parameters within a unit configuration file, which directives should you potentially employ? (Choose all that apply.)",
+                    "options": ["Type", "Environment", "EnvironmentParam", "EnvironmentFile", "PATH"],
+                    "answer": ["Environment", "EnvironmentFile"],
+                    "explanation": {
+                        "Type": "This sets the unit startup type.",
+                        "Environment": "This directive is used to set environment variables.",
+                        "EnvironmentParam": "This is a made-up directive.",
+                        "EnvironmentFile": "This directive is used for setting environment variables.",
+                        "PATH": "This is an environment variable, but not a directive."
+                    }
+                },
+                {
+                    "number": 7,
+                    "question": "You attempt to jump to a systemd target using the systemctl isolate command, but it will not work. You decide to look at the target unit file. What might you see there that is causing this problem?",
+                    "options": ["static", "AllowIsolate=yes", "Type=oneshot", "AllowIsolate=no", "disabled"],
+                    "answer": "AllowIsolate=no",
+                    "explanation": {
+                        "static": "This is an enablement state for a unit file.",
+                        "AllowIsolate=yes": "This would allow the target to be used with the systemctl isolate command.",
+                        "Type=oneshot": "This is a service unit directive.",
+                        "AllowIsolate=no": "This setting would prevent the target from being used with the systemctl isolate command.",
+                        "disabled": "This is an enablement state, like static."
+                    }
+                },
+                {
+                    "number": 8,
+                    "question": "You have modified an OpenSSH service's configuration file, /etc/ssh/ssh_config. The service is already running. What is the best command to use with systemctl to make this modified file take immediate effect?",
+                    "options": ["reload", "daemon-reload", "restart", "mask", "unmask"],
+                    "answer": "reload",
+                    "explanation": {
+                        "reload": "This command loads the service configuration file without stopping the service.",
+                        "daemon-reload": "This command loads the unit configuration file, not the service configuration file.",
+                        "restart": "This command stops and immediately restarts the service.",
+                        "mask": "This prevents a particular service from starting.",
+                        "unmask": "This undoes the effects of the mask command."
+                    }
+                },
+                {
+                    "number": 9,
+                    "question": "Your system uses systemd and has a service currently set to not start at system boot. You want to change this behavior and have it start. What systemctl command should you employ for this service?",
+                    "options": ["restart", "start", "isolate", "disable", "enable"],
+                    "answer": "enable",
+                    "explanation": {
+                        "restart": "This command restarts the service but does not control whether it starts at boot.",
+                        "start": "This command starts the service but does not control whether it starts at boot.",
+                        "isolate": "This command is used with systemd target units, not service units.",
+                        "disable": "This command sets a service to not start at boot time.",
+                        "enable": "This command will set the service to start at boot time."
+                    }
+                },
+                {
+                    "number": 10,
+                    "question": "You need to change the system's default target. What systemctl command should you use to accomplish this task?",
+                    "options": ["get-default", "set-default", "isolate", "is-enabled", "is-active"],
+                    "answer": "set-default",
+                    "explanation": {
+                        "get-default": "This command shows the current default target.",
+                        "set-default": "This command sets the default target.",
+                        "isolate": "This command is used to jump to new targets.",
+                        "is-enabled": "This command checks if a service starts at boot time.",
+                        "is-active": "This command checks if a service is currently active."
+                    }
+                },
+                {
+                    "number": 11,
+                    "question": "Your systemd system is taking a long time to boot and you need to reduce the boot time. Which systemd-analyze command is the best to start narrowing down which units need to be investigated first?",
+                    "options": ["time", "dump", "failure", "blame", "verify"],
+                    "answer": "blame",
+                    "explanation": {
+                        "time": "This command shows the time spent for kernel and user space initialization.",
+                        "dump": "This command displays data concerning all the units.",
+                        "failure": "This indicates that a service has failed.",
+                        "blame": "This command displays the time each running unit took to initialize.",
+                        "verify": "This command scans unit files for errors."
+                    }
+                },
+                {
+                    "number": 12,
+                    "question": "Your older Debian-based Linux distribution system uses SysV init. It will soon be upgraded to a Debian-based distro that uses systemd. To start some analysis, you enter the runlevel command. Which of the following are results you may see? (Choose all that apply.)",
+                    "options": ["N 5", "3 5", "N 2", "2 3", "1 2"],
+                    "answer": ["N 2", "2 3"],
+                    "explanation": {
+                        "N 5": "This shows 5 as the current runlevel, which is incorrect for Debian-based distros.",
+                        "3 5": "This also shows 5 as the current runlevel, which is incorrect.",
+                        "N 2": "This is a valid result for a SysV init system.",
+                        "2 3": "This is a valid result for a SysV init system.",
+                        "1 2": "This is incorrect because it shows 1 as the current runlevel."
+                    }
+                },
+                {
+                    "number": 13,
+                    "question": "You've recently become the system administrator for an older Linux server, which still uses SysV init. You determine that its default runlevel is 3. What file did you find that information in?",
+                    "options": ["/etc/inittab", "/etc/rc.d", "/etc/init.d/rc", "/etc/rc.d/rc", "/etc/rc.local"],
+                    "answer": "/etc/inittab",
+                    "explanation": {
+                        "/etc/inittab": "This file contains the default runlevel within the initdefault record.",
+                        "/etc/rc.d": "This is a directory, not a file.",
+                        "/etc/init.d/rc": "This is a script that does not contain default runlevel information.",
+                        "/etc/rc.d/rc": "This is also a script and does not contain default runlevel information.",
+                        "/etc/rc.local": "This file is used for commands after initialization, not default runlevel."
+                    }
+                },
+                {
+                    "number": 14,
+                    "question": "Which directory on an old SysV init system stores the service startup scripts?",
+                    "options": [
+                        "/usr/lib/systemd/system/",
+                        "/etc/rc.d/rc n .d/",
+                        "/etc/init.d/",
+                        "/etc/systemd/system/",
+                        "/run/systemd/system/"
+                    ],
+                    "answer": "/etc/init.d/",
+                    "explanation": {
+                        "/usr/lib/systemd/system/": "This is a systemd directory.",
+                        "/etc/rc.d/rc n .d/": "This directory contains symbolic links to scripts but is not where the scripts reside.",
+                        "/etc/init.d/": "This is where service startup scripts are stored.",
+                        "/etc/systemd/system/": "This is a systemd directory.",
+                        "/run/systemd/system/": "This is also a systemd directory."
+                    }
+                },
+                {
+                    "number": 15,
+                    "question": "You are managing a SysV init system and need to perform some emergency maintenance at runlevel 1. To do this, you need to jump runlevels. What command could you employ? (Choose all that apply.)",
+                    "options": ["telinit S", "telinit 1", "init one", "init s", "init 1"],
+                    "answer": ["telinit S", "telinit 1", "init s", "init 1"],
+                    "explanation": {
+                        "telinit S": "This command can be used to jump to runlevel 1.",
+                        "telinit 1": "This command can be used to jump to runlevel 1.",
+                        "init one": "This option is incorrect; it is not valid syntax.",
+                        "init s": "This command can be used to jump to runlevel 1.",
+                        "init 1": "This command can also be used to jump to runlevel 1."
+                    }
+                },
+                {
+                    "number": 16,
+                    "question": "A customer has complained that a service on your SysV init system is not working. Which of the following commands is the best command to use to check the service?",
+                    "options": ["service start", "service status", "service ––status-all", "service stop", "service reload"],
+                    "answer": "service status",
+                    "explanation": {
+                        "service start": "This command will start the designated service but does not check its status.",
+                        "service status": "This command displays the current status of the service.",
+                        "service ––status-all": "This command shows the status of all services, not the best for a specific service.",
+                        "service stop": "This command stops the designated service.",
+                        "service reload": "This command reloads the configuration but does not check status."
+                    }
+                },
+                {
+                    "number": 17,
+                    "question": "You need to enable the DHCP service on your Red Hat–based SysV init system for runlevels 3 and 5. Which of the following commands should you use?",
+                    "options": [
+                        "service enable dhcp 3,5",
+                        "chkconfig ––levels 3,5 dhcp on",
+                        "chkconfig ––levels 35 on dhcp",
+                        "chkconfig ––levels 35 dhcp on",
+                        "service enable dhcp 35"
+                    ],
+                    "answer": "chkconfig ––levels 35 dhcp on",
+                    "explanation": {
+                        "service enable dhcp 3,5": "This command does not work for enabling SysV init services.",
+                        "chkconfig ––levels 3,5 dhcp on": "This command syntax is incorrect; levels should not have a delimiter.",
+                        "chkconfig ––levels 35 on dhcp": "This command has the order of arguments flipped.",
+                        "chkconfig ––levels 35 dhcp on": "This command is correct for enabling the DHCP service.",
+                        "service enable dhcp 35": "This command does not work for enabling SysV init services."
+                    }
+                },
+                {
+                    "number": 18,
+                    "question": "You need to enable the DHCP service on your Debian-based SysV init system for the default runlevels. Which of the following commands should you use?",
+                    "options": [
+                        "update-rc.d dhcp default",
+                        "chkconfig ––default dhcp on",
+                        "update-rc.d default dhcp",
+                        "update-rc.d defaults dhcp",
+                        "update-rc.d dhcp defaults"
+                    ],
+                    "answer": "update-rc.d dhcp defaults",
+                    "explanation": {
+                        "update-rc.d dhcp default": "The last command argument should be defaults, not default.",
+                        "chkconfig ––default dhcp on": "This command does not work on Debian-based distributions.",
+                        "update-rc.d default dhcp": "This command has the order of arguments flipped.",
+                        "update-rc.d defaults dhcp": "This command is correct for enabling the DHCP service.",
+                        "update-rc.d dhcp defaults": "This command is correct for enabling the DHCP service."
+                    }
+                },
+                {
+                    "number": 19,
+                    "question": "Which of the following would be the appropriate base name for a mount unit file that mounts a filesystem at the /var/log/ mount point?",
+                    "options": ["/var/log.mount", "/var/log.unit", "var-log.mount", "var-log.unit", "var/log.mount"],
+                    "answer": "var-log.mount",
+                    "explanation": {
+                        "/var/log.mount": "This is incorrect because the forward slashes were not removed.",
+                        "/var/log.unit": "This is incorrect; the wrong file extension is used.",
+                        "var-log.mount": "This is the correct format for the mount unit filename.",
+                        "var-log.unit": "This is incorrect; the wrong file extension is used.",
+                        "var/log.mount": "This is incorrect because the middle forward slash was not replaced."
+                    }
+                },
+                {
+                    "number": 20,
+                    "question": "You are managing a systemd system and need to create an automount unit file. Which of the following directives should you review to possibly include in this file's [Automount] section? (Choose all that apply.)",
+                    "options": ["Where", "Options", "DirectoryMode", "TimeOutIdleSec", "What"],
+                    "answer": ["Where", "DirectoryMode", "TimeOutIdleSec"],
+                    "explanation": {
+                        "Where": "This directive is included in the [Automount] section.",
+                        "Options": "This directive is included in the [Mount] section.",
+                        "DirectoryMode": "This directive is included in the [Automount] section.",
+                        "TimeOutIdleSec": "This directive is included in the [Automount] section.",
+                        "What": "This directive is included in the [Mount] section."
+                    }
+                }
+            ]
+        }
+    ]
+}
