@@ -1,0 +1,345 @@
+
+
+
+{
+    "chapters": [
+        {
+            "chapter": 8,
+            "description": "Comparing GUI’s",
+            "questions": [
+                {
+                    "number": 1,
+                    "question": "Which of the following best describes a desktop environment?",
+                    "options": [
+                        "A set of programs that allow a user to interact with the system via icons, windows, and various other visual elements",
+                        "A screen where you choose a username and enter a password to gain system access",
+                        "A series of components that work together to provide the graphical setting for the user interface",
+                        "A program that allows you to perform file maintenance activities graphically",
+                        "A set of programs that determine how the windows are presented on the desktop"
+                    ],
+                    "answer": "A series of components that work together to provide the graphical setting for the user interface",
+                    "explanation": {
+                        "A set of programs that allow a user to interact with the system via icons, windows, and various other visual elements": "This describes a graphical user interface (GUI), not specifically a desktop environment.",
+                        "A screen where you choose a username and enter a password to gain system access": "This describes a display manager.",
+                        "A series of components that work together to provide the graphical setting for the user interface": "This is correct.",
+                        "A program that allows you to perform file maintenance activities graphically": "This describes a file manager, not a desktop environment.",
+                        "A set of programs that determine how the windows are presented on the desktop": "This describes a window manager."
+                    }
+                },
+                {
+                    "number": 2,
+                    "question": "Which of the following are GUI components? (Choose all that apply.)",
+                    "options": ["Favorites bar", "File manager", "Icons", "Command line", "System tray"],
+                    "answer": ["Favorites bar", "File manager", "Icons", "System tray"],
+                    "explanation": {
+                        "Favorites bar": "This is a GUI component.",
+                        "File manager": "This is a GUI component.",
+                        "Icons": "These are GUI components.",
+                        "Command line": "This is not a GUI component.",
+                        "System tray": "This is a GUI component."
+                    }
+                },
+                {
+                    "number": 3,
+                    "question": "Which of the following is not used by default within GNOME Shell?",
+                    "options": ["SDDM", "Files", "Mutter", "GDM", "Dock"],
+                    "answer": "SDDM",
+                    "explanation": {
+                        "SDDM": "This is the Simple Desktop Display Manager and is not used by default in GNOME.",
+                        "Files": "This is used in GNOME as the file manager.",
+                        "Mutter": "This is the window manager used in GNOME.",
+                        "GDM": "This is the GNOME Display Manager.",
+                        "Dock": "This is part of the GNOME Shell."
+                    }
+                },
+                {
+                    "number": 4,
+                    "question": "Which of the following is the KDE Plasma files manager?",
+                    "options": ["Nautilus", "Plasmoid", "Dolphin", "Kwin", "Nemo"],
+                    "answer": "Dolphin",
+                    "explanation": {
+                        "Nautilus": "This is the file manager for GNOME.",
+                        "Plasmoid": "This is a KDE Plasma widget.",
+                        "Dolphin": "This is the correct answer.",
+                        "Kwin": "This is the window manager for KDE.",
+                        "Nemo": "This is the file manager for Cinnamon."
+                    }
+                },
+                {
+                    "number": 5,
+                    "question": "Which of the following is true concerning the MATE desktop environment? (Choose all that apply.)",
+                    "options": [
+                        "MATE is a GNOME Shell fork.",
+                        "MATE uses Metacity as its window manager.",
+                        "MATE's display manager is LightDM.",
+                        "MATE's file manager is Caja.",
+                        "MATE is no longer being developed."
+                    ],
+                    "answer": ["MATE uses Metacity as its window manager.", "MATE's file manager is Caja."],
+                    "explanation": {
+                        "MATE is a GNOME Shell fork.": "This is incorrect; MATE is a fork of GNOME 2.",
+                        "MATE uses Metacity as its window manager.": "This is correct.",
+                        "MATE's display manager is LightDM.": "This is incorrect; LightDM is an option but not the only one.",
+                        "MATE's file manager is Caja.": "This is correct.",
+                        "MATE is no longer being developed.": "This is incorrect; MATE is still being developed."
+                    }
+                },
+                {
+                    "number": 6,
+                    "question": "Which of the following describes the sound keys accessibility setting?",
+                    "options": [
+                        "Sounds are made when the Caps Lock or Num Lock key is turned on or off.",
+                        "A program that reads the GUI aloud, such as Orca.",
+                        "A cursor blink rate modification to make it easier to locate the cursor on the screen.",
+                        "Output to a refreshable braille display that is provided by the Orca screen reader.",
+                        "The screen or a screen portion is amplified to different magnification levels."
+                    ],
+                    "answer": "Sounds are made when the Caps Lock or Num Lock key is turned on or off.",
+                    "explanation": {
+                        "Sounds are made when the Caps Lock or Num Lock key is turned on or off.": "This is correct.",
+                        "A program that reads the GUI aloud, such as Orca.": "This describes a screen reader.",
+                        "A cursor blink rate modification to make it easier to locate the cursor on the screen.": "This is incorrect.",
+                        "Output to a refreshable braille display that is provided by the Orca screen reader.": "This is a screen reader feature.",
+                        "The screen or a screen portion is amplified to different magnification levels.": "This describes a magnification feature."
+                    }
+                },
+                {
+                    "number": 7,
+                    "question": "A blind coworker who is programming on the Linux server is suddenly having odd problems with his braille display device. You determine that you need to restart the braille service. Assuming the appropriate systemd unit file is available, which command would you use?",
+                    "options": ["systemctl restart braille", "systemctl reload braille", "systemctl restart brailled", "systemctl restart brltty", "systemctl reload brltty"],
+                    "answer": "systemctl restart brltty",
+                    "explanation": {
+                        "systemctl restart braille": "This uses an incorrect service name.",
+                        "systemctl reload braille": "This uses an incorrect service name.",
+                        "systemctl restart brailled": "This uses an incorrect service name.",
+                        "systemctl restart brltty": "This is the correct command to restart the braille service.",
+                        "systemctl reload brltty": "This command would reload the configuration but not restart the service."
+                    }
+                },
+                {
+                    "number": 8,
+                    "question": "Which of the following best describes the slow keys accessibility setting?",
+                    "options": [
+                        "A keyboard option that modifies how long a key must be pressed down to acknowledge the key.",
+                        "A keyboard option that sets keyboard modifier keys, such as Ctrl and Shift, to maintain their pressed status until a subsequent key is pressed.",
+                        "A keyboard option that modifies how long a key must be pressed down and that defines a delay to acknowledge the key repeat.",
+                        "A keyboard option that sets a primary key to be pressed along with a mouse click to emulate secondary mouse clicks.",
+                        "A keyboard option that displays a visual keyboard on the UI that can be manipulated by a mouse or other pointing device to emulate keystrokes."
+                    ],
+                    "answer": "A keyboard option that modifies how long a key must be pressed down to acknowledge the key.",
+                    "explanation": {
+                        "A keyboard option that modifies how long a key must be pressed down to acknowledge the key.": "This is correct.",
+                        "A keyboard option that sets keyboard modifier keys, such as Ctrl and Shift, to maintain their pressed status until a subsequent key is pressed.": "This describes sticky keys.",
+                        "A keyboard option that modifies how long a key must be pressed down and that defines a delay to acknowledge the key repeat.": "This describes repeat keys.",
+                        "A keyboard option that sets a primary key to be pressed along with a mouse click to emulate secondary mouse clicks.": "This describes simulated secondary clicks.",
+                        "A keyboard option that displays a visual keyboard on the UI that can be manipulated by a mouse or other pointing device to emulate keystrokes.": "This describes an on-screen keyboard."
+                    }
+                },
+                {
+                    "number": 9,
+                    "question": "Which of the following communicates with the Linux operating system to transmit the UI wants and needs?",
+                    "options": ["Window manager", "Display manager", "Desktop environment", "Windows server", "Display server"],
+                    "answer": "Display server",
+                    "explanation": {
+                        "Window manager": "This communicates with the display server on behalf of the UI.",
+                        "Display manager": "This controls the login screen.",
+                        "Desktop environment": "This provides a user interface but does not directly communicate with the OS.",
+                        "Windows server": "This is not applicable here.",
+                        "Display server": "This is correct as it transmits UI requests to the OS."
+                    }
+                },
+                {
+                    "number": 10,
+                    "question": "Which of the following is true of a compositor? (Choose all that apply.)",
+                    "options": [
+                        "A compositor arranges various display elements within a window to create a screen image.",
+                        "Wayland is a compositor.",
+                        "Mutter contains a compositor.",
+                        "Kwin contains a compositor.",
+                        "Weston is a compositor."
+                    ],
+                    "answer": [
+                        "A compositor arranges various display elements within a window to create a screen image.",
+                        "Mutter contains a compositor.",
+                        "Kwin contains a compositor.",
+                        "Weston is a compositor."
+                    ],
+                    "explanation": {
+                        "A compositor arranges various display elements within a window to create a screen image.": "This is correct.",
+                        "Wayland is a compositor.": "Wayland is a display server, not just a compositor.",
+                        "Mutter contains a compositor.": "This is correct.",
+                        "Kwin contains a compositor.": "This is correct.",
+                        "Weston is a compositor.": "This is correct."
+                    }
+                },
+                {
+                    "number": 11,
+                    "question": "Which of the following are true concerning Wayland? (Choose all that apply.)",
+                    "options": [
+                        "Currently X11 is more secure than Wayland.",
+                        "Wayland uses the $WAYLAND_DISPLAY environment variable.",
+                        "Wayland's only compositor is Weston.",
+                        "XWayland supports legacy X11 programs.",
+                        "Set WaylandDisable to true to disable Wayland in GNOME Shell."
+                    ],
+                    "answer": [
+                        "Wayland uses the $WAYLAND_DISPLAY environment variable.",
+                        "XWayland supports legacy X11 programs."
+                    ],
+                    "explanation": {
+                        "Currently X11 is more secure than Wayland.": "This is incorrect; Wayland is designed to be more secure.",
+                        "Wayland uses the $WAYLAND_DISPLAY environment variable.": "This is correct.",
+                        "Wayland's only compositor is Weston.": "This is incorrect; there are other compositors for Wayland.",
+                        "XWayland supports legacy X11 programs.": "This is correct.",
+                        "Set WaylandDisable to true to disable Wayland in GNOME Shell.": "This is incorrect; you edit the /etc/gdm3/custom.conf file to disable Wayland."
+                    }
+                },
+                {
+                    "number": 12,
+                    "question": "Which of the following commands will help you determine whether your display server is Wayland or X11?",
+                    "options": ["$WAYLAND_DISPLAY", "echo $AccessX", "loginctl", "echo $X11", "runlevel"],
+                    "answer": "loginctl",
+                    "explanation": {
+                        "$WAYLAND_DISPLAY": "This command alone does not provide information.",
+                        "echo $AccessX": "This is not relevant to determining display servers.",
+                        "loginctl": "This command can help determine the current GUI session.",
+                        "echo $X11": "This is made up; no such variable exists.",
+                        "runlevel": "This command is for checking system run levels, not display servers."
+                    }
+                },
+                {
+                    "number": 13,
+                    "question": "You use the command gnome-shell --replace at the command line and receive an error message from the utility. What does this indicate?",
+                    "options": [
+                        "The X11 display server is hung. You need to reboot the server.",
+                        "The --replace option should be swapped for the -R option.",
+                        "Your display server is Wayland.",
+                        "XWayland is currently being used.",
+                        "Wayland has been disabled for this session."
+                    ],
+                    "answer": "Your display server is Wayland.",
+                    "explanation": {
+                        "The X11 display server is hung. You need to reboot the server.": "This is incorrect; rebooting is not necessarily required.",
+                        "The --replace option should be swapped for the -R option.": "This is incorrect; the error is not related to the option syntax.",
+                        "Your display server is Wayland.": "This is correct; the command does not work under Wayland.",
+                        "XWayland is currently being used.": "This is incorrect; if XWayland was used, you would not see an error.",
+                        "Wayland has been disabled for this session.": "This is incorrect; if it were disabled, there would be no error."
+                    }
+                },
+                {
+                    "number": 14,
+                    "question": "Which of the following is true concerning X11? (Choose all that apply.)",
+                    "options": [
+                        "XFree86 is the dominant X server.",
+                        "X.Org foundation develops an X server.",
+                        "The X server is being replaced by Wayland.",
+                        "X11 means a user can have 11 sessions.",
+                        "X is short for X Window System."
+                    ],
+                    "answer": [
+                        "X.Org foundation develops an X server.",
+                        "The X server is being replaced by Wayland.",
+                        "X is short for X Window System."
+                    ],
+                    "explanation": {
+                        "XFree86 is the dominant X server.": "This is incorrect; X.Org is the dominant server.",
+                        "X.Org foundation develops an X server.": "This is correct.",
+                        "The X server is being replaced by Wayland.": "This is correct.",
+                        "X11 means a user can have 11 sessions.": "This is incorrect; it refers to version 11 of X Window System.",
+                        "X is short for X Window System.": "This is correct."
+                    }
+                },
+                {
+                    "number": 15,
+                    "question": "Your system is running an X display server and a user's graphical user interface is not acting properly. Which of the following commands can you use first to diagnose potential problems? (Choose all that apply.)",
+                    "options": ["xwininfo", "Xorg -configure", "xcpyinfo", "xdpyinfo", "loginctl"],
+                    "answer": ["xwininfo", "xdpyinfo"],
+                    "explanation": {
+                        "xwininfo": "This command provides information about windows.",
+                        "Xorg -configure": "This command is for creating a new configuration file, not for diagnosing.",
+                        "xcpyinfo": "This command is made up.",
+                        "xdpyinfo": "This command provides information about the X server.",
+                        "loginctl": "This command is for managing logins, not diagnosing X server issues."
+                    }
+                },
+                {
+                    "number": 16,
+                    "question": "Which of the following are remote desktops? (Choose all that apply.)",
+                    "options": ["SPICE", "NX", "Xrdp", "VNC", "Caja"],
+                    "answer": ["SPICE", "NX", "Xrdp", "VNC"],
+                    "explanation": {
+                        "SPICE": "This is a remote desktop protocol.",
+                        "NX": "This is a remote desktop protocol.",
+                        "Xrdp": "This is a remote desktop protocol.",
+                        "VNC": "This is a remote desktop protocol.",
+                        "Caja": "This is a file manager in the MATE desktop environment, not a remote desktop."
+                    }
+                },
+                {
+                    "number": 17,
+                    "question": "Which of the following are remote desktops typically used with virtual machines? (Choose all that apply.)",
+                    "options": ["SPICE", "NX", "Xrdp", "VNC", "All of the above"],
+                    "answer": ["SPICE", "NX", "Xrdp", "VNC"],
+                    "explanation": {
+                        "SPICE": "This is typically used with KVM virtual machines.",
+                        "NX": "This is not typically used with virtual machines.",
+                        "Xrdp": "This can be used with virtual machines.",
+                        "VNC": "This is typically used with KVM virtual machines.",
+                        "All of the above": "This is incorrect because NX is not typically used with virtual machines."
+                    }
+                },
+                {
+                    "number": 18,
+                    "question": "Which of the following protocols does Xrdp employ?",
+                    "options": [
+                        "Remote Frame Buffer protocol",
+                        "Wayland protocol",
+                        "NX technology protocol",
+                        "Simple protocol for ICEs",
+                        "Remote Desktop Protocol"
+                    ],
+                    "answer": "Remote Desktop Protocol",
+                    "explanation": {
+                        "Remote Frame Buffer protocol": "This protocol is used by VNC.",
+                        "Wayland protocol": "This is used by the Wayland display server.",
+                        "NX technology protocol": "This is used by the NX remote desktop.",
+                        "Simple protocol for ICEs": "This is not a known protocol.",
+                        "Remote Desktop Protocol": "This is correct; Xrdp uses RDP."
+                    }
+                },
+                {
+                    "number": 19,
+                    "question": "You want to employ SSH port forwarding and use its local mode. Which ssh command switches should you employ? (Choose all that apply.)",
+                    "options": ["-N", "-X", "-f", "-R", "-L"],
+                    "answer": ["-N", "-f", "-L"],
+                    "explanation": {
+                        "-N": "This option indicates no remote commands will be executed.",
+                        "-X": "This option is used for X11 forwarding.",
+                        "-f": "This option puts ssh in the background.",
+                        "-R": "This option is for remote forwarding.",
+                        "-L": "This option is for local port forwarding."
+                    }
+                },
+                {
+                    "number": 20,
+                    "question": "You (username Samantha) are logged into a laptop (IP address 192.168.0.42) running a Linux GNOME Classic desktop environment at your company desk in Building A. A problem has occurred on a rack-mounted Linux system (IP address 192.168.0.7) in Building C. You need to securely access a GUI application on the remote system that uses X11. What command should you use?",
+                    "options": [
+                        "ssh -Y Samantha@192.168.0.7",
+                        "ssh -X Samantha@192.168.0.7",
+                        "ssh -Y Samantha@192.168.0.42",
+                        "ssh -X Samantha@192.168.0.42",
+                        "ssh -L Samantha@192.168.0.42"
+                    ],
+                    "answer": "ssh -X Samantha@192.168.0.7",
+                    "explanation": {
+                        "ssh -Y Samantha@192.168.0.7": "This command uses trusted X11 forwarding, which is less secure.",
+                        "ssh -X Samantha@192.168.0.7": "This is the correct command for X11 forwarding.",
+                        "ssh -Y Samantha@192.168.0.42": "This command targets the local system instead of the remote system.",
+                        "ssh -X Samantha@192.168.0.42": "This command targets the local system instead of the remote system.",
+                        "ssh -L Samantha@192.168.0.42": "This command uses local port forwarding, which is not appropriate here."
+                    }
+                }
+            ]
+        }
+    ]
+}
