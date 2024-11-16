@@ -1,0 +1,3 @@
+Als je op Linux exe klikt zou die moeten werken.
+
+Heb je geen pdf reader, ik heb in de map assets/pdf reader een pdf reader exe toegevoegd, je kan die installeren door uit te voeren.

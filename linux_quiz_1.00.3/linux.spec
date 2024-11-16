@@ -2,10 +2,10 @@
 
 
 a = Analysis(
-    ['C:\\Users\\denni\\Desktop\\linux\\linux_quiz_1.00.2\\linux.py'],
+    ['C:\\Users\\denni\\Desktop\\linux\\linux_quiz_1.00.3\\linux.py'],
     pathex=[],
     binaries=[],
-    datas=[('C:\\Users\\denni\\Desktop\\linux\\linux_quiz_1.00.2\\assets\\linux_questions', 'assets\\linux_questions'), ('C:\\Users\\denni\\Desktop\\linux\\linux_quiz_1.00.2\\assets\\linuxbook\\linuxbook.pdf', 'assets\\linuxbook')],
+    datas=[('C:\\Users\\denni\\Desktop\\linux\\linux_quiz_1.00.3\\assets\\linux_questions', 'assets\\linux_questions'), ('C:\\Users\\denni\\Desktop\\linux\\linux_quiz_1.00.3\\assets\\linuxbook\\linuxbook.pdf', 'assets\\linuxbook')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
@@ -35,5 +35,5 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon=['C:\\Users\\denni\\Desktop\\linux\\linux_quiz_1.00.2\\assets\\icon\\linux_icon2.ico'],
+    icon=['C:\\Users\\denni\\Desktop\\linux\\linux_quiz_1.00.3\\assets\\icon\\linux_icon2.ico'],
 )
