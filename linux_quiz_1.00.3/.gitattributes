@@ -1,0 +1,9 @@
+
+
+
+# Zorg ervoor dat tekstbestanden standaard LF gebruiken
+* text=auto
+
+# Specifiek voor JSON-bestanden
+*.json text eol=lf
+
