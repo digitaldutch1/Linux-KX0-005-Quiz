@@ -1,0 +1,143 @@
+
+
+
+{
+    "chapters": [
+        {
+            "chapter": 23,
+            "description": "Dealing with linux devices",
+            "questions": [
+                {
+                    "number": 357,
+                    "question": "What type of hardware interface uses interrupts, I/O ports, and DMA channels to communicate with the PC motherboard?",
+                    "options": ["USB", "GPIO", "PCI", "Monitors", "Printers"],
+                    "answer": "PCI",
+                    "explanation": {
+                        "USB": "This interface uses a serial bus for communication.",
+                        "GPIO": "This interface uses memory-mapped specialty IC chips.",
+                        "PCI": "PCI boards use interrupts, I/O ports, and DMA channels to communicate with the motherboard.",
+                        "Monitors": "This is a hardware device, not an interface.",
+                        "Printers": "This is also a hardware device, not an interface."
+                    }
+                },
+                {
+                    "number": 358,
+                    "question": "What filesystem does the Linux system use to track ports used to communicate with PCI boards?",
+                    "options": ["/proc/ioports", "/proc/interrupts", "/sys", "/dev", "/proc/dma"],
+                    "answer": "/proc/ioports",
+                    "explanation": {
+                        "/proc/ioports": "This file tracks the I/O ports used by installed PCI boards.",
+                        "/proc/interrupts": "This file tracks interrupts, not I/O ports.",
+                        "/sys": "This directory contains files for kernel and system features, not specifically for I/O ports.",
+                        "/dev": "This directory is for device files, not tracking I/O ports.",
+                        "/proc/dma": "This file tracks DMA channels, not I/O ports."
+                    }
+                },
+                {
+                    "number": 359,
+                    "question": "Where does Linux create files to send data to and receive data from directly with devices?",
+                    "options": ["/sys", "/proc", "/etc", "/dev", "/dev/mapper"],
+                    "answer": "/dev",
+                    "explanation": {
+                        "/sys": "This directory is used for system information, not for sending data.",
+                        "/proc": "This directory is used for kernel and system information, not for direct device communication.",
+                        "/etc": "This directory is for configuration files, not for device files.",
+                        "/dev": "This directory contains device files used for sending and receiving data from devices.",
+                        "/dev/mapper": "This directory is used for virtual devices and not for direct device communication."
+                    }
+                },
+                {
+                    "number": 360,
+                    "question": "Katie Jane created a new LVM volume on her Linux system. Where in the virtual directory should she look to find the virtual file related to the new volume?",
+                    "options": ["/dev", "/dev/mapper", "/proc", "/sys", "/etc"],
+                    "answer": "/dev/mapper",
+                    "explanation": {
+                        "/dev": "This directory contains physical device files, not virtual files for LVM.",
+                        "/dev/mapper": "This directory contains virtual files for LVM volumes.",
+                        "/proc": "This directory is for kernel and system information, not for LVM volumes.",
+                        "/sys": "This directory is used for kernel and system features, not for LVM volumes.",
+                        "/etc": "This directory contains configuration files and not the virtual files for LVM."
+                    }
+                },
+                {
+                    "number": 361,
+                    "question": "Joel installed a new PCI card in his Linux system but is now getting a conflict with another device on the system. What command can he use to display the interrupts, I/O ports, and DMA channels in use by all the existing devices?",
+                    "options": ["lsdev", "lsblk", "lspci", "lsusb", "dmesg"],
+                    "answer": "lsdev",
+                    "explanation": {
+                        "lsdev": "This command displays information about devices and their resources.",
+                        "lsblk": "This command displays information about block devices, not interrupts or I/O ports.",
+                        "lspci": "This command displays information about PCI devices only.",
+                        "lsusb": "This command displays information about USB devices only.",
+                        "dmesg": "This command displays kernel messages but not a summary of device resources."
+                    }
+                },
+                {
+                    "number": 362,
+                    "question": "Which Linux command displays the contents of the kernel ring buffer?",
+                    "options": ["lsdev", "lsblk", "lspci", "lsusb", "dmesg"],
+                    "answer": "dmesg",
+                    "explanation": {
+                        "lsdev": "This command displays hardware information but not kernel messages.",
+                        "lsblk": "This command displays block device information.",
+                        "lspci": "This command displays PCI device information.",
+                        "lsusb": "This command displays USB device information.",
+                        "dmesg": "This command displays messages from the kernel ring buffer."
+                    }
+                },
+                {
+                    "number": 363,
+                    "question": "Which software packages implement the X Windows graphical system in Linux? (Choose two.)",
+                    "options": ["X.org", "CUPS", "Wayland", "X11", "udev"],
+                    "answer": ["X.org", "Wayland"],
+                    "explanation": {
+                        "X.org": "This is a popular implementation of the X Windows graphical system.",
+                        "CUPS": "This is for printing services, not for graphical systems.",
+                        "Wayland": "This is a modern alternative to the X Windows system.",
+                        "X11": "This refers to the protocol, not a software package.",
+                        "udev": "This is for device management, not related to graphical systems."
+                    }
+                },
+                {
+                    "number": 364,
+                    "question": "Sophia needs to connect her Linux system to a new network printer on the office network. What software package does she need to ensure is installed so she can configure the new network printer?",
+                    "options": ["X.org", "CUPS", "Wayland", "X11", "udev"],
+                    "answer": "CUPS",
+                    "explanation": {
+                        "X.org": "This is for implementing the X Windows system, not for printers.",
+                        "CUPS": "This software package provides an interface for configuring printers.",
+                        "Wayland": "This is a modern graphical system, not for printer configuration.",
+                        "X11": "This is a protocol, not a package for printer setup.",
+                        "udev": "This is for device management, not specifically for printers."
+                    }
+                },
+                {
+                    "number": 365,
+                    "question": "Which program runs in the background monitoring the kernel ring buffer messages for new devices?",
+                    "options": ["X.org", "CUPS", "Wayland", "X11", "udev"],
+                    "answer": "udev",
+                    "explanation": {
+                        "X.org": "This is for the X Windows graphical system.",
+                        "CUPS": "This is for managing printers, not monitoring kernel messages.",
+                        "Wayland": "This is for modern graphical systems.",
+                        "X11": "This is a protocol for the X Windows system.",
+                        "udev": "This program runs in the background monitoring the kernel ring buffer for device messages."
+                    }
+                },
+                {
+                    "number": 366,
+                    "question": "Which program allows you to reload the defined rules for detecting and installing new devices?",
+                    "options": ["udevadm", "udev", "lsusb", "lspci", "lsdev"],
+                    "answer": "udevadm",
+                    "explanation": {
+                        "udevadm": "This command allows you to send control messages to udev to reload rules.",
+                        "udev": "This is the daemon but does not have a command to reload rules.",
+                        "lsusb": "This command displays USB device information.",
+                        "lspci": "This command displays PCI device information.",
+                        "lsdev": "This command displays information about devices but does not reload rules."
+                    }
+                }
+            ]
+        }
+    ]
+}

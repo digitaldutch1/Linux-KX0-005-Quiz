@@ -1,0 +1,143 @@
+
+
+
+{
+    "chapters": [
+        {
+            "chapter": 26,
+            "description": "Automating jobs",
+            "questions": [
+                {
+                    "number": 387,
+                    "question": "Frank wants to run his large number-crunching application in background mode on his console session. What command does he need to use to do that?",
+                    "options": ["&gt;", "&", "|", "&gt;&gt;", "nohup"],
+                    "answer": "&",
+                    "explanation": {
+                        "&gt;": "This redirects the output from the command to a file.",
+                        "&": "This character tells the shell to run the command in background mode.",
+                        "|": "This pipes the output from one command to another command.",
+                        "&gt;&gt;": "This appends the output from a command to a file.",
+                        "nohup": "This command disconnects the job from the console session but does not run it in the background."
+                    }
+                },
+                {
+                    "number": 388,
+                    "question": "What command do you use to disconnect a shell script from the current console so that it can continue to run after the console exits?",
+                    "options": ["&gt;", "&", "|", "&gt;&gt;", "nohup"],
+                    "answer": "nohup",
+                    "explanation": {
+                        "&gt;": "This redirects output to a file.",
+                        "&": "This runs a command in the background.",
+                        "|": "This pipes output from one command to another.",
+                        "&gt;&gt;": "This appends output to a file.",
+                        "nohup": "This command allows a script to continue running after the console is closed."
+                    }
+                },
+                {
+                    "number": 389,
+                    "question": "When Melanie runs a shell script, she notices that it takes up all of the memory on her Linux system and she needs to stop it. How can she do that?",
+                    "options": ["Start it with the nohup command.", "Start it with the ampersand (&) command.", "Press Ctrl+C while the script is running.", "Redirect the output using the pipe symbol.", "Use the kill command to stop it."],
+                    "answer": "Press Ctrl+C while the script is running.",
+                    "explanation": {
+                        "Start it with the nohup command.": "This would allow it to continue running after logout, not stop it.",
+                        "Start it with the ampersand (&) command.": "This puts it in the background and does not help stop it.",
+                        "Press Ctrl+C while the script is running.": "This sends an interrupt signal to stop the script.",
+                        "Redirect the output using the pipe symbol.": "This does not affect running processes.",
+                        "Use the kill command to stop it.": "This would work, but Ctrl+C is more immediate."
+                    }
+                },
+                {
+                    "number": 390,
+                    "question": "How can you temporarily pause a shell script from running in foreground mode in a console session?",
+                    "options": ["Press the Ctrl+Z key combination.", "Press the Ctrl+C key combination.", "Start the command with the nohup command.", "Start the command with the ampersand (&) command.", "Start the command with the fg command."],
+                    "answer": "Press the Ctrl+Z key combination.",
+                    "explanation": {
+                        "Press the Ctrl+Z key combination.": "This pauses the job currently running in the foreground.",
+                        "Press the Ctrl+C key combination.": "This stops the job instead of pausing it.",
+                        "Start the command with the nohup command.": "This does not pause the job.",
+                        "Start the command with the ampersand (&) command.": "This runs the job in the background, not pausing it.",
+                        "Start the command with the fg command.": "This is used to bring a background job to the foreground, not to pause it."
+                    }
+                },
+                {
+                    "number": 391,
+                    "question": "How do you determine the default job running in a console session?",
+                    "options": ["By the PID number", "By the job number", "By a plus sign next to the job number in the jobs output", "By a minus sign next to the job number in the jobs output", "By using the ps command"],
+                    "answer": "By a plus sign next to the job number in the jobs output",
+                    "explanation": {
+                        "By the PID number": "The PID number does not indicate the default job.",
+                        "By the job number": "The job number alone does not indicate the default job.",
+                        "By a plus sign next to the job number in the jobs output": "This indicates the default job in the jobs output.",
+                        "By a minus sign next to the job number in the jobs output": "This indicates the next job to become default.",
+                        "By using the ps command": "This command shows all running processes but not the default job."
+                    }
+                },
+                {
+                    "number": 392,
+                    "question": "Barbara has an application running in background mode in her console session and needs to bring it to foreground mode. What command should she use to do that?",
+                    "options": ["bg", "fg", "nohup", "&", "at"],
+                    "answer": "fg",
+                    "explanation": {
+                        "bg": "This command brings a stopped job to the background.",
+                        "fg": "This command brings a background job to the foreground.",
+                        "nohup": "This command disconnects a job from the console session.",
+                        "&": "This command runs a job in the background.",
+                        "at": "This command schedules a job to run at a specific time."
+                    }
+                },
+                {
+                    "number": 393,
+                    "question": "What command allows you to run a shell script at a specific time?",
+                    "options": ["nohup", "&", "at", "|", "&gt;"],
+                    "answer": "at",
+                    "explanation": {
+                        "nohup": "This command allows a script to run without hanging up but does not schedule it.",
+                        "&": "This runs a job in the background.",
+                        "at": "This command schedules a job to run at a specific time.",
+                        "|": "This pipes output from one command to another.",
+                        "&gt;": "This redirects output to a file."
+                    }
+                },
+                {
+                    "number": 394,
+                    "question": "Nick needs to run a report at midnight every day on his Linux system. How should he do that?",
+                    "options": ["Use the at command to schedule the job.", "Run the job using the nohup command.", "Run the job using the ampersand (&) symbol.", "Schedule the job using cron.", "Run the job using the atq command."],
+                    "answer": "Schedule the job using cron.",
+                    "explanation": {
+                        "Use the at command to schedule the job.": "This only schedules a job to run once, not daily.",
+                        "Run the job using the nohup command.": "This does not schedule the job.",
+                        "Run the job using the ampersand (&) symbol.": "This runs the job in the background immediately.",
+                        "Schedule the job using cron.": "This is correct; cron is used for scheduling recurring tasks.",
+                        "Run the job using the atq command.": "This command lists scheduled jobs but does not run them."
+                    }
+                },
+                {
+                    "number": 395,
+                    "question": "When will the cron table entry 10 5 * * * myscript run the specified shell script?",
+                    "options": ["At 10:05 a.m. every day", "On May 10th every year", "On October 5th every year", "At 5:10 p.m. every day", "At 5:10 a.m. every day"],
+                    "answer": "At 5:10 a.m. every day",
+                    "explanation": {
+                        "At 10:05 a.m. every day": "This is incorrect; the entry specifies 5:10 a.m.",
+                        "On May 10th every year": "This is incorrect; the entry does not specify a date.",
+                        "On October 5th every year": "This is incorrect; the entry does not specify a specific date.",
+                        "At 5:10 p.m. every day": "This is incorrect; the entry specifies 5:10 a.m.",
+                        "At 5:10 a.m. every day": "This is correct according to the cron format."
+                    }
+                },
+                {
+                    "number": 396,
+                    "question": "Jane needs to check on what jobs are scheduled to run automatically for her user account. What command should she use to list the cron table entries for her user account?",
+                    "options": ["cron", "at", "crontab", "jobs", "nohup"],
+                    "answer": "crontab",
+                    "explanation": {
+                        "cron": "This command is used to read the cron tables but does not list them.",
+                        "at": "This command is for scheduling one-off tasks, not for listing cron jobs.",
+                        "crontab": "This command allows you to list or edit the cron table for your user account.",
+                        "jobs": "This command displays jobs running in the current shell session, not scheduled cron jobs.",
+                        "nohup": "This command allows a job to continue running after logout, not for listing jobs."
+                    }
+                }
+            ]
+        }
+    ]
+}

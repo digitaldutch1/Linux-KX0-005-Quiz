@@ -1,0 +1,143 @@
+
+
+
+{
+    "chapters": [
+        {
+            "chapter": 20,
+            "description": "Analyzing system properties and remediation",
+            "questions": [
+                {
+                    "number": 327,
+                    "question": "Which of the following is true concerning network sockets? (Choose all that apply.)",
+                    "options": ["Numbers used to identify which service is transmitting data", "A single endpoint of a network connection's two endpoints", "Uses a combination of an IP address and a port number", "Endpoints between processes on a local system", "Provides better IPC than localhost"],
+                    "answer": ["A single endpoint of a network connection's two endpoints", "Uses a combination of an IP address and a port number"],
+                    "explanation": {
+                        "Numbers used to identify which service is transmitting data": "This is incorrect; sockets use port numbers, not just numbers.",
+                        "A single endpoint of a network connection's two endpoints": "This is correct; a socket is one endpoint.",
+                        "Uses a combination of an IP address and a port number": "This is correct; sockets combine both.",
+                        "Endpoints between processes on a local system": "This is incorrect; sockets can be used for processes on different systems.",
+                        "Provides better IPC than localhost": "This is incorrect; Unix sockets are generally better for IPC."
+                    }
+                },
+                {
+                    "number": 328,
+                    "question": "The system administrator, Preston, has noticed that the IPv4 network seems sluggish. He decides to run some tests to check for high latency. Which of the following utilities should he use? (Choose all that apply.)",
+                    "options": ["iperf", "ping", "ip neigh", "dig", "traceroute"],
+                    "answer": ["iperf", "ping", "traceroute"],
+                    "explanation": {
+                        "iperf": "This tool is used to measure the bandwidth and latency of a network.",
+                        "ping": "This tool tests the reachability of a host and measures round-trip time.",
+                        "ip neigh": "This command is used to check ARP entries, not latency.",
+                        "dig": "This command checks DNS resolutions, not network latency.",
+                        "traceroute": "This tool shows the pathway packets take to a destination, which can indicate latency."
+                    }
+                },
+                {
+                    "number": 329,
+                    "question": "Scott has formulated a problem cause theory that routers are saturated with traffic and dropping TCP packets from their queues. Which of the following tools should he employ to test this theory? (Choose all that apply.)",
+                    "options": ["mtr", "ifconfig", "ethtool -s", "tracepath", "traceroute"],
+                    "answer": ["mtr", "tracepath", "traceroute"],
+                    "explanation": {
+                        "mtr": "This tool combines ping and traceroute to provide real-time network statistics.",
+                        "ifconfig": "This tool is used to configure network interfaces, not to trace packets.",
+                        "ethtool -s": "This tool is for configuring network interface parameters, not for testing packet loss.",
+                        "tracepath": "This tool traces the path to a destination, similar to traceroute.",
+                        "traceroute": "This tool traces the route packets take to a destination and can show where drops occur."
+                    }
+                },
+                {
+                    "number": 330,
+                    "question": "The network engineer, Keenser, believes the choices of name servers in the system's /etc/resolv.conf file are inefficient. Which of the following tools can he employ to test new server choices?",
+                    "options": ["dnsmasq", "whois", "nmap", "nslookup", "ipset list"],
+                    "answer": "nslookup",
+                    "explanation": {
+                        "dnsmasq": "This is a lightweight DNS forwarder but not for testing server choices.",
+                        "whois": "This command queries WHOIS servers, not DNS servers.",
+                        "nmap": "This tool is for network mapping and scanning, not testing DNS servers.",
+                        "nslookup": "This tool queries DNS servers and can help test new server configurations.",
+                        "ipset list": "This command lists IP sets but does not relate to name server testing."
+                    }
+                },
+                {
+                    "number": 331,
+                    "question": "Mera, a Linux system admin, believes a new application on her system is producing too much I/O for a particular partition, causing the system's processor to appear sluggish. Which tool should she use to test her problem cause theory?",
+                    "options": ["iostat", "ioping", "du", "df", "iotop"],
+                    "answer": "iostat",
+                    "explanation": {
+                        "iostat": "This command reports CPU statistics and I/O statistics for devices.",
+                        "ioping": "This tool measures disk I/O latency but is not for checking overall performance.",
+                        "du": "This command summarizes disk usage but does not provide I/O statistics.",
+                        "df": "This command reports filesystem disk space usage but not I/O statistics.",
+                        "iotop": "This tool shows I/O usage by processes but is more for real-time monitoring."
+                    }
+                },
+                {
+                    "number": 332,
+                    "question": "From analysis, Arthur believes the system's I/O throughput will improve by changing the I/O scheduler. On his system is a realtime application, which uses a database located on a solid-state drive. Which I/O scheduler should Arthur choose?",
+                    "options": ["scheduler", "deadline", "queue", "cfq", "noop"],
+                    "answer": "deadline",
+                    "explanation": {
+                        "scheduler": "This is not a specific I/O scheduler.",
+                        "deadline": "This scheduler is optimized for low latency and works well with SSDs.",
+                        "queue": "This is not a specific I/O scheduler.",
+                        "cfq": "This is more for balanced I/O handling but less optimal for real-time applications.",
+                        "noop": "This is good for SSDs but not optimal for real-time needs."
+                    }
+                },
+                {
+                    "number": 333,
+                    "question": "Using the uptime command, you will see CPU load averages in what increments? (Choose all that apply.)",
+                    "options": ["1 minute", "5 minutes", "10 minutes", "15 minutes", "20 minutes"],
+                    "answer": ["1 minute", "5 minutes", "15 minutes"],
+                    "explanation": {
+                        "1 minute": "This is correct; the uptime command shows average load over the last minute.",
+                        "5 minutes": "This is correct; it also shows average load over the last five minutes.",
+                        "10 minutes": "This is incorrect; the uptime command does not show this interval.",
+                        "15 minutes": "This is correct; it shows average load over the last fifteen minutes.",
+                        "20 minutes": "This is incorrect; the uptime command does not show this interval."
+                    }
+                },
+                {
+                    "number": 334,
+                    "question": "Mary wants to view her system's processor performance over time. Which is the best utility for her to employ?",
+                    "options": ["uptime", "sysstat", "sar", "cat /proc/cpuinfo", "sysctl"],
+                    "answer": "sar",
+                    "explanation": {
+                        "uptime": "This command shows the current load averages but not historical data.",
+                        "sysstat": "This package provides the sar utility, which is best for historical analysis.",
+                        "sar": "This command is the best for viewing processor performance over time.",
+                        "cat /proc/cpuinfo": "This shows CPU details but not performance over time.",
+                        "sysctl": "This command is used to view or modify kernel parameters."
+                    }
+                },
+                {
+                    "number": 335,
+                    "question": "Gertie needs to determine a swap space element's type, name, and priority. Which command should she use?",
+                    "options": ["vmstat", "free", "fstab", "swapoff", "swapon -s"],
+                    "answer": "swapon -s",
+                    "explanation": {
+                        "vmstat": "This command provides memory statistics but not specific swap space details.",
+                        "free": "This command shows memory usage but not swap details.",
+                        "fstab": "This is a file, not a command, and does not show swap usage.",
+                        "swapoff": "This command disables swap space but does not provide details.",
+                        "swapon -s": "This command shows swap space details, including type, name, and priority."
+                    }
+                },
+                {
+                    "number": 336,
+                    "question": "Elliot is administering a Linux system that has multiple swap spaces. One is on a logical volume, but it needs more space to accommodate additional RAM that is to be installed in the near future. What is the best way for Elliot to add swap space?",
+                    "options": ["Add a partition and format it with the mkswap command.", "Add a file and format it with the mkswap command.", "Add a partition using the swapon utility.", "Add a file using the swapon utility.", "Use LVM tools to increase the logical volume."],
+                    "answer": "Use LVM tools to increase the logical volume.",
+                    "explanation": {
+                        "Add a partition and format it with the mkswap command.": "This is not the most efficient method for logical volumes.",
+                        "Add a file and format it with the mkswap command.": "This method creates a swap file but does not increase the logical volume.",
+                        "Add a partition using the swapon utility.": "This does not apply as swapon is for activating swap, not creating it.",
+                        "Add a file using the swapon utility.": "This is another method but does not increase the logical volume.",
+                        "Use LVM tools to increase the logical volume.": "This is the best method to add swap space for a logical volume."
+                    }
+                }
+            ]
+        }
+    ]
+}

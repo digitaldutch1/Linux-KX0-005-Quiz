@@ -1,0 +1,143 @@
+
+
+
+{
+    "chapters": [
+        {
+            "chapter": 21,
+            "description": "Optimizing performance",
+            "questions": [
+                {
+                    "number": 337,
+                    "question": "What are the three types of option styles available for the ps command? (Choose three.)",
+                    "options": ["BSD style", "Linux style", "Unix style", "GNU style", "Numeric style"],
+                    "answer": ["BSD style", "Unix style", "GNU style"],
+                    "explanation": {
+                        "BSD style": "This style is supported by the ps command.",
+                        "Linux style": "This option does not exist; there is no specific Linux style.",
+                        "Unix style": "This style is supported by the ps command.",
+                        "GNU style": "This style is supported by the ps command.",
+                        "Numeric style": "This option does not exist; the ps command does not support numeric options."
+                    }
+                },
+                {
+                    "number": 338,
+                    "question": "How do you identify the legacy Unix style options for the ps command?",
+                    "options": ["Use a double dash in front of the option.", "Use a single dash in front of the option.", "Do not place a dash in front of the option.", "Unix-style options are numerical.", "Unix-style options use hexadecimal numbers."],
+                    "answer": "Use a single dash in front of the option.",
+                    "explanation": {
+                        "Use a double dash in front of the option.": "This is incorrect; double dashes are for GNU options.",
+                        "Use a single dash in front of the option.": "This is correct; legacy Unix options use a single dash.",
+                        "Do not place a dash in front of the option.": "This is incorrect; Unix options require a dash.",
+                        "Unix-style options are numerical.": "This is incorrect; they use letters.",
+                        "Unix-style options use hexadecimal numbers.": "This is incorrect; they use letters."
+                    }
+                },
+                {
+                    "number": 339,
+                    "question": "By default, if you specify no command-line options, what does the ps command display?",
+                    "options": ["All processes running on the terminal", "All active processes", "All sleeping processes", "All processes run by the current shell", "All processes run by the current user"],
+                    "answer": "All processes run by the current shell",
+                    "explanation": {
+                        "All processes running on the terminal": "This is incorrect; it does not show all terminal processes.",
+                        "All active processes": "This is incorrect; it does not show all active processes.",
+                        "All sleeping processes": "This is incorrect; it does not show sleeping processes.",
+                        "All processes run by the current shell": "This is correct; it shows processes of the current shell.",
+                        "All processes run by the current user": "This is incorrect; it does not show all user processes."
+                    }
+                },
+                {
+                    "number": 340,
+                    "question": "Charles noticed that his Linux system is running slow and needs to find out what application is causing the problem. What tool should he use to show the current CPU utilization of all the processes running on his system?",
+                    "options": ["top", "ps", "lsof", "pkill", "kill"],
+                    "answer": "top",
+                    "explanation": {
+                        "top": "This command displays real-time CPU utilization by all processes.",
+                        "ps": "This command shows processes but does not update in real-time.",
+                        "lsof": "This command shows files opened by processes, not CPU utilization.",
+                        "pkill": "This command is used to stop processes, not display them.",
+                        "kill": "This command is used to stop processes, not display them."
+                    }
+                },
+                {
+                    "number": 341,
+                    "question": "What top command displays cumulative CPU time instead of relative CPU time?",
+                    "options": ["l", "F", "r", "y", "S"],
+                    "answer": "S",
+                    "explanation": {
+                        "l": "This command displays the load average.",
+                        "F": "This option allows you to select the field used for sorting.",
+                        "r": "This option reverses the sort order.",
+                        "y": "This option highlights running tasks.",
+                        "S": "This option displays cumulative CPU time."
+                    }
+                },
+                {
+                    "number": 342,
+                    "question": "Shelly thinks that one of the applications on her Linux system is taking up too much physical memory and may have a problem. What column of data from the top display should she focus on?",
+                    "options": ["VIRT", "RES", "SHR", "S", "%MEM"],
+                    "answer": "RES",
+                    "explanation": {
+                        "VIRT": "This shows the total virtual memory used.",
+                        "RES": "This column shows the amount of physical memory used by applications.",
+                        "SHR": "This shows the amount of shared memory.",
+                        "S": "This shows the status of the application process.",
+                        "%MEM": "This shows the percentage of physical memory used but not the actual amount."
+                    }
+                },
+                {
+                    "number": 343,
+                    "question": "Jessica has an application that crunches lots of numbers and uses a lot of system resources. She wants to run the application with a lower priority so that it doesn't interfere with other applications on the system. What tool should she use to start the application program?",
+                    "options": ["renice", "pkill", "nice", "kill", "pgrep"],
+                    "answer": "nice",
+                    "explanation": {
+                        "renice": "This command changes the priority of an already running application.",
+                        "pkill": "This command is used to stop processes, not start them.",
+                        "nice": "This command allows you to start an application with a specified priority level.",
+                        "kill": "This command is used to stop processes, not start them.",
+                        "pgrep": "This command is used to search for processes, not start them."
+                    }
+                },
+                {
+                    "number": 344,
+                    "question": "Jimmy noticed his Linux system was running slow. He ran the top command and found out that a data-intensive application was consuming most of the CPU time. He doesn't want to kill the application but wants to give it a lower priority so that it doesn't take up too much CPU time. What tool should he use to change the priority of the running application?",
+                    "options": ["renice", "pkill", "nice", "kill", "pgrep"],
+                    "answer": "renice",
+                    "explanation": {
+                        "renice": "This command allows you to change the priority of a running application.",
+                        "pkill": "This command is used to stop processes.",
+                        "nice": "This command is used to start an application with a specified priority level.",
+                        "kill": "This command is used to stop processes.",
+                        "pgrep": "This command is used to search for processes."
+                    }
+                },
+                {
+                    "number": 345,
+                    "question": "Hank needs to stop an application from running on his Linux system. He knows the name of the application file but not the process ID assigned to it. What tool can he use to stop the application?",
+                    "options": ["renice", "pkill", "nice", "kill", "pgrep"],
+                    "answer": "pkill",
+                    "explanation": {
+                        "renice": "This command changes the priority of a running application, not stops it.",
+                        "pkill": "This command allows you to stop a running process using its name.",
+                        "nice": "This command starts an application at a specified priority level.",
+                        "kill": "This command requires the process ID to stop an application.",
+                        "pgrep": "This command is used to search for processes, not stop them."
+                    }
+                },
+                {
+                    "number": 346,
+                    "question": "Frankie used the ps command to find the process ID of an application that he needs to stop. What command-line tool should he use to stop the application based on its process ID?",
+                    "options": ["renice", "pkill", "nice", "kill", "pgrep"],
+                    "answer": "kill",
+                    "explanation": {
+                        "renice": "This command changes the priority of a running application.",
+                        "pkill": "This command stops a process using its name.",
+                        "nice": "This command starts an application with a specified priority level.",
+                        "kill": "This command stops a running application using its process ID.",
+                        "pgrep": "This command is used to search for processes, not stop them."
+                    }
+                }
+            ]
+        }
+    ]
+}

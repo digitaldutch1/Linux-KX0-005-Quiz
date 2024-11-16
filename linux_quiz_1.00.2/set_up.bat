@@ -6,6 +6,11 @@ python --version >nul 2>&1
 if %errorlevel% neq 0 (
     echo Python is not installed. Installing Python 3.13...
     start /wait "" "https://www.python.org/ftp/python/3.13.0/python-3.13.0.exe" /quiet InstallAllUsers=1 PrependPath=1
+    if %errorlevel% neq 0 (
+        echo Failed to download Python installer.
+        exit /b
+    )
+    echo Python installed successfully.
 ) else (
     echo Python is already installed.
 )
@@ -47,11 +52,15 @@ pyinstaller --onefile --add-data "linux_questions;linux_questions" --add-data "l
 reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall" /f "Adobe Acrobat Reader" >nul 2>&1
 if %errorlevel% neq 0 (
     echo Adobe Acrobat Reader is not installed. Installing...
-    start /wait "" "C:\Users\denni\Desktop\linux\linux_quiz_1.00.1\pdf reader\Adobe Acrobat.lnk"
+    start /wait "" "C:\Users\denni\Desktop\linux\linux_quiz_1.00.2\pdf reader\Adobe Acrobat.lnk"
 ) else (
     echo Adobe Acrobat Reader is already installed.
 )
 
 :: Step 9: Start the quiz
 echo Starting the quiz...
-start linux.exe.py
+python linux.py
+if %errorlevel% neq 0 (
+    echo Failed to start linux.py. Please check for errors above.
+    exit /b
+)

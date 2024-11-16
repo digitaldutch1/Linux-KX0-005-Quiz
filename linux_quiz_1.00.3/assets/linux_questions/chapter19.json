@@ -1,0 +1,143 @@
+
+
+
+{
+    "chapters": [
+        {
+            "chapter": 19,
+            "description": "Embracing best security practices",
+            "questions": [
+                {
+                    "number": 317,
+                    "question": "Which authentication method issues tickets to users and helps with implementing the single sign-on feature in a network of servers?",
+                    "options": ["LDAP", "Kerberos", "RADIUS", "TACACS+", "Biometrics"],
+                    "answer": "Kerberos",
+                    "explanation": {
+                        "LDAP": "This is a directory service protocol, not an authentication method using tickets.",
+                        "Kerberos": "The Kerberos authentication method uses a ticket-granting system.",
+                        "RADIUS": "This is used for network access control, not ticketing.",
+                        "TACACS+": "This is a protocol for remote authentication, not ticket-based.",
+                        "Biometrics": "This uses physical features for authentication, not tickets."
+                    }
+                },
+                {
+                    "number": 318,
+                    "question": "Mary wants to implement two-factor authentication using fingerprint readers for her users to authenticate with the Linux system. Which method of authentication should she look into implementing?",
+                    "options": ["LDAP", "Tokens", "Biometrics", "PKI", "Kerberos"],
+                    "answer": "Biometrics",
+                    "explanation": {
+                        "LDAP": "This is a directory service protocol.",
+                        "Tokens": "This refers to digital tokens, not physical features.",
+                        "Biometrics": "This uses physical features for authentication.",
+                        "PKI": "This is a framework for managing digital certificates.",
+                        "Kerberos": "This is a method for network authentication, not two-factor with fingerprints."
+                    }
+                },
+                {
+                    "number": 319,
+                    "question": "Jaime is interested in using a distributed database method for authorizing users to access resources located on multiple network servers. Which authentication method would be best for her to use?",
+                    "options": ["LDAP", "Kerberos", "Tokens", "RADIUS", "PKI"],
+                    "answer": "LDAP",
+                    "explanation": {
+                        "LDAP": "This method allows for a distributed database for user authorization.",
+                        "Kerberos": "This method is not based on a distributed database.",
+                        "Tokens": "These are used for two-factor authentication.",
+                        "RADIUS": "This is for network access control, not distributed databases.",
+                        "PKI": "This is for managing digital certificates."
+                    }
+                },
+                {
+                    "number": 320,
+                    "question": "Fred wants to block users from logging in directly with the root user account from any console or terminal session. What is the best way he can do that?",
+                    "options": ["Implement biometric authentication.", "Implement tokens.", "Use Kerberos authentication.", "Remove root user entry from the /etc/passwd file.", "Set the default login shell for the root user to /usr/sbin/nologin."],
+                    "answer": "Set the default login shell for the root user to /usr/sbin/nologin.",
+                    "explanation": {
+                        "Implement biometric authentication.": "This does not prevent root login.",
+                        "Implement tokens.": "This does not prevent root login.",
+                        "Use Kerberos authentication.": "This does not prevent root login.",
+                        "Remove root user entry from the /etc/passwd file.": "This would break applications requiring root.",
+                        "Set the default login shell for the root user to /usr/sbin/nologin.": "This prevents direct root login."
+                    }
+                },
+                {
+                    "number": 321,
+                    "question": "Which directory should you place on a separate partition to separate user data from system data?",
+                    "options": ["/usr", "/home", "/etc", "/sbin", "/bin"],
+                    "answer": "/home",
+                    "explanation": {
+                        "/usr": "This directory contains system data, not user data.",
+                        "/home": "This directory contains user data, so it should be on a separate partition.",
+                        "/etc": "This directory contains system configuration files.",
+                        "/sbin": "This directory contains system binaries.",
+                        "/bin": "This directory contains essential user binaries."
+                    }
+                },
+                {
+                    "number": 322,
+                    "question": "Sally is concerned about an application that allows guests to connect to her Linux system and access a database. What can she do to limit the application to a specific directory structure on the Linux server so it can't access system data?",
+                    "options": ["Block the application network port.", "Move the application port to a private port number.", "Place the application in an encrypted partition.", "Run the application with chroot.", "Place the application in a separate partition."],
+                    "answer": "Run the application with chroot.",
+                    "explanation": {
+                        "Block the application network port.": "This would prevent guests from connecting.",
+                        "Move the application port to a private port number.": "This does not restrict access to directories.",
+                        "Place the application in an encrypted partition.": "This does not prevent access to system data.",
+                        "Run the application with chroot.": "This restricts the application to a specific directory structure.",
+                        "Place the application in a separate partition.": "This does not prevent access to system data."
+                    }
+                },
+                {
+                    "number": 323,
+                    "question": "Ted wants to provide encryption at the disk level so that users don't need to encrypt individual files as they store them. What Linux feature should he use?",
+                    "options": ["LUKS", "chroot", "auditd", "PKI", "Kerberos"],
+                    "answer": "LUKS",
+                    "explanation": {
+                        "LUKS": "This feature provides disk-level encryption.",
+                        "chroot": "This restricts applications to specific directory structures.",
+                        "auditd": "This creates logs of system activity but does not encrypt data.",
+                        "PKI": "This is a framework for managing digital certificates.",
+                        "Kerberos": "This is an authentication method, not for encryption."
+                    }
+                },
+                {
+                    "number": 324,
+                    "question": "Ned notices in the logs that a user account schedules a job every day at noon that uses all of the system resources. How can he prevent that user account from doing that?",
+                    "options": ["Use chroot for the user account.", "Use nologin as the user's default shell.", "Add the user account to the /etc/cron.deny file.", "Add the user account to the /etc/hosts.deny file.", "Create a /etc/motd message telling users to not schedule large jobs."],
+                    "answer": "Add the user account to the /etc/cron.deny file.",
+                    "explanation": {
+                        "Use chroot for the user account.": "This restricts applications but does not block cron jobs.",
+                        "Use nologin as the user's default shell.": "This prevents the user from logging in entirely.",
+                        "Add the user account to the /etc/cron.deny file.": "This will prevent the user from scheduling jobs.",
+                        "Add the user account to the /etc/hosts.deny file.": "This blocks remote access, not cron jobs.",
+                        "Create a /etc/motd message telling users to not schedule large jobs.": "This does not enforce any restrictions."
+                    }
+                },
+                {
+                    "number": 325,
+                    "question": "Tom sees an attacker continually attempt to break into a user account on his Linux system from a specific IP address. What can he do to quickly mitigate this issue?",
+                    "options": ["Place the application in a chroot jail.", "Add the nologin shell to the user account.", "Implement two-factor authentication.", "Add the attacker's IP address to the /etc/hosts.deny file.", "Add the user account to the /etc/cron.deny file."],
+                    "answer": "Add the attacker's IP address to the /etc/hosts.deny file.",
+                    "explanation": {
+                        "Place the application in a chroot jail.": "This does not prevent the attacker from attempting to access the account.",
+                        "Add the nologin shell to the user account.": "This prevents valid users from logging in.",
+                        "Implement two-factor authentication.": "This is a long-term solution but not immediate.",
+                        "Add the attacker's IP address to the /etc/hosts.deny file.": "This will block the attacker from accessing the system.",
+                        "Add the user account to the /etc/cron.deny file.": "This does not prevent login attempts."
+                    }
+                },
+                {
+                    "number": 326,
+                    "question": "Despite his warnings, Fred continues to see users transfer files to his Linux server using unsecure FTP. How can he stop this?",
+                    "options": ["Place a message in the /etc/motd file telling users to stop.", "Move the FTP application to a different network port.", "Place the user accounts in the /etc/hosts.deny file.", "Place the user accounts in the /etc/cron.deny file.", "Disable the FTP application ports."],
+                    "answer": "Disable the FTP application ports.",
+                    "explanation": {
+                        "Place a message in the /etc/motd file telling users to stop.": "This will not prevent them from using FTP.",
+                        "Move the FTP application to a different network port.": "Users will still find the alternative ports.",
+                        "Place the user accounts in the /etc/hosts.deny file.": "This blocks hosts, not user accounts.",
+                        "Place the user accounts in the /etc/cron.deny file.": "This is for scheduling jobs, not network applications.",
+                        "Disable the FTP application ports.": "This will prevent users from using the FTP service."
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,143 @@
+
+
+
+{
+    "chapters": [
+        {
+            "chapter": 14,
+            "description": "Tending Kernel Modules",
+            "questions": [
+                {
+                    "number": 267,
+                    "question": "Which of the following is true concerning a kernel module? (Choose all that apply.)",
+                    "options": ["It is a self-contained driver library file.", "It is compiled into the Linux kernel.", "It allows the addition of functionality when required.", "It can be loaded when needed.", "It keeps the Linux kernel lighter and more agile."],
+                    "answer": ["It is a self-contained driver library file.", "It allows the addition of functionality when required.", "It can be loaded when needed.", "It keeps the Linux kernel lighter and more agile."],
+                    "explanation": {
+                        "It is a self-contained driver library file.": "This is correct.",
+                        "It is compiled into the Linux kernel.": "This is incorrect; kernel modules are not compiled into the kernel.",
+                        "It allows the addition of functionality when required.": "This is correct.",
+                        "It can be loaded when needed.": "This is correct.",
+                        "It keeps the Linux kernel lighter and more agile.": "This is correct."
+                    }
+                },
+                {
+                    "number": 268,
+                    "question": "Where are module files stored? (Choose all that apply.)",
+                    "options": ["/lib/modules/kernel/ subdirectory", "/lib/modules/KernelVersion/ subdirectory", "/usr/lib/modules/kernel/ subdirectory", "/usr/lib/modules/KernelVersion/ subdirectory", "/lib/kernel/modules subdirectory"],
+                    "answer": ["/lib/modules/KernelVersion/ subdirectory", "/usr/lib/modules/KernelVersion/ subdirectory"],
+                    "explanation": {
+                        "/lib/modules/kernel/ subdirectory": "This directory name is made up.",
+                        "/lib/modules/KernelVersion/ subdirectory": "This is one of the locations where kernel module files are stored.",
+                        "/usr/lib/modules/kernel/ subdirectory": "This directory name is made up.",
+                        "/usr/lib/modules/KernelVersion/ subdirectory": "This is another location for kernel module files.",
+                        "/lib/kernel/modules subdirectory": "This directory name is made up."
+                    }
+                },
+                {
+                    "number": 269,
+                    "question": "Where can a module's configuration information be stored? (Choose all that apply.)",
+                    "options": ["The /etc/modules.conf file", "The /etc/modprobe.d/.conf files", "The /etc/modules.d/.conf files", "The /lib/modprobe.d/.conf files", "The /usr/lib/modprobe.d/.conf files"],
+                    "answer": ["The /etc/modules.conf file", "The /etc/modprobe.d/.conf files", "The /lib/modprobe.d/.conf files", "The /usr/lib/modprobe.d/.conf files"],
+                    "explanation": {
+                        "The /etc/modules.conf file": "This is a configuration file for module information.",
+                        "The /etc/modprobe.d/.conf files": "These files contain module configuration information.",
+                        "The /etc/modules.d/.conf files": "This directory is made up.",
+                        "The /lib/modprobe.d/.conf files": "These files also contain module configuration information.",
+                        "The /usr/lib/modprobe.d/.conf files": "These files also contain module configuration information."
+                    }
+                },
+                {
+                    "number": 270,
+                    "question": "You need to determine the dependencies of the unloaded xyz module. Which is the best utility to employ to accomplish this task?",
+                    "options": ["dmesg", "insmod", "lsmod", "modprobe", "modinfo"],
+                    "answer": "modinfo",
+                    "explanation": {
+                        "dmesg": "This command is helpful for viewing kernel messages concerning module failures.",
+                        "insmod": "This utility is used for loading modules dynamically.",
+                        "lsmod": "This command displays currently loaded modules and their dependencies but not for unloaded modules.",
+                        "modprobe": "This utility is used for loading and unloading kernel modules.",
+                        "modinfo": "This utility allows you to view detailed information concerning a module, including dependencies."
+                    }
+                },
+                {
+                    "number": 271,
+                    "question": "You need to install the xyz module, including all its needed dependencies. Which of the following utilities should you use?",
+                    "options": ["insmod", "modinfo", "modprobe", "lsmod", "depmod"],
+                    "answer": "modprobe",
+                    "explanation": {
+                        "insmod": "This utility loads modules dynamically but does not load dependencies.",
+                        "modinfo": "This utility allows you to view detailed module information but does not load modules.",
+                        "modprobe": "This utility loads the xyz module and its needed dependencies.",
+                        "lsmod": "This command displays currently loaded modules.",
+                        "depmod": "This command is used to update module dependency files."
+                    }
+                },
+                {
+                    "number": 272,
+                    "question": "When you install a USB device on a Linux system, it appears that the device is not being detected. Which of the following is the best command to troubleshoot this particular situation?",
+                    "options": ["lsmod", "modinfo", "dmesg", "depmod", "insmod"],
+                    "answer": "dmesg",
+                    "explanation": {
+                        "lsmod": "This command displays currently loaded modules but does not help with device detection.",
+                        "modinfo": "This utility provides information about a specific module but is not useful for troubleshooting detection.",
+                        "dmesg": "This command is helpful for viewing kernel messages concerning hardware detection.",
+                        "depmod": "This command updates module dependency files but is not useful for troubleshooting.",
+                        "insmod": "This utility loads modules dynamically and is not relevant to device detection."
+                    }
+                },
+                {
+                    "number": 273,
+                    "question": "The modprobe utility uses the \\____\\_ file to determine any module dependencies.",
+                    "options": ["modules.dep", "/lib/modules", "/usr/lib/modules", "/etc/modprobe.d", "/lib/modprobe.d"],
+                    "answer": "modules.dep",
+                    "explanation": {
+                        "modules.dep": "This file contains module dependency information used by modprobe.",
+                        "/lib/modules": "This is a directory for storing kernel modules, not a file.",
+                        "/usr/lib/modules": "This is a directory for storing kernel modules, not a file.",
+                        "/etc/modprobe.d": "This is a directory for module configuration files, not dependency information.",
+                        "/lib/modprobe.d": "This is also a directory for module configuration files."
+                    }
+                },
+                {
+                    "number": 274,
+                    "question": "You need to insert the abc module into the Linux kernel. This module does not have any dependencies. What is the best utility to use?",
+                    "options": ["lsmod", "modinfo", "dmesg", "depmod", "insmod"],
+                    "answer": "insmod",
+                    "explanation": {
+                        "lsmod": "This command displays currently loaded modules.",
+                        "modinfo": "This utility provides information about a specific module but does not load it.",
+                        "dmesg": "This command is used for viewing kernel messages but does not load modules.",
+                        "depmod": "This command is used for updating module dependency files.",
+                        "insmod": "This utility allows you to quickly insert a module into the Linux kernel."
+                    }
+                },
+                {
+                    "number": 275,
+                    "question": "You need to unload the abc module from the Linux kernel. This module does not have any dependencies. What is the best utility to use?",
+                    "options": ["insmod", "unload", "rmmod", "modprobe", "rm -f"],
+                    "answer": "rmmod",
+                    "explanation": {
+                        "insmod": "This utility is used for loading (inserting) a module, not unloading it.",
+                        "unload": "This command is made up; there is no unload command.",
+                        "rmmod": "This command unloads a module from the Linux kernel.",
+                        "modprobe": "This utility is used for loading modules; it is not used for unloading modules.",
+                        "rm -f": "This command is used for removing files, not unloading modules."
+                    }
+                },
+                {
+                    "number": 276,
+                    "question": "You need to remove the xyz module and all of its dependencies. Which is the best command to employ?",
+                    "options": ["dmesg", "modprobe -r", "lsmod", "paste", "groupdel"],
+                    "answer": "modprobe -r",
+                    "explanation": {
+                        "dmesg": "This command is for viewing kernel messages and not for unloading modules.",
+                        "modprobe -r": "This command will remove the module and its dependencies.",
+                        "lsmod": "This command shows loaded modules but does not unload them.",
+                        "paste": "This command is unrelated to module management.",
+                        "groupdel": "This command is used for removing user groups, not for unloading modules."
+                    }
+                }
+            ]
+        }
+    ]
+}

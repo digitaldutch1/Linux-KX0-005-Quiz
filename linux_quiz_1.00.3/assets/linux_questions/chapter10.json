@@ -1,0 +1,291 @@
+
+
+
+{
+    "chapters": [
+        {
+            "chapter": 10,
+            "description": "Administering Users and Groups",
+            "questions": [
+                {
+                    "number": 217,
+                    "question": "Which of the following are fields within an /etc/passwd file record? (Choose all that apply.)",
+                    "options": ["User account's username", "Password", "Password change date", "Special flag", "UID"],
+                    "answer": ["User account's username", "Password", "UID"],
+                    "explanation": {
+                        "User account's username": "This is a field in /etc/passwd.",
+                        "Password": "This is typically represented as an 'x' in /etc/passwd.",
+                        "Password change date": "This is a field in /etc/shadow, not /etc/passwd.",
+                        "Special flag": "This is not a field in /etc/passwd.",
+                        "UID": "This is a field in /etc/passwd."
+                    }
+                },
+                {
+                    "number": 218,
+                    "question": "Which of the following are fields in an /etc/shadow file record? (Choose all that apply.)",
+                    "options": ["Password expiration date", "Account expiration date", "Password", "Comment", "Default shell"],
+                    "answer": ["Password expiration date", "Account expiration date", "Password"],
+                    "explanation": {
+                        "Password expiration date": "This is a field in /etc/shadow.",
+                        "Account expiration date": "This is a field in /etc/shadow.",
+                        "Password": "This is a field in /etc/shadow.",
+                        "Comment": "This is a field in /etc/passwd, not /etc/shadow.",
+                        "Default shell": "This is a field in /etc/passwd, not /etc/shadow."
+                    }
+                },
+                {
+                    "number": 219,
+                    "question": "Which field contains the same data for both an /etc/passwd and an /etc/shadow file record?",
+                    "options": ["Password", "Account expiration date", "UID", "GID", "User account's username"],
+                    "answer": "User account's username",
+                    "explanation": {
+                        "Password": "This will not contain the same data; it is stored differently.",
+                        "Account expiration date": "This only exists in /etc/shadow.",
+                        "UID": "This exists only in /etc/passwd.",
+                        "GID": "This exists only in /etc/passwd.",
+                        "User account's username": "This is the field that is the same in both files."
+                    }
+                },
+                {
+                    "number": 220,
+                    "question": "Which of the following commands will allow you to view the NUhura account's record data in the /etc/passwd file? (Choose all that apply.)",
+                    "options": ["getent NUhura passwd", "cat /etc/passwd", "passwd NUhura", "grep NUhura /etc/passwd", "getent passwd NUhura"],
+                    "answer": ["cat /etc/passwd", "grep NUhura /etc/passwd", "getent passwd NUhura"],
+                    "explanation": {
+                        "getent NUhura passwd": "This command has the order of arguments flipped.",
+                        "cat /etc/passwd": "This command can display the account's record.",
+                        "passwd NUhura": "This command attempts to change the password, not view the record.",
+                        "grep NUhura /etc/passwd": "This command will return the record for NUhura.",
+                        "getent passwd NUhura": "This is the correct command to view the record."
+                    }
+                },
+                {
+                    "number": 221,
+                    "question": "You use the useradd -D command to view account creation configuration directives. What file does this command pull its displayed information from?",
+                    "options": [
+                        "The /etc/passwd file",
+                        "The /etc/shadow file",
+                        "The /etc/group file",
+                        "The /etc/login.defs file",
+                        "The /etc/default/useradd file"
+                    ],
+                    "answer": "The /etc/default/useradd file",
+                    "explanation": {
+                        "The /etc/passwd file": "This file stores user account information, not account creation directives.",
+                        "The /etc/shadow file": "This file stores user password information.",
+                        "The /etc/group file": "This file stores group information.",
+                        "The /etc/login.defs file": "This file contains some configuration but not all account creation directives.",
+                        "The /etc/default/useradd file": "This is correct; it stores account creation configuration."
+                    }
+                },
+                {
+                    "number": 222,
+                    "question": "You create an account using the appropriate utility, except for some reason the account's home directory was not created. Which of the following most likely caused this to occur?",
+                    "options": [
+                        "The HOME directive is set to no.",
+                        "You did not employ super user privileges.",
+                        "The CREATE_HOME directive is not set.",
+                        "The INACTIVE directive is set to -1.",
+                        "The EXPIRE date is set and it is before today."
+                    ],
+                    "answer": "The CREATE_HOME directive is not set.",
+                    "explanation": {
+                        "The HOME directive is set to no.": "This is incorrect; HOME does not directly affect home directory creation.",
+                        "You did not employ super user privileges.": "This would not allow you to create an account at all.",
+                        "The CREATE_HOME directive is not set.": "This is correct; if not set, the home directory will not be created.",
+                        "The INACTIVE directive is set to -1.": "This does not affect home directory creation.",
+                        "The EXPIRE date is set and it is before today.": "This does not affect home directory creation either."
+                    }
+                },
+                {
+                    "number": 223,
+                    "question": "Your boss has asked you to remove KSingh's account and all his home directory files from the system immediately. Which command should you use?",
+                    "options": ["usermod -r KSingh", "rm -r /home/KSingh", "userdel KSingh", "userdel -r KSingh", "usermod -d KSingh"],
+                    "answer": "userdel -r KSingh",
+                    "explanation": {
+                        "usermod -r KSingh": "This command does not exist; usermod does not have an -r option.",
+                        "rm -r /home/KSingh": "This will only remove the home directory, not the user account.",
+                        "userdel KSingh": "This will remove the user account but not the home directory.",
+                        "userdel -r KSingh": "This is the correct command to remove the account and the home directory.",
+                        "usermod -d KSingh": "This command changes the home directory but does not remove the account."
+                    }
+                },
+                {
+                    "number": 224,
+                    "question": "Which of the following will allow you to change an account's /etc/shadow file record data? (Choose all that apply.)",
+                    "options": ["The passwd command", "The usermod command", "The userdel command", "The getent command", "The chage command"],
+                    "answer": ["The passwd command", "The usermod command", "The chage command"],
+                    "explanation": {
+                        "The passwd command": "This command changes the user password and updates the /etc/shadow file.",
+                        "The usermod command": "This command can modify user account details, including the /etc/shadow file.",
+                        "The userdel command": "This command deletes a user account but does not modify /etc/shadow.",
+                        "The getent command": "This command retrieves entries but does not modify them.",
+                        "The chage command": "This command is used to change user password expiry information in /etc/shadow."
+                    }
+                },
+                {
+                    "number": 225,
+                    "question": "Which of the following commands will allow you to switch temporarily from your account's default group to another group you are a member of?",
+                    "options": ["The usermod command", "The newgrp command", "The groups command", "The groupadd command", "The groupmod command"],
+                    "answer": "The newgrp command",
+                    "explanation": {
+                        "The usermod command": "This command modifies user account properties and does not switch groups.",
+                        "The newgrp command": "This command allows temporary switching to another group.",
+                        "The groups command": "This command shows the groups the user belongs to but does not switch groups.",
+                        "The groupadd command": "This command creates a new group and does not switch groups.",
+                        "The groupmod command": "This command modifies an existing group but does not switch groups."
+                    }
+                },
+                {
+                    "number": 226,
+                    "question": "Which of the following commands is the best one to add JKirk as a member to a new group called the NCC-1701 group and not remove any of the account's previous group memberships?",
+                    "options": [
+                        "usermod -g NCC-1701 JKirk",
+                        "usermod -G NCC-1701 JKirk",
+                        "usermod -aG NCC-1701 JKirk",
+                        "groupadd NCC-1701",
+                        "groupmod NCC-1701 JKirk"
+                    ],
+                    "answer": "usermod -aG NCC-1701 JKirk",
+                    "explanation": {
+                        "usermod -g NCC-1701 JKirk": "This command changes the primary group, removing other memberships.",
+                        "usermod -G NCC-1701 JKirk": "This command overwrites existing groups.",
+                        "usermod -aG NCC-1701 JKirk": "This is the correct command to add JKirk to the group without removing other memberships.",
+                        "groupadd NCC-1701": "This command creates a new group but does not add a user.",
+                        "groupmod NCC-1701 JKirk": "This command modifies a group, not a user."
+                    }
+                },
+                {
+                    "number": 227,
+                    "question": "Which of the following commands could be used to view the members of the NCC-1701 group? (Choose all that apply.)",
+                    "options": ["groups NCC-1701", "getent group NCC-1701", "getent groups NCC-1701", "grep NCC-1701 /etc/group", "grep NCC-1701 /etc/groups"],
+                    "answer": ["getent group NCC-1701", "grep NCC-1701 /etc/group"],
+                    "explanation": {
+                        "groups NCC-1701": "This command does not show members of the NCC-1701 group specifically.",
+                        "getent group NCC-1701": "This command displays members of the NCC-1701 group.",
+                        "getent groups NCC-1701": "This command is incorrect; there is no 'groups' option.",
+                        "grep NCC-1701 /etc/group": "This command displays the members of the NCC-1701 group.",
+                        "grep NCC-1701 /etc/groups": "This is an incorrect file name; it should be /etc/group."
+                    }
+                },
+                {
+                    "number": 228,
+                    "question": "User environment files typically come from where?",
+                    "options": ["/etc/skel", "/home/userid", "$HOME", "~", "/etc/"],
+                    "answer": "/etc/skel",
+                    "explanation": {
+                        "/etc/skel": "This directory contains template files for new user environments.",
+                        "/home/userid": "This is where the user environment files are located after creation.",
+                        "$HOME": "This refers to the user's home directory.",
+                        "~": "This is also shorthand for the user's home directory.",
+                        "/etc/": "This contains system-wide configuration files, not user environments."
+                    }
+                },
+                {
+                    "number": 229,
+                    "question": "A user has logged into the tty3 terminal. Which of the following user environment files is executed first if found in the user's home directory?",
+                    "options": [".bash_login", ".bashrc", ".profile", ".bash.bashrc", ".bash_profile"],
+                    "answer": ".bash_profile",
+                    "explanation": {
+                        ".bash_login": "This is executed if .bash_profile is not found.",
+                        ".bashrc": "This is executed for interactive shells, not login shells.",
+                        ".profile": "This is executed if no .bash_profile is found.",
+                        ".bash.bashrc": "This is not a standard user environment file.",
+                        ".bash_profile": "This is executed first for a login shell."
+                    }
+                },
+                {
+                    "number": 230,
+                    "question": "Which of the following files and directories may be involved in setting up the environment for all system users? (Choose all that apply.)",
+                    "options": ["/etc/bash_profile/", "/etc/profile", "/etc/profile.d/", "/etc/bashrc", "/etc/bash.bashrc"],
+                    "answer": ["/etc/profile", "/etc/profile.d/", "/etc/bashrc", "/etc/bash.bashrc"],
+                    "explanation": {
+                        "/etc/bash_profile/": "This is a made-up directory.",
+                        "/etc/profile": "This file sets up environment settings for all users.",
+                        "/etc/profile.d/": "This directory contains scripts for setting up user environments.",
+                        "/etc/bashrc": "This file contains settings for interactive bash shells.",
+                        "/etc/bash.bashrc": "This file is executed for interactive shells."
+                    }
+                },
+                {
+                    "number": 231,
+                    "question": "Which of the following commands displays information about the account issuing the command? (Choose all that apply.)",
+                    "options": ["whoami", "who am i", "cat $HOME/.bashrc", "cat $HOME/.profile", "id"],
+                    "answer": ["whoami", "id"],
+                    "explanation": {
+                        "whoami": "This command displays the current user's username.",
+                        "who am i": "This command also displays the current user and terminal but is less common.",
+                        "cat $HOME/.bashrc": "This command displays the .bashrc file, not account information.",
+                        "cat $HOME/.profile": "This command displays the .profile file, not account information.",
+                        "id": "This command displays user and group information."
+                    }
+                },
+                {
+                    "number": 232,
+                    "question": "Which of the following commands will display CPU load data along with information concerning users who are currently logged into the system?",
+                    "options": ["The who command", "The id command", "The whoami command", "The w command", "The last command"],
+                    "answer": "The w command",
+                    "explanation": {
+                        "The who command": "This command displays users currently logged into the system but not CPU load.",
+                        "The id command": "This command displays user identity information.",
+                        "The whoami command": "This command displays the current user's username.",
+                        "The w command": "This command displays CPU load and logged-in users.",
+                        "The last command": "This command shows past login information."
+                    }
+                },
+                {
+                    "number": 233,
+                    "question": "The last command, by default, pulls its data from what file?",
+                    "options": ["/var/run/utmp file", "/var/log/wtmp file", "/var/log/wtmp.1 file", "/etc/shadow file", "/etc/passwd file"],
+                    "answer": "/var/log/wtmp file",
+                    "explanation": {
+                        "/var/run/utmp file": "This file records current logins, not the last logins.",
+                        "/var/log/wtmp file": "This is the correct file for the last command's data.",
+                        "/var/log/wtmp.1 file": "This is an older log file and not used by default.",
+                        "/etc/shadow file": "This file contains password data, not login records.",
+                        "/etc/passwd file": "This file contains user account information, not login records."
+                    }
+                },
+                {
+                    "number": 234,
+                    "question": "Which of the following are options used in the /etc/fstab file to designate a filesystem as one that uses quotas? (Choose all that apply.)",
+                    "options": ["usrquota", "quotaon", "grpquota", "quotacheck", "aquota.user"],
+                    "answer": ["usrquota", "grpquota"],
+                    "explanation": {
+                        "usrquota": "This option enables user quotas on the filesystem.",
+                        "quotaon": "This command is used to enable quotas but is not an option in /etc/fstab.",
+                        "grpquota": "This option enables group quotas on the filesystem.",
+                        "quotacheck": "This command checks quota files but is not an option in /etc/fstab.",
+                        "aquota.user": "This file is created by the quotacheck command, not an option in /etc/fstab."
+                    }
+                },
+                {
+                    "number": 235,
+                    "question": "A problem has occurred concerning group quotas on three filesystems. You need to quickly remove all filesystems' quota limits to temporarily resolve this issue. What is the best command to employ?",
+                    "options": ["vi /etc/fstab", "quotaoff -a", "quotacheck -cg", "quotacheck -cu", "umount"],
+                    "answer": "quotaoff -a",
+                    "explanation": {
+                        "vi /etc/fstab": "This would require editing and remounting filesystems, not quick.",
+                        "quotaoff -a": "This command disables quotas on all filesystems quickly.",
+                        "quotacheck -cg": "This checks quota files but does not disable them.",
+                        "quotacheck -cu": "This checks user quotas but does not disable them.",
+                        "umount": "This command unmounts filesystems and is not relevant here."
+                    }
+                },
+                {
+                    "number": 236,
+                    "question": "You need to edit quota grace periods. Which of the following commands should you use?",
+                    "options": ["edquota -u", "edquota -g", "edquota -t", "edquota -G", "edquota --grace"],
+                    "answer": "edquota -t",
+                    "explanation": {
+                        "edquota -u": "This command edits user quota limits.",
+                        "edquota -g": "This command edits group quota limits.",
+                        "edquota -t": "This command edits quota grace periods.",
+                        "edquota -G": "This command is made up.",
+                        "edquota --grace": "This command is also made up."
+                    }
+                }
+            ]
+        }
+    ]
+}
