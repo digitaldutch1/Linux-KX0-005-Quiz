@@ -82,7 +82,7 @@ class QuizApp:
         # Voeg dynamisch gemaakte assessments toe aan het menu
         self.update_assessment_menu()
 
-        self.edit_assessment_menu = tk.Menubutton(self.navbar_frame, text="Create Assessment", font=("Helvetica", 26), relief="raised", borderwidth=1)
+        self.edit_assessment_menu = tk.Menubutton(self.navbar_frame, text="Edit Assessment", font=("Helvetica", 26), relief="raised", borderwidth=1)
         self.edit_assessment_menu.menu = tk.Menu(self.edit_assessment_menu, tearoff=0, font=("Helvetica", 18))
         self.edit_assessment_menu["menu"] = self.edit_assessment_menu.menu
         self.edit_assessment_menu.pack(side="left", padx=20)
@@ -98,6 +98,20 @@ class QuizApp:
 
         self.add_question_menu.menu.add_command(label="Make Question", command=self.make_question)
         self.add_question_menu.menu.add_command(label="List Questions", command=self.list_questions)
+
+        # Voeg afbeelding toe onder de navigatiebalk
+        self.add_image()
+
+    def add_image(self):
+        try:
+            current_directory = os.path.dirname(os.path.abspath(__file__))
+            image_path = os.path.join(current_directory, 'assets', 'icon', 'linux afbeelding 2.png')
+
+            self.image = tk.PhotoImage(file=image_path)
+            self.image_label = tk.Label(self.master, image=self.image)
+            self.image_label.pack(pady=(50, 20))
+        except Exception as e:
+            messagebox.showerror("Error", f"Could not load image: {e}")
 
     def open_ebook(self):
         current_directory = os.path.dirname(os.path.abspath(__file__))
@@ -141,7 +155,7 @@ class QuizApp:
         self.add_question_buttons_frame = tk.Frame(self.question_frame)
         self.add_question_buttons_frame.pack(pady=10)
 
-        self.create_question_btn = tk.Button(self.add_question_buttons_frame, text="Create Question", command=self.make_question)
+        self.create_question_btn = tk.Button(self.add_question_buttons_frame, text="Make Question", command=self.make_question)
         self.create_question_btn.pack(side="left", padx=10)
 
         self.list_questions_btn = tk.Button(self.add_question_buttons_frame, text="List Questions", command=self.list_questions)
@@ -471,9 +485,10 @@ class QuizApp:
         incorrect_count = sum(1 for score in self.correct_answers if score == 0.0)
         skipped_count = sum(1 for answer in self.user_answers if answer is None)
         total_count = len(self.questions)
-        percentage_correct = (sum(self.correct_answers) / total_count * 100) if total_count > 0 else 0
+        total_score = sum(self.correct_answers)
+        percentage_correct = (total_score / total_count * 100) if total_count > 0 else 0
 
-        stats_label = tk.Label(self.stats_win, text=f"You got {sum(self.correct_answers):.2f} out of {total_count} correct!", font=("Helvetica", 22))
+        stats_label = tk.Label(self.stats_win, text=f"You scored {total_score:.2f} out of {total_count} correct!", font=("Helvetica", 22))
         stats_label.pack(pady=10)
 
         tk.Label(self.stats_win).pack(pady=5)

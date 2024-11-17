@@ -296,7 +296,7 @@
                         "cat SpaceOpera.txt > SciFi.txt": "Option B will only save a copy to SciFi.txt.",
                         "cat SpaceOpera.txt 2> SciFi.txt": "Option C will direct error messages to SciFi.txt.",
                         "cp SpaceOpera.txt SciFi.txt": "The cp command will only copy the file and not display it.",
-                        "cat SpaceOpera.txt > SciFi.txt": "Option E will only save a copy."
+                        "cat SpaceOpera.txt &> SciFi.txt": "Option E will only save a copy."
                     }
                 },
                 {
@@ -312,7 +312,7 @@
                     "answer": "sort SpaceOpera.txt 2> /dev/null",
                     "explanation": {
                         "sort SpaceOpera.txt 2> BlackHole": "Options A, B, and C redirect to a file called BlackHole.",
-                        "sort SpaceOpera.txt > BlackHole": "Options A, B, and C redirect to a file called BlackHole.",
+                        "sort SpaceOpera.txt &> BlackHole": "Options A, B, and C redirect to a file called BlackHole.",
                         "sort SpaceOpera.txt > BlackHole": "Options A, B, and C redirect to a file called BlackHole.",
                         "sort SpaceOpera.txt 2> /dev/null": "The command redirects STDERR into /dev/null.",
                         "sort SpaceOpera.txt > /dev/null": "Option E redirects STDOUT to /dev/null, showing error messages."
