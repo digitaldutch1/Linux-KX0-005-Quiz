@@ -5,7 +5,7 @@ a = Analysis(
     ['C:\\Users\\denni\\Desktop\\linux\\linux_quiz_1.00.3\\linux.py'],
     pathex=[],
     binaries=[],
-    datas=[('C:\\Users\\denni\\Desktop\\linux\\linux_quiz_1.00.3\\assets\\linux_questions', 'assets\\linux_questions'), ('C:\\Users\\denni\\Desktop\\linux\\linux_quiz_1.00.3\\assets\\linuxbook\\linuxbook.pdf', 'assets\\linuxbook')],
+    datas=[('C:\\Users\\denni\\Desktop\\linux\\linux_quiz_1.00.3\\assets\\icon\\linux afbeelding 2.png', 'assets/icon'), ('C:\\Users\\denni\\Desktop\\linux\\linux_quiz_1.00.3\\assets\\linux_questions', 'assets/linux_questions'), ('C:\\Users\\denni\\Desktop\\linux\\linux_quiz_1.00.3\\assets\\linuxbook\\linuxbook.pdf', 'assets/linuxbook')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},

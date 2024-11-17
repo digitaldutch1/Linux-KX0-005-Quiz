@@ -7,6 +7,7 @@ import json
 import random
 import webbrowser
 import os
+import sys
 
 def load_questions_from_json(filename):
     try:
@@ -99,7 +100,7 @@ class QuizApp:
         self.add_question_menu.menu.add_command(label="Make Question", command=self.make_question)
         self.add_question_menu.menu.add_command(label="List Questions", command=self.list_questions)
 
-        # Voeg afbeelding toe onder de navigatiebalk
+        # Voeg afbeelding toe onder de navigatiebalk met dynamisch pad
         self.add_image()
 
     def add_image(self):
@@ -109,7 +110,7 @@ class QuizApp:
 
             self.image = tk.PhotoImage(file=image_path)
             self.image_label = tk.Label(self.master, image=self.image)
-            self.image_label.pack(pady=(50, 20))
+            self.image_label.pack(pady=(50, 20))  # Afbeelding 30 pixels lager
         except Exception as e:
             messagebox.showerror("Error", f"Could not load image: {e}")
 
@@ -141,7 +142,7 @@ class QuizApp:
         self.title_entry.grid(row=0, column=1, padx=10, pady=10)
 
         tk.Label(content_frame, text="Description:", font=("Helvetica", 14)).grid(row=1, column=0, padx=10, pady=10, sticky="e")
-        self.description_entry = tk.Entry(content_frame, width=50)
+        self.description_entry = tk.Text(content_frame, height=5, width=50)  # Maak het input veld 5 regels hoog
         self.description_entry.grid(row=1, column=1, padx=10, pady=10)
 
         self.question_frame = tk.Frame(content_frame, borderwidth=1, relief="solid")
@@ -171,7 +172,7 @@ class QuizApp:
 
     def save_assessment(self):
         title = self.title_entry.get().strip()
-        description = self.description_entry.get().strip()
+        description = self.description_entry.get("1.0", tk.END).strip()  # Haal de tekst op uit het Text veld
 
         if any(assessment['title'] == title for assessment in self.assessments):
             messagebox.showerror("Error", "Title already exists. Please choose a different title.")
