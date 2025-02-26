@@ -1,72 +1,46 @@
 @echo off
-:: Batch script to set up and run the Linux Quiz
+setlocal
 
-:: Step 1: Check if Python 3.13 is installed
+REM Controleer of Python is geïnstalleerd
 python --version >nul 2>&1
 if %errorlevel% neq 0 (
-    echo Python is not installed. Installing Python 3.13...
-    start /wait "" "https://www.python.org/ftp/python/3.13.0/python-3.13.0.exe" /quiet InstallAllUsers=1 PrependPath=1
-    if %errorlevel% neq 0 (
-        echo Failed to download Python installer.
-        exit /b
-    )
-    echo Python installed successfully.
+    echo Python is niet geïnstalleerd. Downloaden...
+
+    REM Download Python installer
+    curl -o python-installer.exe https://www.python.org/ftp/python/3.13.0/python-3.13.0.exe
+
+    REM Voer de Python installer uit
+    echo Start Python installatie...
+    start /wait python-installer.exe
+
+    REM Verwijder de installer na installatie
+    del python-installer.exe
 ) else (
-    echo Python is already installed.
+    echo Python is al geïnstalleerd.
 )
 
-:: Step 2: Check if pip is installed (pip is the Python package manager)
+REM Zorg ervoor dat pip is geïnstalleerd en up-to-date
 python -m ensurepip --upgrade
 
-:: Step 3: Install the required Python packages (PyInstaller, Pillow, PyMuPDF, etc.)
-echo Installing required Python packages...
-pip install pyinstaller pillow pymupdf
+REM Controleer of SumatraPDF is geïnstalleerd als PDF-lezer
+set "SUMATRA_READER=C:\Program Files\SumatraPDF\SumatraPDF.exe"
+if not exist "%SUMATRA_READER%" (
+    echo SumatraPDF is niet geïnstalleerd. Downloaden...
 
-:: Step 4: Check if required files exist
-if not exist "linux_questions" (
-    echo The 'linux_questions' directory is missing.
-    exit /b
-)
+    REM Download SumatraPDF installer
+    curl -o sumatrapdf-installer.exe https://www.sumatrapdfreader.org/dl/SumatraPDF-3.3.3-64-install.exe
 
-if not exist "linuxbook.pdf" (
-    echo The 'linuxbook.pdf' file is missing. Please ensure it is in the correct location.
-    exit /b
-)
+    REM Voer de SumatraPDF installer uit
+    echo Start SumatraPDF installatie...
+    start /wait sumatrapdf-installer.exe
 
-:: Step 5: Copy the necessary files to the correct location
-echo Copying files to the correct directory...
-xcopy /E /I /H /Y "linux_questions" "linux_questions" >nul
-xcopy /I /H /Y "linuxbook.pdf" "." >nul
-
-:: Step 6: Check if linux.py exists
-if not exist "linux.py" (
-    echo The script 'linux.py' does not exist. Please ensure it is in the correct location.
-    exit /b
-)
-
-:: Step 7: Create the EXE again (make sure the quiz works)
-echo Creating executable...
-pyinstaller --onefile --add-data "linux_questions;linux_questions" --add-data "linuxbook.pdf;." --icon "icon\linux_icon.ico" linux.py
-
-:: Step 8: Check if Adobe Acrobat Reader is installed
-reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall" /f "Adobe Acrobat Reader" >nul 2>&1
-if %errorlevel% neq 0 (
-    echo Adobe Acrobat Reader is not installed. Installing...
-    start /wait "" "C:\Users\denni\Desktop\linux\linux_quiz_1.00.2\pdf reader\Adobe Acrobat.lnk"
+    REM Verwijder de installer na installatie
+    del sumatrapdf-installer.exe
 ) else (
-    echo Adobe Acrobat Reader is already installed.
+    echo SumatraPDF is al geïnstalleerd.
 )
 
-:: Step 9: Change directory to the parent folder and start linux.py
-echo Starting the quiz...
-cd ..
-if exist "linux.py" (
-    python linux.py
-    if %errorlevel% neq 0 (
-        echo Failed to start linux.py. Please check for errors above.
-        exit /b
-    )
-) else (
-    echo The script 'linux.py' was not found in the parent directory.
-    exit /b
-)
+REM Einde van het script
+echo Setup voltooid.
+endlocal
+pause
