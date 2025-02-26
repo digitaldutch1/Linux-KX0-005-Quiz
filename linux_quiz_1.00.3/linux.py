@@ -142,7 +142,7 @@ class QuizApp:
         assessment_3_count = get_question_count_from_json("assessment3.json")
         self.assessment_menu.menu.add_command(
             label=f"Assessment 3 ({assessment_3_count})",
-            command=lambda: self.start_assessment("assessment3.json")
+            command=lambda: self.start_assessment3("assessment3.json")
         )
 
         # Remove Exercise Chapter 2 and 3 from the Assessment menu
@@ -533,6 +533,29 @@ class QuizApp:
                 self.question_window(title="Assessment 2 Questions")
         except (FileNotFoundError, json.JSONDecodeError) as e:
             messagebox.showerror("Error", f"Could not load assessment: {e}")
+
+    def start_assessment3(self, filename):
+        self.reset_statistics()
+        self.current_chapter_data = load_questions_from_json(filename)
+
+        if not self.current_chapter_data or "questions" not in self.current_chapter_data:
+            messagebox.showerror("Error", "Geen vragen gevonden in de geselecteerde beoordeling.")
+            return
+
+        self.questions = self.current_chapter_data['questions']
+        random.shuffle(self.questions)
+
+        self.shuffled_options = []
+        for question in self.questions:
+            options = list(question["options"])
+            random.shuffle(options)
+            self.shuffled_options.append(options)
+
+        self.current_question_index = 0
+        self.user_answers = [None] * len(self.questions)
+        self.session_active = True
+        self.assessment_mode = True
+        self.question_window(title="Assessment 3 Questions")
 
     def start_exercise2(self, filename):
         # Reset any previous session statistics
