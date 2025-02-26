@@ -1,4 +1,5 @@
-('H:\\linux trainer\\linux_quiz_1.00.3\\build\\linux\\PYZ-00.pyz',
+('C:\\Users\\denni\\Desktop\\linux '
+ 'trainer\\linux_quiz_1.00.3\\build\\linux\\PYZ-00.pyz',
  [('PIL',
    'C:\\Users\\denni\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\PIL\\__init__.py',
    'PYMODULE'),
