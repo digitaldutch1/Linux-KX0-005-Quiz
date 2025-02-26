@@ -1,0 +1,1158 @@
+
+
+
+{
+  "chapters": [
+    {
+      "chapter": 3,
+      "description": "Managing Files, Directories, and Text",
+      "questions": [
+        {
+          "number": 1,
+          "question": "What is the primary function of the shell in Linux?",
+          "options": [
+            "Manage graphical interface",
+            "Execute programs and manage files",
+            "Network configuration",
+            "System recovery"
+          ],
+          "answer": "Execute programs and manage files",
+          "explanation": {
+            "Manage graphical interface": "Incorrect. The shell is not a graphical interface; it provides a command-line interface.",
+            "Execute programs and manage files": "Correct. The shell allows users to execute programs and manage files.",
+            "Network configuration": "Incorrect. Although you can manage network configuration, that is not the primary function of the shell.",
+            "System recovery": "Incorrect. System recovery is not the primary function of the shell."
+          }
+        },
+        {
+          "number": 2,
+          "question": "What is a virtual directory structure?",
+          "options": [
+            "An organized collection of network settings",
+            "A structure for storing files in a single directory",
+            "A collection of hardware configurations",
+            "A set of user profiles"
+          ],
+          "answer": "A structure for storing files in a single directory",
+          "explanation": {
+            "An organized collection of network settings": "Incorrect. Network settings are not part of the virtual directory structure.",
+            "A structure for storing files in a single directory": "Correct. It is a structure that stores all files in a single directory.",
+            "A collection of hardware configurations": "Incorrect. Hardware configurations are not part of the virtual directory structure.",
+            "A set of user profiles": "Incorrect. It is not about user profiles."
+          }
+        },
+        {
+          "number": 3,
+          "question": "What does the ls command do without any options?",
+          "options": [
+            "Shows only hidden files",
+            "Shows the contents of all subdirectories",
+            "Shows the names of files and subdirectories in the current directory",
+            "Deletes files"
+          ],
+          "answer": "Shows the names of files and subdirectories in the current directory",
+          "explanation": {
+            "Shows only hidden files": "Incorrect. It does not show hidden files without additional options.",
+            "Shows the contents of all subdirectories": "Incorrect. It does not show the contents of subdirectories without additional options.",
+            "Shows the names of files and subdirectories in the current directory": "Correct. It shows the file and directory names in the current directory.",
+            "Deletes files": "Incorrect. ls does not delete files."
+          }
+        },
+        {
+          "number": 4,
+          "question": "Which option of ls shows hidden files?",
+          "options": ["-l", "-a", "-R", "-F"],
+          "answer": "-a",
+          "explanation": {
+            "-l": "Incorrect. -l shows a long listing format.",
+            "-a": "Correct. The -a option also shows hidden files.",
+            "-R": "Incorrect. -R shows the contents of directories and their subdirectories.",
+            "-F": "Incorrect. -F classifies files with an indicator code."
+          }
+        },
+        {
+          "number": 5,
+          "question": "What is the function of the pwd command?",
+          "options": [
+            "Shows the list of active processes",
+            "Changes the working directory",
+            "Shows the current path of the working directory",
+            "Deletes a directory"
+          ],
+          "answer": "Shows the current path of the working directory",
+          "explanation": {
+            "Shows the list of active processes": "Incorrect. pwd does not show processes.",
+            "Changes the working directory": "Incorrect. pwd does not change the working directory.",
+            "Shows the current path of the working directory": "Correct. It shows the path of the current working directory.",
+            "Deletes a directory": "Incorrect. pwd does not delete directories."
+          }
+        },
+        {
+          "number": 6,
+          "question": "Which command do you use to create a new empty file?",
+          "options": ["mkdir", "rm", "touch", "mv"],
+          "answer": "touch",
+          "explanation": {
+            "mkdir": "Incorrect. mkdir creates directories.",
+            "rm": "Incorrect. rm deletes files.",
+            "touch": "Correct. touch creates a new empty file.",
+            "mv": "Incorrect. mv moves or renames files."
+          }
+        },
+        {
+          "number": 7,
+          "question": "Which of the following options is used with ls to display the list in a readable format?",
+          "options": ["-R", "-h", "-d", "-i"],
+          "answer": "-h",
+          "explanation": {
+            "-R": "Incorrect. -R shows contents recursively.",
+            "-h": "Correct. The -h option makes the list display more readable by showing file sizes in a human-readable format.",
+            "-d": "Incorrect. -d shows only directory metadata.",
+            "-i": "Incorrect. -i shows inode numbers."
+          }
+        },
+        {
+          "number": 8,
+          "question": "What prevents file overwriting when using the cp command?",
+          "options": ["-f", "-i", "-u", "-R"],
+          "answer": "-i",
+          "explanation": {
+            "-f": "Incorrect. -f forces overwriting.",
+            "-i": "Correct. The -i option prompts for confirmation before overwriting files.",
+            "-u": "Incorrect. -u overwrites only if the source is newer.",
+            "-R": "Incorrect. -R performs a recursive copy."
+          }
+        },
+        {
+          "number": 9,
+          "question": "What does the -p option in the mkdir command do?",
+          "options": [
+            "Deletes directories",
+            "Creates parents and subdirectories as needed",
+            "Copies files",
+            "Moves files"
+          ],
+          "answer": "Creates parents and subdirectories as needed",
+          "explanation": {
+            "Deletes directories": "Incorrect. mkdir does not delete directories.",
+            "Creates parents and subdirectories as needed": "Correct. The -p option creates parents and subdirectories if they do not exist.",
+            "Copies files": "Incorrect. mkdir does not copy files.",
+            "Moves files": "Incorrect. mkdir does not move files."
+          }
+        },
+        {
+          "number": 10,
+          "question": "What is the effect of the rm -r command?",
+          "options": [
+            "Deletes only empty directories",
+            "Recursively deletes files and directories",
+            "Copies files and directories",
+            "Renames files"
+          ],
+          "answer": "Recursively deletes files and directories",
+          "explanation": {
+            "Deletes only empty directories": "Incorrect. -r does not only delete empty directories.",
+            "Recursively deletes files and directories": "Correct. rm -r recursively deletes files and directories.",
+            "Copies files and directories": "Incorrect. rm does not copy files or directories.",
+            "Renames files": "Incorrect. rm does not rename files."
+          }
+        },
+        {
+          "number": 11,
+          "question": "What is a hard link in Linux?",
+          "options": [
+            "A copy of a file",
+            "A deleted directory",
+            "A file that refers to the same inode number as another file",
+            "A file that refers to another file on different filesystems"
+          ],
+          "answer": "A file that refers to the same inode number as another file",
+          "explanation": {
+            "A copy of a file": "Incorrect. A hard link is not a copy.",
+            "A deleted directory": "Incorrect. It is not a deleted directory.",
+            "A file that refers to the same inode number as another file": "Correct. A hard link shares the same inode number.",
+            "A file that refers to another file on different filesystems": "Incorrect. Hard links must be on the same filesystem."
+          }
+        },
+        {
+          "number": 12,
+          "question": "Which option of the mv command prompts for confirmation before overwriting files?",
+          "options": ["-f", "-i", "-u", "-n"],
+          "answer": "-i",
+          "explanation": {
+            "-f": "Incorrect. -f forces overwriting.",
+            "-i": "Correct. The -i option prompts for confirmation before overwriting files.",
+            "-u": "Incorrect. -u overwrites only if the source is newer.",
+            "-n": "Incorrect. -n prevents overwriting without confirmation."
+          }
+        },
+        {
+          "number": 13,
+          "question": "What is the function of the tree command?",
+          "options": [
+            "Displays the contents of a file",
+            "Displays a graphical view of the directory structure",
+            "Deletes files and directories",
+            "Copies a file to another location"
+          ],
+          "answer": "Displays a graphical view of the directory structure",
+          "explanation": {
+            "Displays the contents of a file": "Incorrect. tree does not display the contents of a file.",
+            "Displays a graphical view of the directory structure": "Correct. tree displays a graphical view of the directory structure.",
+            "Deletes files and directories": "Incorrect. tree does not delete files.",
+            "Copies a file to another location": "Incorrect. tree does not copy files."
+          }
+        },
+        {
+          "number": 14,
+          "question": "What does the ln -s command do?",
+          "options": [
+            "Creates a hard link",
+            "Deletes a file",
+            "Creates a symbolic link",
+            "Copies a file"
+          ],
+          "answer": "Creates a symbolic link",
+          "explanation": {
+            "Creates a hard link": "Incorrect. ln -s does not create a hard link.",
+            "Deletes a file": "Incorrect. ln -s does not delete files.",
+            "Creates a symbolic link": "Correct. ln -s creates a symbolic link.",
+            "Copies a file": "Incorrect. ln -s does not copy files."
+          }
+        },
+        {
+          "number": 15,
+          "question": "How can you view the contents of a file with line numbers?",
+          "options": ["cat -a", "cat -n", "cat -b", "cat -l"],
+          "answer": "cat -n",
+          "explanation": {
+            "cat -a": "Incorrect. -a is not a valid option for line numbers.",
+            "cat -n": "Correct. cat -n displays line numbers along with the content.",
+            "cat -b": "Incorrect. -b is not a valid option for line numbers.",
+            "cat -l": "Incorrect. -l is not a valid option for line numbers."
+          }
+        },
+        {
+          "number": 16,
+          "question": "What does the -i option in the rm command do?",
+          "options": [
+            "Deletes files without warning",
+            "Prompts for confirmation before deleting files",
+            "Copies files to the trash",
+            "Restores deleted files"
+          ],
+          "answer": "Prompts for confirmation before deleting files",
+          "explanation": {
+            "Deletes files without warning": "Incorrect. -i prompts for confirmation.",
+            "Prompts for confirmation before deleting files": "Correct. The -i option prompts for confirmation before deleting files.",
+            "Copies files to the trash": "Incorrect. -i does not copy files to the trash.",
+            "Restores deleted files": "Incorrect. -i does not restore files."
+          }
+        },
+        {
+          "number": 17,
+          "question": "What is the difference between a hard link and a symbolic link?",
+          "options": [
+            "Hard links can be made across different filesystems, symbolic links cannot",
+            "Symbolic links share the same inode number, hard links do not",
+            "Hard links share the same inode number, symbolic links do not",
+            "Symbolic links are physically copied, hard links are not"
+          ],
+          "answer": "Hard links share the same inode number, symbolic links do not",
+          "explanation": {
+            "Hard links can be made across different filesystems, symbolic links cannot": "Incorrect. Hard links must be on the same filesystem.",
+            "Symbolic links share the same inode number, hard links do not": "Incorrect. Symbolic links do not share the same inode number.",
+            "Hard links share the same inode number, symbolic links do not": "Correct. Hard links share the same inode number.",
+            "Symbolic links are physically copied, hard links are not": "Incorrect. Symbolic links are not physical copies."
+          }
+        },
+        {
+          "number": 18,
+          "question": "Which option of the cp command performs a recursive copy?",
+          "options": ["-i", "-f", "-R", "-n"],
+          "answer": "-R",
+          "explanation": {
+            "-i": "Incorrect. -i prompts for confirmation.",
+            "-f": "Incorrect. -f forces overwriting.",
+            "-R": "Correct. The -R option performs a recursive copy.",
+            "-n": "Incorrect. -n prevents overwriting."
+          }
+        },
+        {
+          "number": 19,
+          "question": "What is an advantage of using symbolic links?",
+          "options": [
+            "They can be easily broken",
+            "They share the same inode number",
+            "They can exist across different filesystems",
+            "They are physically copied files"
+          ],
+          "answer": "They can exist across different filesystems",
+          "explanation": {
+            "They can be easily broken": "Incorrect. Breaking links is a disadvantage.",
+            "They share the same inode number": "Incorrect. Symbolic links do not share the same inode number.",
+            "They can exist across different filesystems": "Correct. Symbolic links can exist across different filesystems.",
+            "They are physically copied files": "Incorrect. Symbolic links are not physical copies."
+          }
+        },
+        {
+          "number": 20,
+          "question": "What does the stat command do?",
+          "options": [
+            "Deletes a file",
+            "Displays the contents of a file",
+            "Shows detailed information about a file",
+            "Copies a file"
+          ],
+          "answer": "Shows detailed information about a file",
+          "explanation": {
+            "Deletes a file": "Incorrect. stat does not delete files.",
+            "Displays the contents of a file": "Incorrect. stat does not show the contents of a file.",
+            "Shows detailed information about a file": "Correct. stat shows detailed information about a file.",
+            "Copies a file": "Incorrect. stat does not copy files."
+          }
+        },
+        {
+          "number": 21,
+          "question": "How do you create a new directory with mkdir?",
+          "options": [
+            "mkdir -d",
+            "mkdir new_directory",
+            "mkdir -r",
+            "mkdir -i"
+          ],
+          "answer": "mkdir new_directory",
+          "explanation": {
+            "mkdir -d": "Incorrect. -d is not a valid option for creating directories.",
+            "mkdir new_directory": "Correct. mkdir new_directory creates a new directory.",
+            "mkdir -r": "Incorrect. -r is not a valid option for creating directories.",
+            "mkdir -i": "Incorrect. -i is not a valid option for creating directories."
+          }
+        },
+        {
+          "number": 22,
+          "question": "What does the file command show?",
+          "options": [
+            "The contents of a directory",
+            "The contents of a file",
+            "The type of a file",
+            "The size of a file"
+          ],
+          "answer": "The type of a file",
+          "explanation": {
+            "The contents of a directory": "Incorrect. file does not show the contents of a directory.",
+            "The contents of a file": "Incorrect. file does not show the contents of a file.",
+            "The type of a file": "Correct. file shows the type of a file.",
+            "The size of a file": "Incorrect. file does not specifically show the size of a file."
+          }
+        },
+        {
+          "number": 23,
+          "question": "Which option of rsync provides archive mode?",
+          "options": ["-h", "-a", "-r", "-v"],
+          "answer": "-a",
+          "explanation": {
+            "-h": "Incorrect. -h makes output human-readable.",
+            "-a": "Correct. The -a option provides archive mode.",
+            "-r": "Incorrect. -r provides recursive copying.",
+            "-v": "Incorrect. -v gives verbose output."
+          }
+        },
+        {
+          "number": 24,
+          "question": "What does the grep command do?",
+          "options": [
+            "Copies files",
+            "Deletes files",
+            "Searches for patterns in files",
+            "Creates new files"
+          ],
+          "answer": "Searches for patterns in files",
+          "explanation": {
+            "Copies files": "Incorrect. grep does not copy files.",
+            "Deletes files": "Incorrect. grep does not delete files.",
+            "Searches for patterns in files": "Correct. grep searches for text patterns in files.",
+            "Creates new files": "Incorrect. grep does not create new files."
+          }
+        },
+        {
+          "number": 25,
+          "question": "What is the primary purpose of the cat command?",
+          "options": [
+            "Deletes files",
+            "Displays the contents of a file",
+            "Copies files",
+            "Creates new files"
+          ],
+          "answer": "Displays the contents of a file",
+          "explanation": {
+            "Deletes files": "Incorrect. cat does not delete files.",
+            "Displays the contents of a file": "Correct. cat displays the contents of a file.",
+            "Copies files": "Incorrect. cat does not copy files.",
+            "Creates new files": "Incorrect. cat does not create new files."
+          }
+        },
+        {
+          "number": 26,
+          "question": "Which option of diff shows the differences in a side-by-side format?",
+          "options": ["-q", "-s", "-y", "-e"],
+          "answer": "-y",
+          "explanation": {
+            "-q": "Incorrect. -q gives a brief difference summary.",
+            "-s": "Incorrect. -s reports identical files.",
+            "-y": "Correct. The -y option shows differences in a side-by-side format.",
+            "-e": "Incorrect. -e creates an ed script."
+          }
+        },
+        {
+          "number": 27,
+          "question": "What is the effect of the -F option in the ls command?",
+          "options": [
+            "Shows the contents of subdirectories",
+            "Classifies each file type with an indicator code",
+            "Shows only files with the same owner",
+            "Automatically deletes files"
+          ],
+          "answer": "Classifies each file type with an indicator code",
+          "explanation": {
+            "Shows the contents of subdirectories": "Incorrect. -F does not show subdirectory contents.",
+            "Classifies each file type with an indicator code": "Correct. -F classifies each file type with an indicator code.",
+            "Shows only files with the same owner": "Incorrect. -F is not limited to files with the same owner.",
+            "Automatically deletes files": "Incorrect. -F does not delete files."
+          }
+        },
+        {
+          "number": 28,
+          "question": "What does the -l option in the ls command do?",
+          "options": [
+            "Shows only hidden files",
+            "Shows a long listing format with details",
+            "Copies files to another location",
+            "Deletes files"
+          ],
+          "answer": "Shows a long listing format with details",
+          "explanation": {
+            "Shows only hidden files": "Incorrect. -a shows hidden files.",
+            "Shows a long listing format with details": "Correct. The -l option shows a long listing format with details.",
+            "Copies files to another location": "Incorrect. -l does not copy files.",
+            "Deletes files": "Incorrect. -l does not delete files."
+          }
+        },
+        {
+          "number": 29,
+          "question": "What is an alias in the Linux command line?",
+          "options": [
+            "A graphical interface",
+            "A short command that represents another command",
+            "A file type",
+            "A directory name"
+          ],
+          "answer": "A short command that represents another command",
+          "explanation": {
+            "A graphical interface": "Incorrect. An alias is not a graphical interface.",
+            "A short command that represents another command": "Correct. An alias is a short command that represents another command.",
+            "A file type": "Incorrect. An alias is not a file type.",
+            "A directory name": "Incorrect. An alias is not a directory name."
+          }
+        },
+        {
+          "number": 30,
+          "question": "What does the -R option in the rm command do?",
+          "options": [
+            "Copies files",
+            "Recursively deletes files",
+            "Shows the contents of a directory",
+            "Moves files"
+          ],
+          "answer": "Recursively deletes files",
+          "explanation": {
+            "Copies files": "Incorrect. -R in rm does not copy files.",
+            "Recursively deletes files": "Correct. The -R option recursively deletes files.",
+            "Shows the contents of a directory": "Incorrect. -R does not show directory contents.",
+            "Moves files": "Incorrect. -R does not move files."
+          }
+        },
+        {
+          "number": 31,
+          "question": "What is the primary use of the head command?",
+          "options": [
+            "Shows the last lines of a file",
+            "Shows the first lines of a file",
+            "Deletes the contents of a file",
+            "Copies files to another location"
+          ],
+          "answer": "Shows the first lines of a file",
+          "explanation": {
+            "Shows the last lines of a file": "Incorrect. head shows the first lines.",
+            "Shows the first lines of a file": "Correct. head shows the first lines of a file.",
+            "Deletes the contents of a file": "Incorrect. head does not delete contents.",
+            "Copies files to another location": "Incorrect. head does not copy files."
+          }
+        },
+        {
+          "number": 32,
+          "question": "What does the -n option do with the tail command?",
+          "options": [
+            "Deletes files",
+            "Shows a specific number of last lines",
+            "Copies files to another location",
+            "Renames files"
+          ],
+          "answer": "Shows a specific number of last lines",
+          "explanation": {
+            "Deletes files": "Incorrect. tail does not delete files.",
+            "Shows a specific number of last lines": "Correct. The -n option shows a specific number of last lines.",
+            "Copies files to another location": "Incorrect. tail does not copy files.",
+            "Renames files": "Incorrect. tail does not rename files."
+          }
+        },
+        {
+          "number": 33,
+          "question": "Why is the less command useful?",
+          "options": [
+            "It can only scroll forward in a file",
+            "It can scroll both forward and backward in a file",
+            "It deletes files",
+            "It copies files"
+          ],
+          "answer": "It can scroll both forward and backward in a file",
+          "explanation": {
+            "It can only scroll forward in a file": "Incorrect. less can scroll both forward and backward.",
+            "It can scroll both forward and backward in a file": "Correct. less can scroll both forward and backward in a file.",
+            "It deletes files": "Incorrect. less does not delete files.",
+            "It copies files": "Incorrect. less does not copy files."
+          }
+        },
+        {
+          "number": 34,
+          "question": "What does the -v option do in the mkdir command?",
+          "options": [
+            "Deletes directories",
+            "Provides verbose output",
+            "Copies files to another location",
+            "Moves files"
+          ],
+          "answer": "Provides verbose output",
+          "explanation": {
+            "Deletes directories": "Incorrect. mkdir does not delete directories.",
+            "Provides verbose output": "Correct. The -v option provides verbose output.",
+            "Copies files to another location": "Incorrect. mkdir does not copy files.",
+            "Moves files": "Incorrect. mkdir does not move files."
+          }
+        },
+        {
+          "number": 35,
+          "question": "What is the primary purpose of the rmdir command?",
+          "options": [
+            "Copies files",
+            "Deletes empty directories",
+            "Shows the contents of a directory",
+            "Renames files"
+          ],
+          "answer": "Deletes empty directories",
+          "explanation": {
+            "Copies files": "Incorrect. rmdir does not copy files.",
+            "Deletes empty directories": "Correct. rmdir deletes empty directories.",
+            "Shows the contents of a directory": "Incorrect. rmdir does not show directory contents.",
+            "Renames files": "Incorrect. rmdir does not rename files."
+          }
+        },
+        {
+          "number": 36,
+          "question": "What does the -p option do in the rmdir command?",
+          "options": [
+            "Deletes only the empty directory",
+            "Deletes the directory and its empty parents",
+            "Copies files to another location",
+            "Renames files"
+          ],
+          "answer": "Deletes the directory and its empty parents",
+          "explanation": {
+            "Deletes only the empty directory": "Incorrect. -p deletes more than just the empty directory.",
+            "Deletes the directory and its empty parents": "Correct. The -p option deletes the directory and its empty parents.",
+            "Copies files to another location": "Incorrect. rmdir does not copy files.",
+            "Renames files": "Incorrect. rmdir does not rename files."
+          }
+        },
+        {
+          "number": 37,
+          "question": "What is an advantage of the rsync command?",
+          "options": [
+            "It is slow at copying large files",
+            "It can securely copy files over a network",
+            "It can only copy local files",
+            "It cannot copy files"
+          ],
+          "answer": "It can securely copy files over a network",
+          "explanation": {
+            "It is slow at copying large files": "Incorrect. rsync is fast at copying large files.",
+            "It can securely copy files over a network": "Correct. rsync can securely copy files over a network.",
+            "It can only copy local files": "Incorrect. rsync can also copy over networks.",
+            "It cannot copy files": "Incorrect. rsync can copy files."
+          }
+        },
+        {
+          "number": 38,
+          "question": "What does the -R option do in the cp command?",
+          "options": [
+            "Recursively deletes files",
+            "Recursively copies a directory and its contents",
+            "Moves files to another location",
+            "Renames files"
+          ],
+          "answer": "Recursively copies a directory and its contents",
+          "explanation": {
+            "Recursively deletes files": "Incorrect. cp does not delete files.",
+            "Recursively copies a directory and its contents": "Correct. The -R option recursively copies a directory and its contents.",
+            "Moves files to another location": "Incorrect. cp does not move files.",
+            "Renames files": "Incorrect. cp does not rename files."
+          }
+        },
+        {
+          "number": 39,
+          "question": "What does the which command do?",
+          "options": [
+            "Shows the contents of a file",
+            "Copies files to another location",
+            "Shows the path to an executable file",
+            "Deletes files"
+          ],
+          "answer": "Shows the path to an executable file",
+          "explanation": {
+            "Shows the contents of a file": "Incorrect. which does not show the contents of a file.",
+            "Copies files to another location": "Incorrect. which does not copy files.",
+            "Shows the path to an executable file": "Correct. which shows the path to an executable file.",
+            "Deletes files": "Incorrect. which does not delete files."
+          }
+        },
+        {
+          "number": 40,
+          "question": "What is the primary use of the tail command?",
+          "options": [
+            "Shows the first lines of a file",
+            "Shows the last lines of a file",
+            "Copies files to another location",
+            "Deletes files"
+          ],
+          "answer": "Shows the last lines of a file",
+          "explanation": {
+            "Shows the first lines of a file": "Incorrect. tail shows the last lines.",
+            "Shows the last lines of a file": "Correct. tail shows the last lines of a file.",
+            "Copies files to another location": "Incorrect. tail does not copy files.",
+            "Deletes files": "Incorrect. tail does not delete files."
+          }
+        },
+        {
+          "number": 41,
+          "question": "What is the purpose of the -a option in the ls command?",
+          "options": [
+            "Displays all files including hidden ones",
+            "Deletes files",
+            "Shows only directory contents",
+            "Copies files"
+          ],
+          "answer": "Displays all files including hidden ones",
+          "explanation": {
+            "Displays all files including hidden ones": "Correct. The -a option shows all files, including hidden files.",
+            "Deletes files": "Incorrect. The -a option does not delete files.",
+            "Shows only directory contents": "Incorrect. The -a option does not show only directory contents.",
+            "Copies files": "Incorrect. The -a option does not copy files."
+          }
+        },
+        {
+          "number": 42,
+          "question": "Which command can be used to view the manual page of a command?",
+          "options": [
+            "info",
+            "man",
+            "help",
+            "doc"
+          ],
+          "answer": "man",
+          "explanation": {
+            "info": "Incorrect. The info command provides a different type of documentation.",
+            "man": "Correct. The man command is used to view the manual page of a command.",
+            "help": "Incorrect. The help command provides a short description of a command, not the full manual.",
+            "doc": "Incorrect. doc is not a valid command for viewing manuals."
+          }
+        },
+        {
+          "number": 43,
+          "question": "Which command is used to rename a file?",
+          "options": [
+            "rename",
+            "mv",
+            "rn",
+            "ren"
+          ],
+          "answer": "mv",
+          "explanation": {
+            "rename": "Incorrect. rename is not a standard command in all Linux distributions.",
+            "mv": "Correct. The mv command is used to rename files.",
+            "rn": "Incorrect. rn is not a valid command.",
+            "ren": "Incorrect. ren is not a valid command in Linux."
+          }
+        },
+        {
+          "number": 44,
+          "question": "What does the command 'chmod 755 file.txt' do?",
+          "options": [
+            "Sets the file as read-only for everyone",
+            "Gives read, write, and execute permissions to the owner, and read and execute permissions to others",
+            "Deletes the file",
+            "Copies the file to another directory"
+          ],
+          "answer": "Gives read, write, and execute permissions to the owner, and read and execute permissions to others",
+          "explanation": {
+            "Sets the file as read-only for everyone": "Incorrect. 755 does not make the file read-only.",
+            "Gives read, write, and execute permissions to the owner, and read and execute permissions to others": "Correct. This sets the permissions correctly as described.",
+            "Deletes the file": "Incorrect. chmod does not delete files.",
+            "Copies the file to another directory": "Incorrect. chmod does not copy files."
+          }
+        },
+        {
+          "number": 45,
+          "question": "What is the function of the ln command?",
+          "options": [
+            "Creates links between files or directories",
+            "Lists the contents of a directory",
+            "Deletes a file",
+            "Moves a file"
+          ],
+          "answer": "Creates links between files or directories",
+          "explanation": {
+            "Creates links between files or directories": "Correct. ln is used to create links, either hard or symbolic.",
+            "Lists the contents of a directory": "Incorrect. ls is used for listing contents.",
+            "Deletes a file": "Incorrect. rm is used for deleting files.",
+            "Moves a file": "Incorrect. mv is used for moving files."
+          }
+        },
+        {
+          "number": 46,
+          "question": "What does the touch command do besides creating a new file?",
+          "options": [
+            "Copies a file",
+            "Changes file timestamps",
+            "Deletes a file",
+            "Lists file permissions"
+          ],
+          "answer": "Changes file timestamps",
+          "explanation": {
+            "Copies a file": "Incorrect. touch does not copy files.",
+            "Changes file timestamps": "Correct. touch can change access and modification times of a file.",
+            "Deletes a file": "Incorrect. touch does not delete files.",
+            "Lists file permissions": "Incorrect. touch does not list file permissions."
+          }
+        },
+        {
+          "number": 47,
+          "question": "Which command is used to display the last few lines of a file and update them in real-time?",
+          "options": [
+            "tail -f",
+            "head -f",
+            "tail -r",
+            "head -r"
+          ],
+          "answer": "tail -f",
+          "explanation": {
+            "tail -f": "Correct. tail -f displays the last lines and updates them in real-time.",
+            "head -f": "Incorrect. head does not have a follow option.",
+            "tail -r": "Incorrect. -r reverses the order of lines, not follows them.",
+            "head -r": "Incorrect. -r is not a valid option for head to follow updates."
+          }
+        },
+        {
+          "number": 48,
+          "question": "What is the purpose of the sudo command?",
+          "options": [
+            "Switches users",
+            "Provides superuser privileges for a command",
+            "Deletes a file",
+            "Creates a directory"
+          ],
+          "answer": "Provides superuser privileges for a command",
+          "explanation": {
+            "Switches users": "Incorrect. su is used to switch users.",
+            "Provides superuser privileges for a command": "Correct. sudo runs commands with superuser privileges.",
+            "Deletes a file": "Incorrect. rm is used to delete files.",
+            "Creates a directory": "Incorrect. mkdir is used to create directories."
+          }
+        },
+        {
+          "number": 49,
+          "question": "What does the command 'df -h' display?",
+          "options": [
+            "Shows disk usage in human-readable format",
+            "Deletes files in home directory",
+            "Displays file type information",
+            "Finds files with hidden attributes"
+          ],
+          "answer": "Shows disk usage in human-readable format",
+          "explanation": {
+            "Shows disk usage in human-readable format": "Correct. df -h shows disk space usage in a human-readable format.",
+            "Deletes files in home directory": "Incorrect. df does not delete files.",
+            "Displays file type information": "Incorrect. df does not display file type information.",
+            "Finds files with hidden attributes": "Incorrect. df does not find hidden files."
+          }
+        },
+        {
+          "number": 50,
+          "question": "Which command is used to find and display lines matching a pattern in a file?",
+          "options": [
+            "find",
+            "grep",
+            "locate",
+            "search"
+          ],
+          "answer": "grep",
+          "explanation": {
+            "find": "Incorrect. find is used to locate files and directories.",
+            "grep": "Correct. grep searches for patterns within files.",
+            "locate": "Incorrect. locate searches for files in a database.",
+            "search": "Incorrect. search is not a standard command in Linux."
+          }
+        },
+        {
+          "number": 51,
+          "question": "What is the effect of using the -i option with the cp command?",
+          "options": [
+            "Copies files without confirmation",
+            "Prompts before overwriting files",
+            "Copies all hidden files",
+            "Ignores file permissions"
+          ],
+          "answer": "Prompts before overwriting files",
+          "explanation": {
+            "Copies files without confirmation": "Incorrect. The -i option does the opposite by asking for confirmation.",
+            "Prompts before overwriting files": "Correct. The -i option prompts before overwriting files.",
+            "Copies all hidden files": "Incorrect. The -a option can be used to copy all files including hidden ones.",
+            "Ignores file permissions": "Incorrect. The -i option does not ignore file permissions."
+          }
+        },
+        {
+          "number": 52,
+          "question": "Which command is used to display the contents of a file one page at a time?",
+          "options": [
+            "more",
+            "less",
+            "cat",
+            "tail"
+          ],
+          "answer": "more",
+          "explanation": {
+            "more": "Correct. more displays file contents one page at a time.",
+            "less": "Incorrect. less can also be used to view files page by page but is not the primary command.",
+            "cat": "Incorrect. cat displays the entire file at once.",
+            "tail": "Incorrect. tail shows the last part of a file."
+          }
+        },
+        {
+          "number": 53,
+          "question": "What does the command 'rm -rf /' do?",
+          "options": [
+            "Safely removes files",
+            "Recursively and forcefully deletes all files and directories",
+            "Finds and removes all text files",
+            "Restores deleted files"
+          ],
+          "answer": "Recursively and forcefully deletes all files and directories",
+          "explanation": {
+            "Safely removes files": "Incorrect. This command is dangerous and not safe.",
+            "Recursively and forcefully deletes all files and directories": "Correct. rm -rf / will delete everything forcefully.",
+            "Finds and removes all text files": "Incorrect. This command does not specifically target text files.",
+            "Restores deleted files": "Incorrect. rm does not restore files."
+          }
+        },
+        {
+          "number": 54,
+          "question": "Which command is used to view the first few lines of a file?",
+          "options": [
+            "head",
+            "tail",
+            "start",
+            "begin"
+          ],
+          "answer": "head",
+          "explanation": {
+            "head": "Correct. head shows the first lines of a file by default.",
+            "tail": "Incorrect. tail shows the last lines of a file.",
+            "start": "Incorrect. start is not a command for viewing file contents.",
+            "begin": "Incorrect. begin is not a command for viewing file contents."
+          }
+        },
+        {
+          "number": 55,
+          "question": "What is the function of the echo command?",
+          "options": [
+            "Displays a line of text or a variable value",
+            "Deletes a file",
+            "Copies files",
+            "Displays system information"
+          ],
+          "answer": "Displays a line of text or a variable value",
+          "explanation": {
+            "Displays a line of text or a variable value": "Correct. echo is used to display text or variable values.",
+            "Deletes a file": "Incorrect. rm is used for deleting files.",
+            "Copies files": "Incorrect. cp is used for copying files.",
+            "Displays system information": "Incorrect. echo does not display system information."
+          }
+        },
+        {
+          "number": 56,
+          "question": "Which command is used to display the current date and time?",
+          "options": [
+            "time",
+            "date",
+            "datetime",
+            "clock"
+          ],
+          "answer": "date",
+          "explanation": {
+            "time": "Incorrect. time is used to measure program execution time.",
+            "date": "Correct. date displays the current date and time.",
+            "datetime": "Incorrect. datetime is not a standard command.",
+            "clock": "Incorrect. clock is not a standard command for displaying date and time."
+          }
+        },
+        {
+          "number": 57,
+          "question": "What is the purpose of the chown command?",
+          "options": [
+            "Changes file ownership",
+            "Changes file permissions",
+            "Changes file timestamps",
+            "Changes file location"
+          ],
+          "answer": "Changes file ownership",
+          "explanation": {
+            "Changes file ownership": "Correct. chown is used to change file ownership.",
+            "Changes file permissions": "Incorrect. chmod is used for changing file permissions.",
+            "Changes file timestamps": "Incorrect. touch is used for changing file timestamps.",
+            "Changes file location": "Incorrect. mv is used to move files."
+          }
+        },
+        {
+          "number": 58,
+          "question": "What does the command 'ps aux' display?",
+          "options": [
+            "Lists all files in the current directory",
+            "Shows all system processes",
+            "Displays network connections",
+            "Finds all users"
+          ],
+          "answer": "Shows all system processes",
+          "explanation": {
+            "Lists all files in the current directory": "Incorrect. ls is used to list files.",
+            "Shows all system processes": "Correct. ps aux lists all processes.",
+            "Displays network connections": "Incorrect. netstat is used to display network connections.",
+            "Finds all users": "Incorrect. users or who can be used to find logged in users."
+          }
+        },
+        {
+          "number": 59,
+          "question": "Which command would you use to see the available disk space on mounted filesystems?",
+          "options": [
+            "du",
+            "df",
+            "diskutil",
+            "mount"
+          ],
+          "answer": "df",
+          "explanation": {
+            "du": "Incorrect. du is used to estimate file space usage.",
+            "df": "Correct. df shows available disk space on mounted filesystems.",
+            "diskutil": "Incorrect. diskutil is not a standard Linux command.",
+            "mount": "Incorrect. mount is used to mount filesystems."
+          }
+        },
+        {
+          "number": 60,
+          "question": "What is the purpose of the 'tar' command?",
+          "options": [
+            "Compresses files",
+            "Archives files",
+            "Deletes files",
+            "Renames files"
+          ],
+          "answer": "Archives files",
+          "explanation": {
+            "Compresses files": "Incorrect. tar is primarily used for archiving, not compression.",
+            "Archives files": "Correct. tar is used to archive files.",
+            "Deletes files": "Incorrect. rm is used to delete files.",
+            "Renames files": "Incorrect. mv is used to rename files."
+          }
+        },
+        {
+            "number": 61,
+            "question": "What is the primary purpose of the 'locate' command?",
+            "options": [
+              "To search for files in real-time",
+              "To quickly find files by name using a pre-built database",
+              "To display the path of executable files",
+              "To find the location of command source code"
+            ],
+            "answer": "To quickly find files by name using a pre-built database",
+            "explanation": {
+              "To search for files in real-time": "Incorrect. The 'find' command is used for real-time searching.",
+              "To quickly find files by name using a pre-built database": "Correct. 'locate' uses a database to quickly find files.",
+              "To display the path of executable files": "Incorrect. The 'which' command is used for this purpose.",
+              "To find the location of command source code": "Incorrect. The 'whereis' command is used for locating command source code."
+            }
+          },
+          {
+            "number": 62,
+            "question": "Which command would you use to search for files based on various criteria like size and modification date?",
+            "options": [
+              "locate",
+              "find",
+              "whereis",
+              "which"
+            ],
+            "answer": "find",
+            "explanation": {
+              "locate": "Incorrect. 'locate' only searches by name using a database.",
+              "find": "Correct. 'find' allows searching based on multiple criteria.",
+              "whereis": "Incorrect. 'whereis' is for finding command locations, not files.",
+              "which": "Incorrect. 'which' shows the path of executables, not files."
+            }
+          },
+          {
+            "number": 63,
+            "question": "When should you use the 'whereis' command?",
+            "options": [
+              "To find executables only",
+              "To locate command source code and manual pages",
+              "To search for files in real-time",
+              "To quickly find files by name"
+            ],
+            "answer": "To locate command source code and manual pages",
+            "explanation": {
+              "To find executables only": "Incorrect. 'which' is used to find executables.",
+              "To locate command source code and manual pages": "Correct. 'whereis' provides this information.",
+              "To search for files in real-time": "Incorrect. 'find' is the command for real-time searching.",
+              "To quickly find files by name": "Incorrect. 'locate' is used for quick searches."
+            }
+          },
+          {
+            "number": 64,
+            "question": "What is the main limitation of the 'locate' command?",
+            "options": [
+              "It is slower than other commands",
+              "It requires real-time searching capabilities",
+              "It may not find the most recent files due to an outdated database",
+              "It only finds source code locations"
+            ],
+            "answer": "It may not find the most recent files due to an outdated database",
+            "explanation": {
+              "It is slower than other commands": "Incorrect. 'locate' is typically faster than 'find'.",
+              "It requires real-time searching capabilities": "Incorrect. 'locate' relies on a pre-built database.",
+              "It may not find the most recent files due to an outdated database": "Correct. 'locate' can miss recent files.",
+              "It only finds source code locations": "Incorrect. 'whereis' is used for source code locations."
+            }
+          },
+          {
+            "number": 65,
+            "question": "Which command provides the path of the executable that would run if you typed the command name?",
+            "options": [
+              "locate",
+              "find",
+              "whereis",
+              "which"
+            ],
+            "answer": "which",
+            "explanation": {
+              "locate": "Incorrect. 'locate' finds files by name, not executables.",
+              "find": "Incorrect. 'find' searches for files based on various criteria.",
+              "whereis": "Incorrect. 'whereis' gives locations of commands and manual pages.",
+              "which": "Correct. 'which' shows the path to the executable."
+            }
+          },
+          {
+            "number": 66,
+            "question": "If you want to find a file named 'report.txt' that was modified in the last 24 hours, which command would you use?",
+            "options": [
+              "locate report.txt",
+              "find / -name report.txt -mtime -1",
+              "which report.txt",
+              "whereis report.txt"
+            ],
+            "answer": "find / -name report.txt -mtime -1",
+            "explanation": {
+              "locate report.txt": "Incorrect. 'locate' may not find the most recent files if the database is outdated.",
+              "find / -name report.txt -mtime -1": "Correct. This 'find' command searches for 'report.txt' modified in the last 24 hours.",
+              "which report.txt": "Incorrect. 'which' does not search for files, only executables.",
+              "whereis report.txt": "Incorrect. 'whereis' is used for commands, not arbitrary files."
+            }
+          },
+          {
+            "number": 67,
+            "question": "Which command would you use to find the location of the manual page for the 'ls' command?",
+            "options": [
+              "locate ls",
+              "find ls",
+              "whereis ls",
+              "which ls"
+            ],
+            "answer": "whereis ls",
+            "explanation": {
+              "locate ls": "Incorrect. 'locate' searches for files but does not provide specific manual page information.",
+              "find ls": "Incorrect. 'find' is not used for locating manual pages.",
+              "whereis ls": "Correct. 'whereis' provides information about the command and its manual page locations.",
+              "which ls": "Incorrect. 'which' shows the executable path, not the manual page."
+            }
+          },
+          {
+            "number": 68,
+            "question": "What type of search does the 'find' command perform?",
+            "options": [
+              "Database search",
+              "Real-time filesystem search",
+              "Manual page search",
+              "Executable search"
+            ],
+            "answer": "Real-time filesystem search",
+            "explanation": {
+              "Database search": "Incorrect. 'locate' uses a database for its searches.",
+              "Real-time filesystem search": "Correct. 'find' checks the filesystem in real-time.",
+              "Manual page search": "Incorrect. This is not the function of 'find'.",
+              "Executable search": "Incorrect. 'which' is used for locating executables."
+            }
+          },
+          {
+            "number": 69,
+            "question": "When should you choose to use 'which' over 'whereis'?",
+            "options": [
+              "When you want the location of a command's source code",
+              "When you want to find the executable path of a command",
+              "When you want to locate all files related to a command",
+              "When you need to search for files in real-time"
+            ],
+            "answer": "When you want to find the executable path of a command",
+            "explanation": {
+              "When you want the location of a command's source code": "Incorrect. Use 'whereis' for this purpose.",
+              "When you want to find the executable path of a command": "Correct. 'which' provides the path to the executable.",
+              "When you want to locate all files related to a command": "Incorrect. 'whereis' is suitable for this.",
+              "When you need to search for files in real-time": "Incorrect. Use 'find' for real-time searches."
+            }
+          },
+          {
+            "number": 70,
+            "question": "Which command would you use to quickly find files by name but might return outdated results?",
+            "options": [
+              "locate",
+              "find",
+              "whereis",
+              "which"
+            ],
+            "answer": "locate",
+            "explanation": {
+              "locate": "Correct. 'locate' quickly finds files by name but can return outdated results.",
+              "find": "Incorrect. 'find' searches in real-time for the most current files.",
+              "whereis": "Incorrect. 'whereis' is used to locate command files and manual pages.",
+              "which": "Incorrect. 'which' shows the path to executables, not file searches."
+            }
+          }        
+      ]
+    }
+  ]
+}

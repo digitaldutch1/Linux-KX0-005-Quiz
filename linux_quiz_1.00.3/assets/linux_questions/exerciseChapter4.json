@@ -1,0 +1,1259 @@
+
+
+
+{
+    "chapters": [
+      {
+        "chapter": 4,
+        "description": "Searchin and Analyzing text",
+        "questions": [
+          {
+            "number": 1,
+            "question": "What does the command grep daemon.*nologin /etc/passwd do?",
+            "options": [
+              "It searches for all lines containing 'daemon' or 'nologin'.",
+              "It searches for lines that contain 'daemon' followed by any characters and ending with 'nologin'.",
+              "It searches for lines that start with 'daemon' and end with 'nologin'.",
+              "It searches for lines that end with 'daemon' and contain 'nologin'."
+            ],
+            "answer": "It searches for lines that contain 'daemon' followed by any characters and ending with 'nologin'.",
+            "explanation": {
+              "It searches for all lines containing 'daemon' or 'nologin'.": "Incorrect. This is not the correct explanation of the regex; it searches for specific order.",
+              "It searches for lines that contain 'daemon' followed by any characters and ending with 'nologin'.": "Correct. This matches lines where 'daemon' is followed by any characters (.*) and ends with 'nologin'.",
+              "It searches for lines that start with 'daemon' and end with 'nologin'.": "Incorrect. It does not specifically look for lines starting with 'daemon' and ending with 'nologin'.",
+              "It searches for lines that end with 'daemon' and contain 'nologin'.": "Incorrect. This is the opposite of what is being searched and also not a correct order."
+            }
+          },
+          {
+            "number": 2,
+            "question": "What does the command grep -v nologin$ /etc/passwd do?",
+            "options": [
+              "It shows all lines that end with 'nologin'.",
+              "It shows all lines that do not end with 'nologin'.",
+              "It shows lines that end with 'nologin' and contain 'root'.",
+              "It shows lines that do not contain the text 'nologin'."
+            ],
+            "answer": "It shows all lines that do not end with 'nologin'.",
+            "explanation": {
+              "It shows all lines that end with 'nologin'.": "Incorrect. This actually shows lines that do not end with 'nologin'.",
+              "It shows all lines that do not end with 'nologin'.": "Correct. The -v option ensures that only lines not ending with 'nologin' are shown.",
+              "It shows lines that end with 'nologin' and contain 'root'.": "Incorrect. This command does not search for 'root' or 'nologin' together.",
+              "It shows lines that do not contain the text 'nologin'.": "Incorrect. It specifically looks for lines ending with 'nologin' and removes them with -v."
+            }
+          },
+          {
+            "number": 3,
+            "question": "What is the result of the command grep -E \"^root|^dbus\" /etc/passwd?",
+            "options": [
+              "It searches for lines that start with 'root' or 'dbus'.",
+              "It searches for lines that end with 'root' or 'dbus'.",
+              "It searches for lines that contain 'root' or 'dbus' regardless of their position.",
+              "It searches for lines that only start with 'root' and end with 'dbus'."
+            ],
+            "answer": "It searches for lines that start with 'root' or 'dbus'.",
+            "explanation": {
+              "It searches for lines that start with 'root' or 'dbus'.": "Correct. This uses ^ for the start of the line and the | operator.",
+              "It searches for lines that end with 'root' or 'dbus'.": "Incorrect. This command does not look for lines ending with 'root' or 'dbus'.",
+              "It searches for lines that contain 'root' or 'dbus' regardless of their position.": "Incorrect. This command only searches for lines that start with either 'root' or 'dbus'.",
+              "It searches for lines that only start with 'root' and end with 'dbus'.": "Incorrect. This is a misinterpretation of the command."
+            }
+          },
+          {
+            "number": 4,
+            "question": "What does the command grep ^root /etc/passwd do?",
+            "options": [
+              "It searches for all lines containing 'root'.",
+              "It searches for lines that start with 'root'.",
+              "It searches for lines that end with 'root'.",
+              "It searches for lines that do not contain 'root'."
+            ],
+            "answer": "It searches for lines that start with 'root'.",
+            "explanation": {
+              "It searches for all lines containing 'root'.": "Incorrect. This command specifically searches for lines that start with 'root'.",
+              "It searches for lines that start with 'root'.": "Correct. It looks for lines beginning with 'root' using the ^ symbol.",
+              "It searches for lines that end with 'root'.": "Incorrect. It does not search for lines ending with 'root'.",
+              "It searches for lines that do not contain 'root'.": "Incorrect. It actually looks for lines that do start with 'root'."
+            }
+          },
+          {
+            "number": 5,
+            "question": "What does the command egrep \"(daemon|s).*nologin\" /etc/passwd do?",
+            "options": [
+              "It searches for lines that start with 'daemon' or 's', followed by any characters and ending with 'nologin'.",
+              "It searches for lines that contain 'daemon' or 's' in any order.",
+              "It searches for lines that contain 'daemon' and 'nologin', but not necessarily in that order.",
+              "It searches for lines that start with 'daemon', followed by any characters and ending with 'nologin'."
+            ],
+            "answer": "It searches for lines that start with 'daemon' or 's', followed by any characters and ending with 'nologin'.",
+            "explanation": {
+              "It searches for lines that start with 'daemon' or 's', followed by any characters and ending with 'nologin'.": "Correct. This matches lines where 'daemon' or 's' is at the start, followed by any characters and ending with 'nologin'.",
+              "It searches for lines that contain 'daemon' or 's' in any order.": "Incorrect. The command looks for a specific order.",
+              "It searches for lines that contain 'daemon' and 'nologin', but not necessarily in that order.": "Incorrect. It looks for a specific pattern.",
+              "It searches for lines that start with 'daemon', followed by any characters and ending with 'nologin'.": "Incorrect. It also includes lines starting with 's'."
+            }
+          },
+          {
+            "number": 6,
+            "question": "What does the -v option do when using grep?",
+            "options": [
+              "It shows only the lines that match the pattern.",
+              "It shows all lines that do not match the pattern.",
+              "It shows only the lines that exactly match the pattern.",
+              "It shows the lines that match the pattern along with their line number."
+            ],
+            "answer": "It shows all lines that do not match the pattern.",
+            "explanation": {
+              "It shows only the lines that match the pattern.": "Incorrect. The -v option does the opposite.",
+              "It shows all lines that do not match the pattern.": "Correct. The -v option ensures that only non-matching lines are displayed.",
+              "It shows only the lines that exactly match the pattern.": "Incorrect. This is not what -v does.",
+              "It shows the lines that match the pattern along with their line number.": "Incorrect. This describes the behavior of grep without the -v option."
+            }
+          },
+          {
+            "number": 7,
+            "question": "What does the command grep -E \"^root|^admin\" /etc/passwd do?",
+            "options": [
+              "It searches for lines that start with 'root' or 'admin'.",
+              "It searches for lines that start with 'root' and end with 'admin'.",
+              "It searches for lines that contain 'root' or 'admin' anywhere in the text.",
+              "It searches for lines that start with 'admin' and end with 'root'."
+            ],
+            "answer": "It searches for lines that start with 'root' or 'admin'.",
+            "explanation": {
+              "It searches for lines that start with 'root' or 'admin'.": "Correct. This command uses ^ for the beginning of the line and | as an 'or' operator.",
+              "It searches for lines that start with 'root' and end with 'admin'.": "Incorrect. This command does not look for that specific combination.",
+              "It searches for lines that contain 'root' or 'admin' anywhere in the text.": "Incorrect. It only looks for lines that start with those terms.",
+              "It searches for lines that start with 'admin' and end with 'root'.": "Incorrect. This is not what the command does."
+            }
+          },
+          {
+            "number": 8,
+            "question": "What does the ^ mean in a regular expression like ^root in grep?",
+            "options": [
+              "It means that the line ends with 'root'.",
+              "It means that the line contains 'root' anywhere.",
+              "It means that the line starts with 'root'.",
+              "It means that the line exactly matches 'root'."
+            ],
+            "answer": "It means that the line starts with 'root'.",
+            "explanation": {
+              "It means that the line ends with 'root'.": "Incorrect. ^ indicates the start of the line, not the end.",
+              "It means that the line contains 'root' anywhere.": "Incorrect. ^ specifically indicates the start.",
+              "It means that the line starts with 'root'.": "Correct. ^ indicates the beginning of the line.",
+              "It means that the line exactly matches 'root'.": "Incorrect. This would mean an exact match, not just starting."
+            }
+          },
+          {
+            "number": 9,
+            "question": "What does the command grep -E \"(daemon|s).*nologin\" /etc/passwd do?",
+            "options": [
+              "It searches for lines that start with 'daemon' or 's' and end with 'nologin'.",
+              "It searches for lines containing the pattern 'daemon' or 's', followed by any characters and ending with 'nologin'.",
+              "It searches for lines that start with 'daemon' and end with 'nologin', or with 's' and end with 'nologin'.",
+              "It searches for lines that start with 'daemon' or 's', followed by any characters, but not ending with 'nologin'."
+            ],
+            "answer": "It searches for lines containing the pattern 'daemon' or 's', followed by any characters and ending with 'nologin'.",
+            "explanation": {
+              "It searches for lines that start with 'daemon' or 's' and end with 'nologin'.": "Incorrect. It does not restrict to starting characters.",
+              "It searches for lines containing the pattern 'daemon' or 's', followed by any characters and ending with 'nologin'.": "Correct. This matches lines where 'daemon' or 's' is at the start, followed by any characters and ending with 'nologin'.",
+              "It searches for lines that start with 'daemon' and end with 'nologin', or with 's' and end with 'nologin'.": "Incorrect. It's looking for either pattern, not both at once.",
+              "It searches for lines that start with 'daemon' or 's', followed by any characters, but not ending with 'nologin'.": "Incorrect. It searches for lines ending with 'nologin'."
+            }
+          },
+          {
+            "number": 10,
+            "question": "What does the $ mean in a regular expression like nologin$ in grep?",
+            "options": [
+              "It means that the line starts with 'nologin'.",
+              "It means that the line ends with 'nologin'.",
+              "It means that the line exactly matches 'nologin'.",
+              "It means that 'nologin' is part of the line."
+            ],
+            "answer": "It means that the line ends with 'nologin'.",
+            "explanation": {
+              "It means that the line starts with 'nologin'.": "Incorrect. $ indicates the end of the line, not the start.",
+              "It means that the line ends with 'nologin'.": "Correct. $ signifies the end of the line.",
+              "It means that the line exactly matches 'nologin'.": "Incorrect. This would suggest the line is exactly 'nologin', not just ending with it.",
+              "It means that 'nologin' is part of the line.": "Incorrect. While 'nologin' can be part of the line, $ specifies its position."
+            }
+          },
+          {
+            "number": 11,
+            "question": "What does the 'sort' command do?",
+            "options": [
+              "It alters the content of a file.",
+              "It sorts the data in a file without changing the original file.",
+              "It deletes duplicate lines from a file.",
+              "It combines multiple files into one."
+            ],
+            "answer": "It sorts the data in a file without changing the original file.",
+            "explanation": {
+              "It alters the content of a file.": "Incorrect. The 'sort' command does not change the original file content.",
+              "It sorts the data in a file without changing the original file.": "Correct. The 'sort' command sorts the output without modifying the input file.",
+              "It deletes duplicate lines from a file.": "Incorrect. 'uniq' is used to remove duplicate lines.",
+              "It combines multiple files into one.": "Incorrect. 'cat' is used to concatenate files."
+            }
+          },
+          {
+            "number": 12,
+            "question": "How do you sort a file numerically using the sort command?",
+            "options": [
+              "sort -n filename",
+              "sort filename -n",
+              "sort --numeric-sort filename",
+              "sort -n --file filename"
+            ],
+            "answer": "sort -n filename",
+            "explanation": {
+              "sort -n filename": "Correct. The '-n' option sorts the file numerically.",
+              "sort filename -n": "Incorrect. The order of options is incorrect; '-n' should precede the filename.",
+              "sort --numeric-sort filename": "Incorrect. While technically correct, the short option '-n' is more common.",
+              "sort -n --file filename": "Incorrect. The correct syntax does not include '--file'."
+            }
+          },
+          {
+            "number": 13,
+            "question": "What does the 'cut -d ':' -f 1,3 /etc/passwd' command do?",
+            "options": [
+              "Displays the first and third fields of the /etc/passwd file, using ':' as a delimiter.",
+              "Cuts out the first and third characters from the /etc/passwd file.",
+              "Displays only the first line of the /etc/passwd file.",
+              "Removes the first and third lines from the /etc/passwd file."
+            ],
+            "answer": "Displays the first and third fields of the /etc/passwd file, using ':' as a delimiter.",
+            "explanation": {
+              "Displays the first and third fields of the /etc/passwd file, using ':' as a delimiter.": "Correct. This command extracts specified fields based on the delimiter.",
+              "Cuts out the first and third characters from the /etc/passwd file.": "Incorrect. The '-c' option is used for character positions, not '-f'.",
+              "Displays only the first line of the /etc/passwd file.": "Incorrect. The command does not limit the output to the first line.",
+              "Removes the first and third lines from the /etc/passwd file.": "Incorrect. 'cut' does not remove lines; it extracts data."
+            }
+          },
+          {
+            "number": 14,
+            "question": "Which option can you use with the sort command to check if a file is already sorted?",
+            "options": [
+              "-n",
+              "-c",
+              "-r",
+              "-o"
+            ],
+            "answer": "-c",
+            "explanation": {
+              "-n": "Incorrect. The '-n' option is for numeric sorting.",
+              "-c": "Correct. The '-c' option checks if the file is already sorted.",
+              "-r": "Incorrect. The '-r' option reverses the sort order.",
+              "-o": "Incorrect. The '-o' option specifies an output file."
+            }
+          },
+          {
+            "number": 15,
+            "question": "What does the command 'cat -n file.txt' do?",
+            "options": [
+              "It displays the contents of file.txt without numbering.",
+              "It numbers all lines in the file and displays them.",
+              "It combines multiple files into one.",
+              "It displays non-printing characters."
+            ],
+            "answer": "It numbers all lines in the file and displays them.",
+            "explanation": {
+              "It displays the contents of file.txt without numbering.": "Incorrect. The '-n' option numbers the lines.",
+              "It numbers all lines in the file and displays them.": "Correct. The '-n' option numbers each line of output.",
+              "It combines multiple files into one.": "Incorrect. 'cat' can concatenate files, but this command specifically numbers lines.",
+              "It displays non-printing characters.": "Incorrect. The '-v' option is used for non-printing characters, not '-n'."
+            }
+          },
+          {
+            "number": 16,
+            "question": "Which command would you use to display non-printing characters in a text file?",
+            "options": [
+              "cat -n",
+              "cat -v",
+              "cut -d ' '",
+              "sort -n"
+            ],
+            "answer": "cat -v",
+            "explanation": {
+              "cat -n": "Incorrect. The '-n' option numbers lines, not displays non-printing characters.",
+              "cat -v": "Correct. The '-v' option displays non-printing characters.",
+              "cut -d ' '": "Incorrect. 'cut' is used for extracting fields, not for displaying non-printing characters.",
+              "sort -n": "Incorrect. The '-n' option in 'sort' is for numeric sorting."
+            }
+          },
+          {
+            "number": 17,
+            "question": "What does the 'sort -r' command do?",
+            "options": [
+              "Sorts lines in ascending order.",
+              "Sorts lines in descending order.",
+              "Removes duplicate lines from the output.",
+              "Checks if the file is already sorted."
+            ],
+            "answer": "Sorts lines in descending order.",
+            "explanation": {
+              "Sorts lines in ascending order.": "Incorrect. The '-r' option reverses the sort order.",
+              "Sorts lines in descending order.": "Correct. The '-r' option sorts the output in reverse order.",
+              "Removes duplicate lines from the output.": "Incorrect. This is done with the 'uniq' command.",
+              "Checks if the file is already sorted.": "Incorrect. The '-c' option is for checking sorted status."
+            }
+          },
+          {
+            "number": 18,
+            "question": "Which delimiter does the cut command use by default?",
+            "options": [
+              "Colon (:)",
+              "Comma (,)",
+              "Space ( )",
+              "Tab character (\\t)"
+            ],
+            "answer": "Tab character (\\t)",
+            "explanation": {
+              "Colon (:):": "Incorrect. The default delimiter is not a colon.",
+              "Comma (,):": "Incorrect. The default delimiter is not a comma.",
+              "Space ( ):": "Incorrect. While space can be a delimiter, the default is a tab character.",
+              "Tab character (\\t)": "Correct. The default delimiter for the cut command is the tab character."
+            }
+          },
+          {
+            "number": 19,
+            "question": "What does the command 'sort -k 2,2 -n' do?",
+            "options": [
+              "Sorts the file based on the second field in ascending numeric order.",
+              "Sorts the file based on the second field in descending order.",
+              "Sorts the file based on the second character of each line.",
+              "Sorts the entire file alphabetically."
+            ],
+            "answer": "Sorts the file based on the second field in ascending numeric order.",
+            "explanation": {
+              "Sorts the file based on the second field in ascending numeric order.": "Correct. The -k option specifies the second field, and -n indicates numeric sorting.",
+              "Sorts the file based on the second field in descending order.": "Incorrect. The command does not include the -r option for reverse sorting.",
+              "Sorts the file based on the second character of each line.": "Incorrect. The -k option specifies fields, not characters.",
+              "Sorts the entire file alphabetically.": "Incorrect. This command specifies numeric sorting on a specific field."
+            }
+          },
+          {
+            "number": 20,
+            "question": "How does the 'cut -s' option function?",
+            "options": [
+              "Displays all input records.",
+              "Displays only records containing the delimiter.",
+              "Displays only the first field.",
+              "Removes empty lines."
+            ],
+            "answer": "Displays only records containing the delimiter.",
+            "explanation": {
+              "Displays all input records.": "Incorrect. The -s option does not display all records.",
+              "Displays only records containing the delimiter.": "Correct. The -s option only shows records that include the specified delimiter.",
+              "Displays only the first field.": "Incorrect. This is not the function of the -s option.",
+              "Removes empty lines.": "Incorrect. The -s option does not remove lines."
+            }
+          },
+          {
+            "number": 21,
+            "question": "What does the command 'cat -s' do?",
+            "options": [
+              "Squeezes blank lines, removing repeated blank lines.",
+              "Displays all lines in a file with line numbers.",
+              "Shows non-printing characters.",
+              "Displays the last line of a file."
+            ],
+            "answer": "Squeezes blank lines, removing repeated blank lines.",
+            "explanation": {
+              "Squeezes blank lines, removing repeated blank lines.": "Correct. The -s option reduces multiple blank lines to a single blank line.",
+              "Displays all lines in a file with line numbers.": "Incorrect. This is done with the -n option.",
+              "Shows non-printing characters.": "Incorrect. The -v option is used for that purpose.",
+              "Displays the last line of a file.": "Incorrect. 'cat' does not have an option to specifically show only the last line."
+            }
+          },
+          {
+            "number": 22,
+            "question": "Which command would you use to create a new sorted file named 'sorted.txt' from 'unsorted.txt'?",
+            "options": [
+              "sort -o sorted.txt unsorted.txt",
+              "sort unsorted.txt -o sorted.txt",
+              "sort --output=sorted.txt unsorted.txt",
+              "All the other choices"
+            ],
+            "answer": "All of the above",
+            "explanation": {
+              "sort -o sorted.txt unsorted.txt": "Correct. This syntax specifies the output file directly.",
+              "sort unsorted.txt -o sorted.txt": "Correct. This is another valid syntax for the command.",
+              "sort --output=sorted.txt unsorted.txt": "Correct. This is a long-form option that also works.",
+              "All of the above": "Correct. All provided commands successfully create 'sorted.txt' from 'unsorted.txt'."
+            }
+          },
+          {
+            "number": 23,
+            "question": "What does the command 'cut -b 1-5' do?",
+            "options": [
+              "Displays only the first five bytes of each record.",
+              "Displays characters 1 to 5 from each record.",
+              "Displays the first five fields of each record.",
+              "Cuts out the first five lines from the file."
+            ],
+            "answer": "Displays only the first five bytes of each record.",
+            "explanation": {
+              "Displays only the first five bytes of each record.": "Correct. The -b option specifies byte positions.",
+              "Displays characters 1 to 5 from each record.": "Incorrect. The -c option is used for character positions.",
+              "Displays the first five fields of each record.": "Incorrect. The -f option is used for fields.",
+              "Cuts out the first five lines from the file.": "Incorrect. 'cut' does not remove lines."
+            }
+          },
+          {
+            "number": 24,
+            "question": "What does the command 'sort -M' do?",
+            "options": [
+              "Sorts lines in month order.",
+              "Sorts lines in reverse order.",
+              "Sorts lines numerically.",
+              "Sorts lines alphabetically."
+            ],
+            "answer": "Sorts lines in month order.",
+            "explanation": {
+              "Sorts lines in month order.": "Correct. The -M option sorts lines by month names.",
+              "Sorts lines in reverse order.": "Incorrect. The -r option is for reverse sorting.",
+              "Sorts lines numerically.": "Incorrect. The -n option is used for numeric sorting.",
+              "Sorts lines alphabetically.": "Incorrect. This is the default behavior without options."
+            }
+          },
+          {
+            "number": 25,
+            "question": "What will happen if you use 'cut -d ':' -f 1,2 file.txt' on a file with no ':' delimiter?",
+            "options": [
+              "It will display the entire content of the file.",
+              "It will return an error.",
+              "It will display nothing.",
+              "It will display the first field only."
+            ],
+            "answer": "It will display nothing.",
+            "explanation": {
+              "It will display the entire content of the file.": "Incorrect. The command specifies fields based on a delimiter.",
+              "It will return an error.": "Incorrect. It does not cause an error but produces no output.",
+              "It will display nothing.": "Correct. If no delimiter is found, no fields are displayed.",
+              "It will display the first field only.": "Incorrect. The command will not find any fields to display."
+            }
+          },
+          {
+            "number": 26,
+            "question": "Which command would you use to sort a file and save the sorted output into a new file without modifying the original?",
+            "options": [
+              "sort -o newfile.txt oldfile.txt",
+              "sort oldfile.txt -o newfile.txt",
+              "sort --output=newfile.txt oldfile.txt",
+              "All of the above"
+            ],
+            "answer": "All of the above",
+            "explanation": {
+              "sort -o newfile.txt oldfile.txt": "Correct. This syntax specifies the output file directly.",
+              "sort oldfile.txt -o newfile.txt": "Correct. This is another valid syntax for the command.",
+              "sort --output=newfile.txt oldfile.txt": "Correct. This is a long-form option that also works.",
+              "All of the above": "Correct. All provided commands successfully create a new sorted file."
+            }
+          },
+          {
+            "number": 27,
+            "question": "What does the '>' operator do in Linux?",
+            "options": [
+              "It appends output to a file.",
+              "It redirects STDOUT to a file, overwriting it.",
+              "It displays the content of a file.",
+              "It sends STDERR to a file."
+            ],
+            "answer": "It redirects STDOUT to a file, overwriting it.",
+            "explanation": {
+              "It appends output to a file.": "Incorrect. The '>>' operator is used for appending output.",
+              "It redirects STDOUT to a file, overwriting it.": "Correct. The '>' operator sends STDOUT to a specified file, replacing its contents.",
+              "It displays the content of a file.": "Incorrect. The 'cat' command is used to display file contents.",
+              "It sends STDERR to a file.": "Incorrect. STDERR redirection uses '2>'."
+            }
+          },
+          {
+            "number": 28,
+            "question": "What happens if you use the '>' operator on an existing file?",
+            "options": [
+              "The file's content is preserved.",
+              "The file is deleted.",
+              "The file's content is overwritten.",
+              "An error occurs."
+            ],
+            "answer": "The file's content is overwritten.",
+            "explanation": {
+              "The file's content is preserved.": "Incorrect. The existing content of the file is not preserved when using '>'.",
+              "The file is deleted.": "Incorrect. The file remains; its contents are overwritten.",
+              "The file's content is overwritten.": "Correct. Using '>' replaces the content of the file with new output.",
+              "An error occurs.": "Incorrect. No error occurs unless there are permissions issues."
+            }
+          },
+          {
+            "number": 29,
+            "question": "How can you append output to an existing file?",
+            "options": [
+              "Using the > operator",
+              "Using the >> operator",
+              "Using the 2> operator",
+              "Using the >! operator"
+            ],
+            "answer": "Using the >> operator",
+            "explanation": {
+              "Using the > operator": "Incorrect. The '>' operator overwrites the file.",
+              "Using the >> operator": "Correct. The '>>' operator appends output to an existing file.",
+              "Using the 2> operator": "Incorrect. The '2>' operator is for redirecting STDERR.",
+              "Using the >! operator": "Incorrect. This is not a valid redirection operator."
+            }
+          },
+          {
+            "number": 30,
+            "question": "What does the '2>' operator do?",
+            "options": [
+              "Redirects STDOUT to a file.",
+              "Redirects STDERR to a file.",
+              "Appends STDERR to a file.",
+              "Redirects both STDOUT and STDERR to a file."
+            ],
+            "answer": "Redirects STDERR to a file.",
+            "explanation": {
+              "Redirects STDOUT to a file.": "Incorrect. The '>' operator is used for STDOUT redirection.",
+              "Redirects STDERR to a file.": "Correct. The '2>' operator specifically redirects standard error.",
+              "Appends STDERR to a file.": "Incorrect. The operator for appending STDERR is '2>>'.",
+              "Redirects both STDOUT and STDERR to a file.": "Incorrect. To redirect both, you use '&>'."
+            }
+          },
+          {
+            "number": 31,
+            "question": "How can you redirect both STDOUT and STDERR to the same file?",
+            "options": [
+              "Using >",
+              "Using 2>",
+              "Using &>",
+              "Using >2"
+            ],
+            "answer": "Using &>",
+            "explanation": {
+              "Using >": "Incorrect. This only redirects STDOUT.",
+              "Using 2>": "Incorrect. This only redirects STDERR.",
+              "Using &>": "Correct. The '&>' operator redirects both STDOUT and STDERR to the same file.",
+              "Using >2": "Incorrect. This is not a valid operator."
+            }
+          },
+          {
+            "number": 32,
+            "question": "What is the purpose of redirecting STDERR to /dev/null?",
+            "options": [
+              "To store error messages temporarily.",
+              "To ignore error messages.",
+              "To display error messages on the screen.",
+              "To save error messages in a file."
+            ],
+            "answer": "To ignore error messages.",
+            "explanation": {
+              "To store error messages temporarily.": "Incorrect. /dev/null is not a storage location.",
+              "To ignore error messages.": "Correct. Redirecting to /dev/null discards any error messages.",
+              "To display error messages on the screen.": "Incorrect. Redirecting to /dev/null suppresses output.",
+              "To save error messages in a file.": "Incorrect. STDERR would not be saved in /dev/null."
+            }
+          },
+          {
+            "number": 33,
+            "question": "What does the command 'tr \" \" \",\" < Grades.txt' do?",
+            "options": [
+              "Replaces spaces with commas in the file Grades.txt.",
+              "Removes all spaces from the file Grades.txt.",
+              "Counts the number of spaces in the file Grades.txt.",
+              "Displays the content of Grades.txt without spaces."
+            ],
+            "answer": "Replaces spaces with commas in the file Grades.txt.",
+            "explanation": {
+              "Replaces spaces with commas in the file Grades.txt.": "Correct. The 'tr' command translates spaces into commas.",
+              "Removes all spaces from the file Grades.txt.": "Incorrect. This command does not remove spaces.",
+              "Counts the number of spaces in the file Grades.txt.": "Incorrect. The 'tr' command does not count characters.",
+              "Displays the content of Grades.txt without spaces.": "Incorrect. It does not display the file; it transforms the input."
+            }
+          },
+          {
+            "number": 34,
+            "question": "What is the default file descriptor for STDIN?",
+            "options": [
+              "0",
+              "1",
+              "2",
+              "3"
+            ],
+            "answer": "0",
+            "explanation": {
+              "0": "Correct. The default file descriptor for standard input is 0.",
+              "1": "Incorrect. 1 is the file descriptor for STDOUT.",
+              "2": "Incorrect. 2 is the file descriptor for STDERR.",
+              "3": "Incorrect. 3 is not a standard file descriptor."
+            }
+          },
+          {
+            "number": 35,
+            "question": "What does the command 'wc -l < file.txt' do?",
+            "options": [
+              "Counts the number of lines in file.txt.",
+              "Displays the content of file.txt.",
+              "Writes the content of file.txt to standard output.",
+              "Creates a new file called file.txt."
+            ],
+            "answer": "Counts the number of lines in file.txt.",
+            "explanation": {
+              "Counts the number of lines in file.txt.": "Correct. The 'wc -l' command counts lines in the input file.",
+              "Displays the content of file.txt.": "Incorrect. 'wc' does not display content but counts lines.",
+              "Writes the content of file.txt to standard output.": "Incorrect. This command counts, it does not write content.",
+              "Creates a new file called file.txt.": "Incorrect. This command does not create files."
+            }
+          },
+          {
+            "number": 36,
+            "question": "What will happen if you run 'echo test > test.txt' multiple times?",
+            "options": [
+              "The file test.txt will contain multiple 'test' lines.",
+              "The file test.txt will contain only the last 'test'.",
+              "An error will occur.",
+              "The command will not execute."
+            ],
+            "answer": "The file test.txt will contain only the last 'test'.",
+            "explanation": {
+              "The file test.txt will contain multiple 'test' lines.": "Incorrect. Using '>' overwrites the file each time.",
+              "The file test.txt will contain only the last 'test'.": "Correct. Each execution replaces the content of test.txt.",
+              "An error will occur.": "Incorrect. No error occurs; the command executes successfully.",
+              "The command will not execute.": "Incorrect. The command executes and modifies the file."
+            }
+          },
+          {
+            "number": 37,
+            "question": "If you want to redirect both STDOUT and STDERR to a file named 'output.txt', which command would you use?",
+            "options": [
+              "command > output.txt 2>&1",
+              "command 2> output.txt >",
+              "command > output.txt &>",
+              "command 2>> output.txt"
+            ],
+            "answer": "command > output.txt 2>&1",
+            "explanation": {
+              "command > output.txt 2>&1": "Correct. This redirects both STDOUT and STDERR to 'output.txt'.",
+              "command 2> output.txt >": "Incorrect. This command does not redirect STDOUT and STDERR correctly.",
+              "command > output.txt &>": "Incorrect. This syntax is not valid for redirection.",
+              "command 2>> output.txt": "Incorrect. This only appends STDERR to 'output.txt' and does not redirect STDOUT."
+            }
+          },
+          {
+            "number": 38,
+            "question": "What does the pipe operator (|) do in Linux?",
+            "options": [
+              "It redirects STDOUT to a file.",
+              "It combines multiple commands by redirecting STDOUT of one command to STDIN of another.",
+              "It displays the content of a file.",
+              "It appends output to a file."
+            ],
+            "answer": "It combines multiple commands by redirecting STDOUT of one command to STDIN of another.",
+            "explanation": {
+              "It redirects STDOUT to a file.": "Incorrect. This is done with the '>' operator.",
+              "It combines multiple commands by redirecting STDOUT of one command to STDIN of another.": "Correct. The pipe allows chaining commands together.",
+              "It displays the content of a file.": "Incorrect. The 'cat' command is used to display file contents.",
+              "It appends output to a file.": "Incorrect. The '>>' operator is used for appending output."
+            }
+          },
+          {
+            "number": 39,
+            "question": "What does the command 'grep /bin/bash$ /etc/passwd | wc -l' do?",
+            "options": [
+              "Counts the number of lines in /etc/passwd.",
+              "Counts the number of user accounts that use Bash as their default shell.",
+              "Lists all user accounts in /etc/passwd.",
+              "Displays the total number of users."
+            ],
+            "answer": "Counts the number of user accounts that use Bash as their default shell.",
+            "explanation": {
+              "Counts the number of lines in /etc/passwd.": "Incorrect. This command only counts matching lines, not all lines.",
+              "Counts the number of user accounts that use Bash as their default shell.": "Correct. It finds and counts users with /bin/bash.",
+              "Lists all user accounts in /etc/passwd.": "Incorrect. It does not list all accounts; it filters for those ending with /bin/bash.",
+              "Displays the total number of users.": "Incorrect. It only counts specific users."
+            }
+          },
+          {
+            "number": 40,
+            "question": "What is the purpose of the 'tee' command?",
+            "options": [
+              "It counts the number of lines in a file.",
+              "It displays output and saves it to a file simultaneously.",
+              "It sorts the output of another command.",
+              "It removes duplicates from the output."
+            ],
+            "answer": "It displays output and saves it to a file simultaneously.",
+            "explanation": {
+              "It counts the number of lines in a file.": "Incorrect. 'wc -l' is used for counting lines.",
+              "It displays output and saves it to a file simultaneously.": "Correct. The 'tee' command pipes output to both STDOUT and a file.",
+              "It sorts the output of another command.": "Incorrect. 'sort' is used for sorting.",
+              "It removes duplicates from the output.": "Incorrect. 'uniq' is the command for removing duplicates."
+            }
+          },
+          {
+            "number": 41,
+            "question": "How do you format a string with the printf command?",
+            "options": [
+              "printf -f \"string\"",
+              "printf \"%s\" \"string\"",
+              "printf \"string\"",
+              "printf \"\"\"string\"\""
+            ],
+            "answer": "printf \"%s\" \"string\"",
+            "explanation": {
+              "printf -f \"string\"": "Incorrect. This is not the correct syntax for the printf command.",
+              "printf \"%s\" \"string\"": "Correct. This formats and prints the string correctly.",
+              "printf \"string\"": "Incorrect. This does not specify the format.",
+              "printf \"\"\"string\"\"": "Incorrect. This is not valid syntax."
+            }
+          },
+          {
+            "number": 42,
+            "question": "What does the format specifier %.2f do in printf?",
+            "options": [
+              "Formats a decimal number with two digits after the decimal point.",
+              "Displays a floating-point number without formatting.",
+              "Displays a string.",
+              "Formats an integer."
+            ],
+            "answer": "Formats a decimal number with two digits after the decimal point.",
+            "explanation": {
+              "Formats a decimal number with two digits after the decimal point.": "Correct. %.2f specifies two decimal places.",
+              "Displays a floating-point number without formatting.": "Incorrect. %.2f formats the number, not displays it without formatting.",
+              "Displays a string.": "Incorrect. %s is used for strings, not %.2f.",
+              "Formats an integer.": "Incorrect. %d is the correct format for integers."
+            }
+          },
+          {
+            "number": 43,
+            "question": "What will the command 'printf \"%d\n\" 123' output?",
+            "options": [
+              "123",
+              "123\n",
+              "123\n123",
+              "It will result in an error."
+            ],
+            "answer": "123",
+            "explanation": {
+              "123": "Correct. This command prints the integer 123 followed by a newline.",
+              "123\n": "Incorrect. The output does not show the escape sequence explicitly.",
+              "123\n123": "Incorrect. This command does not print 123 twice.",
+              "It will result in an error.": "Incorrect. This command executes correctly."
+            }
+          },
+          {
+            "number": 44,
+            "question": "How can you pass output from a command to xargs?",
+            "options": [
+              "command | xargs",
+              "xargs < command",
+              "command > xargs",
+              "xargs command"
+            ],
+            "answer": "command | xargs",
+            "explanation": {
+              "command | xargs": "Correct. The pipe operator sends output to xargs.",
+              "xargs < command": "Incorrect. This is not the correct way to pass output.",
+              "command > xargs": "Incorrect. This syntax does not redirect output correctly.",
+              "xargs command": "Incorrect. This does not demonstrate passing output."
+            }
+          },
+          {
+            "number": 45,
+            "question": "What does the command 'find tmp -size 0 | xargs /usr/bin/rm' do?",
+            "options": [
+              "Finds and lists empty files in the tmp directory.",
+              "Deletes empty files in the tmp directory.",
+              "Finds and moves empty files to another directory.",
+              "Displays empty files without deleting them."
+            ],
+            "answer": "Deletes empty files in the tmp directory.",
+            "explanation": {
+              "Finds and lists empty files in the tmp directory.": "Incorrect. The command deletes files, not just lists them.",
+              "Deletes empty files in the tmp directory.": "Correct. This command deletes all empty files found in tmp.",
+              "Finds and moves empty files to another directory.": "Incorrect. This command does not move files.",
+              "Displays empty files without deleting them.": "Incorrect. The command performs deletion."
+            }
+          },
+          {
+            "number": 46,
+            "question": "What does the command 'ls $(find tmp -size 0)' do?",
+            "options": [
+              "Lists files found in tmp that are empty.",
+              "Finds empty files and displays their names.",
+              "Deletes empty files in tmp.",
+              "Displays only the first empty file found."
+            ],
+            "answer": "Lists files found in tmp that are empty.",
+            "explanation": {
+              "Lists files found in tmp that are empty.": "Correct. The command lists files returned by the find command.",
+              "Finds empty files and displays their names.": "Incorrect. It lists empty files but does not just find them.",
+              "Deletes empty files in tmp.": "Incorrect. The command does not perform deletion.",
+              "Displays only the first empty file found.": "Incorrect. It lists all empty files found by the find command."
+            }
+          },
+          {
+            "number": 47,
+            "question": "What is a here document in Linux?",
+            "options": [
+              "A method for passing multiple lines of input to commands.",
+              "A way to redirect output to a file.",
+              "A command that creates temporary files.",
+              "A method for executing multiple commands at once."
+            ],
+            "answer": "A method for passing multiple lines of input to commands.",
+            "explanation": {
+              "A method for passing multiple lines of input to commands.": "Correct. Here documents allow multi-line input for commands.",
+              "A way to redirect output to a file.": "Incorrect. Redirecting output uses different operators.",
+              "A command that creates temporary files.": "Incorrect. Here documents do not create files.",
+              "A method for executing multiple commands at once.": "Incorrect. Here documents provide input, not command execution."
+            }
+          },
+          {
+            "number": 48,
+            "question": "What is the primary use of the 'xargs' command?",
+            "options": [
+              "To format output in a specific way.",
+              "To build command-line commands from STDOUT.",
+              "To manipulate text within files.",
+              "To perform calculations on data."
+            ],
+            "answer": "To build command-line commands from STDOUT.",
+            "explanation": {
+              "To format output in a specific way.": "Incorrect. 'printf' is used for formatting output.",
+              "To build command-line commands from STDOUT.": "Correct. 'xargs' constructs command-line commands using input from STDOUT.",
+              "To manipulate text within files.": "Incorrect. This is primarily the role of 'sed' and 'gawk'.",
+              "To perform calculations on data.": "Incorrect. 'gawk' is used for calculations and complex data manipulation."
+            }
+          },
+          {
+            "number": 49,
+            "question": "When should you use 'sed'?",
+            "options": [
+              "For formatting output.",
+              "For performing complex data analysis.",
+              "For simple text replacements and manipulations.",
+              "For constructing command-line commands."
+            ],
+            "answer": "For simple text replacements and manipulations.",
+            "explanation": {
+              "For formatting output.": "Incorrect. 'printf' is used for formatting output.",
+              "For performing complex data analysis.": "Incorrect. 'gawk' is more suited for complex analyses.",
+              "For simple text replacements and manipulations.": "Correct. 'sed' excels at simple text modifications.",
+              "For constructing command-line commands.": "Incorrect. 'xargs' is used for constructing commands."
+            }
+          },
+          {
+            "number": 50,
+            "question": "What is the function of the 'gawk' command?",
+            "options": [
+              "To format strings and numbers.",
+              "To perform complex text manipulations and analyses.",
+              "To edit files directly.",
+              "To execute commands based on input."
+            ],
+            "answer": "To perform complex text manipulations and analyses.",
+            "explanation": {
+              "To format strings and numbers.": "Incorrect. While 'gawk' can format output, its primary role is manipulation and analysis.",
+              "To perform complex text manipulations and analyses.": "Correct. 'gawk' is designed for complex data processing.",
+              "To edit files directly.": "Incorrect. 'sed' is the command used for editing text in files.",
+              "To execute commands based on input.": "Incorrect. 'xargs' is used for executing commands based on input."
+            }
+          },
+          {
+            "number": 51,
+            "question": "Which command would you use for pattern matching and substitution in a text stream?",
+            "options": [
+              "xargs",
+              "sed",
+              "gawk",
+              "printf"
+            ],
+            "answer": "sed",
+            "explanation": {
+              "xargs": "Incorrect. 'xargs' is for constructing commands, not for pattern matching.",
+              "sed": "Correct. 'sed' is a stream editor used for pattern matching and substitution.",
+              "gawk": "Incorrect. While 'gawk' can match patterns, it is primarily for data manipulation.",
+              "printf": "Incorrect. 'printf' formats output, but does not perform pattern matching."
+            }
+          },
+          {
+            "number": 52,
+            "question": "What does the command 'sed 's/old/new/g' file.txt' accomplish?",
+            "options": [
+              "It replaces only the first occurrence of 'old' with 'new'.",
+              "It replaces all occurrences of 'old' with 'new' in 'file.txt'.",
+              "It removes all occurrences of 'old' from 'file.txt'.",
+              "It appends 'new' at the end of each line in 'file.txt'."
+            ],
+            "answer": "It replaces all occurrences of 'old' with 'new' in 'file.txt'.",
+            "explanation": {
+              "It replaces only the first occurrence of 'old' with 'new'.": "Incorrect. The 'g' at the end indicates a global replacement.",
+              "It replaces all occurrences of 'old' with 'new' in 'file.txt'.": "Correct. This command substitutes every instance of 'old' with 'new'.",
+              "It removes all occurrences of 'old' from 'file.txt'.": "Incorrect. This command replaces 'old', it does not remove it.",
+              "It appends 'new' at the end of each line in 'file.txt'.": "Incorrect. The command replaces text, not appends it."
+            }
+          },
+          {
+            "number": 53,
+            "question": "What is the syntax for using 'gawk' to print the first field of a text line?",
+            "options": [
+              "gawk '{print $1}'",
+              "gawk -f '{print $1}'",
+              "gawk '{print 1}'",
+              "gawk '{print $0}'"
+            ],
+            "answer": "gawk '{print $1}'",
+            "explanation": {
+              "gawk '{print $1}'": "Correct. This prints the first field of the input text.",
+              "gawk -f '{print $1}'": "Incorrect. The '-f' option is used for specifying a script file, not inline command.",
+              "gawk '{print 1}'": "Incorrect. This command prints the literal number 1, not the first field.",
+              "gawk '{print $0}'": "Incorrect. This prints the entire line, not just the first field."
+            }
+          },
+          {
+            "number": 54,
+            "question": "What does the '$0' variable represent in 'gawk'?",
+            "options": [
+              "The first field of the input.",
+              "The second field of the input.",
+              "The entire input line.",
+              "The count of records processed."
+            ],
+            "answer": "The entire input line.",
+            "explanation": {
+              "$0": "Correct. The '$0' variable refers to the entire line of text being processed.",
+              "The first field of the input.": "Incorrect. The first field is represented by '$1'.",
+              "The second field of the input.": "Incorrect. The second field is represented by '$2'.",
+              "The count of records processed.": "Incorrect. There is no specific variable for counting records in gawk."
+            }
+          },
+          {
+            "number": 55,
+            "question": "How do you specify a field separator when using 'gawk'?",
+            "options": [
+              "-d",
+              "-F",
+              "-f",
+              "--separator"
+            ],
+            "answer": "-F",
+            "explanation": {
+              "-d": "Incorrect. There is no '-d' option for specifying field separators.",
+              "-F": "Correct. The '-F' option specifies the field separator used in the data.",
+              "-f": "Incorrect. The '-f' option is used to specify a script file for processing.",
+              "--separator": "Incorrect. This is not a recognized option in gawk."
+            }
+          },
+          {
+            "number": 56,
+            "question": "What will happen when you run 'gawk '{if ($1 == \"apple\") print $2}' file.txt'?",
+            "options": [
+              "It prints the second field of lines where the first field is 'apple'.",
+              "It prints all lines from the file.",
+              "It counts how many times 'apple' appears in the first field.",
+              "It replaces 'apple' with the second field."
+            ],
+            "answer": "It prints the second field of lines where the first field is 'apple'.",
+            "explanation": {
+              "It prints the second field of lines where the first field is 'apple'.": "Correct. This command checks the first field and prints the second if it matches.",
+              "It prints all lines from the file.": "Incorrect. The command only prints specific lines based on a condition.",
+              "It counts how many times 'apple' appears in the first field.": "Incorrect. This command does not count occurrences; it only prints.",
+              "It replaces 'apple' with the second field.": "Incorrect. This command does not perform replacements."
+            }
+          },
+          {
+            "number": 57,
+            "question": "How can you run multiple sed commands at once?",
+            "options": [
+              "Using multiple sed invocations in a pipeline.",
+              "By using the -e option with semicolons.",
+              "By placing commands in curly braces.",
+              "By chaining commands with the && operator."
+            ],
+            "answer": "By using the -e option with semicolons.",
+            "explanation": {
+              "Using multiple sed invocations in a pipeline.": "Incorrect. This is not the method for executing multiple commands in one invocation.",
+              "By using the -e option with semicolons.": "Correct. The -e option allows multiple commands to be executed in a single sed invocation.",
+              "By placing commands in curly braces.": "Incorrect. Curly braces are not used for multiple commands in sed.",
+              "By chaining commands with the && operator.": "Incorrect. This method is not valid for sed commands."
+            }
+          },
+          {
+            "number": 58,
+            "question": "What is the output of the command 'echo \"apple 3 banana 5\norange 7\" | gawk '{print $1 \" heeft \" $2 \" stuks\"}'?",
+            "options": [
+              "apple heeft 3 stuks\nbanana heeft 5 stuks\norange heeft 7 stuks",
+              "apple 3\nbanana 5\norange 7",
+              "apple\nbanana\norange",
+              "3 5 7"
+            ],
+            "answer": "apple heeft 3 stuks\nbanana heeft 5 stuks\norange heeft 7 stuks",
+            "explanation": {
+              "apple heeft 3 stuks\nbanana heeft 5 stuks\norange heeft 7 stuks": "Correct. This command formats the output as specified.",
+              "apple 3\nbanana 5\norange 7": "Incorrect. This does not include the specified format.",
+              "apple\nbanana\norange": "Incorrect. This does not show the second field.",
+              "3 5 7": "Incorrect. This does not reflect the intended output of the command."
+            }
+          },
+          {
+            "number": 59,
+            "question": "What is the purpose of the 'printf' command in Linux?",
+            "options": [
+              "To format output strings.",
+              "To read input from the user.",
+              "To display file contents.",
+              "To perform calculations."
+            ],
+            "answer": "To format output strings.",
+            "explanation": {
+              "To format output strings.": "Correct. 'printf' is used for structured and formatted output.",
+              "To read input from the user.": "Incorrect. 'read' is used for reading input.",
+              "To display file contents.": "Incorrect. 'cat' is used to display file contents.",
+              "To perform calculations.": "Incorrect. Calculations can be performed using 'bc' or other tools, but not 'printf'."
+            }
+          },
+          {
+            "number": 60,
+            "question": "Which of the following commands would you use to replace 'oldword' with 'newword' in a file?",
+            "options": [
+              "gawk 's/oldword/newword/' file.txt",
+              "sed 's/oldword/newword/' file.txt",
+              "printf 's/oldword/newword/' file.txt",
+              "xargs 's/oldword/newword/' file.txt"
+            ],
+            "answer": "sed 's/oldword/newword/' file.txt",
+            "explanation": {
+              "gawk 's/oldword/newword/' file.txt": "Incorrect. This syntax is not correct for 'gawk'.",
+              "sed 's/oldword/newword/' file.txt": "Correct. This command uses 'sed' for substitution.",
+              "printf 's/oldword/newword/' file.txt": "Incorrect. 'printf' does not perform text substitution.",
+              "xargs 's/oldword/newword/' file.txt": "Incorrect. 'xargs' is not used for substitution."
+            }
+          },
+          {
+            "number": 61,
+            "question": "What is the main purpose of the nano text editor?",
+            "options": [
+              "To perform advanced programming tasks.",
+              "To provide a simple and user-friendly text editing experience.",
+              "To replace all instances of a string in a file.",
+              "To compile code."
+            ],
+            "answer": "To provide a simple and user-friendly text editing experience.",
+            "explanation": {
+              "To perform advanced programming tasks.": "Incorrect. Nano is not designed for advanced programming tasks.",
+              "To provide a simple and user-friendly text editing experience.": "Correct. Nano is a straightforward editor suitable for beginners.",
+              "To replace all instances of a string in a file.": "Incorrect. While you can search for strings, this is not its primary purpose.",
+              "To compile code.": "Incorrect. Nano is a text editor, not a compiler."
+            }
+          },
+          {
+            "number": 62,
+            "question": "Which key is used to enter insert mode in vim?",
+            "options": [
+              "Esc",
+              "I",
+              "Ctrl + C",
+              "Shift"
+            ],
+            "answer": "I",
+            "explanation": {
+              "Esc": "Incorrect. The Esc key is used to exit insert mode, not enter it.",
+              "I": "Correct. Pressing I enters insert mode in vim.",
+              "Ctrl + C": "Incorrect. This command does not enter insert mode.",
+              "Shift": "Incorrect. The Shift key is not used for mode changes in vim."
+            }
+          },
+          {
+            "number": 63,
+            "question": "What does the command 'nano filename.txt' do?",
+            "options": [
+              "Creates a new file named filename.txt for editing.",
+              "Opens filename.txt in read-only mode.",
+              "Converts filename.txt to a different format.",
+              "Deletes filename.txt."
+            ],
+            "answer": "Creates a new file named filename.txt for editing.",
+            "explanation": {
+              "Creates a new file named filename.txt for editing.": "Correct. This command opens the specified file in nano.",
+              "Opens filename.txt in read-only mode.": "Incorrect. By default, nano opens files for editing.",
+              "Converts filename.txt to a different format.": "Incorrect. Nano does not convert file formats.",
+              "Deletes filename.txt.": "Incorrect. This command does not delete files."
+            }
+          },
+          {
+            "number": 64,
+            "question": "In vim, how do you save changes and exit the editor?",
+            "options": [
+              ":q",
+              ":wq",
+              ":exit",
+              ":save"
+            ],
+            "answer": ":wq",
+            "explanation": {
+              ":q": "Incorrect. This command quits without saving changes.",
+              ":wq": "Correct. This command writes changes to the file and quits vim.",
+              ":exit": "Incorrect. ':exit' is not a valid command in vim.",
+              ":save": "Incorrect. ':save' is not a valid command; use ':w' instead."
+            }
+          },
+          {
+            "number": 65,
+            "question": "What does the status bar in nano indicate?",
+            "options": [
+              "The current line and column number.",
+              "The filename and the number of lines read.",
+              "The version of the nano editor.",
+              "The number of characters in the file."
+            ],
+            "answer": "The filename and the number of lines read.",
+            "explanation": {
+              "The current line and column number.": "Incorrect. This is not typically displayed in the status bar.",
+              "The filename and the number of lines read.": "Correct. The status bar shows the file name and the number of lines.",
+              "The version of the nano editor.": "Incorrect. The title bar displays the editor version.",
+              "The number of characters in the file.": "Incorrect. The status bar does not show character counts."
+            }
+          },
+          {
+            "number": 66,
+            "question": "Which command in vim is used to quit without saving changes?",
+            "options": [
+              ":q!",
+              ":w!",
+              ":quit",
+              ":exit!"
+            ],
+            "answer": ":q!",
+            "explanation": {
+              ":q!": "Correct. This command quits vim and discards any changes.",
+              ":w!": "Incorrect. This command writes changes to the file, not quitting.",
+              ":quit": "Incorrect. ':quit' is not a valid command; use ':q' instead.",
+              ":exit!": "Incorrect. This command does not exist in vim."
+            }
+          },
+          {
+            "number": 67,
+            "question": "What does the command 'Ctrl + G' do in nano?",
+            "options": [
+              "Saves the file.",
+              "Exits the editor.",
+              "Displays help information.",
+              "Cuts the selected text."
+            ],
+            "answer": "Displays help information.",
+            "explanation": {
+              "Saves the file.": "Incorrect. Use 'Ctrl + O' to save.",
+              "Exits the editor.": "Incorrect. Use 'Ctrl + X' to exit.",
+              "Displays help information.": "Correct. 'Ctrl + G' opens the help menu in nano.",
+              "Cuts the selected text.": "Incorrect. Use 'Ctrl + K' to cut text."
+            }
+          },
+          {
+            "number": 68,
+            "question": "What does the command 'gg' do in vim?",
+            "options": [
+              "Moves the cursor to the beginning of the file.",
+              "Moves the cursor to the end of the file.",
+              "Saves the file.",
+              "Quits the editor."
+            ],
+            "answer": "Moves the cursor to the beginning of the file.",
+            "explanation": {
+              "Moves the cursor to the beginning of the file.": "Correct. 'gg' moves the cursor to the top line.",
+              "Moves the cursor to the end of the file.": "Incorrect. 'G' is used to go to the end.",
+              "Saves the file.": "Incorrect. Saving is done with ':w'.",
+              "Quits the editor.": "Incorrect. Quitting is done with ':q'."
+            }
+          },
+          {
+            "number": 69,
+            "question": "What is the primary advantage of using vim over nano?",
+            "options": [
+              "Easier to use for beginners.",
+              "More powerful editing features and commands.",
+              "Requires less memory.",
+              "Automatically saves files."
+            ],
+            "answer": "More powerful editing features and commands.",
+            "explanation": {
+              "Easier to use for beginners.": "Incorrect. Nano is generally considered easier for beginners.",
+              "More powerful editing features and commands.": "Correct. Vim has advanced editing capabilities.",
+              "Requires less memory.": "Incorrect. Memory usage can vary, but vim is more feature-rich.",
+              "Automatically saves files.": "Incorrect. Neither vim nor nano automatically saves files."
+            }
+          },
+          {
+            "number": 70,
+            "question": "How do you enter insert mode in vim?",
+            "options": [
+              "Press I",
+              "Press Esc",
+              "Press A",
+              "Press O"
+            ],
+            "answer": "Press I",
+            "explanation": {
+              "Press I": "Correct. Pressing I enters insert mode.",
+              "Press Esc": "Incorrect. Esc exits insert mode.",
+              "Press A": "Incorrect. Pressing A enters insert mode at the end of the line.",
+              "Press O": "Incorrect. Pressing O opens a new line below and enters insert mode."
+            }
+          },
+          {
+            "number": 71,
+            "question": "Which of the following commands will successfully list all files of size 0 bytes in the current directory and subdirectories with detailed information using ls -l? (More than one answer can be correct.)",
+            "options": [
+              "find . -size 0b -exec ls -l {} \\;",
+              "find . -size 0b | xargs ls -l",
+              "find . -size 0b -exec ls -lh {} \\;",
+              "find . -size 0b -print | xargs ls -l",
+              "find . -size 0b -exec ls -l \\;"
+            ],
+            "answer": [
+              "find . -size 0b -exec ls -l {} \\;",
+              "find . -size 0b | xargs ls -l"
+            ],
+            "explanation": {
+              "find . -size 0b -exec ls -l {} \\;": "Correct. This command uses find to search for files of size 0 bytes and then uses -exec to run ls -l on each found file.",
+              "find . -size 0b | xargs ls -l": "Correct. This command finds 0-byte files and pipes the output to xargs, which executes ls -l for each file.",
+              "find . -size 0b -exec ls -lh {} \\;": "Incorrect. While this command works, it uses ls -lh instead of ls -l, which is not necessary for listing 0-byte files.",
+              "find . -size 0b -print | xargs ls -l": "Incorrect. This command is valid but uses -print explicitly, which is redundant when using xargs.",
+              "find . -size 0b -exec ls -l \\;": "Incorrect. This command is missing the {} placeholder; therefore, it will not pass found files to ls -l correctly."
+            }
+          },
+          {
+            "number": 72,
+            "question": "What does the following command do? sed -e 's/likes/loves/ ; s/cake/donuts/' cake.txt",
+            "options": [
+              "It replaces the first occurrence of 'likes' with 'loves' and the first occurrence of 'cake' with 'donuts' in the file cake.txt.",
+              "It replaces every occurrence of 'likes' with 'loves' and every occurrence of 'cake' with 'donuts' in the file cake.txt.",
+              "It replaces the first occurrence of 'likes' with 'loves' and the last occurrence of 'cake' with 'donuts' in the file cake.txt.",
+              "It replaces only the line that contains 'likes' and 'cake' with 'loves' and 'donuts' in the file cake.txt."
+            ],
+            "answer": "It replaces every occurrence of 'likes' with 'loves' and every occurrence of 'cake' with 'donuts' in the file cake.txt.",
+            "explanation": {
+              "It replaces the first occurrence of 'likes' with 'loves' and the first occurrence of 'cake' with 'donuts' in the file cake.txt.": "Incorrect. This is incorrect because the sed command will replace every occurrence of 'likes' with 'loves' and every occurrence of 'cake' with 'donuts' in the file, not just the first occurrences.",
+              "It replaces every occurrence of 'likes' with 'loves' and every occurrence of 'cake' with 'donuts' in the file cake.txt.": "Correct. This is the correct answer. The sed -e 's/likes/loves/ ; s/cake/donuts/' command will replace every instance of 'likes' with 'loves' and every instance of 'cake' with 'donuts' in the file cake.txt.",
+              "It replaces the first occurrence of 'likes' with 'loves' and the last occurrence of 'cake' with 'donuts' in the file cake.txt.": "Incorrect. This is incorrect because the command replaces every occurrence of both 'likes' and 'cake', not just the first and last occurrences.",
+              "It replaces only the line that contains 'likes' and 'cake' with 'loves' and 'donuts' in the file cake.txt.": "Incorrect. This is incorrect because the command does not operate on entire lines that contain 'likes' and 'cake'. It performs global replacements on all occurrences."
+            }
+          },
+          {
+            "number": 73,
+            "question": "What does the following command do? sed -f script.sed cake.txt",
+            "options": [
+              "It executes all the replacements defined in the script.sed file on the cake.txt file.",
+              "It replaces the contents of cake.txt with the contents of script.sed.",
+              "It searches and replaces the text 'cake' with the text from the script.sed file.",
+              "It displays the contents of the script.sed file alongside the contents of cake.txt."
+            ],
+            "answer": "It executes all the replacements defined in the script.sed file on the cake.txt file.",
+            "explanation": {
+              "It executes all the replacements defined in the script.sed file on the cake.txt file.": "Correct. This is the correct answer. The -f script.sed option tells sed to read the commands from the file script.sed and apply them to the file cake.txt.",
+              "It replaces the contents of cake.txt with the contents of script.sed.": "Incorrect. This is incorrect because the sed command does not replace the contents of the input file (cake.txt) with the contents of the script file (script.sed).",
+              "It searches and replaces the text 'cake' with the text from the script.sed file.": "Incorrect. This is incorrect because the sed command doesn't simply search for the word 'cake' and replace it with the text from script.sed.",
+              "It displays the contents of the script.sed file alongside the contents of cake.txt.": "Incorrect. This is incorrect because the sed -f script.sed cake.txt command doesn't display the contents of script.sed or cake.txt."
+            }
+          }          
+        ]
+      }
+    ]
+  }

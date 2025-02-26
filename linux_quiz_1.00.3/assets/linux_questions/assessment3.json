@@ -1,0 +1,1544 @@
+{
+    "chapters": [
+      {
+        "chapter": 1,
+        "description": "Assessment 3",
+        "questions": [
+          {
+            "number": 1,
+            "question": "Which of the following special device files is a writable location used as a destination to discard specified data?",
+            "options": [
+              "/dev/urandom",
+              "/dev/null",
+              "/dev/zero",
+              "/tmp"
+            ],
+            "answer": "/dev/null",
+            "explanation": {
+              "/dev/urandom": "Incorrect. It provides random data.",
+              "/dev/null": "Correct. It discards all data written to it.",
+              "/dev/zero": "Incorrect. It provides zero-value bytes.",
+              "/tmp": "Incorrect. It is used for temporary file storage."
+            }
+          },
+          {
+            "number": 2,
+            "question": "Which of the following is the first process to start outside of the kernel during the system boot up process?",
+            "options": [
+              "sshd",
+              "systemd",
+              "cpuhp",
+              "watchdog"
+            ],
+            "answer": "systemd",
+            "explanation": {
+              "sshd": "Incorrect. It starts later in the boot process.",
+              "systemd": "Correct. It is the first process with a PID of 1.",
+              "cpuhp": "Incorrect. It is not the first process.",
+              "watchdog": "Incorrect. It is not started first."
+            }
+          },
+          {
+            "number": 3,
+            "question": "Which of the following is the host command used for in Linux?",
+            "options": [
+              "Network latency reports",
+              "Package management",
+              "Testing name resolution",
+              "Resolving a MAC address from a specified IP address"
+            ],
+            "answer": "Testing name resolution",
+            "explanation": {
+              "Network latency reports": "Incorrect. This is done using other commands.",
+              "Package management": "Incorrect. Commands like rpm, yum, and apt are used.",
+              "Testing name resolution": "Correct. The host command resolves domain names.",
+              "Resolving a MAC address from a specified IP address": "Incorrect. The arp command is used for this."
+            }
+          },
+          {
+            "number": 4,
+            "question": "Which of the following special device files is a writable location used as a destination to discard specified data?",
+            "options": [
+              "/dev/urandom",
+              "/dev/null",
+              "/dev/zero",
+              "/tmp"
+            ],
+            "answer": "/dev/null",
+            "explanation": {
+              "/dev/urandom": "Incorrect. It provides random data.",
+              "/dev/null": "Correct. It discards all data written to it.",
+              "/dev/zero": "Incorrect. It provides zero-value bytes.",
+              "/tmp": "Incorrect. It is used for temporary file storage."
+            }
+          },
+          {
+            "number": 5,
+            "question": "Denise, a cybersecurity analyst at Linux Training, must review a CentOS server's logs weekly to check for any authentication failures. Which of the following files should be reviewed to find evidence of any failed login attempts?",
+            "options": [
+              "/var/log/syslog",
+              "/var/log/messages",
+              "/var/log/secure",
+              "/var/log/kern.log"
+            ],
+            "answer": "/var/log/secure",
+            "explanation": {
+              "/var/log/syslog": "Incorrect. It does not contain authentication logs on CentOS.",
+              "/var/log/messages": "Incorrect. It contains general system messages.",
+              "/var/log/secure": "Correct. It logs authentication messages.",
+              "/var/log/kern.log": "Incorrect. It logs kernel messages."
+            }
+          },
+          {
+            "number": 6,
+            "question": "Which of the following commands is used to start a service?",
+            "options": [
+              "systemctl enable",
+              "systemctl start",
+              "systemctl restart",
+              "systemctl stop"
+            ],
+            "answer": "systemctl start",
+            "explanation": {
+              "systemctl enable": "Incorrect. It sets the service to start on boot.",
+              "systemctl start": "Correct. It starts the service immediately.",
+              "systemctl restart": "Incorrect. It restarts a running service.",
+              "systemctl stop": "Incorrect. It stops a running service."
+            }
+          },
+          {
+            "number": 7,
+            "question": "Eduardo, a software developer, needs to create a new file 512 MB file using the /dev/zero special device file to test a new import function for an application being developed. Which of the following commands is used to copy and convert files from one media type to another?",
+            "options": [
+              "dd",
+              "xz",
+              "cpio",
+              "awk"
+            ],
+            "answer": "dd",
+            "explanation": {
+              "dd": "Correct. It copies and converts files.",
+              "xz": "Incorrect. It is used for compression.",
+              "cpio": "Incorrect. It copies files to/from archives.",
+              "awk": "Incorrect. It is used for text processing."
+            }
+          },
+          {
+            "number": 8,
+            "question": "Samuel, a software developer at Linux Training, just installed a new version of a custom, proprietary application on a Linux server. The software is designed to listen for incoming network connections over port 4577 using TCP. Which of the following commands could be used to analyze and ensure that clients can properly connect to the server's listening port? (Select TWO)",
+            "options": [
+              "tcpdump",
+              "hostnamectl",
+              "netstat",
+              "nslookup"
+            ],
+            "answer": [
+              "tcpdump",
+              "netstat"
+            ],
+            "explanation": {
+              "tcpdump": "Correct. It captures and analyzes packets.",
+              "hostnamectl": "Incorrect. It manages the system's hostname.",
+              "netstat": "Correct. It displays network connections and listening ports.",
+              "nslookup": "Incorrect. It queries DNS servers."
+            }
+          },
+          {
+            "number": 9,
+            "question": "Which of the following type of RAIDs uses parity to provide fault tolerance?",
+            "options": [
+              "RAID 0",
+              "RAID 1",
+              "RAID 5",
+              "RAID 10"
+            ],
+            "answer": "RAID 5",
+            "explanation": {
+              "RAID 0": "Incorrect. It uses striping without parity.",
+              "RAID 1": "Incorrect. It uses mirroring.",
+              "RAID 5": "Correct. It uses striping with parity.",
+              "RAID 10": "Incorrect. It combines mirroring and striping."
+            }
+          },
+          {
+            "number": 10,
+            "question": "Tamera, a system administrator, wants to modify the resolv.conf file to designate specific DNS servers for her Linux environment. Which of the following tools should she use to accomplish this task?",
+            "options": [
+              "nano",
+              "printf",
+              "awk",
+              "lsusb"
+            ],
+            "answer": "nano",
+            "explanation": {
+              "nano": "Correct. It is a simple text editor.",
+              "printf": "Incorrect. It is used to format and print data.",
+              "awk": "Incorrect. It is used for text processing.",
+              "lsusb": "Incorrect. It lists USB devices."
+            }
+          },
+          {
+            "number": 11,
+            "question": "Layla, a network engineer at Linux Training, has encountered an issue when trying to connect to the company's web development server located in the development screened subnet. Which network analysis should Layla use to identify each hop (router or firewall) between her workstation and the development server?",
+            "options": [
+              "traceroute",
+              "scp",
+              "tcpdump",
+              "netstat"
+            ],
+            "answer": "traceroute",
+            "explanation": {
+              "traceroute": "Correct. It shows the path packets take to a network host.",
+              "scp": "Incorrect. It securely copies files over a network.",
+              "tcpdump": "Incorrect. It captures network packets.",
+              "netstat": "Incorrect. It displays network connections."
+            }
+          },
+          {
+            "number": 12,
+            "question": "Which of the following commands is considered a highly configurable text editor that can be used within Linux?",
+            "options": [
+              "vim",
+              "nmcli",
+              "du",
+              "xfs"
+            ],
+            "answer": "vim",
+            "explanation": {
+              "vim": "Correct. It is a highly configurable text editor in Linux.",
+              "nmcli": "Incorrect. It is used for network management.",
+              "du": "Incorrect. It shows disk usage.",
+              "xfs": "Incorrect. It refers to a file system."
+            }
+          },
+          {
+            "number": 13,
+            "question": "Charlotte has completed partitioning some hard disks in a Linux server. Which of the following commands would allow Linux to detect changes in the hard disk's partitions?",
+            "options": [
+              "fdisk",
+              "partprobe",
+              "df",
+              "du"
+            ],
+            "answer": "partprobe",
+            "explanation": {
+              "fdisk": "Incorrect. It is used to manipulate disk partitions.",
+              "partprobe": "Correct. It informs the OS of partition table changes.",
+              "df": "Incorrect. It displays disk space usage.",
+              "du": "Incorrect. It estimates file space usage."
+            }
+          },
+          {
+            "number": 14,
+            "question": "Which of the following commands would be used to display the file type of a specified file?",
+            "options": [
+              "stat",
+              "file",
+              "awk",
+              "netcat"
+            ],
+            "answer": "file",
+            "explanation": {
+              "stat": "Incorrect. It displays file or file system status.",
+              "file": "Correct. It determines file type.",
+              "awk": "Incorrect. It is a programming language for pattern scanning.",
+              "netcat": "Incorrect. It is a networking utility."
+            }
+          },
+          {
+            "number": 15,
+            "question": "Marc, a system administrator at Linux Training, wants to place an exact duplicate of a text file containing the company's acceptable use policy (AUP) into 3 different directories on a Linux file server. Which of the following commands should be used to accomplish this?",
+            "options": [
+              "cp",
+              "rm",
+              "mkdir",
+              "mv"
+            ],
+            "answer": "cp",
+            "explanation": {
+              "cp": "Correct. It copies files and directories.",
+              "rm": "Incorrect. It removes files or directories.",
+              "mkdir": "Incorrect. It creates directories.",
+              "mv": "Incorrect. It moves or renames files or directories."
+            }
+          },
+          {
+            "number": 16,
+            "question": "Which of the following commands automatically searches for a makefile to compile?",
+            "options": [
+              "./configure",
+              "make",
+              "make install",
+              "apt get"
+            ],
+            "answer": "make",
+            "explanation": {
+              "./configure": "Incorrect. It prepares software for building.",
+              "make": "Correct. It builds executables from source code using a makefile.",
+              "make install": "Incorrect. It installs compiled software.",
+              "apt get": "Incorrect. It is used for package management."
+            }
+          },
+          {
+            "number": 17,
+            "question": "Nora, a system administrator, is about to install a very large software package using the apt command on a Linux server. Which of the following options should she use to display hash marks or a progress bar during the installation process?",
+            "options": [
+              "-i",
+              "-U",
+              "-F",
+              "-v"
+            ],
+            "answer": "-v",
+            "explanation": {
+              "-i": "Incorrect. It installs a package.",
+              "-U": "Incorrect. It upgrades a package.",
+              "-F": "Incorrect. It freshens a package.",
+              "-v": "Correct. It provides a verbose output."
+            }
+          },
+          {
+            "number": 18,
+            "question": "Which of the following commands is used to start a service during the next system boot?",
+            "options": [
+              "systemctl enable",
+              "systemctl start",
+              "systemctl restart",
+              "systemctl stop"
+            ],
+            "answer": "systemctl enable",
+            "explanation": {
+              "systemctl enable": "Correct. It enables a service to start on boot.",
+              "systemctl start": "Incorrect. It starts a service immediately.",
+              "systemctl restart": "Incorrect. It restarts a service.",
+              "systemctl stop": "Incorrect. It stops a service."
+            }
+          },
+          {
+            "number": 19,
+            "question": "Joseph, a system administrator at Linux Training, wants to remove MySQL and replace it with MongoDB on one of the company's database servers. Which of the following command options can be used with the APT command to uninstall the MySQL package and its configuration files on the Linux server?",
+            "options": [
+              "install",
+              "remove",
+              "purge",
+              "delete"
+            ],
+            "answer": "purge",
+            "explanation": {
+              "install": "Incorrect. It installs a package.",
+              "remove": "Incorrect. It removes a package but leaves config files.",
+              "purge": "Correct. It removes a package and its config files.",
+              "delete": "Incorrect. It is not a valid APT command."
+            }
+          },
+          {
+            "number": 20,
+            "question": "Mateo, a system administrator, has identified a process that is slowing down the system's performance and needs to be terminated immediately. He issues the following command in the command line interface: $ sudo kill -9 {PID} Using the command above, which of the following types of signals did he issue?",
+            "options": [
+              "SIGTERM",
+              "SIGKILL",
+              "SIGHUP",
+              "CTRL+Z"
+            ],
+            "answer": "SIGKILL",
+            "explanation": {
+              "SIGTERM": "Incorrect. It is a graceful termination signal.",
+              "SIGKILL": "Correct. It forcefully kills a process.",
+              "SIGHUP": "Incorrect. It hangs up a process.",
+              "CTRL+Z": "Incorrect. It suspends a process."
+            }
+          },
+          {
+            "number": 21,
+            "question": "Sahra, a system administrator at Linux Training, wants to uninstall a package from a Debian-based Linux server. Which of the following dpkg command options should she use?",
+            "options": [
+              "-i",
+              "-r",
+              "-l",
+              "-s"
+            ],
+            "answer": "-r",
+            "explanation": {
+              "-i": "Incorrect. It installs a package.",
+              "-r": "Correct. It removes a package.",
+              "-l": "Incorrect. It lists package information.",
+              "-s": "Incorrect. It reports package status."
+            }
+          },
+          {
+            "number": 22,
+            "question": "Susan, a system administrator at Linux Training, is having issues with services she disabled still starting on boot by other services. Which command prevents the service from being started by any other service?",
+            "options": [
+              "systemctl disable",
+              "systemctl mask",
+              "systemctl restart",
+              "systemctl stop"
+            ],
+            "answer": "systemctl mask",
+            "explanation": {
+              "systemctl disable": "Incorrect. It prevents a service from starting on boot.",
+              "systemctl mask": "Correct. It prevents a service from being started by any service.",
+              "systemctl restart": "Incorrect. It restarts a service.",
+              "systemctl stop": "Incorrect. It stops a service."
+            }
+          },
+          {
+            "number": 23,
+            "question": "Grayson, a system administrator at Linux Training, wants to remove the tcp_lp module during runtime. He has already verified that all of the dependencies are running. Which of the following commands should he use to accomplish this?",
+            "options": [
+              "rmmod",
+              "insmod",
+              "modinfo",
+              "lsmod"
+            ],
+            "answer": "rmmod",
+            "explanation": {
+              "rmmod": "Correct. It removes a module from the kernel.",
+              "insmod": "Incorrect. It inserts a module into the kernel.",
+              "modinfo": "Incorrect. It displays information about a module.",
+              "lsmod": "Incorrect. It lists the currently loaded modules."
+            }
+          },
+          {
+            "number": 24,
+            "question": "The network administrators at Linux Training are concerned that their network connection is being saturated due to a large number of files being backed up across the local area network. Olivia, a Linux administrator, has been asked to choose a command line utility to back up and copy the files from a Linux server to a backup server. Which of the following tools should Olivia choose so that only files containing changed data will be copied to the remote server?",
+            "options": [
+              "xz",
+              "rsync",
+              "scp",
+              "nc"
+            ],
+            "answer": "rsync",
+            "explanation": {
+              "xz": "Incorrect. It is a compression tool.",
+              "rsync": "Correct. It syncs files, copying only changed data.",
+              "scp": "Incorrect. It securely copies files.",
+              "nc": "Incorrect. It is a networking utility."
+            }
+          },
+          {
+            "number": 25,
+            "question": "Roger, a system administrator at Linux Training, ran the top command and sees an abnormally high value for the %us metric. Which of the following BEST describes what this metric is used for?",
+            "options": [
+              "This metric represents the amount of time a virtual CPU is waiting for access to the physical CPU",
+              "This metric represents the amount of time the CPU is waiting for I/O access",
+              "This metric represents the amount of time the CPU is idle",
+              "This metric represents the amount of time the CPU spent running user processes"
+            ],
+            "answer": "This metric represents the amount of time the CPU spent running user processes",
+            "explanation": {
+              "This metric represents the amount of time a virtual CPU is waiting for access to the physical CPU": "Incorrect. This is not related to %us.",
+              "This metric represents the amount of time the CPU is waiting for I/O access": "Incorrect. This relates to %wa.",
+              "This metric represents the amount of time the CPU is idle": "Incorrect. This relates to %id.",
+              "This metric represents the amount of time the CPU spent running user processes": "Correct. It measures CPU time for user processes."
+            }
+          },
+          {
+            "number": 26,
+            "question": "Elaine, a system administrator at Linux Training, wants to display the current configuration in use by a Linux server's logical volumes. Which of the following commands should be used to accomplish this?",
+            "options": [
+              "mdadm",
+              "pvscan",
+              "lvdisplay",
+              "multipathd"
+            ],
+            "answer": "lvdisplay",
+            "explanation": {
+              "mdadm": "Incorrect. It manages RAID arrays.",
+              "pvscan": "Incorrect. It scans for physical volumes.",
+              "lvdisplay": "Correct. It displays logical volume configurations.",
+              "multipathd": "Incorrect. It manages multipath I/O."
+            }
+          },
+          {
+            "number": 27,
+            "question": "Martin, a system administrator at Linux Training, wants to configure a Linux server to start up in a graphical user interface by default instead of using the command line interface. Which of the following unit files should be modified to accomplish this?",
+            "options": [
+              "default.target",
+              "rescue.target",
+              "multi-user.target",
+              "graphical.target"
+            ],
+            "answer": "default.target",
+            "explanation": {
+              "default.target": "Correct. It sets the default boot target.",
+              "rescue.target": "Incorrect. It starts the system in rescue mode.",
+              "multi-user.target": "Incorrect. It starts the system in CLI mode.",
+              "graphical.target": "Incorrect. It starts the system in GUI mode."
+            }
+          },
+          {
+            "number": 28,
+            "question": "Gertrude, a system administrator at Linux Training, has implemented journaling to help prevent data loss from unplanned system interruptions. Which of the following BEST describes the purpose of journaling?",
+            "options": [
+              "To create a description of all the changes that must be made to a drive",
+              "To provide a common software interface that sits between the kernel and a real file system",
+              "To store metadata about a file or directory on a file system as an object",
+              "To provide a protocol for shared user access to files and other resources on a local area network"
+            ],
+            "answer": "To create a description of all the changes that must be made to a drive",
+            "explanation": {
+              "To create a description of all the changes that must be made to a drive": "Correct. Journaling logs changes to be made to the file system.",
+              "To provide a common software interface that sits between the kernel and a real file system": "Incorrect. This describes a virtual file system.",
+              "To store metadata about a file or directory on a file system as an object": "Incorrect. This describes file system metadata.",
+              "To provide a protocol for shared user access to files and other resources on a local area network": "Incorrect. This describes a network file system."
+            }
+          },
+          {
+            "number": 29,
+            "question": "Ralph, a cybersecurity analyst at Linux Training, wants to gather information about a remote server's current TLS/SSL certificate and its status. Which of the following commands should be used to accomplish this?",
+            "options": [
+              "nmap",
+              "pvscan",
+              "openssl s_client",
+              "lvscan"
+            ],
+            "answer": "openssl s_client",
+            "explanation": {
+              "nmap": "Incorrect. It is used for network exploration.",
+              "pvscan": "Incorrect. It scans for physical volumes.",
+              "openssl s_client": "Correct. It checks TLS/SSL connections.",
+              "lvscan": "Incorrect. It scans for logical volumes."
+            }
+          },
+          {
+            "number": 30,
+            "question": "Noel, a system administrator at Linux Training, wants to determine if a particular NIC is experiencing high latency and saturation. Which of the following commands should be used to accomplish this?",
+            "options": [
+              "firewall-cmd",
+              "top",
+              "iftop",
+              "ping"
+            ],
+            "answer": "iftop",
+            "explanation": {
+              "firewall-cmd": "Incorrect. It manages firewall settings.",
+              "top": "Incorrect. It displays running processes.",
+              "iftop": "Correct. It monitors network traffic.",
+              "ping": "Incorrect. It checks network connectivity."
+            }
+          },
+          {
+            "number": 31,
+            "question": "Russell, a system administrator at Linux Training, is troubleshooting an application that is frequently crashing. He wants to gather details for a crash report so that he can send it to the lead developer. Which of the following should be used to accomplish this?",
+            "options": [
+              "Decompile the application",
+              "Perform a core dump",
+              "Patch the operating system",
+              "Reset the network connection"
+            ],
+            "answer": "Perform a core dump",
+            "explanation": {
+              "Decompile the application": "Incorrect. This would not provide runtime state information.",
+              "Perform a core dump": "Correct. It captures the application's memory state.",
+              "Patch the operating system": "Incorrect. This would not address the application issue.",
+              "Reset the network connection": "Incorrect. This would not provide crash information."
+            }
+          },
+          {
+            "number": 32,
+            "question": "Pauline, a system administrator at Linux Training, notices that a Linux server is running slowly. She runs the top command and several metrics are displayed. Which of the following metrics should she look at to verify the amount of CPU time being spent running user processes?",
+            "options": [
+              "%wa",
+              "%id",
+              "%s",
+              "%us"
+            ],
+            "answer": "%us",
+            "explanation": {
+              "%wa": "Incorrect. It measures I/O wait time.",
+              "%id": "Incorrect. It measures CPU idle time.",
+              "%s": "Incorrect. It measures system CPU time.",
+              "%us": "Correct. It measures user CPU time."
+            }
+          },
+          {
+            "number": 33,
+            "question": "Ivy, a data analyst at Linux Training, is trying to edit a script with the location of this week's files before she uses it to generate her weekly report. Ivy and other members of the accounting department are receiving a 'permission denied' error message every time they attempt to modify and save the script with the updated directory path. Ivy verified that the group owner of the script is Accounting, that she is a part of the Accounting group, and the script's permissions are set to rwxr-x---. Which of the following is MOST likely causing the issue with modifying and saving this script?",
+            "options": [
+              "The group permission field doesn't have execute permissions",
+              "The other permission field has no permissions set",
+              "The user must run the script with root privileges",
+              "The user's group doesn't have write permissions"
+            ],
+            "answer": "The user's group doesn't have write permissions",
+            "explanation": {
+              "The group permission field doesn't have execute permissions": "Incorrect. Execute permissions are not needed for editing.",
+              "The other permission field has no permissions set": "Incorrect. Others do not need permissions to edit.",
+              "The user must run the script with root privileges": "Incorrect. As a group member, Ivy should be able to edit without root.",
+              "The user's group doesn't have write permissions": "Correct. Write permissions are needed to modify the script."
+            }
+          },
+          {
+            "number": 34,
+            "question": "Claire, a service desk analyst at Linux Training, has received a large number of trouble tickets from users complaining that there is currently high latency being experienced on the network. She wants to determine the maximum throughput currently being experienced over a given network interface on a Linux system to aid in her troubleshooting efforts. Which of the following commands should be used to accomplish this?",
+            "options": [
+              "mtr",
+              "iperf",
+              "dig",
+              "ps"
+            ],
+            "answer": "iperf",
+            "explanation": {
+              "mtr": "Incorrect. It combines ping and traceroute functions.",
+              "iperf": "Correct. It tests network throughput.",
+              "dig": "Incorrect. It queries DNS servers.",
+              "ps": "Incorrect. It displays process information."
+            }
+          },
+          {
+            "number": 35,
+            "question": "Lesley, a system administrator at Linux Training, suspects that inode exhaustion is occurring on a Linux server's ext2-based file system. They want to display the percentage of inodes currently consumed by the system. Which of the following commands should be used to accomplish this?",
+            "options": [
+              "df -i",
+              "nmap",
+              "du -h",
+              "ioping"
+            ],
+            "answer": "df -i",
+            "explanation": {
+              "df -i": "Correct. It displays inode usage.",
+              "nmap": "Incorrect. It is used for network exploration.",
+              "du -h": "Incorrect. It displays disk usage in a human-readable format.",
+              "ioping": "Incorrect. It measures I/O latency."
+            }
+          },
+          {
+            "number": 36,
+            "question": "Danny, a network administrator at Linux Training, reconfigured a network device and now three Linux workstations cannot ping their default gateway. After running the ip addr command, he notices the client IP address is 172.16.2.3/24 and the gateway's address is 172.16.1.2/24. Which of the following is MOST likely the issue with this new network configuration?",
+            "options": [
+              "The network gateway’s IP must be the first IP address on the network",
+              "The client and gateway must be on the same network",
+              "Each workstation must use be configured with a public IP address",
+              "The gateway must be configured to use a public IP address"
+            ],
+            "answer": "The client and gateway must be on the same network",
+            "explanation": {
+              "The network gateway’s IP must be the first IP address on the network": "Incorrect. It is not required to be the first IP.",
+              "The client and gateway must be on the same network": "Correct. They must share the same subnet.",
+              "Each workstation must use be configured with a public IP address": "Incorrect. Private IPs can be used within a local network.",
+              "The gateway must be configured to use a public IP address": "Incorrect. A private IP is sufficient within a local network."
+            }
+          },
+          {
+            "number": 37,
+            "question": "Mark, a system administrator at Linux Training, wants to install a storage system that will provide performance benefits and additional fault tolerance. Which of the following should be used to accomplish this?",
+            "options": [
+              "RAID",
+              "Firewall",
+              "Yum",
+              "UPS"
+            ],
+            "answer": "RAID",
+            "explanation": {
+              "RAID": "Correct. It provides redundancy and improved performance.",
+              "Firewall": "Incorrect. It provides network security.",
+              "Yum": "Incorrect. It is a package manager.",
+              "UPS": "Incorrect. It provides power backup."
+            }
+          },
+          {
+            "number": 38,
+            "question": "Lindsey, a system administrator at Linux Training, wants to check the status of service using the SysVinit init method. The sshd service has a system status of disabled. Lindsey can remotely connect to a server using SSH, so they assume there is a status issue for the service and want to reset the status without stopping the SSH service. Which of the following commands should be used to accomplish this?",
+            "options": [
+              "chkconfig sshd on",
+              "chkconfig sshd off",
+              "chkconfig sshd reset",
+              "chkconfig sshd restart"
+            ],
+            "answer": "chkconfig sshd restart",
+            "explanation": {
+              "chkconfig sshd on": "Incorrect. It enables a service to start on boot.",
+              "chkconfig sshd off": "Incorrect. It disables a service from starting on boot.",
+              "chkconfig sshd reset": "Incorrect. It is not a valid command.",
+              "chkconfig sshd restart": "Correct. It resets the status of a service."
+            }
+          },
+          {
+            "number": 39,
+            "question": "Evelyn, a system administrator at Linux Training, noticed that the Deadline I/O Scheduler reverts to the system default after each reboot. Which of the following should be configured to ensure the Deadline I/O Scheduler remains set after each reboot?",
+            "options": [
+              "RAID configuration",
+              "System boot loader",
+              "Logical volume manager",
+              "SSD trim"
+            ],
+            "answer": "System boot loader",
+            "explanation": {
+              "RAID configuration": "Incorrect. It manages disk redundancy and performance.",
+              "System boot loader": "Correct. It sets the I/O scheduler.",
+              "Logical volume manager": "Incorrect. It manages disk partitions.",
+              "SSD trim": "Incorrect. It optimizes SSD performance."
+            }
+          },
+          {
+            "number": 40,
+            "question": "Elsie, a system administrator at Linux Training, wants to configure a Linux server to start up in the command line interface by default instead of the graphical user interface. Which of the following targets should be set in the default.target unit file to accomplish this?",
+            "options": [
+              "network-online",
+              "rescue.target",
+              "multi-user.target",
+              "graphical.target"
+            ],
+            "answer": "multi-user.target",
+            "explanation": {
+              "network-online": "Incorrect. It ensures network services are running.",
+              "rescue.target": "Incorrect. It starts the system in rescue mode.",
+              "multi-user.target": "Correct. It starts the system in CLI mode.",
+              "graphical.target": "Incorrect. It starts the system in GUI mode."
+            }
+          },
+          {
+            "number": 41,
+            "question": "Matthew, a system administrator at Linux Training, noticed that the httpd.service was found to be turned off after a scheduled reboot. Matthew wants to ensure that the httpd.service always starts up when the server is booting up. Which of the following systemd commands should be used to accomplish this?",
+            "options": [
+              "systemctl enable httpd.service",
+              "systemctl start httpd.service",
+              "chkconfig httpd on",
+              "firewall-cmd --reload"
+            ],
+            "answer": "systemctl enable httpd.service",
+            "explanation": {
+              "systemctl enable httpd.service": "Correct. It ensures the service starts on boot.",
+              "systemctl start httpd.service": "Incorrect. It starts the service immediately.",
+              "chkconfig httpd on": "Incorrect. It is used with SysVinit, not systemd.",
+              "firewall-cmd --reload": "Incorrect. It reloads the firewall configuration."
+            }
+          },
+          {
+            "number": 42,
+            "question": "Damien, a service desk analyst at Linux Training, is receiving complaints that users are experiencing an unresponsive state when they try to save their work. He wants to determine if the storage system is causing this issue due to low throughput being experienced by the device. Which of the following commands should be used to accomplish this?",
+            "options": [
+              "ping",
+              "ioping",
+              "mtr",
+              "ps"
+            ],
+            "answer": "ioping",
+            "explanation": {
+              "ping": "Incorrect. It checks network connectivity.",
+              "ioping": "Correct. It measures I/O latency.",
+              "mtr": "Incorrect. It combines ping and traceroute functions.",
+              "ps": "Incorrect. It displays process information."
+            }
+          },
+          {
+            "number": 43,
+            "question": "Lynne, a system administrator at Linux Training, ran the top command to see the currently running processes. She wants to review the metric used to measure the amount of time a virtual CPU is waiting for access to the physical CPU. Which of the following metrics should be used to accomplish this?",
+            "options": [
+              "%id",
+              "%wa",
+              "%us",
+              "%st"
+            ],
+            "answer": "%st",
+            "explanation": {
+              "%id": "Incorrect. It measures CPU idle time.",
+              "%wa": "Incorrect. It measures I/O wait time.",
+              "%us": "Incorrect. It measures user CPU time.",
+              "%st": "Correct. It measures steal time for virtual CPUs."
+            }
+          },
+          {
+            "number": 44,
+            "question": "Nancy, a cybersecurity analyst at Linux Training, created a new work from home policy. The file containing this policy needs to be readable by all of the company's users. The Human Resources department should own the file and be assigned full permissions to the file. Which of the following commands should be used to accomplish this?",
+            "options": [
+              "chmod u+rwx, g+wx, o+r wfhpolicy.pdf",
+              "chmod a+rwx wfhpolicy.pdf",
+              "chmod u+rwx, g+rwx, o+rwx wfhpolicy.pdf",
+              "chmod u+rwx, g+rwx, o+r wfhpolicy.pdf"
+            ],
+            "answer": "chmod u+rwx, g+rwx, o+r wfhpolicy.pdf",
+            "explanation": {
+              "chmod u+rwx, g+wx, o+r wfhpolicy.pdf": "Incorrect. It does not grant full permissions to the group.",
+              "chmod a+rwx wfhpolicy.pdf": "Incorrect. It grants full permissions to everyone.",
+              "chmod u+rwx, g+rwx, o+rwx wfhpolicy.pdf": "Incorrect. It grants full permissions to everyone.",
+              "chmod u+rwx, g+rwx, o+r wfhpolicy.pdf": "Correct. It grants full permissions to the owner and group, and read permission to others."
+            }
+          },
+          {
+            "number": 45,
+            "question": "Megan, a software developer at Linux Training, is testing a new software application. The application has a bug that is causing the process to runaway. Megan wants to immediately and forcefully end the process. Which of the following commands should be used to accomplish this?",
+            "options": [
+              "sudo kill {PID}",
+              "sudo kill -9 {PID}",
+              "pkill -15 {PID}",
+              "kill -15 {PID}"
+            ],
+            "answer": "sudo kill -9 {PID}",
+            "explanation": {
+              "sudo kill {PID}": "Incorrect. It sends the default TERM signal.",
+              "sudo kill -9 {PID}": "Correct. It sends the KILL signal to forcefully terminate the process.",
+              "pkill -15 {PID}": "Incorrect. It sends the TERM signal.",
+              "kill -15 {PID}": "Incorrect. It sends the TERM signal."
+            }
+          },
+          {
+            "number": 46,
+            "question": "Sarah, a system administrator at Linux Training, notices that a Linux server is running slow when processing kernel-related functions. She runs the top command and several metrics are displayed. Which of the following metrics should she look at to troubleshoot kernel-related issues?",
+            "options": [
+              "%wa",
+              "%id",
+              "%sy",
+              "%us"
+            ],
+            "answer": "%sy",
+            "explanation": {
+              "%wa": "Incorrect. It measures I/O wait time.",
+              "%id": "Incorrect. It measures CPU idle time.",
+              "%sy": "Correct. It measures system CPU time.",
+              "%us": "Incorrect. It measures user CPU time."
+            }
+          },
+          {
+            "number": 47,
+            "question": "Jay, a network administrator at Linux Training, is having issues with downloading packages from the internet on a Linux server. The server has an IP address of 172.16.2.3/24. Jay is able to ping the server from a workstation with an IP address of 172.16.2.4/24, but he cannot ping the server from a second workstation with an IP address of 172.16.3.1/24. Which of the following is MOST likely preventing the server from downloading the packages?",
+            "options": [
+              "The server is assigned an invalid IP address",
+              "The server does not have a connection to the default gateway",
+              "The server's network interface card (NIC) is powered off",
+              "A server with a private IP address assigned cannot connect to the internet"
+            ],
+            "answer": "The server does not have a connection to the default gateway",
+            "explanation": {
+              "The server is assigned an invalid IP address": "Incorrect. The IP address is valid.",
+              "The server does not have a connection to the default gateway": "Correct. The default gateway is needed for internet access.",
+              "The server's network interface card (NIC) is powered off": "Incorrect. The NIC is functioning since it can be pinged from one workstation.",
+              "A server with a private IP address assigned cannot connect to the internet": "Incorrect. Private IPs can access the internet through a gateway."
+            }
+          },
+          {
+            "number": 48,
+            "question": "Aria, a system administrator at Linux Training, wants to improve name resolution performance on a Linux server by prioritizing which resources are used for DNS name resolution by the system. Which of the following files can be used by a system administrator to define the order in which name resolution methods will be used?",
+            "options": [
+              "/etc/hosts",
+              "/boot/initrd.img",
+              "/etc/nsswitch.conf",
+              "/proc/mdstat"
+            ],
+            "answer": "/etc/nsswitch.conf",
+            "explanation": {
+              "/etc/hosts": "Incorrect. It manually maps hostnames to IP addresses.",
+              "/boot/initrd.img": "Incorrect. It is a temporary root filesystem used during boot.",
+              "/etc/nsswitch.conf": "Correct. It configures the order of name resolution methods.",
+              "/proc/mdstat": "Incorrect. It displays RAID array status."
+            }
+          },
+          {
+            "number": 49,
+            "question": "Mila, a network administrator at Linux Training, is troubleshooting an issue with a recently installed software application on a Linux server. The application is supposed to be listening for client requests on port 4242, but clients appear to be having issues connecting to the application or transferring data to/from the application. Which of the following commands should Mila use to troubleshoot these connectivity issues?",
+            "options": [
+              "mtr",
+              "nc",
+              "rsync",
+              "sftp"
+            ],
+            "answer": "nc",
+            "explanation": {
+              "mtr": "Incorrect. It combines ping and traceroute functions.",
+              "nc": "Correct. It tests connectivity and transfers data across networks.",
+              "rsync": "Incorrect. It synchronizes files between locations.",
+              "sftp": "Incorrect. It transfers files over SSH."
+            }
+          },
+          {
+            "number": 50,
+            "question": "The path to a storage device dynamically changes when devices are added or removed from a Linux server, such as /dev/sda1 becoming /dev/sdb1. Which of the following commands is used to identify the UUID of a storage device instead of relying on the storage device's path?",
+            "options": [
+              "lsscsi",
+              "blkid",
+              "fcstat",
+              "lspci"
+            ],
+            "answer": "blkid",
+            "explanation": {
+              "lsscsi": "Incorrect. It lists SCSI devices.",
+              "blkid": "Correct. It shows the UUID of storage devices.",
+              "fcstat": "Incorrect. It shows Fibre Channel statistics.",
+              "lspci": "Incorrect. It lists PCI devices."
+            }
+          },
+          {
+            "number": 51,
+            "question": "Barry, a system administrator at Linux Training, wants to configure his Linux server's system time to synchronize with another server's time using chrony. Which of the following default ports must be opened to allow access to the server's time service?",
+            "options": [
+              "514/UDP",
+              "22/TCP",
+              "443/TCP",
+              "123/UDP"
+            ],
+            "answer": "123/UDP",
+            "explanation": {
+              "514/UDP": "Incorrect. It is used for syslog.",
+              "22/TCP": "Incorrect. It is used for SSH.",
+              "443/TCP": "Incorrect. It is used for HTTPS.",
+              "123/UDP": "Correct. It is used for NTP."
+            }
+          },
+          {
+            "number": 52,
+            "question": "Sebastian, a network administrator at Linux Training, recently installed a new server and needs to configure the ip address for its network adapter, enp0s8. Which of the following commands would allow Sebastian to add an ip address directly to enp0s8?",
+            "options": [
+              "ifconfig",
+              "hostname",
+              "ifcfg",
+              "arp"
+            ],
+            "answer": "ifcfg",
+            "explanation": {
+              "ifconfig": "Incorrect. It is used to configure network interfaces.",
+              "hostname": "Incorrect. It is used to display or set the system's hostname.",
+              "ifcfg": "Correct. It configures network interfaces.",
+              "arp": "Incorrect. It manipulates the system's ARP cache."
+            }
+          },
+          {
+            "number": 53,
+            "question": "Norma, a network administrator, wants to use the command line interface (CLI) to allow SSH connections to the DMZ portion of the network. Which of the following commands should be used to implement this configuration change in the firewall?",
+            "options": [
+              "firewall-cmd --zone=dmz --add-port=22/tcp",
+              "firewall-cmd --zone=dmz --remove-service=http",
+              "firewall-cmd --reload",
+              "firewall-cmd --get-zones"
+            ],
+            "answer": "firewall-cmd --zone=dmz --add-port=22/tcp",
+            "explanation": {
+              "firewall-cmd --zone=dmz --add-port=22/tcp": "Correct. It allows SSH connections to the DMZ.",
+              "firewall-cmd --zone=dmz --remove-service=http": "Incorrect. It removes HTTP access.",
+              "firewall-cmd --reload": "Incorrect. It reloads firewall configurations.",
+              "firewall-cmd --get-zones": "Incorrect. It lists available zones."
+            }
+          },
+          {
+            "number": 54,
+            "question": "Robert, a network administrator at Linux Training, wants to use the firewall daemon to manage the firewall on a Linux server. Which of the following commands should be used to accomplish this?",
+            "options": [
+              "firewall-cmd",
+              "iptables",
+              "nftables",
+              "ufw"
+            ],
+            "answer": "firewall-cmd",
+            "explanation": {
+              "firewall-cmd": "Correct. It is the front-end command for the firewall daemon.",
+              "iptables": "Incorrect. It is an older firewall management tool.",
+              "nftables": "Incorrect. It is a newer firewall tool replacing iptables.",
+              "ufw": "Incorrect. It is a simpler front-end for iptables or nftables."
+            }
+          },
+          {
+            "number": 55,
+            "question": "Craig, a system administrator at Linux Training, is trying to resolve a trouble ticket stating that a user's files are being accidentally deleted by other users on the server. Currently, any user with read or execute privileges for a given file can delete that file. The system administrator wants to assign special permissions to the files to prevent other users from being able to delete them. Which of the following special permission sets should be configured to accomplish this?",
+            "options": [
+              "ACL",
+              "SUID",
+              "SGID",
+              "Sticky bit"
+            ],
+            "answer": "Sticky bit",
+            "explanation": {
+              "ACL": "Incorrect. Access Control Lists provide detailed access control.",
+              "SUID": "Incorrect. It allows a program to run with the owner's privileges.",
+              "SGID": "Incorrect. It allows a program to run with the group's privileges.",
+              "Sticky bit": "Correct. It prevents users from deleting files they do not own."
+            }
+          },
+          {
+            "number": 56,
+            "question": "Fiona, a system administrator at Linux Training, wants to transfer the public key for user 'jasondion' to DBserver02 so that it can be used with a remote SSH connection. Which of the following commands should be used to accomplish this?",
+            "options": [
+              "ssh-keygen jasondion DBserver02",
+              "ssh-copy-id DBserver02",
+              "ssh-copy-id jasondion@DBserver02",
+              "ssh-add jasondion@DBserver02"
+            ],
+            "answer": "ssh-copy-id jasondion@DBserver02",
+            "explanation": {
+              "ssh-keygen jasondion DBserver02": "Incorrect. It generates a new SSH key pair.",
+              "ssh-copy-id DBserver02": "Incorrect. It lacks the user specification.",
+              "ssh-copy-id jasondion@DBserver02": "Correct. It copies the public key to the remote server.",
+              "ssh-add jasondion@DBserver02": "Incorrect. It adds a key to the authentication agent."
+            }
+          },
+          {
+            "number": 57,
+            "question": "Carly, a system administrator at Linux Training, wants to issue superuser privileges to a new system administrator on a Linux server. She wants to ensure that there are no errors when she is done modifying the sudoers file. Which of the following commands should be used to accomplish this?",
+            "options": [
+              "vim",
+              "nano",
+              "visudo",
+              "gedit"
+            ],
+            "answer": "visudo",
+            "explanation": {
+              "vim": "Incorrect. It is a text editor but does not perform syntax checking for sudoers.",
+              "nano": "Incorrect. It is a simple text editor.",
+              "visudo": "Correct. It safely edits the sudoers file with error checking.",
+              "gedit": "Incorrect. It is a GUI text editor."
+            }
+          },
+          {
+            "number": 58,
+            "question": "Rebecca, a system administrator at Linux Training, is creating a quick start guide for new users that includes tips on how to navigate a Linux system and its key file locations. She wants to ensure that this file is copied into the home directory every time a new user is created on the system. Which of the following files or directories should the file be copied to accomplish this?",
+            "options": [
+              "/etc/passwd",
+              "/etc/profile",
+              "/etc/skel",
+              "/etc/group"
+            ],
+            "answer": "/etc/skel",
+            "explanation": {
+              "/etc/passwd": "Incorrect. It contains user account information.",
+              "/etc/profile": "Incorrect. It sets system-wide environment variables.",
+              "/etc/skel": "Correct. It contains default files copied to new user directories.",
+              "/etc/group": "Incorrect. It contains group account information."
+            }
+          },
+          {
+            "number": 59,
+            "question": "Diane, a system administrator at Linux Training, needs to add some user accounts to a Linux server. Which of the following commands should be used to accomplish this?",
+            "options": [
+              "userdel",
+              "useradd",
+              "usermod",
+              "groupadd"
+            ],
+            "answer": "useradd",
+            "explanation": {
+              "userdel": "Incorrect. It deletes user accounts.",
+              "useradd": "Correct. It creates new user accounts.",
+              "usermod": "Incorrect. It modifies existing user accounts.",
+              "groupadd": "Incorrect. It creates new groups."
+            }
+          },
+          {
+            "number": 60,
+            "question": "Maxine, a system administrator at Linux Training, needs to modify the password expiration for user accounts on a Linux server. Which of the following commands should be used to accomplish this?",
+            "options": [
+              "chown",
+              "chgrp",
+              "chage",
+              "chmod"
+            ],
+            "answer": "chage",
+            "explanation": {
+              "chown": "Incorrect. It changes file ownership.",
+              "chgrp": "Incorrect. It changes group ownership.",
+              "chage": "Correct. It changes user password expiration.",
+              "chmod": "Incorrect. It changes file permissions."
+            }
+          },
+          {
+            "number": 61,
+            "question": "Abigail, a system administrator at Linux Training, wants to apply more granular permissions to an object than traditional file permissions normally allow. She needs to configure permissions on a file so that group one has RWX permissions and group two has R-X permissions. Which of the following should be configured to accomplish this?",
+            "options": [
+              "ACL",
+              "SUID",
+              "SGID",
+              "Sticky bit"
+            ],
+            "answer": "ACL",
+            "explanation": {
+              "ACL": "Correct. It allows detailed permissions for different users/groups.",
+              "SUID": "Incorrect. It allows a program to run with the owner's privileges.",
+              "SGID": "Incorrect. It allows a program to run with the group's privileges.",
+              "Sticky bit": "Incorrect. It prevents users from deleting files they do not own."
+            }
+          },
+          {
+            "number": 62,
+            "question": "Gareth, a cybersecurity analyst at Linux Training, wants to enforce the SELinux security policies on a Linux server. Which of the following commands would he use to accomplish this?",
+            "options": [
+              "setenforce 0",
+              "getenforce",
+              "setenforce 1",
+              "sudo nano /etc/setlinux/config then change SELINUX disabled"
+            ],
+            "answer": "setenforce 1",
+            "explanation": {
+              "setenforce 0": "Incorrect. It sets SELinux to permissive mode.",
+              "getenforce": "Incorrect. It displays the current SELinux mode.",
+              "setenforce 1": "Correct. It sets SELinux to enforcing mode.",
+              "sudo nano /etc/setlinux/config then change SELINUX disabled": "Incorrect. It disables SELinux, not enforce it."
+            }
+          },
+          {
+            "number": 63,
+            "question": "Which part of the PKI system maintains the associated private/public key pair for entities?",
+            "options": [
+              "Self-signed certificate",
+              "Digital signature",
+              "Wildcard certificate",
+              "Certificate authority"
+            ],
+            "answer": "Certificate authority",
+            "explanation": {
+              "Self-signed certificate": "Incorrect. It is signed by the same entity that issues it.",
+              "Digital signature": "Incorrect. It ensures data integrity and authenticity.",
+              "Wildcard certificate": "Incorrect. It covers subdomains of a domain.",
+              "Certificate authority": "Correct. It issues and manages digital certificates."
+            }
+          },
+          {
+            "number": 64,
+            "question": "Marion, a cybersecurity analyst at Linux Training, wants to add a firewall rule using service identification within the firewall-cmd utility. Which of the following commands should be used to accomplish this?",
+            "options": [
+              "firewall-cmd --zone=dmz --remove-port=123/udp",
+              "firewall-cmd --zone=dmz --add-service=ntp",
+              "firewall-cmd --get-zones",
+              "firewall-cmd --zone=dmz --list-all"
+            ],
+            "answer": "firewall-cmd --zone=dmz --add-service=ntp",
+            "explanation": {
+              "firewall-cmd --zone=dmz --remove-port=123/udp": "Incorrect. It removes NTP service.",
+              "firewall-cmd --zone=dmz --add-service=ntp": "Correct. It allows NTP service using service identification.",
+              "firewall-cmd --get-zones": "Incorrect. It lists all zones.",
+              "firewall-cmd --zone=dmz --list-all": "Incorrect. It lists all rules in the DMZ."
+            }
+          },
+          {
+            "number": 65,
+            "question": "Melanie, a system administrator at Linux Training, wants to configure access control for users to be able to execute non-privileged processes while allowing those same processes to communicate with privileged ones. Which of the following commands or tools should be used to accomplish this?",
+            "options": [
+              "polkit",
+              "traceroute",
+              "iostat",
+              "tcpdump"
+            ],
+            "answer": "polkit",
+            "explanation": {
+              "polkit": "Correct. It provides fine-grained control over system-wide privileges.",
+              "traceroute": "Incorrect. It traces the network path to a host.",
+              "iostat": "Incorrect. It reports CPU and device I/O statistics.",
+              "tcpdump": "Incorrect. It captures packets on a network."
+            }
+          },
+          {
+            "number": 66,
+            "question": "Christopher, a network administrator at Linux Training, wants to deny the use of FTP services by blocking it in the firewall on a Linux server. Which of the following commands should be used to accomplish this?",
+            "options": [
+              "firewall-cmd --get-zones",
+              "firewall-cmd --zone=dmz --list-all",
+              "firewall-cmd --zone=dmz --add-port=21/tcp",
+              "firewall-cmd --zone=dmz --remove-port=21/tcp"
+            ],
+            "answer": "firewall-cmd --zone=dmz --remove-port=21/tcp",
+            "explanation": {
+              "firewall-cmd --get-zones": "Incorrect. It lists all zones.",
+              "firewall-cmd --zone=dmz --list-all": "Incorrect. It lists all rules in the DMZ.",
+              "firewall-cmd --zone=dmz --add-port=21/tcp": "Incorrect. It allows FTP service.",
+              "firewall-cmd --zone=dmz --remove-port=21/tcp": "Correct. It blocks FTP service."
+            }
+          },
+          {
+            "number": 67,
+            "question": "The National Security Agency (NSA) wanted to implement a context-based permissions schema to existing Linux distributions so that Mandatory Access Controls (MAC) could be enforced on the system. Which of the following tools did the NSA create to achieve this?",
+            "options": [
+              "chroot",
+              "SELinux",
+              "ufw",
+              "AppArmor"
+            ],
+            "answer": "SELinux",
+            "explanation": {
+              "chroot": "Incorrect. It changes the root directory of a process.",
+              "SELinux": "Correct. It is a security module for enforcing MAC.",
+              "ufw": "Incorrect. It is a frontend for managing firewall rules.",
+              "AppArmor": "Incorrect. It is another MAC implementation."
+            }
+          },
+          {
+            "number": 68,
+            "question": "Fred, a system administrator at Linux Training, needs to rename a misspelled user's account from Jayson to Jason on the company's Linux server. Which of the following commands should be used to accomplish this?",
+            "options": [
+              "userdel",
+              "useradd",
+              "usermod",
+              "groupadd"
+            ],
+            "answer": "usermod",
+            "explanation": {
+              "userdel": "Incorrect. It deletes user accounts.",
+              "useradd": "Incorrect. It creates new user accounts.",
+              "usermod": "Correct. It modifies existing user accounts.",
+              "groupadd": "Incorrect. It creates new groups."
+            }
+          },
+          {
+            "number": 69,
+            "question": "Neil, a system administrator at Linux Training, wants to display the public keys for any users that are authorized to connect to a Linux server using the SSH protocol for remote access. Which of the following files should be reviewed to determine which users are authorized to connect to a given server?",
+            "options": [
+              "~/.ssh/authorized_keys",
+              "/etc/ssh/sshd_config",
+              "~/.ssh/known_hosts",
+              "/etc/ssh/ssh_config"
+            ],
+            "answer": "~/.ssh/authorized_keys",
+            "explanation": {
+              "~/.ssh/authorized_keys": "Correct. It contains public keys for authorized users.",
+              "/etc/ssh/sshd_config": "Incorrect. It configures SSH server settings.",
+              "~/.ssh/known_hosts": "Incorrect. It contains known host keys.",
+              "/etc/ssh/ssh_config": "Incorrect. It configures SSH client settings."
+            }
+          },
+          {
+            "number": 70,
+            "question": "Which of the following types of encryption functions is SHA256 used for?",
+            "options": [
+              "Public key",
+              "Hashing",
+              "Private key",
+              "Wildcard certificate"
+            ],
+            "answer": "Hashing",
+            "explanation": {
+              "Public key": "Incorrect. It is used for asymmetric encryption.",
+              "Hashing": "Correct. It is a hashing algorithm.",
+              "Private key": "Incorrect. It is used for asymmetric encryption.",
+              "Wildcard certificate": "Incorrect. It covers multiple subdomains."
+            }
+          },
+          {
+            "number": 71,
+            "question": "Jeffrey, a cybersecurity analyst at Linux Training, wants to remove or unload a module not currently being used by the Linux kernel to increase the security of a Linux server. Which of the following commands would you use to remove the kernel module?",
+            "options": [
+              "lsmod",
+              "auditd",
+              "modprobe",
+              "cryptsetup"
+            ],
+            "answer": "modprobe",
+            "explanation": {
+              "lsmod": "Incorrect. It lists loaded kernel modules.",
+              "auditd": "Incorrect. It manages audit daemon.",
+              "modprobe": "Correct. It adds or removes kernel modules.",
+              "cryptsetup": "Incorrect. It manages disk encryption."
+            }
+          },
+          {
+            "number": 72,
+            "question": "Which of the following is used to store a company's container images in a public or private central repository?",
+            "options": [
+              "Service mesh",
+              "Container registry",
+              "Ambassador container",
+              "Cloud-init"
+            ],
+            "answer": "Container registry",
+            "explanation": {
+              "Service mesh": "Incorrect. It manages microservices communication.",
+              "Container registry": "Correct. It stores container images.",
+              "Ambassador container": "Incorrect. It handles network traffic for a container.",
+              "Cloud-init": "Incorrect. It initializes cloud instances."
+            }
+          },
+          {
+            "number": 73,
+            "question": "Which of the following patterns would be used to redirect both the standard output and the standard error message to a file?",
+            "options": [
+              "<",
+              "&>",
+              ">>",
+              "2>"
+            ],
+            "answer": "&>",
+            "explanation": {
+              "<": "Incorrect. It redirects input.",
+              "&>": "Correct. It redirects both stdout and stderr.",
+              ">>": "Incorrect. It appends output to a file.",
+              "2>": "Incorrect. It redirects stderr to a file."
+            }
+          },
+          {
+            "number": 74,
+            "question": "Reece, a network administrator at Linux Training, wants to configure the company's containers to obtain network access by using special network drivers. The drivers will track all the IP addresses used by the containers, hosts, and remote services. Which of the following should be used to accomplish this?",
+            "options": [
+              "Overlay",
+              "Host",
+              "NAT",
+              "Bridge"
+            ],
+            "answer": "NAT",
+            "explanation": {
+              "Overlay": "Incorrect. It connects containers across hosts.",
+              "Host": "Incorrect. It shares the host's network stack.",
+              "NAT": "Correct. It tracks IP addresses and translates them.",
+              "Bridge": "Incorrect. It connects containers on the same host."
+            }
+          },
+          {
+            "number": 75,
+            "question": "Violet, a system administrator at Linux Training, wants to redirect the standard input to a file. Which of the following redirectors should be used to accomplish this?",
+            "options": [
+              "<",
+              ">",
+              "<<",
+              ">>"
+            ],
+            "answer": "<",
+            "explanation": {
+              "<": "Correct. It redirects input from a file.",
+              ">": "Incorrect. It redirects output to a file.",
+              "<<": "Incorrect. It denotes a here document.",
+              ">>": "Incorrect. It appends output to a file."
+            }
+          },
+          {
+            "number": 76,
+            "question": "Natalie, a software developer at Linux Training, wants to configure a microservice-based web application that can automatically deploy additional containers as demand increases. Which of the following should be configured to enable the automation of multiple related tasks to deploy, manage, scale, and configure the containers that support this microservice?",
+            "options": [
+              "Orchestration",
+              "Looping",
+              "Compilation",
+              "Logging"
+            ],
+            "answer": "Orchestration",
+            "explanation": {
+              "Orchestration": "Correct. It automates container management tasks.",
+              "Looping": "Incorrect. It repeats a set of instructions.",
+              "Compilation": "Incorrect. It converts source code into executable code.",
+              "Logging": "Incorrect. It records system events."
+            }
+          },
+          {
+            "number": 77,
+            "question": "Lionel, a system administrator at Linux Training, wants to determine which containers are currently running on a given Linux server by listing out the running containers, how long ago each container was created, and how long each container has been running. Which of the following commands should be used to accomplish this?",
+            "options": [
+              "docker info",
+              "docker ps",
+              "docker pull",
+              "docker push"
+            ],
+            "answer": "docker ps",
+            "explanation": {
+              "docker info": "Incorrect. It displays system-wide information.",
+              "docker ps": "Correct. It lists running containers.",
+              "docker pull": "Incorrect. It downloads a container image.",
+              "docker push": "Incorrect. It uploads a container image."
+            }
+          },
+          {
+            "number": 78,
+            "question": "Wayne, a system administrator at Linux Training, wants to display the last ten lines of a configuration file to the terminal. Which of the following commands should be used to accomplish this?",
+            "options": [
+              "head",
+              "tail",
+              "source",
+              "read"
+            ],
+            "answer": "tail",
+            "explanation": {
+              "head": "Incorrect. It displays the first lines of a file.",
+              "tail": "Correct. It displays the last lines of a file.",
+              "source": "Incorrect. It executes a script in the current shell.",
+              "read": "Incorrect. It reads user input."
+            }
+          },
+          {
+            "number": 79,
+            "question": "Arnold, a system administrator at Linux Training, wants to select an orchestration tool that is commonly used with Red Hat Enterprise Linux deployments, is agentless, and relies on the Python programming language. Which of the following orchestration tools would meet these requirements?",
+            "options": [
+              "Ansible",
+              "Chef",
+              "Puppet",
+              "SaltStack"
+            ],
+            "answer": "Ansible",
+            "explanation": {
+              "Ansible": "Correct. It is agentless and uses Python.",
+              "Chef": "Incorrect. It uses agents and Ruby.",
+              "Puppet": "Incorrect. It uses agents and its own DSL.",
+              "SaltStack": "Incorrect. It can be agentless but is not primarily used for Red Hat."
+            }
+          },
+          {
+            "number": 80,
+            "question": "Which of the following operators is used for logical AND operations in a Bash script?",
+            "options": [
+              "|",
+              "&&",
+              "||",
+              "<"
+            ],
+            "answer": "&&",
+            "explanation": {
+              "|": "Incorrect. It is used for piping.",
+              "&&": "Correct. It is used for logical AND operations.",
+              "||": "Incorrect. It is used for logical OR operations.",
+              "<": "Incorrect. It is used for input redirection."
+            }
+          },
+          {
+            "number": 81,
+            "question": "Rosemary, a system administrator at Linux Training, wants to execute the ps command and have its results displayed to the standard output, as well as to a text file called processes.txt. Which of the following commands should be used to accomplish this?",
+            "options": [
+              "grep",
+              "tee",
+              "sed",
+              "xargs"
+            ],
+            "answer": "tee",
+            "explanation": {
+              "grep": "Incorrect. It searches for patterns in input.",
+              "tee": "Correct. It reads from standard input and writes to standard output and files.",
+              "sed": "Incorrect. It is a stream editor for filtering and transforming text.",
+              "xargs": "Incorrect. It builds and executes command lines from input."
+            }
+          },
+          {
+            "number": 82,
+            "question": "Ernest, a system administrator at Linux Training, wants to select an orchestration tool that supports both agent and agentless operations. The selected tool should also support the use of Python and YAML. Which of the following orchestration tools would meet these requirements?",
+            "options": [
+              "Ansible",
+              "Chef",
+              "Puppet",
+              "SaltStack"
+            ],
+            "answer": "SaltStack",
+            "explanation": {
+              "Ansible": "Incorrect. It is agentless, but primarily uses Python.",
+              "Chef": "Incorrect. It uses agents and Ruby.",
+              "Puppet": "Incorrect. It uses agents and its own DSL.",
+              "SaltStack": "Correct. It supports both agent and agentless operations, using Python and YAML."
+            }
+          },
+          {
+            "number": 83,
+            "question": "Janice, a system administrator at Linux Training, wants to convert a string of characters from lowercase to uppercase within a given filename. Which of the following commands should be used to accomplish this?",
+            "options": [
+              "which",
+              "tee",
+              "tr",
+              "xargs"
+            ],
+            "answer": "tr",
+            "explanation": {
+              "which": "Incorrect. It shows the location of executables.",
+              "tee": "Incorrect. It reads from input and writes to output and files.",
+              "tr": "Correct. It translates or deletes characters.",
+              "xargs": "Incorrect. It builds and executes command lines from input."
+            }
+          },
+          {
+            "number": 84,
+            "question": "Jill, a system administrator at Linux Training, wants to redirect the system output to the end of a file instead of to the standard output. Which of the following operators should be used to accomplish this?",
+            "options": [
+              ">>",
+              ">",
+              "$",
+              "<"
+            ],
+            "answer": ">>",
+            "explanation": {
+              ">>": "Correct. It appends output to a file.",
+              ">": "Incorrect. It overwrites a file.",
+              "$": "Incorrect. It denotes a variable.",
+              "<": "Incorrect. It is used for input redirection."
+            }
+          },
+          {
+            "number": 85,
+            "question": "Jodie, a network administrator at Linux Training, wants to configure the company's containers to obtain network access by using special network drivers. The drivers will utilize the standard configuration for a standalone container which requires network access. Which of the following should be used to accomplish this?",
+            "options": [
+              "Overlay",
+              "Host",
+              "NAT",
+              "Bridge"
+            ],
+            "answer": "Bridge",
+            "explanation": {
+              "Overlay": "Incorrect. It connects containers across hosts.",
+              "Host": "Incorrect. It shares the host's network stack.",
+              "NAT": "Incorrect. It translates IP addresses.",
+              "Bridge": "Correct. It connects standalone containers to the network."
+            }
+          },
+          {
+            "number": 86,
+            "question": "Joel, a network administrator at Linux Training, wants to configure the company's containers to obtain network access by using special network drivers. The drivers will provide networking between the container and the host and will use the host's network access. Which of the following should be used to accomplish this?",
+            "options": [
+              "Overlay",
+              "Host",
+              "NAT",
+              "Bridge"
+            ],
+            "answer": "Host",
+            "explanation": {
+              "Overlay": "Incorrect. It connects containers across hosts.",
+              "Host": "Correct. It shares the host's network stack.",
+              "NAT": "Incorrect. It translates IP addresses.",
+              "Bridge": "Incorrect. It connects standalone containers to the network."
+            }
+          },
+          {
+            "number": 87,
+            "question": "Sidney, a system administrator at Linux Training, is using the Kubernetes container orchestration solution. She needs to utilize a component that can facilitate communications and extend functionality within a pod. Which of the following components should be used to accomplish this?",
+            "options": [
+              "sidecar",
+              "ambassador container",
+              "pod",
+              "compose"
+            ],
+            "answer": "sidecar",
+            "explanation": {
+              "sidecar": "Correct. It extends the functionality of a pod.",
+              "ambassador container": "Incorrect. It facilitates communication between containers.",
+              "pod": "Incorrect. It is a group of containers.",
+              "compose": "Incorrect. It is a tool for defining and running multi-container Docker applications."
+            }
+          },
+          {
+            "number": 88,
+            "question": "Which of the following terms best describes a dedicated infrastructure layer that is designed to manage service-to-service interaction in a container environment?",
+            "options": [
+              "service mesh",
+              "pod",
+              "sidecar",
+              "ambassador container"
+            ],
+            "answer": "service mesh",
+            "explanation": {
+              "service mesh": "Correct. It manages service-to-service communication.",
+              "pod": "Incorrect. It is a group of containers.",
+              "sidecar": "Incorrect. It extends the functionality of a pod.",
+              "ambassador container": "Incorrect. It facilitates communication between containers."
+            }
+          },
+          {
+            "number": 89,
+            "question": "Consider the screenshot. Which of the following commands was executed to create this output?",
+            "options": [
+                "ls -l /",
+                "lsmod",
+                "lscpu",
+                "lsmem"
+            ],
+            "answer": "lsmem",
+            "explanation": {
+                "ls -l /": "Incorrect. It lists directory contents.",
+                "lsmod": "Incorrect. It lists loaded kernel modules.",
+                "lscpu": "Incorrect. It displays CPU information.",
+                "lsmem": "Correct. It displays memory information."
+            },
+            "image": "assets/linux_questions_images/assessment3_1.jpg"
+        },
+          {
+            "number": 90,
+            "question": "Betty, a system administrator at Linux Training, wants to scan all of the physical storage devices to detect any logical volumes contained within them. Which of the following commands should be used to accomplish this?",
+            "options": [
+              "lvcreate",
+              "pvscan",
+              "lvchange",
+              "lvscan"
+            ],
+            "answer": "lvscan",
+            "explanation": {
+              "lvcreate": "Incorrect. It creates a new logical volume.",
+              "pvscan": "Incorrect. It scans for physical volumes.",
+              "lvchange": "Incorrect. It changes attributes of a logical volume.",
+              "lvscan": "Correct. It scans for logical volumes."
+            }
+          }
+        ]
+      }
+    ]
+  }
