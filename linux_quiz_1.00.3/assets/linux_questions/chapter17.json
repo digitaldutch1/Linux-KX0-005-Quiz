@@ -1,0 +1,143 @@
+
+
+
+{
+    "chapters": [
+        {
+            "chapter": 17,
+            "description": "Implementing logging services",
+            "questions": [
+                {
+                    "number": 297,
+                    "question": "What protocol became a de facto standard in Linux for tracking system event messages?",
+                    "options": ["SMTP", "FTP", "NTP", "syslog", "journalctl"],
+                    "answer": "syslog",
+                    "explanation": {
+                        "SMTP": "This is a mail protocol.",
+                        "FTP": "This stands for File Transfer Protocol.",
+                        "NTP": "This stands for Network Time Protocol.",
+                        "syslog": "The syslog protocol created by the Sendmail project has become the de facto standard for logging system event messages in Linux.",
+                        "journalctl": "This is a tool used to read systemd-journald journal files, not a protocol for logging event messages."
+                    }
+                },
+                {
+                    "number": 298,
+                    "question": "Nancy wants to write a rsyslogd rule that separates event messages coming from the system job scheduler to a separate log file. Which syslog facility keyword should she use?",
+                    "options": ["cron", "user", "kern", "console", "local0"],
+                    "answer": "cron",
+                    "explanation": {
+                        "cron": "The cron application schedules jobs on Linux systems, so the cron facility keyword represents event messages from the job scheduler.",
+                        "user": "This keyword represents events received from users.",
+                        "kern": "This keyword represents events received from the kernel.",
+                        "console": "This keyword represents events received from a console on the system.",
+                        "local0": "This keyword is not defined in the standard."
+                    }
+                },
+                {
+                    "number": 299,
+                    "question": "What syslog severity level has the highest priority ranking in rsyslogd?",
+                    "options": ["crit", "alert", "emerg", "notice", "err"],
+                    "answer": "emerg",
+                    "explanation": {
+                        "crit": "This severity level is at level 2, so it's not the highest.",
+                        "alert": "This keyword is assigned level 1 but is not the highest.",
+                        "emerg": "The emerg severity level has a priority of 0, the highest level in syslog.",
+                        "notice": "This keyword is assigned level 5 and is not the highest.",
+                        "err": "This keyword is assigned level 3 and is not the highest."
+                    }
+                },
+                {
+                    "number": 300,
+                    "question": "What syslog severity level represents normal but significant condition messages?",
+                    "options": ["crit", "notice", "info", "alert", "local0"],
+                    "answer": "notice",
+                    "explanation": {
+                        "crit": "This represents critical conditions.",
+                        "notice": "The notice severity level represents significant but normal event messages.",
+                        "info": "This represents informational messages.",
+                        "alert": "This represents urgent conditions.",
+                        "local0": "This is not defined in the syslog protocol."
+                    }
+                },
+                {
+                    "number": 301,
+                    "question": "What syslog application is known for its rocket-fast speed?",
+                    "options": ["syslogd", "syslog-ng", "systemd-journald", "klogd", "rsyslogd"],
+                    "answer": "rsyslogd",
+                    "explanation": {
+                        "syslogd": "This is the original syslog application and is not known for its speed.",
+                        "syslog-ng": "This application is more versatile but not faster.",
+                        "systemd-journald": "This application is known for faster queries but not for handling event messages.",
+                        "klogd": "This is part of the original sysklogd application and is also not fast.",
+                        "rsyslogd": "The rsyslogd application was designed to be a faster version of syslogd."
+                    }
+                },
+                {
+                    "number": 302,
+                    "question": "What configuration file does the rsyslogd application use by default?",
+                    "options": ["rsyslog.conf", "journald.conf", "syslogd.conf", "rsyslog.d", "syslog.d"],
+                    "answer": "rsyslog.conf",
+                    "explanation": {
+                        "rsyslog.conf": "The rsyslogd application uses this configuration file by default.",
+                        "rsyslog.d": "This is commonly used for storing additional configuration files, not the default filename.",
+                        "journald.conf": "This is for systemd-journald, not rsyslogd.",
+                        "syslogd.conf": "This is not a valid configuration file for rsyslogd.",
+                        "syslog.d": "This is not a valid logging application configuration filename."
+                    }
+                },
+                {
+                    "number": 303,
+                    "question": "James needs to log all kernel messages that have a severity level of warning or higher to a separate log file. What facility and priority setting should he use?",
+                    "options": ["kern.=warn", "kern.*", "*.info", "kern.warn", "kern.alert"],
+                    "answer": "kern.warn",
+                    "explanation": {
+                        "kern.=warn": "This would only log kernel messages with a severity of warning.",
+                        "kern.*": "This would log all kernel event messages.",
+                        "*.info": "This would log all facility type event messages at the info level.",
+                        "kern.warn": "This setting would log all kernel event messages at the warn severity or higher.",
+                        "kern.alert": "This would only log kernel event messages at the alert or emerg severity levels."
+                    }
+                },
+                {
+                    "number": 304,
+                    "question": "Barbara wants to ensure that the journal log files will be saved after the next reboot of her Linux system. What systemdjournald configuration setting should she use?",
+                    "options": ["Storage=auto", "Storage=persistent", "ForwardToSyslog=on", "Storage=volatile", "ForwardToSyslog=off"],
+                    "answer": "Storage=persistent",
+                    "explanation": {
+                        "Storage=auto": "This setting ensures persistence only if the /var/log/journal directory exists.",
+                        "Storage=persistent": "This ensures that the journal files will remain in the /var/log/journal directory.",
+                        "ForwardToSyslog=on": "This setting controls whether event messages are passed to rsyslogd.",
+                        "Storage=volatile": "This setting ensures that the journal does not persist.",
+                        "ForwardToSyslog=off": "This setting also controls message forwarding, not persistence."
+                    }
+                },
+                {
+                    "number": 305,
+                    "question": "Katie wants to display the most recent entries in the journal log on her Linux system. What journalctl option should she use?",
+                    "options": ["-a", "-l", "-r", "-e", "-n"],
+                    "answer": "-n",
+                    "explanation": {
+                        "-a": "This option displays all data fields but in normal order.",
+                        "-l": "This option displays all printable data fields but in normal order.",
+                        "-r": "This option displays the entries in reverse order.",
+                        "-e": "This option jumps to the end of the log file.",
+                        "-n": "This option displays the most recent entries."
+                    }
+                },
+                {
+                    "number": 306,
+                    "question": "Tony is trying to troubleshoot errors produced by an application on his Linux system but has to dig through lots of entries in the journal log file to find them. What journalctl match option would help him by only displaying journal entries related to the specific application?",
+                    "options": ["OBJECT_PID", "Kernel", "_TRANSPORT", "_UID", "_UDEV"],
+                    "answer": "OBJECT_PID",
+                    "explanation": {
+                        "OBJECT_PID": "This match option filters entries for a specific process ID.",
+                        "Kernel": "This match option retrieves events generated by the kernel.",
+                        "_TRANSPORT": "This option filters based on how messages were received.",
+                        "_UID": "This option filters based on user ID values.",
+                        "_UDEV": "This option filters events by device ID."
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,143 @@
+
+
+
+{
+    "chapters": [
+        {
+            "chapter": 16,
+            "description": "Looking at acces and authentication methods",
+            "questions": [
+                {
+                    "number": 287,
+                    "question": "For an application to use PAM, it needs to be compiled with which PAM library?",
+                    "options": ["ldd", "pam_nologin.so", "pam_unix.so", "libpam", "pam_cracklib"],
+                    "answer": "libpam",
+                    "explanation": {
+                        "ldd": "This command shows shared libraries but is not a PAM library.",
+                        "pam_nologin.so": "This is a PAM module but not the library needed for PAM.",
+                        "pam_unix.so": "This is a PAM module but not the library needed for PAM.",
+                        "libpam": "For an application to use PAM, it must be compiled with the libpam library.",
+                        "pam_cracklib": "This is a PAM module but not the library needed for PAM."
+                    }
+                },
+                {
+                    "number": 288,
+                    "question": "Which of the following are PAM control flags? (Choose all that apply.)",
+                    "options": ["requisite", "required", "allowed", "sufficient", "optional"],
+                    "answer": ["requisite", "required", "sufficient", "optional"],
+                    "explanation": {
+                        "requisite": "This is a PAM control flag that can be used in configuration files.",
+                        "required": "This is a PAM control flag that can be used in configuration files.",
+                        "allowed": "This option is made up and not a PAM control flag.",
+                        "sufficient": "This is a PAM control flag that can be used in configuration files.",
+                        "optional": "This is a PAM control flag that can be used in configuration files."
+                    }
+                },
+                {
+                    "number": 289,
+                    "question": "Which of the following will display failed login attempts? (Choose all that apply.)",
+                    "options": ["tally2", "pam_tally2", "pam_tally2.so", "pam_faillock", "faillock"],
+                    "answer": ["pam_tally2", "faillock"],
+                    "explanation": {
+                        "tally2": "This command does not exist.",
+                        "pam_tally2": "This command displays failed login attempts.",
+                        "pam_tally2.so": "This module is involved with failed login attempts but does not display them.",
+                        "pam_faillock": "This command is also used to manage failed login attempts.",
+                        "faillock": "This command displays failed login attempts."
+                    }
+                },
+                {
+                    "number": 290,
+                    "question": "Leigh encrypts a message with Luke's public key and then sends the message to Luke. After receiving the message, Luke decrypts the message with his private key. What does this describe? (Choose all that apply.)",
+                    "options": ["Symmetric key encryption", "Asymmetric key encryption", "Public/private key encryption", "Secret key encryption", "Private key encryption"],
+                    "answer": ["Asymmetric key encryption", "Public/private key encryption"],
+                    "explanation": {
+                        "Symmetric key encryption": "This involves both sender and receiver using the same secret key.",
+                        "Asymmetric key encryption": "This involves the use of a public key for encryption and a private key for decryption.",
+                        "Public/private key encryption": "This describes asymmetric encryption where public and private keys are used.",
+                        "Secret key encryption": "This is another term for symmetric key encryption.",
+                        "Private key encryption": "This is incorrect; it is not a recognized encryption term."
+                    }
+                },
+                {
+                    "number": 291,
+                    "question": "Which of the following best describes a digital signature?",
+                    "options": ["Plaintext that has been turned into ciphertext", "Ciphertext that has been turned into plaintext", "A framework that proves authenticity and validation of keys as well as the people or devices that use them", "A digital certificate that is not signed by a CA but by an end user", "An original plaintext hash, which is encrypted with a private key and sent along with the ciphertext"],
+                    "answer": "An original plaintext hash, which is encrypted with a private key and sent along with the ciphertext",
+                    "explanation": {
+                        "Plaintext that has been turned into ciphertext": "This describes encryption, not a digital signature.",
+                        "Ciphertext that has been turned into plaintext": "This describes decryption, not a digital signature.",
+                        "A framework that proves authenticity and validation of keys as well as the people or devices that use them": "This describes PKI, not a digital signature.",
+                        "A digital certificate that is not signed by a CA but by an end user": "This describes a self-signed certificate, not a digital signature.",
+                        "An original plaintext hash, which is encrypted with a private key and sent along with the ciphertext": "This accurately describes the process of creating a digital signature."
+                    }
+                },
+                {
+                    "number": 292,
+                    "question": "The OpenSSH application keeps track of any previously connected hosts and their public keys in what file?",
+                    "options": ["~/.ssh/known_hosts", "~/.ssh/authorized_keys", "/etc/ssh/known_hosts", "/etc/ssh/authorized_keys", "/etc/ssh/ssh_host_rsa_key.pub"],
+                    "answer": "~/.ssh/known_hosts",
+                    "explanation": {
+                        "~/.ssh/known_hosts": "This file keeps track of previously connected hosts and their public keys.",
+                        "~/.ssh/authorized_keys": "This file is used on an SSH server to keep track of authorized public keys.",
+                        "/etc/ssh/known_hosts": "This directory name is made up; there is no such configuration file.",
+                        "/etc/ssh/authorized_keys": "This directory name is made up; there is no such configuration file.",
+                        "/etc/ssh/ssh_host_rsa_key.pub": "This is an RSA public key but not a file for tracking hosts."
+                    }
+                },
+                {
+                    "number": 293,
+                    "question": "Which of the following are OpenSSH configuration files? (Choose all that apply.)",
+                    "options": ["~./ssh/config", "/etc/ssh/ssh_config", "/etc/ssh/sshd_config", "/etc/sshd/ssh_config", "/etc/sshd/sshd_config"],
+                    "answer": ["/etc/ssh/ssh_config", "/etc/ssh/sshd_config"],
+                    "explanation": {
+                        "~./ssh/config": "This directory name is made up.",
+                        "/etc/ssh/ssh_config": "This is an OpenSSH configuration file.",
+                        "/etc/ssh/sshd_config": "This is also an OpenSSH configuration file.",
+                        "/etc/sshd/ssh_config": "This directory name is made up.",
+                        "/etc/sshd/sshd_config": "This directory name is made up."
+                    }
+                },
+                {
+                    "number": 294,
+                    "question": "Which of the following files may be involved in authenticating with SSH keys?",
+                    "options": ["/etc/ssh/ssh_host_rsa_key", "/etc/ssh/ssh_host_rsa_key.pub", "~/.ssh/id_rsa_key", "~/.ssh/id_rsa_key.pub", "~/.ssh/id_rsa"],
+                    "answer": ["~/.ssh/id_rsa"],
+                    "explanation": {
+                        "/etc/ssh/ssh_host_rsa_key": "This is an RSA private key used in establishing a password authenticated SSH connection.",
+                        "/etc/ssh/ssh_host_rsa_key.pub": "This is a public key but not used for user authentication.",
+                        "~/.ssh/id_rsa_key": "This filename is made up.",
+                        "~/.ssh/id_rsa_key.pub": "This filename is made up.",
+                        "~/.ssh/id_rsa": "This is a private key using the RSA algorithm."
+                    }
+                },
+                {
+                    "number": 295,
+                    "question": "Which of the following is true concerning TCP wrappers? (Choose all that apply.)",
+                    "options": ["/etc/hosts.allow file is consulted first.", "/etc/hosts.allow file should contain ALL: ALL to provide the best security.", "If an application is compiled with the libwrap library, it can employ TCP Wrappers.", "IP addresses of remote systems can be listed individually or as entire subnets.", "TCP Wrappers are considered to be deprecated by many distributions, and firewalls should be used instead."],
+                    "answer": ["/etc/hosts.allow file is consulted first.", "If an application is compiled with the libwrap library, it can employ TCP Wrappers.", "IP addresses of remote systems can be listed individually or as entire subnets.", "TCP Wrappers are considered to be deprecated by many distributions, and firewalls should be used instead."],
+                    "explanation": {
+                        "/etc/hosts.allow file is consulted first.": "This is true; it is checked first for access.",
+                        "/etc/hosts.allow file should contain ALL: ALL to provide the best security.": "This is incorrect; that would block everyone from accessing.",
+                        "If an application is compiled with the libwrap library, it can employ TCP Wrappers.": "This is true; applications can use TCP wrappers.",
+                        "IP addresses of remote systems can be listed individually or as entire subnets.": "This is true; you can specify both.",
+                        "TCP Wrappers are considered to be deprecated by many distributions, and firewalls should be used instead.": "This is true; many prefer using firewalls."
+                    }
+                },
+                {
+                    "number": 296,
+                    "question": "Which of the following protocols or frameworks might be involved in using VPN software as a client? (Choose all that apply.)",
+                    "options": ["Tunnel", "SSL/TLS", "Transport", "IPSec", "DTLS"],
+                    "answer": ["SSL/TLS", "IPSec", "DTLS"],
+                    "explanation": {
+                        "Tunnel": "This is not a specific protocol; it refers to the general concept of tunneling.",
+                        "SSL/TLS": "This is a protocol that can be used for establishing secure VPN connections.",
+                        "Transport": "This is not a specific protocol; it refers to transport layer security.",
+                        "IPSec": "This is a framework that may be involved in VPN software.",
+                        "DTLS": "This is also a protocol used for securing data in transit and can be involved in VPNs."
+                    }
+                }
+            ]
+        }
+    ]
+}

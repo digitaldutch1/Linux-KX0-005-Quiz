@@ -1,0 +1,375 @@
+
+
+
+{
+    "chapters": [
+        {
+            "chapter": 4,
+            "description": "Searching and Analyzing Text",
+            "questions": [
+                {
+                    "number": 97,
+                    "question": "The cat -E MyFile.txt command is entered, and at the end of every line displayed is a $. What does this indicate?",
+                    "options": [
+                        "The text file has been corrupted somehow.",
+                        "The text file records end in the ASCII character NUL.",
+                        "The text file records end in the ASCII character LF.",
+                        "The text file records end in the ASCII character $.",
+                        "The text file records contain a $ at their end."
+                    ],
+                    "answer": "The text file records end in the ASCII character LF.",
+                    "explanation": {
+                        "The text file has been corrupted somehow.": "The text file may have been corrupted, but this command does not indicate it.",
+                        "The text file records end in the ASCII character NUL.": "The text file records end in the ASCII character LF and not NUL or $.",
+                        "The text file records end in the ASCII character LF.": "A text file record is considered to be a single file line that ends in a newline linefeed that is the ASCII character LF.",
+                        "The text file records end in the ASCII character $.": "The text file records may very well contain a $ at their end, but you cannot tell by the situation description.",
+                        "The text file records contain a $ at their end.": "The text file records may very well contain a $ at their end, but you cannot tell by the situation description."
+                    }
+                },
+                {
+                    "number": 98,
+                    "question": "The cut utility often needs delimiters to process text records. Which of the following best describes a delimiter?",
+                    "options": [
+                        "One or more characters that designate the beginning of a line in a record",
+                        "One or more characters that designate the end of a line in a record",
+                        "One or more characters that designate the end of a text file to a command-line text processing utility",
+                        "A single space or a colon (:) that creates a boundary between different data items in a record",
+                        "One or more characters that create a boundary between different data items in a record"
+                    ],
+                    "answer": "One or more characters that create a boundary between different data items in a record",
+                    "explanation": {
+                        "One or more characters that designate the beginning of a line in a record": "Option A is made up and is a wrong answer.",
+                        "One or more characters that designate the end of a line in a record": "Option B describes an end-of-line character, such as the ASCII LF.",
+                        "One or more characters that designate the end of a text file to a command-line text processing utility": "Option C is made up and is a wrong answer.",
+                        "A single space or a colon (:) that creates a boundary between different data items in a record": "While a single space and a colon can be used as a delimiter, option D is not the best answer.",
+                        "One or more characters that create a boundary between different data items in a record": "One or more characters that create a boundary between different data items within a record."
+                    }
+                },
+                {
+                    "number": 99,
+                    "question": "Which of the following utilities change text within a file? (Choose all that apply.)",
+                    "options": ["cut", "sort", "vim", "nano", "sed"],
+                    "answer": ["vim", "nano"],
+                    "explanation": {
+                        "cut": "The cut utility does not modify the text within a file.",
+                        "sort": "The sort utility does not modify the text within a file.",
+                        "vim": "The only utilities that allow you to modify text are the text editors vim and nano.",
+                        "nano": "The only utilities that allow you to modify text are the text editors vim and nano.",
+                        "sed": "The sed utility does not modify the text within a file."
+                    }
+                },
+                {
+                    "number": 100,
+                    "question": "You have a text file, monitor.txt, which contains information concerning the monitors used within the data center. Each record ends with the ASCII LF character and fields are delimitated by a comma (,). To display each data center monitor's monitor ID, serial number, and location, you'd use which cut command?",
+                    "options": [
+                        "cut -d \",\" -f 1,3,4 monitor.txt",
+                        "cut -z -d \",\" -f 1,3,4 monitor.txt",
+                        "cut -f \",\" -d 1,3,4 monitor.txt",
+                        "cut monitor.txt -d \",\" -f 1,3,4",
+                        "cut monitor.txt -f \",\" -d 1,3,4"
+                    ],
+                    "answer": "cut -d \",\" -f 1,3,4 monitor.txt",
+                    "explanation": {
+                        "cut -d \",\" -f 1,3,4 monitor.txt": "The correct command is cut -d \",\" -f 1,3,4 monitor.txt.",
+                        "cut -z -d \",\" -f 1,3,4 monitor.txt": "Option B uses the unneeded -z option.",
+                        "cut -f \",\" -d 1,3,4 monitor.txt": "Option C is incorrect because it reverses the -f and -d options.",
+                        "cut monitor.txt -d \",\" -f 1,3,4": "Options D is incorrect because it puts the filename before the command switches.",
+                        "cut monitor.txt -f \",\" -d 1,3,4": "Option E is incorrect because it puts the filename before the command switches."
+                    }
+                },
+                {
+                    "number": 101,
+                    "question": "The grep utility can employ regular expressions in its PATTERN. Which of the following best describes a regular expression?",
+                    "options": [
+                        "A series of characters you define for a utility, which uses the characters to match the same characters in text files",
+                        "ASCII characters, such as LF and NUL, that a utility uses to filter text",
+                        "Wildcard characters, such as * and ?, that a utility uses to filter text",
+                        "A pattern template you define for a utility, which uses the pattern to filter text",
+                        "Quotation marks (single or double) used around characters to prevent unexpected results"
+                    ],
+                    "answer": "A pattern template you define for a utility, which uses the pattern to filter text",
+                    "explanation": {
+                        "A series of characters you define for a utility, which uses the characters to match the same characters in text files": "While you may use a series of characters in a grep PATTERN, they are not called regular expressions.",
+                        "ASCII characters, such as LF and NUL, that a utility uses to filter text": "B describes end-of-line characters, not regular expression characters.",
+                        "Wildcard characters, such as * and ?, that a utility uses to filter text": "While the ? is used in basic regular expressions, the * is not.",
+                        "A pattern template you define for a utility, which uses the pattern to filter text": "A regular expression is a pattern template you define for a utility.",
+                        "Quotation marks (single or double) used around characters to prevent unexpected results": "Quotation marks may be employed but are not considered regular expression characters."
+                    }
+                },
+                {
+                    "number": 102,
+                    "question": "You are a system administrator on a Red Hat Linux server. You need to view records in the /var/log/messages file that start with the date May 30 and end with the IPv4 address 192.168.10.42. Which of the following is the best grep command to use?",
+                    "options": [
+                        "grep \"May 30?192.168.10.42\" /var/log/messages",
+                        "grep \"May 30.*192.168.10.42\" /var/log/messages",
+                        "grep -i \"May 30.*192.168.10.42\" /var/log/messages",
+                        "grep -i \"May 30?192.168.10.42\" /var/log/messages",
+                        "grep -v \"May 30.*192.168.10.42\" /var/log/messages"
+                    ],
+                    "answer": "grep \"May 30.*192.168.10.42\" /var/log/messages",
+                    "explanation": {
+                        "grep \"May 30?192.168.10.42\" /var/log/messages": "Option A uses the wrong regular expression of ?.",
+                        "grep \"May 30.*192.168.10.42\" /var/log/messages": "This command employs the correct syntax.",
+                        "grep -i \"May 30.*192.168.10.42\" /var/log/messages": "Option C employs the -i switch unnecessarily.",
+                        "grep -i \"May 30?192.168.10.42\" /var/log/messages": "Option D employs the -i switch unnecessarily.",
+                        "grep -v \"May 30.*192.168.10.42\" /var/log/messages": "Option E uses the -v switch, which displays text records that do not match the PATTERN."
+                    }
+                },
+                {
+                    "number": 103,
+                    "question": "Which of the following is a BRE pattern that could be used with the grep command? (Choose all that apply.)",
+                    "options": [
+                        "Sp?ce",
+                        "\"Space, the .*frontier\"",
+                        "^Space",
+                        "(lasting | final)",
+                        "frontier$"
+                    ],
+                    "answer": ["Sp?ce", "^Space", "frontier$"],
+                    "explanation": {
+                        "Sp?ce": "A BRE is a basic regular expression that describes certain patterns.",
+                        "\"Space, the .*frontier\"": "A BRE is a basic regular expression that describes certain patterns.",
+                        "^Space": "A BRE is a basic regular expression that describes certain patterns.",
+                        "(lasting | final)": "The only ERE is in option D.",
+                        "frontier$": "A BRE is a basic regular expression that describes certain patterns."
+                    }
+                },
+                {
+                    "number": 104,
+                    "question": "You need to search through a large text file and find any record that contains either Luke or Laura at the record's beginning. Also, the phrase Father is must be located somewhere in the record's middle. Which of the following is an ERE pattern that could be used with the egrep command to find this record?",
+                    "options": [
+                        "\"Luke$|Laura$.Father is\"",
+                        "^Luke|^Laura.Father is",
+                        "(^Luke|^Laura).Father is",
+                        "(Luke$|Laura$). Father is$",
+                        "(^Luke|^Laura).Father is."
+                    ],
+                    "answer": "(^Luke|^Laura).Father is",
+                    "explanation": {
+                        "\"Luke$|Laura$.Father is\"": "Option A will return records that end with Luke or Laura.",
+                        "^Luke|^Laura.Father is": "Option B will return records that begin with Luke or Laura and has one character between Laura and the Father is phrase.",
+                        "(^Luke|^Laura).Father is": "Option C is correct for the search requirements.",
+                        "(Luke$|Laura$). Father is$": "Option D will try to return records that end with Luke or Laura and contain the Father is phrase.",
+                        "(^Luke|^Laura).Father is.": "Option E will return records with conditions that do not meet the search requirements."
+                    }
+                },
+                {
+                    "number": 105,
+                    "question": "A file data.txt needs to be sorted numerically and its output saved to a new file newdata.txt. Which of the following commands can accomplish this task? (Choose all that apply.)",
+                    "options": [
+                        "sort -n -o newdata.txt data.txt",
+                        "sort -n data.txt > newdata.txt",
+                        "sort -n -o data.txt newdata.txt",
+                        "sort -o newdata.txt data.txt",
+                        "sort data.txt > newdata.txt"
+                    ],
+                    "answer": ["sort -n -o newdata.txt data.txt", "sort -n data.txt > newdata.txt"],
+                    "explanation": {
+                        "sort -n -o newdata.txt data.txt": "Option A uses the -n and -o switches correctly.",
+                        "sort -n data.txt > newdata.txt": "Option B uses the -n switch correctly.",
+                        "sort -n -o data.txt newdata.txt": "Option C is incorrect because it has the newdata.txt and data.txt flipped.",
+                        "sort -o newdata.txt data.txt": "Option D is incorrect because it does not use the -n switch.",
+                        "sort data.txt > newdata.txt": "Option E is incorrect because it does not use the -n switch."
+                    }
+                },
+                {
+                    "number": 106,
+                    "question": "Which of the following commands can display the data.txt and datatoo.txt files' content one after the other to STDOUT? (Choose all that apply.)",
+                    "options": [
+                        "ls data.txt datatoo.txt",
+                        "sort -n data.txt > datatoo.txt",
+                        "cat -n data.txt datatoo.txt",
+                        "ls -l data.txt datatoo.txt",
+                        "sort data.txt datatoo.txt"
+                    ],
+                    "answer": ["cat -n data.txt datatoo.txt", "sort data.txt datatoo.txt"],
+                    "explanation": {
+                        "ls data.txt datatoo.txt": "Option A will just display the files' names to STDOUT.",
+                        "sort -n data.txt > datatoo.txt": "Option B will sort data.txt and overwrite datatoo.txt.",
+                        "cat -n data.txt datatoo.txt": "The command will append line numbers and concatenate the files' content to STDOUT.",
+                        "ls -l data.txt datatoo.txt": "Option D will show the files' metadata to STDOUT instead of their contents.",
+                        "sort data.txt datatoo.txt": "The command will concatenate the files' content to STDOUT."
+                    }
+                },
+                {
+                    "number": 107,
+                    "question": "A text file, StarGateAttacks.txt, needs to be specially formatted for review. Which of the following commands is the best command to accomplish this task quickly?",
+                    "options": ["printf", "wc", "pr", "paste", "nano"],
+                    "answer": "pr",
+                    "explanation": {
+                        "printf": "The printf command is not geared towards formatting entire text files.",
+                        "wc": "The wc command does not format text file contents.",
+                        "pr": "The pr command is best suited for formatting a text file quickly.",
+                        "paste": "The paste command does not format text files the desired way.",
+                        "nano": "The nano text editor would require manual formatting."
+                    }
+                },
+                {
+                    "number": 108,
+                    "question": "You need to format the string 42.777 into the correct two-digit floating number. Which of the following printf command FORMAT settings is the correct one to use?",
+                    "options": [
+                        "\"%s\\n\"",
+                        "\"%.2s\\n\"",
+                        "\"%d\\n\"",
+                        "\"%.2c\\n\"",
+                        "\"%.2f\\n\""
+                    ],
+                    "answer": "\"%.2f\\n\"",
+                    "explanation": {
+                        "\"%s\\n\"": "Option A simply outputs 42.777.",
+                        "\"%.2s\\n\"": "Option B will output 42.",
+                        "\"%d\\n\"": "Option C will produce an error.",
+                        "\"%.2c\\n\"": "Option D will display 42 and is incorrect.",
+                        "\"%.2f\\n\"": "The correct FORMAT setting is \"%.2f\\n\"."
+                    }
+                },
+                {
+                    "number": 109,
+                    "question": "A Unicode-encoded text file, MyUCode.txt, needs to be perused. Before you decide what utility to use in order view the file's contents, you employ the wc command on it. This utility displays 2020 6786 11328 to STDOUT. Which of the following is true? (Choose all that apply.)",
+                    "options": [
+                        "The file has 2,020 lines in it.",
+                        "The file has 2,020 characters in it.",
+                        "The file has 6,786 words in it.",
+                        "The file has 11,328 characters in it.",
+                        "The file has 11,328 lines in it."
+                    ],
+                    "answer": ["The file has 2,020 lines in it.", "The file has 6,786 words in it."],
+                    "explanation": {
+                        "The file has 2,020 lines in it.": "The first item output by the wc utility is the number of lines.",
+                        "The file has 2,020 characters in it.": "Option B is incorrect because the file contains 2,020 lines, not characters.",
+                        "The file has 6,786 words in it.": "The second item output by the wc utility is the number of words.",
+                        "The file has 11,328 characters in it.": "Option D is incorrect because you do not know about the Unicode encoding.",
+                        "The file has 11,328 lines in it.": "Option E is incorrect because the file has 2,020 lines."
+                    }
+                },
+                {
+                    "number": 110,
+                    "question": "Which of the following best defines a file descriptor?",
+                    "options": [
+                        "A letter that represents the file's type",
+                        "A number that represents a process's open files",
+                        "Another term for the file's name",
+                        "A six-character name that represents standard output",
+                        "A symbol that indicates the file's classification"
+                    ],
+                    "answer": "A number that represents a process's open files",
+                    "explanation": {
+                        "A letter that represents the file's type": "Option A is a wrong answer.",
+                        "A number that represents a process's open files": "A file descriptor is a number that represents a process's open files.",
+                        "Another term for the file's name": "Option C is incorrect, as it is a made-up answer.",
+                        "A six-character name that represents standard output": "Option D describes only STDOUT.",
+                        "A symbol that indicates the file's classification": "Option E is incorrect as it describes a file indicator code."
+                    }
+                },
+                {
+                    "number": 111,
+                    "question": "By default, STDOUT goes to what item?",
+                    "options": [
+                        "/dev/tty n , where n is a number",
+                        "/dev/null",
+                        ">",
+                        "/dev/tty",
+                        "pwd"
+                    ],
+                    "answer": "/dev/tty",
+                    "explanation": {
+                        "/dev/tty n , where n is a number": "Option A may represent a particular terminal but is incorrect as a default.",
+                        "/dev/null": "Option B redirects output to the null device, effectively discarding it.",
+                        ">": "Option C is incorrect because it redirects STDOUT.",
+                        "/dev/tty": "By default, STDOUT goes to your current terminal, represented by /dev/tty.",
+                        "pwd": "Option E displays your present working directory."
+                    }
+                },
+                {
+                    "number": 112,
+                    "question": "Which of the following commands will display the file SpaceOpera.txt to output as well as save a copy of it to the file SciFi.txt?",
+                    "options": [
+                        "cat SpaceOpera.txt | tee SciFi.txt",
+                        "cat SpaceOpera.txt > SciFi.txt",
+                        "cat SpaceOpera.txt 2> SciFi.txt",
+                        "cp SpaceOpera.txt SciFi.txt",
+                        "cat SpaceOpera.txt > SciFi.txt"
+                    ],
+                    "answer": "cat SpaceOpera.txt | tee SciFi.txt",
+                    "explanation": {
+                        "cat SpaceOpera.txt | tee SciFi.txt": "Option A will display the file and save a copy.",
+                        "cat SpaceOpera.txt > SciFi.txt": "Option B will only save a copy to SciFi.txt.",
+                        "cat SpaceOpera.txt 2> SciFi.txt": "Option C will direct error messages to SciFi.txt.",
+                        "cp SpaceOpera.txt SciFi.txt": "The cp command will only copy the file and not display it.",
+                        "cat SpaceOpera.txt &> SciFi.txt": "Option E will only save a copy."
+                    }
+                },
+                {
+                    "number": 113,
+                    "question": "Which of the following commands will put any generated error messages into the black hole?",
+                    "options": [
+                        "sort SpaceOpera.txt 2> BlackHole",
+                        "sort SpaceOpera.txt > BlackHole",
+                        "sort SpaceOpera.txt > BlackHole",
+                        "sort SpaceOpera.txt 2> /dev/null",
+                        "sort SpaceOpera.txt > /dev/null"
+                    ],
+                    "answer": "sort SpaceOpera.txt 2> /dev/null",
+                    "explanation": {
+                        "sort SpaceOpera.txt 2> BlackHole": "Options A, B, and C redirect to a file called BlackHole.",
+                        "sort SpaceOpera.txt &> BlackHole": "Options A, B, and C redirect to a file called BlackHole.",
+                        "sort SpaceOpera.txt > BlackHole": "Options A, B, and C redirect to a file called BlackHole.",
+                        "sort SpaceOpera.txt 2> /dev/null": "The command redirects STDERR into /dev/null.",
+                        "sort SpaceOpera.txt > /dev/null": "Option E redirects STDOUT to /dev/null, showing error messages."
+                    }
+                },
+                {
+                    "number": 114,
+                    "question": "Which of the following commands will determine how many records in the file Problems.txt contain the word error?",
+                    "options": [
+                        "grep error Problems.txt | wc -b",
+                        "grep error Problems.txt | wc -w",
+                        "grep error Problems.txt | wc -l",
+                        "grep Problems.txt error | wc -w",
+                        "grep Problems.txt error | wc -l"
+                    ],
+                    "answer": "grep error Problems.txt | wc -l",
+                    "explanation": {
+                        "grep error Problems.txt | wc -b": "Option A counts bytes, not records.",
+                        "grep error Problems.txt | wc -w": "Option B counts words, not records.",
+                        "grep error Problems.txt | wc -l": "The command counts the records containing the word error.",
+                        "grep Problems.txt error | wc -w": "Option D has incorrect syntax.",
+                        "grep Problems.txt error | wc -l": "Option E has incorrect syntax."
+                    }
+                },
+                {
+                    "number": 115,
+                    "question": "You want to find any file named 42.tmp, which exists somewhere in your current directory's tree structure and display its contents to STDOUT. Which of the following will allow you to build a command to do this? (Choose all that apply.)",
+                    "options": [
+                        "xargs (find . -name 42.tmp) cat",
+                        "cat find . -name 42.tmp",
+                        "cat $(find . -name 42.tmp)",
+                        "cat {find . -name 42.tmp}",
+                        "find . -name 42.tmp | xargs cat"
+                    ],
+                    "answer": ["cat $(find . -name 42.tmp)", "find . -name 42.tmp | xargs cat"],
+                    "explanation": {
+                        "xargs (find . -name 42.tmp) cat": "Option A uses the wrong syntax.",
+                        "cat find . -name 42.tmp": "Option B uses the wrong syntax.",
+                        "cat $(find . -name 42.tmp)": "Option C uses the correct syntax.",
+                        "cat {find . -name 42.tmp}": "Option D uses the wrong syntax.",
+                        "find . -name 42.tmp | xargs cat": "Option E uses the correct syntax."
+                    }
+                },
+                {
+                    "number": 116,
+                    "question": "You want to edit the file SpaceOpera.txt and decide to use the vim editor to complete this task. Which of the following are vim modes you might employ? (Choose all that apply.)",
+                    "options": ["Insert", "Change", "Command", "Ex", "Edit"],
+                    "answer": ["Insert", "Command", "Ex"],
+                    "explanation": {
+                        "Insert": "Insert mode allows for text input.",
+                        "Change": "Option B is incorrect.",
+                        "Command": "Command mode allows for command input.",
+                        "Ex": "Ex mode includes colon commands.",
+                        "Edit": "Option E is incorrect."
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,143 @@
+
+
+
+{
+    "chapters": [
+        {
+            "chapter": 11,
+            "description": "Handling Storage",
+            "questions": [
+                {
+                    "number": 237,
+                    "question": "Which type of storage device uses integrated circuits to store data with no moving parts?",
+                    "options": ["SSD", "SATA", "SCSI", "HDD", "PATA"],
+                    "answer": "SSD",
+                    "explanation": {
+                        "SSD": "The solid-state drive (SSD) storage device uses an integrated circuit to store data, so option A is correct.",
+                        "SATA": "SATA is a drive connection type, not a storage device type.",
+                        "SCSI": "SCSI is a drive connection type, not a storage device type.",
+                        "HDD": "Hard disk drives (HDD) use disk platters and a read/write head to store data.",
+                        "PATA": "PATA is a drive connection type, not a storage device type."
+                    }
+                },
+                {
+                    "number": 238,
+                    "question": "What raw device file would Linux create for the second SCSI drive connected to the system?",
+                    "options": ["/dev/hdb", "/dev/sdb", "/dev/sdb1", "/dev/hdb1", "/dev/sda"],
+                    "answer": "/dev/sdb",
+                    "explanation": {
+                        "/dev/hdb": "This file represents the second HDD drive connected to the system.",
+                        "/dev/sdb": "Linux creates files named sdx in the /dev folder for SCSI devices. For the second SCSI device, Linux would create the file /dev/sdb.",
+                        "/dev/sda": "This file represents the first SCSI device connected to the system.",
+                        "/dev/sdb1": "This represents a partition on the second SCSI drive, not the drive itself.",
+                        "/dev/hdb1": "This represents a partition on the second HDD drive."
+                    }
+                },
+                {
+                    "number": 239,
+                    "question": "What program runs in the background to automatically detect and mount new storage devices?",
+                    "options": ["mkfs", "fsck", "umount", "mount", "udev"],
+                    "answer": "udev",
+                    "explanation": {
+                        "mkfs": "This program creates a filesystem on partitions; it doesn't mount them.",
+                        "fsck": "This program repairs filesystems but doesn't mount them.",
+                        "umount": "This program unmounts filesystems, not mounts them.",
+                        "mount": "This manually mounts filesystems but doesn't run in the background.",
+                        "udev": "The udev program runs in the background on Linux systems and detects and mounts storage devices as they're connected."
+                    }
+                },
+                {
+                    "number": 240,
+                    "question": "What folder does the udev program use to create a permanent link to a storage device based on its serial number?",
+                    "options": ["/dev/disk/by-path", "/dev/sdb", "/dev/disk/by-id", "/dev/disk/by-uuid", "/dev/mapper"],
+                    "answer": "/dev/disk/by-id",
+                    "explanation": {
+                        "/dev/disk/by-path": "This folder links files based on the drive's connection to the system.",
+                        "/dev/sdb": "This file represents the raw device file assigned to the device, not a permanent link file.",
+                        "/dev/disk/by-id": "The udev program creates files in this folder that are linked to the raw device files for storage devices identified by their serial number.",
+                        "/dev/disk/by-uuid": "This folder contains permanent link files based on the device's UUID value, not the serial number.",
+                        "/dev/mapper": "This folder contains files for virtual drives for LVM and multipath systems."
+                    }
+                },
+                {
+                    "number": 241,
+                    "question": "Which partitioning tool provides a graphical interface?",
+                    "options": ["gdisk", "gparted", "fdisk", "parted", "fsck"],
+                    "answer": "gparted",
+                    "explanation": {
+                        "gdisk": "This is a command-line partitioning tool.",
+                        "gparted": "The GNU gparted program provides a graphical window for managing device partitions.",
+                        "fdisk": "This is a command-line partitioning tool.",
+                        "parted": "This is also a command-line partitioning tool.",
+                        "fsck": "This program is a tool to repair filesystems, not create or modify partitions."
+                    }
+                },
+                {
+                    "number": 242,
+                    "question": "Linux uses \\__________\\_ to add the filesystem on a new storage device to the virtual directory for users to access.",
+                    "options": ["Mount points", "Drive letters", "/dev files", "/proc folder", "/sys folder"],
+                    "answer": "Mount points",
+                    "explanation": {
+                        "Mount points": "Linux uses mount points to insert a filesystem on a storage device to the virtual directory.",
+                        "Drive letters": "Unlike Windows, Linux doesn't assign drive letters to storage devices.",
+                        "/dev files": "These are used as raw devices for storage devices; they don't access the filesystem.",
+                        "/proc folder": "This folder is used by the kernel to display and change storage device information.",
+                        "/sys folder": "This folder is also used by the kernel for device information, not for adding filesystems."
+                    }
+                },
+                {
+                    "number": 243,
+                    "question": "What filesystem is the latest version of the first Linux filesystem?",
+                    "options": ["reiserFS", "btrfs", "ext3", "ext4", "nfs"],
+                    "answer": "ext4",
+                    "explanation": {
+                        "reiserFS": "This is a specialty filesystem created separately from the ext filesystem.",
+                        "btrfs": "This is a newer filesystem created separately from the ext filesystem.",
+                        "ext3": "This is an earlier version of the ext filesystem.",
+                        "ext4": "The ext filesystem was the original filesystem used in Linux, and ext4 is the latest version of it.",
+                        "nfs": "This filesystem was created to allow sharing files and folders across networks."
+                    }
+                },
+                {
+                    "number": 244,
+                    "question": "What tool do you use to create a new filesystem on a partition?",
+                    "options": ["fdisk", "mkfs", "fsck", "gdisk", "parted"],
+                    "answer": "mkfs",
+                    "explanation": {
+                        "fdisk": "This tool is used to create or modify partitions but not to work with the filesystem installed on them.",
+                        "mkfs": "The mkfs program allows you to create a new filesystem on a partition.",
+                        "fsck": "This program repairs filesystems but can't create them.",
+                        "gdisk": "This is a command-line tool for partitioning disks.",
+                        "parted": "This is also a command-line tool for partitioning disks."
+                    }
+                },
+                {
+                    "number": 245,
+                    "question": "What tool do you use to manually add a filesystem to the virtual directory?",
+                    "options": ["fsck", "mount", "umount", "fdisk", "mkfs"],
+                    "answer": "mount",
+                    "explanation": {
+                        "fsck": "This program repairs filesystems but doesn't insert them into the virtual directory.",
+                        "mount": "The mount program allows you to insert the filesystem on a partition into the virtual directory.",
+                        "umount": "This program removes filesystems from the virtual directory.",
+                        "fdisk": "This tool partitions devices but doesn't create filesystems or insert them into the virtual directory.",
+                        "mkfs": "This program creates filesystems but doesn't insert them into the virtual directory."
+                    }
+                },
+                {
+                    "number": 246,
+                    "question": "The \\__________\\_ program is a handy tool for repairing corrupted filesystems.",
+                    "options": ["fsck", "mount", "umount", "fdisk", "mkfs"],
+                    "answer": "fsck",
+                    "explanation": {
+                        "fsck": "The fsck program repairs corrupted filesystems.",
+                        "mount": "This program inserts filesystems into the virtual directory but can't repair them.",
+                        "umount": "This program removes filesystems from the virtual directory but can't repair them.",
+                        "fdisk": "This program creates and modifies partitions but doesn't work with filesystems.",
+                        "mkfs": "This program creates filesystems but doesn't repair them."
+                    }
+                }
+            ]
+        }
+    ]
+}

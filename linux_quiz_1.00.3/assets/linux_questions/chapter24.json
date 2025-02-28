@@ -1,0 +1,143 @@
+
+
+
+{
+    "chapters": [
+        {
+            "chapter": 24,
+            "description": "Troubleshooting applications and Hardware Issues",
+            "questions": [
+                {
+                    "number": 367,
+                    "question": "Peter's system has a memory-intensive application running on it continually. To help improve performance, he has replaced the old hard drives with solid-state drives instead of increasing RAM. Which of the following is most likely true about this situation?",
+                    "options": ["The SSD for application data will enter a degraded mode.", "The SSD for swap will become degraded storage.", "The SSD will need a namespace in its device filename.", "The SSD will end up a missing volume.", "The SSD will experience resource exhaustion."],
+                    "answer": "The SSD for swap will become degraded storage.",
+                    "explanation": {
+                        "The SSD for application data will enter a degraded mode.": "This is incorrect; degraded mode refers to RAID failures.",
+                        "The SSD for swap will become degraded storage.": "This is correct; high I/O can degrade SSDs faster.",
+                        "The SSD will need a namespace in its device filename.": "This is incorrect; only NVMe SSDs may require this.",
+                        "The SSD will end up a missing volume.": "This is incorrect; a missing volume occurs with logical volumes.",
+                        "The SSD will experience resource exhaustion.": "This may happen, but the information provided is not sufficient."
+                    }
+                },
+                {
+                    "number": 368,
+                    "question": "Mary adds the first SCSI disk to a Linux system that currently has only IDE drives. The system is not recognizing the new disk. Which of the following commands should she employ to troubleshoot the problem? (Choose all that apply.)",
+                    "options": ["ls /sys/bus/scsi/drivers", "pvscan /dev/vg00/lvol0", "lsmod | grep module-name", "hdparm -B 127 device-filename", "smartctl -a"],
+                    "answer": ["ls /sys/bus/scsi/drivers", "lsmod | grep module-name"],
+                    "explanation": {
+                        "ls /sys/bus/scsi/drivers": "This command checks if the appropriate drivers are present.",
+                        "pvscan /dev/vg00/lvol0": "This command checks logical volumes, not SCSI disks.",
+                        "lsmod | grep module-name": "This command checks if the necessary modules are loaded.",
+                        "hdparm -B 127 device-filename": "This command checks power management settings, not device recognition.",
+                        "smartctl -a": "This command checks device health but not recognition issues."
+                    }
+                },
+                {
+                    "number": 369,
+                    "question": "The system administrator, Norman, runs a Python program and receives an IO Error: [Error 13] Permission denied message. What information should he gather (or know) to start troubleshooting this issue? (Choose all that apply.)",
+                    "options": ["The disk type, where the program resides", "His user account name", "The program action that raised the error", "Filename and directory location of the program's I/O files", "The program's name"],
+                    "answer": ["His user account name", "The program action that raised the error", "Filename and directory location of the program's I/O files"],
+                    "explanation": {
+                        "The disk type, where the program resides": "This information is not directly relevant to the permission issue.",
+                        "His user account name": "This is relevant to check if the account has the right permissions.",
+                        "The program action that raised the error": "This helps identify the root cause of the permission issue.",
+                        "Filename and directory location of the program's I/O files": "This is critical to understand where the permission issue is occurring.",
+                        "The program's name": "This is not directly useful in troubleshooting permissions."
+                    }
+                },
+                {
+                    "number": 370,
+                    "question": "Harry has modified an application to create a file in a directory and then write data to it. The program creates the file with no problems but cannot write data to it and receives a permission error. Which of the following is most likely the issue?",
+                    "options": ["Directory ownership", "File ownership", "File group membership", "Permission inheritance", "Executable privileges"],
+                    "answer": "Permission inheritance",
+                    "explanation": {
+                        "Directory ownership": "This would likely prevent the file from being created, not just written.",
+                        "File ownership": "This is less likely because the file can be created.",
+                        "File group membership": "This is less likely because it does not directly affect writing permissions.",
+                        "Permission inheritance": "This is correct; directory ACLs may prevent writing.",
+                        "Executable privileges": "This does not relate to writing data to files."
+                    }
+                },
+                {
+                    "number": 371,
+                    "question": "Ben updates his Ubuntu system's packages using the sudo apt-get upgrade command, and now the Apache Web service is not working properly. What command should he run?",
+                    "options": ["sudo apt-get clean *", "sudo zypper clean -a", "sudo ldd /usr/sbin/apache2", "sudo rpm -aV", "sudo apt-get check"],
+                    "answer": "sudo apt-get check",
+                    "explanation": {
+                        "sudo apt-get clean *": "This command cleans up the package cache but does not check for issues.",
+                        "sudo zypper clean -a": "This command is for openSUSE, not Ubuntu.",
+                        "sudo ldd /usr/sbin/apache2": "This command checks library dependencies but does not troubleshoot.",
+                        "sudo rpm -aV": "This command checks RPM package integrity but is not for Debian systems.",
+                        "sudo apt-get check": "This checks for broken dependencies or issues with the installed packages."
+                    }
+                },
+                {
+                    "number": 372,
+                    "question": "Peter writes a new C++ application to use for managing his older Linux server. The new app contains no programming or logic errors. However, when he tries to compile it, it does not work. Which of the following is most likely the issue?",
+                    "options": ["An incorrect application permission", "An incorrect file permission", "A missing or outdated GCC", "A missing or outdated device", "A repository problem"],
+                    "answer": "A missing or outdated GCC",
+                    "explanation": {
+                        "An incorrect application permission": "Permissions do not affect compilation.",
+                        "An incorrect file permission": "File permissions do not affect compilation success.",
+                        "A missing or outdated GCC": "This is the most likely cause if compilation fails.",
+                        "A missing or outdated device": "This is not relevant to the compilation process.",
+                        "A repository problem": "This does not apply as he is compiling his own code."
+                    }
+                },
+                {
+                    "number": 373,
+                    "question": "Mary confirms via the sealert utility that her application cannot access the file flash.txt. What command should she use next?",
+                    "options": ["ls -l flash.txt", "ls -Z flash.txt", "ls -l flash.txt-directory", "setroubleshoot", "restorecon"],
+                    "answer": "ls -Z flash.txt",
+                    "explanation": {
+                        "ls -l flash.txt": "This shows file permissions but not SELinux context.",
+                        "ls -Z flash.txt": "This command will show the SELinux context to determine access issues.",
+                        "ls -l flash.txt-directory": "This checks the directory but does not help with the file itself.",
+                        "setroubleshoot": "This is a package, not a command.",
+                        "restorecon": "This command fixes SELinux labels but is not for troubleshooting."
+                    }
+                },
+                {
+                    "number": 374,
+                    "question": "A clock-in/out application, which uses an NTP server on the local network, is throwing an error concerning reaching the server. There are currently no network problems. Which of the following are steps in the troubleshooting process for this issue? (Choose all that apply.)",
+                    "options": ["Check the firewall ACLs on the NTP server.", "Check the firewall ACLs on the application server.", "Use the firewall-cmd --get-default-zone command.", "Check the /etc/services file for NTP ports and transport protocols.", "View firewall log entries."],
+                    "answer": ["Check the firewall ACLs on the NTP server.", "Check the firewall ACLs on the application server.", "Check the /etc/services file for NTP ports and transport protocols.", "View firewall log entries."],
+                    "explanation": {
+                        "Check the firewall ACLs on the NTP server.": "This is important to ensure that the NTP server is not blocking traffic.",
+                        "Check the firewall ACLs on the application server.": "This is important to ensure that the application can reach the NTP server.",
+                        "Use the firewall-cmd --get-default-zone command.": "This command retrieves the default zone but does not troubleshoot NTP issues.",
+                        "Check the /etc/services file for NTP ports and transport protocols.": "This is important to validate the correct port settings.",
+                        "View firewall log entries.": "This can provide valuable information about blocked traffic."
+                    }
+                },
+                {
+                    "number": 375,
+                    "question": "Your system administrator team member Norman tells you the device located at the communications port is not working. What command should you issue to start the troubleshooting process?",
+                    "options": ["dmesg | grep -i COM", "dmesg | grep -i ttys", "sudo setserial -a /dev/COM1", "sudo setserial -a /dev/ttyS0", "cat /proc/interrupts"],
+                    "answer": "dmesg | grep -i ttys",
+                    "explanation": {
+                        "dmesg | grep -i COM": "This is incorrect; Linux systems typically use /dev/ttyS devices for serial ports.",
+                        "dmesg | grep -i ttys": "This command checks for messages related to terminal devices.",
+                        "sudo setserial -a /dev/COM1": "This command is not needed as it is not the correct device naming convention.",
+                        "sudo setserial -a /dev/ttyS0": "This command checks settings for the first serial device.",
+                        "cat /proc/interrupts": "This command shows interrupts in use but not specific device issues."
+                    }
+                },
+                {
+                    "number": 376,
+                    "question": "Harry's newly installed USB printer is not working. The system employs CUPS. Which of the following are steps that may be included in the troubleshooting process? (Choose all that apply.)",
+                    "options": ["Issue the less /etc/printcap command.", "Use the lpinfo -m command to view available USB ports.", "Put a watch on the appropriate log file and plug in the USB cable.", "Use the dmesg and grep utilities to find printer information.", "Use the lsusb -v command to see if the device is on the USB bus."],
+                    "answer": ["Use the dmesg and grep utilities to find printer information.", "Use the lsusb -v command to see if the device is on the USB bus."],
+                    "explanation": {
+                        "Issue the less /etc/printcap command.": "This file is outdated; modern systems use CUPS and do not rely on printcap.",
+                        "Use the lpinfo -m command to view available USB ports.": "This command shows available drivers, not USB ports.",
+                        "Put a watch on the appropriate log file and plug in the USB cable.": "This is not a direct troubleshooting step.",
+                        "Use the dmesg and grep utilities to find printer information.": "This is important to check for messages from the kernel about the printer.",
+                        "Use the lsusb -v command to see if the device is on the USB bus.": "This is essential to verify if the USB device is recognized."
+                    }
+                }
+            ]
+        }
+    ]
+}

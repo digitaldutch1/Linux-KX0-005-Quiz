@@ -1,0 +1,300 @@
+
+
+
+{
+    "chapters": [
+        {
+            "chapter": 3,
+            "description": "Managing Files, Directories, and Text",
+            "questions": [
+                {
+                    "number": 77,
+                    "question": "You are looking at a directory that you have not viewed in a long time and need to determine which files are actually directories. Which command is the best one to use?",
+                    "options": ["mkdir -v", "ls", "ls -F", "ls -i", "ll"],
+                    "answer": "ls -F",
+                    "explanation": {
+                        "mkdir -v": "This command creates a directory and indicates success, but does not show existing directories.",
+                        "ls": "This command lists files but does not indicate which are directories.",
+                        "ls -F": "This command appends a '/' to directories, making it the best choice.",
+                        "ls -i": "This command displays inode numbers but not directory indicators.",
+                        "ll": "This command may work on some distributions, but it is not aliased to ls -l everywhere."
+                    }
+                },
+                {
+                    "number": 78,
+                    "question": "You are using the ls command to look at a directory file's metadata but keep seeing metadata for the files within it instead. What command option will rectify this situation?",
+                    "options": ["-a", "-d", "-F", "-l", "-R"],
+                    "answer": "-d",
+                    "explanation": {
+                        "-a": "The -a option lists all files, including hidden files.",
+                        "-d": "The -d option shows metadata for a directory itself instead of its contents.",
+                        "-F": "The -F option appends indicators to entries but does not show directory metadata.",
+                        "-l": "This option displays long-format metadata but for files within the directory.",
+                        "-R": "This option lists files recursively."
+                    }
+                },
+                {
+                    "number": 79,
+                    "question": "You have just created an empty directory called MyDir. Which command did you most likely use?",
+                    "options": ["mkdir -v MyDir", "touch MyDir", "cp -R TheDir MyDir", "mv -r TheDir MyDir", "rmdir MyDir"],
+                    "answer": "mkdir -v MyDir",
+                    "explanation": {
+                        "mkdir -v MyDir": "This command creates a directory and provides feedback on its success.",
+                        "touch MyDir": "This command creates an empty file, not a directory.",
+                        "cp -R TheDir MyDir": "This command copies a directory, not creates an empty one.",
+                        "mv -r TheDir MyDir": "This command renames or moves directories.",
+                        "rmdir MyDir": "This command removes an empty directory, not creates one."
+                    }
+                },
+                {
+                    "number": 80,
+                    "question": "You have a file that is over 10 GB in size, and it needs to be backed up to a locally attached drive. What is the best utility to use in this situation?",
+                    "options": ["readlink -f", "mv", "cp", "scp", "rsync"],
+                    "answer": "rsync",
+                    "explanation": {
+                        "readlink -f": "This command resolves symbolic links and shows the actual file location.",
+                        "mv": "This command moves files but does not copy them.",
+                        "cp": "This command copies files but is not optimized for large files.",
+                        "scp": "This command securely copies files over the network, not locally.",
+                        "rsync": "This command is optimized for fast local copies, especially for large files."
+                    }
+                },
+                {
+                    "number": 81,
+                    "question": "A long-time server administrator has left the company, and now you are in charge of her system. Her old user account directory tree, /home/Zoe/, has been backed up. Which command is the best one to use to quickly remove her files and still indicate that you are removing the correct directory, but without forcing you to confirm every file deletion?",
+                    "options": ["cp -R /home/Zoe/ /dev/null/", "mv -R /home/Zoe/ /dev/null/", "rm -Rf /home/Zoe/", "rm -ri /home/Zoe/", "rm -rI /home/Zoe"],
+                    "answer": "rm -rI /home/Zoe",
+                    "explanation": {
+                        "cp -R /home/Zoe/ /dev/null/": "This command copies files and does not remove them.",
+                        "mv -R /home/Zoe/ /dev/null/": "This command moves files to a non-existent path, which is not valid.",
+                        "rm -Rf /home/Zoe/": "This command removes the directory without confirmation, which is not ideal.",
+                        "rm -ri /home/Zoe/": "This command prompts for each file, which could be tedious.",
+                        "rm -rI /home/Zoe": "This command prompts once before starting a recursive delete, which is ideal."
+                    }
+                },
+                {
+                    "number": 82,
+                    "question": "There is a large directory structure that needs to be renamed. What mv command options should you consider employing? (Choose all that apply.)",
+                    "options": ["-f", "-i", "-n", "-r", "-v"],
+                    "answer": ["-i", "-n", "-v"],
+                    "explanation": {
+                        "-f": "The '-f' option forces the move without prompting.",
+                        "-i": "The '-i' option prompts before overwriting files.",
+                        "-n": "The '-n' option prevents overwriting existing files.",
+                        "-r": "There is no '-r' option for renaming directories; it's not needed.",
+                        "-v": "The '-v' option provides verbose output to show the move progress."
+                    }
+                },
+                {
+                    "number": 83,
+                    "question": "You are trying to decide whether to use a hard link or a symbolic link for a data file. The file is 5 GB, has mission-critical data, and is accessed via the command line by three other people. What should you do?",
+                    "options": [
+                        "Create a hard link so that the file can reside on a different filesystem for data protection.",
+                        "Create three hard links and provide the links to the three other people for data protection.",
+                        "Create three symbolic links and protect the links from the three other people for data protection.",
+                        "Create a symbolic link so that the file can reside on a different filesystem.",
+                        "Create a symbolic link so that the links can share an inode number."
+                    ],
+                    "answer": "Create a symbolic link so that the file can reside on a different filesystem.",
+                    "explanation": {
+                        "Create a hard link so that the file can reside on a different filesystem for data protection.": "This is incorrect; hard links must reside on the same filesystem.",
+                        "Create three hard links and provide the links to the three other people for data protection.": "This is incorrect; hard links must reside on the same filesystem.",
+                        "Create three symbolic links and protect the links from the three other people for data protection.": "This is incorrect; while symbolic links can be shared, they do not provide data protection.",
+                        "Create a symbolic link so that the file can reside on a different filesystem.": "This is correct; symbolic links can point to files on different filesystems.",
+                        "Create a symbolic link so that the links can share an inode number.": "This is incorrect; symbolic links do not share inode numbers."
+                    }
+                },
+                {
+                    "number": 84,
+                    "question": "A short text-based control file is no longer working properly with the program that reads it. You suspect the file was accidentally corrupted by a control code update you performed recently, even though the file's control codes are all correct. Which command should you use next on the file in your problem investigation?",
+                    "options": ["cat -v", "cat -z", "cat -n", "cat -s", "cat -E"],
+                    "answer": "cat -v",
+                    "explanation": {
+                        "cat -v": "This command will show non-printable characters that may have accidentally corrupted the file.",
+                        "cat -z": "This option does not exist in 'cat'.",
+                        "cat -n": "This option numbers the output lines but does not help with control characters.",
+                        "cat -s": "This option squeezes multiple blank lines into one, which is not relevant here.",
+                        "cat -E": "This option shows a '$' at the end of each line but does not display non-printable characters."
+                    }
+                },
+                {
+                    "number": 85,
+                    "question": "You are trying to peruse a rather large text file. A coworker suggests you use a pager. Which of the following best describes what your coworker is recommending?",
+                    "options": [
+                        "Use a utility that allows you to view the first few lines of the file.",
+                        "Use a utility that allows you to view one text page at a time.",
+                        "Use a utility that allows you to search through the file.",
+                        "Use a utility that allows you to filter out text in the file.",
+                        "Use a utility that allows you to view the last few lines of the file."
+                    ],
+                    "answer": "Use a utility that allows you to view one text page at a time.",
+                    "explanation": {
+                        "Use a utility that allows you to view the first few lines of the file.": "This does not describe a pager.",
+                        "Use a utility that allows you to view one text page at a time.": "This is correct; pagers allow you to scroll through text one page at a time.",
+                        "Use a utility that allows you to search through the file.": "While some pagers allow searching, this is not their primary function.",
+                        "Use a utility that allows you to filter out text in the file.": "This describes filtering, not paging.",
+                        "Use a utility that allows you to view the last few lines of the file.": "This does not describe a pager."
+                    }
+                },
+                {
+                    "number": 86,
+                    "question": "Which of the following does not describe the less utility?",
+                    "options": [
+                        "It does not read the entire file prior to displaying the file's first page.",
+                        "You can use the up and down arrow keys to move through the file.",
+                        "You press the spacebar to move forward a page.",
+                        "You can use the Esc+V key combination to move backward a page.",
+                        "You can press the X key to exit from the utility."
+                    ],
+                    "answer": "You can press the X key to exit from the utility.",
+                    "explanation": {
+                        "It does not read the entire file prior to displaying the file's first page.": "This is true; less does not load the entire file.",
+                        "You can use the up and down arrow keys to move through the file.": "This is true; less supports this.",
+                        "You press the spacebar to move forward a page.": "This is true; less allows this action.",
+                        "You can use the Esc+V key combination to move backward a page.": "This is true; it allows backward movement.",
+                        "You can press the X key to exit from the utility.": "This is incorrect; you press 'q' to exit."
+                    }
+                },
+                {
+                    "number": 87,
+                    "question": "Which diff option is the best option to allow you to quickly determine if two text files are different from one another?",
+                    "options": ["-e", "-q", "-s", "-W", "-y"],
+                    "answer": "-q",
+                    "explanation": {
+                        "-e": "This option creates an ed script showing differences.",
+                        "-q": "This option reports whether files differ without showing the details, making it the best choice.",
+                        "-s": "This option shows a message if files are the same.",
+                        "-W": "This option specifies the display width.",
+                        "-y": "This option shows the files side by side."
+                    }
+                },
+                {
+                    "number": 88,
+                    "question": "You are working on a Linux server at the command line, and you try to issue a diff command and receive a response stating that the command was not found. What is the next best step to take in order to start the troubleshooting process?",
+                    "options": ["Hit your up arrow key and press Enter.", "Log out, log back in, and retry the command.", "Enter the which diff command.", "Enter the whereis diff command.", "Reboot the server and retry the command."],
+                    "answer": "Enter the which diff command.",
+                    "explanation": {
+                        "Hit your up arrow key and press Enter.": "This will just repeat the last command without troubleshooting.",
+                        "Log out, log back in, and retry the command.": "This is not a practical first step.",
+                        "Enter the which diff command.": "This checks if the command is available in your PATH.",
+                        "Enter the whereis diff command.": "This provides location info but does not confirm installation.",
+                        "Reboot the server and retry the command.": "This is excessive for a command not found error."
+                    }
+                },
+                {
+                    "number": 89,
+                    "question": "You are trying to find a file on your Linux server whose name is conf. Employing the locate conf command for your search shows many directories that contain the letters conf. What is the best description for why this is happening?",
+                    "options": [
+                        "The locate utility searches only for directory names.",
+                        "You did not employ the -d skip switch.",
+                        "It is most likely because the locate database is corrupted.",
+                        "You did not employ the appropriate regular expression.",
+                        "It is due to file globbing on the pattern name."
+                    ],
+                    "answer": "It is due to file globbing on the pattern name.",
+                    "explanation": {
+                        "The locate utility searches only for directory names.": "This is incorrect; locate searches both files and directories.",
+                        "You did not employ the -d skip switch.": "This is not relevant to the locate command.",
+                        "It is most likely because the locate database is corrupted.": "This is also unlikely; it works as intended.",
+                        "You did not employ the appropriate regular expression.": "This is incorrect; locate does not require regex.",
+                        "It is due to file globbing on the pattern name.": "This is correct; locate matches the pattern in both files and directories."
+                    }
+                },
+                {
+                    "number": 90,
+                    "question": "You downloaded a large important file, fortytwo.db, from your company's local website to your Linux server but got interrupted by an emergency. Now you cannot remember where you stored the file. What is the best first step to fixing this problem?",
+                    "options": [
+                        "Issue the sudo updatedb command.",
+                        "Issue the locate -b fortytwo.db command.",
+                        "Issue the locate -b 'fortytwo.db' command.",
+                        "Download the file from the company's local website again.",
+                        "Issue the locate fortytwo.db command."
+                    ],
+                    "answer": "Issue the locate -b fortytwo.db command.",
+                    "explanation": {
+                        "Issue the sudo updatedb command.": "This updates the locate database but may not be necessary.",
+                        "Issue the locate -b fortytwo.db command.": "This searches for the file by name without path.",
+                        "Issue the locate -b 'fortytwo.db' command.": "This is similar and also helps find the file.",
+                        "Download the file from the company's local website again.": "This is time-consuming and unnecessary if you can find it.",
+                        "Issue the locate fortytwo.db command.": "This will also work but may list files with the name substring."
+                    }
+                },
+                {
+                    "number": 91,
+                    "question": "You want to search for a particular file, main.conf, using the find utility. This file most likely is located somewhere in the /etc/ directory tree. Which of the following commands is the best one to use in this situation?",
+                    "options": ["find -r /etc -name main.conf", "find / -name main.conf", "find /etc -maxdepth -name main.conf", "find /etc -name main.conf", "find main.conf /etc"],
+                    "answer": "find /etc -name main.conf",
+                    "explanation": {
+                        "find -r /etc -name main.conf": "This is incorrect syntax; -r is not a valid option.",
+                        "find / -name main.conf": "This will search the entire filesystem, which is inefficient.",
+                        "find /etc -maxdepth -name main.conf": "This is incorrect syntax; -maxdepth requires a numeric argument.",
+                        "find /etc -name main.conf": "This is the best command to search within /etc.",
+                        "find main.conf /etc": "This is incorrect syntax; the path must come first."
+                    }
+                },
+                {
+                    "number": 92,
+                    "question": "Yesterday a coworker, Michael, was fired for nefarious behavior. His account and home directory were immediately deleted. You need to audit the server to see if he left any files out in the virtual directory system. Which of the following commands is the best one to use in this situation?",
+                    "options": ["find / -name Michael", "find / -user Michael", "find / -mmin 1440", "find ~ -user Michael", "find / -nouser"],
+                    "answer": "find / -nouser",
+                    "explanation": {
+                        "find / -name Michael": "This would search for files with 'Michael' in the name, not ownership.",
+                        "find / -user Michael": "This would look for files owned by Michael, but he has been deleted.",
+                        "find / -mmin 1440": "This looks for files modified in the last 1440 minutes, not ownership.",
+                        "find ~ -user Michael": "This would search in the user's home directory only, which is not appropriate.",
+                        "find / -nouser": "This will find files without an associated username, which is correct."
+                    }
+                },
+                {
+                    "number": 93,
+                    "question": "You need to figure out what configuration file(s) hold a hostname directive. Which of the following commands is the best one to use?",
+                    "options": ["which", "whereis", "grep", "locate", "find"],
+                    "answer": "grep",
+                    "explanation": {
+                        "which": "This command finds the location of executables but not config files.",
+                        "whereis": "This command locates binaries, source files, and man pages but not config file contents.",
+                        "grep": "This command searches for specific patterns within files, which is ideal here.",
+                        "locate": "This command finds files by name, not by searching inside them.",
+                        "find": "This command can locate files but does not search their contents."
+                    }
+                },
+                {
+                    "number": 94,
+                    "question": "You are trying to determine which files are directories in a specific path. Which command option will help you identify directories?",
+                    "options": ["-d", "-F", "-l", "-h"],
+                    "answer": "-F",
+                    "explanation": {
+                        "-d": "This option shows directory metadata instead of contents.",
+                        "-F": "This appends a '/' to directory names.",
+                        "-l": "This provides a long listing of files.",
+                        "-h": "This shows sizes in human-readable format."
+                    }
+                },
+                {
+                    "number": 95,
+                    "question": "You want to recursively copy a directory and all its contents, including hidden files. Which command option should you use?",
+                    "options": ["-r", "-a", "-R", "-d"],
+                    "answer": "-a",
+                    "explanation": {
+                        "-r": "This option allows recursive copying.",
+                        "-a": "This option preserves attributes and copies recursively.",
+                        "-R": "This is similar to -r but may not preserve attributes.",
+                        "-d": "This option does not apply to copying directories."
+                    }
+                },
+                {
+                    "number": 96,
+                    "question": "You suspect a file may have been corrupted. Which command can you use to view the file contents while showing non-printable characters?",
+                    "options": ["cat -v", "cat -n", "cat -E", "cat -s"],
+                    "answer": "cat -v",
+                    "explanation": {
+                        "cat -v": "This option displays non-printable characters.",
+                        "cat -n": "This option numbers the lines but does not show non-printable characters.",
+                        "cat -E": "This option shows end-of-line characters but not non-printable characters.",
+                        "cat -s": "This option squeezes blank lines."
+                    }
+                }
+            ]
+        }
+    ]
+}

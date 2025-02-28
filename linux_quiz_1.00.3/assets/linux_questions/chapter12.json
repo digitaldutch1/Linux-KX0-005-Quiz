@@ -1,0 +1,143 @@
+
+
+
+{
+    "chapters": [
+        {
+            "chapter": 12,
+            "description": "Protecting Files",
+            "questions": [
+                {
+                    "number": 247,
+                    "question": "Time and space to generate archives are not an issue, and your system's environment is not a high I/O one. You want to create full backups for your system only once per week and need to restore data as quickly as possible. Which backup type plan should you use?",
+                    "options": ["Full archive daily", "Incremental archive daily", "Differential archive daily", "Full archive weekly; incremental daily", "Full archive weekly; differential daily"],
+                    "answer": "Full archive weekly; differential daily",
+                    "explanation": {
+                        "Full archive daily": "This option is incorrect as it does not match the requirement of weekly full backups.",
+                        "Incremental archive daily": "This option is incorrect as it would result in a long time period to restore data without a periodic full archive.",
+                        "Differential archive daily": "This option is incorrect as it does not fully match the requirement of weekly full archives.",
+                        "Full archive weekly; incremental daily": "This option is not as time efficient for a data restore as option E.",
+                        "Full archive weekly; differential daily": "This option meets the requirements of the scenario."
+                    }
+                },
+                {
+                    "number": 248,
+                    "question": "The system admin took an archive file and applied a compression utility to it. The resulting file extension is .gz. Which compression utility was used?",
+                    "options": ["The xz utility", "The gzip utility", "The bzip2 utility", "The zip utility", "The dd utility"],
+                    "answer": "The gzip utility",
+                    "explanation": {
+                        "The xz utility": "This utility compresses data files but gives them a different file extension.",
+                        "The gzip utility": "This utility compresses data files and gives them the .gz file extension.",
+                        "The bzip2 utility": "This utility compresses data files but gives them a different file extension.",
+                        "The zip utility": "This utility compresses data files but gives them a different file extension.",
+                        "The dd utility": "This is not a compression program."
+                    }
+                },
+                {
+                    "number": 249,
+                    "question": "You need to quickly create a special archive. This archive will be a single compressed file, which contains any files with the extension .snar across the virtual directory structure. Which archive utility should you use?",
+                    "options": ["The tar utility", "The dd utility", "The rsync utility", "The cpio utility", "The zip utility"],
+                    "answer": "The cpio utility",
+                    "explanation": {
+                        "The tar utility": "This utility can create archives but is not the most efficient for disparate files.",
+                        "The dd utility": "This utility is used for entire disks or partitions.",
+                        "The rsync utility": "This is not the most efficient utility for this scenario.",
+                        "The cpio utility": "This utility is best for quickly creating an archive of disparate files.",
+                        "The zip utility": "This is not the most efficient utility for this scenario."
+                    }
+                },
+                {
+                    "number": 250,
+                    "question": "An administrator needs to create a full backup using the tar utility, compress it as much as possible, and view the files as they are being copied into the archive. What tar options should the admin employ?",
+                    "options": ["-xzvf", "-xJvf", "-czvf", "-cJf", "-cJvf"],
+                    "answer": "-cJvf",
+                    "explanation": {
+                        "-xzvf": "This option performs extracts and does not create.",
+                        "-xJvf": "This option also performs extracts and does not create.",
+                        "-czvf": "This option employs gzip compression, not the highest compression.",
+                        "-cJf": "This option does not include the verbose switch.",
+                        "-cJvf": "This option creates a tarball using xz compression and allows verbose output."
+                    }
+                },
+                {
+                    "number": 251,
+                    "question": "You need to create a low-level backup of all the data on the /dev/sdc drive and want to use the /dev/sde drive to store it on. Which dd command should you use?",
+                    "options": ["dd of=/dev/sde if=/dev/sdc", "dd of=/dev/sdc if=/dev/sde", "dd of=/dev/sde if=/dev/sdc count=5", "dd if=/dev/sde of=/dev/sdc count=5", "dd if=/dev/zero of=/dev/sdc"],
+                    "answer": "dd of=/dev/sde if=/dev/sdc",
+                    "explanation": {
+                        "dd of=/dev/sde if=/dev/sdc": "This command will accomplish the job correctly.",
+                        "dd of=/dev/sdc if=/dev/sde": "This command flips the input and output files, destroying data.",
+                        "dd of=/dev/sde if=/dev/sdc count=5": "This command is incorrect as it also flips input and output.",
+                        "dd if=/dev/sde of=/dev/sdc count=5": "This command also flips input and output.",
+                        "dd if=/dev/zero of=/dev/sdc": "This command wipes the /dev/sdc drive."
+                    }
+                },
+                {
+                    "number": 252,
+                    "question": "You need to create a backup of a user directory tree. You want to ensure that all the file metadata is retained. Employing super user privileges, which of the following should you use with the rsync utility?",
+                    "options": ["The -r option", "The -z option", "The -a option", "The -e option", "The --rsh option"],
+                    "answer": "The -a option",
+                    "explanation": {
+                        "The -r option": "This allows recursive operations but does not preserve metadata.",
+                        "The -z option": "This employs compression but does not preserve metadata.",
+                        "The -a option": "This option allows recursive backups and preserves all file metadata.",
+                        "The -e option": "This designates a remote program for sending files.",
+                        "The --rsh option": "This is also used for designating a remote program."
+                    }
+                },
+                {
+                    "number": 253,
+                    "question": "You decide to compress the archive you are creating with the rsync utility and employ the -z option. Which compression method are you using?",
+                    "options": ["compress", "gzip", "bzip2", "xz", "zlib"],
+                    "answer": "zlib",
+                    "explanation": {
+                        "compress": "This is an outdated compression utility.",
+                        "gzip": "This is a common compression utility but not the one used with -z.",
+                        "bzip2": "This is another compression utility but not the one used with -z.",
+                        "xz": "This is a compression utility but not the one used with -z.",
+                        "zlib": "The -z switch in rsync employs compression from the zlib library."
+                    }
+                },
+                {
+                    "number": 254,
+                    "question": "Which of the following is true concerning the scp utility? (Choose all that apply.)",
+                    "options": ["Well suited for quickly transferring files between two systems on a network", "Is faster than the sftp utility", "An interactive utility useful for quickly transferring large files", "Can be interrupted during file transfers with no ill effects", "Uses OpenSSH for file transfers"],
+                    "answer": ["Well suited for quickly transferring files between two systems on a network", "Is faster than the sftp utility", "Uses OpenSSH for file transfers"],
+                    "explanation": {
+                        "Well suited for quickly transferring files between two systems on a network": "This is correct.",
+                        "Is faster than the sftp utility": "This is also true.",
+                        "An interactive utility useful for quickly transferring large files": "This is incorrect; scp is not interactive.",
+                        "Can be interrupted during file transfers with no ill effects": "This is incorrect; you have to restart the transfer.",
+                        "Uses OpenSSH for file transfers": "This is correct."
+                    }
+                },
+                {
+                    "number": 255,
+                    "question": "You are transferring files for a local backup using the sftp utility to a remote system and the process gets interrupted. What sftp utility command should you use next?",
+                    "options": ["The progress command", "The get command", "The reget command", "The put command", "The reput command"],
+                    "answer": "The reput command",
+                    "explanation": {
+                        "The progress command": "This toggles the progress display on and off.",
+                        "The get command": "This command is for downloading a file from the remote system.",
+                        "The reget command": "This command is incorrect; it is used for resuming downloads.",
+                        "The put command": "This command is also used to upload files, not for resuming.",
+                        "The reput command": "This command will resume your interrupted upload operation."
+                    }
+                },
+                {
+                    "number": 256,
+                    "question": "You have completed a full archive and sent it to a remote system using the sftp utility. You employ the md5sum program on both the local archive and its remote copy. The numbers don't match. What most likely is the cause of this?",
+                    "options": ["The local archive was corrupted when it was created", "The archive was corrupted when it was transferred", "You used incorrect commands within the sftp utility", "The numbers only match if corruption occurred", "You used incorrect utility switches on md5sum"],
+                    "answer": "The archive was corrupted when it was transferred",
+                    "explanation": {
+                        "The local archive was corrupted when it was created": "This is unlikely; it would have corrupted the original file.",
+                        "The archive was corrupted when it was transferred": "This is the most likely cause of the mismatch.",
+                        "You used incorrect commands within the sftp utility": "This is unlikely to cause corruption.",
+                        "The numbers only match if corruption occurred": "This is incorrect; it implies that they would never match.",
+                        "You used incorrect utility switches on md5sum": "This is also not a typical cause of corruption."
+                    }
+                }
+            ]
+        }
+    ]
+}

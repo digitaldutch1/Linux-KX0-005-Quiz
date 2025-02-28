@@ -1,0 +1,142 @@
+
+
+{
+    "chapters": [
+        {
+            "chapter": 25,
+            "description": "Deploying bash scripts",
+            "questions": [
+                {
+                    "number": 377,
+                    "question": "What character or characters make up the shebang used in Linux to define the shell used for a shell script?",
+                    "options": [">>", "#!", "|", ">", "2>"],
+                    "answer": "#!",
+                    "explanation": {
+                        ">>": "This character combination appends the output of a command to a file.",
+                        "#!": "This combination defines the shebang, indicating the shell to use for the script.",
+                        "|": "This character pipes the output of one command to another.",
+                        ">": "This character redirects the output of a command to a new file or overwrites an existing file.",
+                        "2>": "This character combination redirects error messages from a command to a file."
+                    }
+                },
+                {
+                    "number": 378,
+                    "question": "Henry needs to store the output from his script into a new log file that he can read later. What character or characters should he use to do that?",
+                    "options": [">>", "#!", "|", ">", "2>"],
+                    "answer": ">",
+                    "explanation": {
+                        ">": "This character redirects all output from a command to a new file.",
+                        ">>": "This appends the output of a command to an existing file.",
+                        "#!": "This combination defines the shell to use, not for output redirection.",
+                        "|": "This pipes output from one command to another.",
+                        "2>": "This redirects only error messages from a command to a new file."
+                    }
+                },
+                {
+                    "number": 379,
+                    "question": "Jasmine has created a new Bash shell script and wants to run it from the command line. What chmod permissions should she assign to the file to run it as a shell script?",
+                    "options": ["644", "u+r", "u+x", "u+w", "u=wr"],
+                    "answer": "u+x",
+                    "explanation": {
+                        "644": "This octal permission assigns read/write for the owner, but not execute permissions.",
+                        "u+r": "This only assigns read permissions, not execute permissions.",
+                        "u+x": "This assigns execute permissions to the file owner, allowing it to be run.",
+                        "u+w": "This only assigns write permissions, not execute permissions.",
+                        "u=wr": "This assigns read and write permissions but not execute permissions."
+                    }
+                },
+                {
+                    "number": 380,
+                    "question": "What environment variable contains the username of the user who started the shell?",
+                    "options": ["$USER", "$UID", "$HOME", "$BASH", "$1"],
+                    "answer": "$USER",
+                    "explanation": {
+                        "$USER": "This variable contains the username of the user who started the shell.",
+                        "$UID": "This variable contains the numeric user ID, not the username.",
+                        "$HOME": "This contains the home directory location of the user account.",
+                        "$BASH": "This variable contains the location of the Bash shell executable file.",
+                        "$1": "This variable is a positional variable used for command-line parameters."
+                    }
+                },
+                {
+                    "number": 381,
+                    "question": "Zuri is writing a Bash shell script and needs to assign a number to a variable. How should he do that?",
+                    "options": ["var1=$(10)", "var1 = 10", "var1=10", "var1=\"10\"", "var1=10"],
+                    "answer": "var1=10",
+                    "explanation": {
+                        "var1=$(10)": "This uses command substitution, not a value assignment.",
+                        "var1 = 10": "This includes spaces, which is incorrect for variable assignment.",
+                        "var1=10": "This is correct; it assigns the number to the variable without spaces.",
+                        "var1=\"10\"": "This assigns a string value, not a numeric value.",
+                        "var1=10": "This is correct; it assigns the number to the variable."
+                    }
+                },
+                {
+                    "number": 382,
+                    "question": "Cameron is writing a Bash shell script and needs to test if a file exists and that it's a file. What line of code should he write to do that?",
+                    "options": ["if [ -e file ]", "if [ -f file ]", "if [ -d file ]", "if [ -x file ]", "if [ -w file ]"],
+                    "answer": "if [ -f file ]",
+                    "explanation": {
+                        "if [ -e file ]": "This checks if the file exists but does not confirm it is a file.",
+                        "if [ -f file ]": "This checks if the specified object exists and is a file.",
+                        "if [ -d file ]": "This checks if the object is a directory, not a file.",
+                        "if [ -x file ]": "This checks if the current user has execute permissions for the file.",
+                        "if [ -w file ]": "This checks if the current user has write permissions for the file."
+                    }
+                },
+                {
+                    "number": 383,
+                    "question": "What character or combination of characters do you use to redirect the output of one command to another command?",
+                    "options": [">>", "#!", "|", ">", "2>"],
+                    "answer": "|",
+                    "explanation": {
+                        ">>": "This appends the output of a command to an existing file.",
+                        "#!": "This defines the shell to use for the script.",
+                        "|": "This character pipes the output of one command to another command.",
+                        ">": "This redirects the output of a command to a new file.",
+                        "2>": "This redirects error messages from a command to a new file."
+                    }
+                },
+                {
+                    "number": 384,
+                    "question": "Christina is creating a Bash shell script and wants to make the script return a value of 2 if it fails. What statement should she add to do that?",
+                    "options": ["#!", "$?", "$1", "exit", "while"],
+                    "answer": "exit",
+                    "explanation": {
+                        "#!": "This is for defining the shell, not for returning values.",
+                        "$?": "This returns the exit status of the last command, not a specific value.",
+                        "$1": "This is used for command-line parameters, not exit status.",
+                        "exit": "This command allows the script to return a specific exit status.",
+                        "while": "This is used for looping, not for exiting with a status."
+                    }
+                },
+                {
+                    "number": 385,
+                    "question": "What command should you use to perform a command substitution to assign the output of a command to a variable in your shell script?",
+                    "options": [">", ">>", "$[]", "|", "$()"],
+                    "answer": "$()",
+                    "explanation": {
+                        ">": "This redirects the output to a file, not to a variable.",
+                        ">>": "This appends output to a file, not to a variable.",
+                        "$[]": "This is not a valid syntax for command substitution.",
+                        "|": "This pipes the output from one command to another.",
+                        "$()": "This is the correct syntax for command substitution in shell scripts."
+                    }
+                },
+                {
+                    "number": 386,
+                    "question": "What command should you use to perform a mathematical operation in your shell script?",
+                    "options": [">", ">>", "$[]", "|", "$()"],
+                    "answer": "$[]",
+                    "explanation": {
+                        ">": "This redirects the output to a file.",
+                        ">>": "This appends output to a file.",
+                        "$[]": "This is the correct syntax for performing mathematical operations.",
+                        "|": "This is used to pipe output from one command to another.",
+                        "$()": "This is used for command substitution, not for direct mathematical operations."
+                    }
+                }
+            ]
+        }
+    ]
+}

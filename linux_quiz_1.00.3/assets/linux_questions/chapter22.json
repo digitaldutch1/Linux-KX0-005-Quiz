@@ -1,0 +1,143 @@
+
+
+
+{
+    "chapters": [
+        {
+            "chapter": 22,
+            "description": "Investigating user issues",
+            "questions": [
+                {
+                    "number": 347,
+                    "question": "Lamar, a contractor, claims he cannot log into his account locally. He was able to do so yesterday. No one else seems to be having problems accessing the system. What should you check first?",
+                    "options": ["Check if GUI services are running using the systemctl command.", "Look at the OpenSSH server configuration files.", "Determine if his account has expired by using the chage command.", "See if the account is locked using the faillock utility.", "Check for policy violations in the SELinux log files."],
+                    "answer": "Determine if his account has expired by using the chage command.",
+                    "explanation": {
+                        "Check if GUI services are running using the systemctl command.": "This is not the first thing to check.",
+                        "Look at the OpenSSH server configuration files.": "This is not relevant since no one else is having issues.",
+                        "Determine if his account has expired by using the chage command.": "This is the correct first check for his issue.",
+                        "See if the account is locked using the faillock utility.": "This is a valid check but not the first step.",
+                        "Check for policy violations in the SELinux log files.": "This may or may not be relevant; it's not the first check."
+                    }
+                },
+                {
+                    "number": 348,
+                    "question": "Irene normally logs into the system locally via the tty4 terminal but cannot today. She tries her authentication at the tty3 terminal and logs in successfully. What should you check first?",
+                    "options": ["Determine if getty services are running using the systemctl command.", "Review access rules in the /etc/security/access.conf file.", "See if the account is locked using the passwd -S command.", "Use the last command to see when she last logged in.", "Check if the tty4 device file is corrupted using the ls -l command."],
+                    "answer": "Check if the tty4 device file is corrupted using the ls -l command.",
+                    "explanation": {
+                        "Determine if getty services are running using the systemctl command.": "This would not be helpful since she can log into tty3.",
+                        "Review access rules in the /etc/security/access.conf file.": "This is not the first item to check.",
+                        "See if the account is locked using the passwd -S command.": "This is unnecessary since she can log in through tty3.",
+                        "Use the last command to see when she last logged in.": "This is not useful in diagnosing the current issue.",
+                        "Check if the tty4 device file is corrupted using the ls -l command.": "This is the correct first check."
+                    }
+                },
+                {
+                    "number": 349,
+                    "question": "Vincent is attempting to remotely log into the system using OpenSSH without success. He asks you what he can do to help troubleshoot this problem. What should you recommend first?",
+                    "options": ["Check the /etc/ssh/sshd_config configuration file.", "Add the -vvv option on to Vincent's ssh command.", "Add the -X option onto Vincent's ssh command.", "Confirm that Vincent's public key is stored in the ~/.ssh/authorized_keys file.", "Check the ~/.ssh/config configuration file."],
+                    "answer": "Add the -vvv option on to Vincent's ssh command.",
+                    "explanation": {
+                        "Check the /etc/ssh/sshd_config configuration file.": "This is not helpful since Vincent cannot reach the system.",
+                        "Add the -vvv option on to Vincent's ssh command.": "This will provide detailed information to help troubleshoot.",
+                        "Add the -X option onto Vincent's ssh command.": "This is not relevant unless X11 forwarding is used.",
+                        "Confirm that Vincent's public key is stored in the ~/.ssh/authorized_keys file.": "This is a good check but not the first step.",
+                        "Check the ~/.ssh/config configuration file.": "This is not the first thing to check."
+                    }
+                },
+                {
+                    "number": 350,
+                    "question": "Anton is struggling to determine why a particular user cannot log into a Rocky Linux system, where SELinux is disabled and auditd is not used. Which of the following are the best log files to peruse? (Choose two.)",
+                    "options": ["/var/log/audit/audit.log", "/var/log/messages", "/var/log/auth", "/var/log/secure", "/var/log/lastlog"],
+                    "answer": ["/var/log/secure", "/var/log/lastlog"],
+                    "explanation": {
+                        "/var/log/audit/audit.log": "This log file is not available since auditd is not used.",
+                        "/var/log/messages": "This log is useful but not specific to authentication issues.",
+                        "/var/log/auth": "This is not available in Rocky Linux; it's a Red Hat-based system.",
+                        "/var/log/secure": "This file contains security-related messages, including logins.",
+                        "/var/log/lastlog": "This file shows the last login times for users."
+                    }
+                },
+                {
+                    "number": 351,
+                    "question": "Tarissa needs to run a shell script, which has the permissions of rwxr--r--, is owned by root, and belongs to the wheel group. Tarissa's user account is T2T1000, and she is a member of the admin group. What can be done to allow her to run this script? (Choose all that apply.)",
+                    "options": ["Add Tarissa to the wheel group.", "Create a new account for Tarissa named wheel.", "Add w to the script file's group permissions.", "Add x to the script file's group permissions.", "Nothing. Tarissa can run the script now."],
+                    "answer": ["Add Tarissa to the wheel group.", "Add x to the script file's group permissions."],
+                    "explanation": {
+                        "Add Tarissa to the wheel group.": "This would grant her additional permissions, including executing scripts.",
+                        "Create a new account for Tarissa named wheel.": "This is unnecessary and incorrect.",
+                        "Add w to the script file's group permissions.": "Write permission does not allow execution.",
+                        "Add x to the script file's group permissions.": "This would allow execution by group members, including Tarissa.",
+                        "Nothing. Tarissa can run the script now.": "This is incorrect; she does not have execute permission."
+                    }
+                },
+                {
+                    "number": 352,
+                    "question": "Miles needs to change his present working directory to the /home/miles directory. He does not own the directory, nor is he a member of its group. Assuming needed parent directory permissions are set, what needs to take place for this to successfully occur?",
+                    "options": ["Nothing. The /home/miles directory is Miles's home directory, so he can access it by default.", "The execute (x) permission needs to be added.", "The write (w) permission needs to be added.", "The read (r) permission needs to be added.", "The dash (-) permission needs to be added."],
+                    "answer": "The execute (x) permission needs to be added.",
+                    "explanation": {
+                        "Nothing. The /home/miles directory is Miles's home directory, so he can access it by default.": "This is incorrect; ownership does not guarantee access.",
+                        "The execute (x) permission needs to be added.": "This is correct; the execute permission is needed to access the directory.",
+                        "The write (w) permission needs to be added.": "This is incorrect; write permission is not required to access a directory.",
+                        "The read (r) permission needs to be added.": "This is incorrect; read permission alone does not allow directory access.",
+                        "The dash (-) permission needs to be added.": "This is incorrect; this option does not apply."
+                    }
+                },
+                {
+                    "number": 353,
+                    "question": "Sarah, a system administrator, attempts to create a file and receives an error message indicating the file cannot be created. Which of the following might be the problem? (Choose all that apply.)",
+                    "options": ["The filesystem on which she is attempting to create the file has quotas set, and she is past her quota and grace period.", "The filesystem on which she is attempting to create the file has run out of space.", "The file that she is attempting to create has the immutable bit set and therefore cannot be created.", "The action is triggering either a SELinux or an AppArmor policy violation.", "The filesystem is experiencing inode exhaustion and therefore cannot accommodate any new files."],
+                    "answer": ["The filesystem on which she is attempting to create the file has quotas set, and she is past her quota and grace period.", "The filesystem on which she is attempting to create the file has run out of space.", "The file that she is attempting to create has the immutable bit set and therefore cannot be created.", "The action is triggering either a SELinux or an AppArmor policy violation.", "The filesystem is experiencing inode exhaustion and therefore cannot accommodate any new files."],
+                    "explanation": {
+                        "The filesystem on which she is attempting to create the file has quotas set, and she is past her quota and grace period.": "This is a valid reason for the error.",
+                        "The filesystem on which she is attempting to create the file has run out of space.": "This is a valid reason for the error.",
+                        "The file that she is attempting to create has the immutable bit set and therefore cannot be created.": "This is a valid reason for the error.",
+                        "The action is triggering either a SELinux or an AppArmor policy violation.": "This could prevent file creation.",
+                        "The filesystem is experiencing inode exhaustion and therefore cannot accommodate any new files.": "This is a valid reason for the error."
+                    }
+                },
+                {
+                    "number": 354,
+                    "question": "A user cannot delete one of their files but is able to delete other files in their directory. John, a system administrator, is attempting to troubleshoot this issue. What command should he use first on the file?",
+                    "options": ["chown", "chattr", "chmod", "umask", "lsattr"],
+                    "answer": "lsattr",
+                    "explanation": {
+                        "chown": "This command changes file ownership and is not the first step to check.",
+                        "chattr": "This command can change file attributes but is not useful at this point.",
+                        "chmod": "This command changes file permissions but does not help identify issues.",
+                        "umask": "This command sets default permissions for new files, not existing ones.",
+                        "lsattr": "This command displays file attributes, including the immutable bit."
+                    }
+                },
+                {
+                    "number": 355,
+                    "question": "Melissa wants to set her default editor to the vim editor and wants this to stay set when she enters a subshell. What should she do?",
+                    "options": ["Put EDITOR='vim' in the /etc/profile file.", "Put export EDITOR='vim' in the /etc/profile file.", "Put EDITOR='vim' in her ~/.profile file.", "Put export EDITOR='vim' in her ~/.profile file.", "Put export EDITOR='vim' in her ~/.bash.bashrc file."],
+                    "answer": "Put export EDITOR='vim' in her ~/.profile file.",
+                    "explanation": {
+                        "Put EDITOR='vim' in the /etc/profile file.": "This sets it for all users, not just Melissa.",
+                        "Put export EDITOR='vim' in the /etc/profile file.": "This also sets it for all users.",
+                        "Put EDITOR='vim' in her ~/.profile file.": "This would not keep the setting in subshells.",
+                        "Put export EDITOR='vim' in her ~/.profile file.": "This is correct; it sets her default editor properly.",
+                        "Put export EDITOR='vim' in her ~/.bash.bashrc file.": "This file is not in her home directory and is not user-specific."
+                    }
+                },
+                {
+                    "number": 356,
+                    "question": "Mark Watney, a system administrator, has his account, MW2015, modified by a new system administrator intern. When Mark logs into the system and tries to group a list of commands by using braces, it no longer works. No one else is having this problem. He suspects his account's default shell has been changed from /bin/bash to /bin/tcsh. Which of the following will help determine if his suspicion is correct? (Choose all that apply.)",
+                    "options": ["cat /etc/profile", "echo $SHELL", "sudo grep tcsh$ /etc/passwd", "sudo getent shadow MW2015", "sudo getent passwd MW2015"],
+                    "answer": ["echo $SHELL", "sudo grep tcsh$ /etc/passwd", "sudo getent passwd MW2015"],
+                    "explanation": {
+                        "cat /etc/profile": "This will not show the current shell for Mark's user account.",
+                        "echo $SHELL": "This command shows Mark's current shell environment.",
+                        "sudo grep tcsh$ /etc/passwd": "This command checks if Mark's shell is set to tcsh.",
+                        "sudo getent shadow MW2015": "This command checks password information but not the shell.",
+                        "sudo getent passwd MW2015": "This command shows Mark's account details, including the shell."
+                    }
+                }
+            ]
+        }
+    ]
+}

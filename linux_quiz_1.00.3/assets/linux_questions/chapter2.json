@@ -1,0 +1,254 @@
+
+
+
+{
+    "chapters": [
+        {	
+
+            "chapter": 2,
+            "description": "Introduction to Services",
+            "questions": [
+                {
+                    "number": 57,
+                    "question": "Which web server is used in the popular LAMP stack?",
+                    "options": ["nginX", "Apache", "Lighthttpd", "PostgreSQL"],
+                    "answer": "Apache",
+                    "explanation": {
+                        "Apache": "The Apache web server has gained popularity as being combined with the Linux OS, the MySQL database server, and the PHP programming server, making the LAMP stack.",
+                        "nginX": "The nginX server is a newer web server that is gaining in popularity but is not part of the LAMP stack.",
+                        "Lighthttpd": "The Lighthttpd web server has a small memory and CPU footprint, making it ideal for embedded systems but not for large-scale LAMP applications.",
+                        "PostgreSQL": "The PostgreSQL package is a database server and not a web server."
+                    }
+                },
+                {
+                    "number": 58,
+                    "question": "What runs in the background and listens for client connection requests for a single application?",
+                    "options": ["Daemon", "Super-server", "Shell", "Graphical desktop"],
+                    "answer": "Daemon",
+                    "explanation": {
+                        "Daemon": "A daemon is a single application that runs in background listening for client connection requests.",
+                        "Super-server": "A super-server listens for more than one application.",
+                        "Shell": "The shell doesn't listen for network connections; it launches applications interactively.",
+                        "Graphical desktop": "The graphical desktop also allows you to launch applications, but it doesn't listen for client connection requests."
+                    }
+                },
+                {
+                    "number": 59,
+                    "question": "Which open source database provided fast performance and became a popular choice for web applications?",
+                    "options": ["MongoDB", "PostgreSQL", "MySQL", "NoSQL"],
+                    "answer": "MySQL",
+                    "explanation": {
+                        "MongoDB": "The MongoDB database provides object-oriented database features but doesn't focus on performance.",
+                        "PostgreSQL": "The PostgreSQL database focused on implementing advanced features rather than speed.",
+                        "MySQL": "MySQL focused on speed, making it popular for high-volume Internet web applications.",
+                        "NoSQL": "NoSQL is a storage method for object-oriented records, not a specific database server."
+                    }
+                },
+                {
+                    "number": 60,
+                    "question": "How does a server know what client request is sent to which application daemon?",
+                    "options": ["IP addresses", "Ports", "Ethernet addresses", "Services"],
+                    "answer": "Ports",
+                    "explanation": {
+                        "IP addresses": "A server normally has a single IP address for multiple applications.",
+                        "Ports": "Linux services listen on well-known ports for client requests.",
+                        "Ethernet addresses": "The server usually has one Ethernet address.",
+                        "Services": "Clients cannot launch individual services on the server."
+                    }
+                },
+                {
+                    "number": 61,
+                    "question": "What popular open source web servers can also perform as a load balancer?",
+                    "options": ["nginX", "Apache", "PostgreSQL", "Lighthttpd"],
+                    "answer": "nginX",
+                    "explanation": {
+                        "nginX": "nginX can serve as a load balancer, directing requests to multiple backend servers.",
+                        "Apache": "Apache does not natively support load balancing.",
+                        "PostgreSQL": "PostgreSQL is a database, not a web server.",
+                        "Lighthttpd": "Lighthttpd does not support load balancing."
+                    }
+                },
+                {
+                    "number": 62,
+                    "question": "What format does MongoDB use to store data elements in the database?",
+                    "options": ["Relational", "YaML", "JSON", "Encrypted"],
+                    "answer": "JSON",
+                    "explanation": {
+                        "Relational": "Relational is a type of database, not a format for storing data in MongoDB.",
+                        "YaML": "YaML is used for configuration files, not data storage in MongoDB.",
+                        "JSON": "MongoDB stores data in JSON format.",
+                        "Encrypted": "MongoDB data is not normally encrypted by default."
+                    }
+                },
+                {
+                    "number": 63,
+                    "question": "Which part of the Linux mail process is responsible for sending emails to remote hosts?",
+                    "options": ["MUA", "MTA", "MDA", "Evolution"],
+                    "answer": "MTA",
+                    "explanation": {
+                        "MUA": "The MUA allows clients to read email but does not send to remote hosts.",
+                        "MTA": "The MTA connects with remote mail hosts to deliver messages.",
+                        "MDA": "The MDA handles local email processing.",
+                        "Evolution": "Evolution is an email client, not a server MTA package."
+                    }
+                },
+                {
+                    "number": 64,
+                    "question": "Which part of the Linux mail process allows you to create filters to automatically redirect incoming mail messages?",
+                    "options": ["MUA", "MTA", "MDA", "Evolution"],
+                    "answer": "MDA",
+                    "explanation": {
+                        "MUA": "The MUA provides the user interface and does not handle mail delivery rules.",
+                        "MTA": "The MTA delivers email to remote hosts, not local filters.",
+                        "MDA": "The MDA allows filters to be created for redirecting incoming mail.",
+                        "Evolution": "Evolution is a client MUA and does not manage mail delivery rules."
+                    }
+                },
+                {
+                    "number": 65,
+                    "question": "What protocol should you use to mount folders from remote Linux servers on your local Linux server?",
+                    "options": ["SNMP", "NTP", "DHCP", "NFS"],
+                    "answer": "NFS",
+                    "explanation": {
+                        "SNMP": "SNMP is for managing network devices, not mounting folders.",
+                        "NTP": "NTP is for synchronizing time across devices.",
+                        "DHCP": "DHCP is for assigning IP addresses on a network.",
+                        "NFS": "NFS is the protocol for sharing folder areas across the network."
+                    }
+                },
+                {
+                    "number": 66,
+                    "question": "What software package allows your Windows workstations to mount a folder stored on a Linux server?",
+                    "options": ["ntpd", "Samba", "DHCPd", "Evolution"],
+                    "answer": "Samba",
+                    "explanation": {
+                        "ntpd": "ntpd is for time synchronization, not folder sharing.",
+                        "Samba": "Samba enables Windows to mount folders on a Linux server using SMB protocol.",
+                        "DHCPd": "DHCPd assigns IP addresses and does not handle folder mapping.",
+                        "Evolution": "Evolution is an email client and does not manage file sharing."
+                    }
+                },
+                {
+                    "number": 67,
+                    "question": "Which two software packages are used in Linux to maintain log files? (Choose two.)",
+                    "options": ["rsyslogd", "journald", "ntpd", "DHCPd"],
+                    "answer": ["rsyslogd", "journald"],
+                    "explanation": {
+                    "rsyslogd": "The rsyslogd program is used by SysV init systems to log events.",
+                    "journald": "The journald program is used by Systemd systems to log events.",
+                    "ntpd": "The ntpd program provides time services and not logging services.",
+                    "DHCPd": "The DHCPd program is used for assigning IP addresses on a local network and not for logging services."
+                    }
+                },
+                {
+                    "number": 68,
+                    "question": "Which software program should you load on your Linux server to synchronize its time with a standard time server?",
+                    "options": ["DHCPd", "BIND", "ntpd", "Samba"],
+                    "answer": "ntpd",
+                    "explanation": {
+                    "DHCPd": "The DHCPd program assigns IP addresses to devices on the local network but not time.",
+                    "BIND": "The BIND program provides hostname resolution services but not time services.",
+                    "ntpd": "The ntpd service uses NTP to synchronize the server time with a remote system.",
+                    "Samba": "The Samba package allows a Linux server to interact with Windows clients and servers, but it doesn't provide time services."
+                    }
+                },
+                {
+                    "number": 69,
+                    "question": "What software package allows a Linux server to print to a network printer?",
+                    "options": ["DHCPd", "BIND", "ntpd", "CUPS"],
+                    "answer": "CUPS",
+                    "explanation": {
+                    "DHCPd": "The DHCPd program assigns IP addresses to devices on the local network but doesn't connect to remote printers.",
+                    "BIND": "The BIND application provides hostname resolution services but can't connect to printers.",
+                    "ntpd": "The ntpd program allows you to synchronize the server time with a remote time clock but doesn't connect to network printers.",
+                    "CUPS": "The CUPS application provides printer drivers and services that allow Linux systems to connect with local and remote printers."
+                    }
+                },
+                {
+                    "number": 70,
+                    "question": "If you see the named program running in the background on your Linux server, what service does it provide?",
+                    "options": ["Network time", "Hostname resolution", "Dynamic IP address allocation", "Printing"],
+                    "answer": "Hostname resolution",
+                    "explanation": {
+                    "Network time": "The ntpd program is what provides network time.",
+                    "Hostname resolution": "The named program is part of the BIND application, which provides hostname resolution services.",
+                    "Dynamic IP address allocation": "The DHCPd program provides dynamic IP address allocation on a local network.",
+                    "Printing": "The CUPS application provides printing services on a Linux system."
+                    }
+                },
+                {
+                    "number": 71,
+                    "question": "Which authentication package used to be called by the name 'Yellow Pages'?",
+                    "options": ["Samba", "Kerberos", "NIS", "BIND"],
+                    "answer": "NIS",
+                    "explanation": {
+                    "Samba": "The Samba package, which provides Windows client and server services in Linux, refers to a popular Latin dance.",
+                    "Kerberos": "The Kerberos package refers to the three-headed hound that guards Hades.",
+                    "NIS": "The NIS package was formerly called Yellow Pages (YP) but had to change due to trademark issues.",
+                    "BIND": "The BIND application refers to binding a name to an IP address, which is not related to the Yellow Pages."
+                    }
+                },
+                {
+                    "number": 72,
+                    "question": "What package do you need to install to allow your Linux server to provide IP addresses to clients on your local network?",
+                    "options": ["DHCPd", "BIND", "ntpd", "Evolution"],
+                    "answer": "DHCPd",
+                    "explanation": {
+                    "DHCPd": "The DHCPd program provides DHCP server services on a local network.",
+                    "BIND": "The BIND package provides hostname resolution services; it doesn't assign IP addresses.",
+                    "ntpd": "The ntpd package provides network time services but not address services.",
+                    "Evolution": "Evolution is a client MUA package for reading email; it doesn't provide IP addresses to clients."
+                    }
+                },
+                {
+                    "number": 73,
+                    "question": "What package allows you to create a secure tunnel across a private network to access your local network remotely?",
+                    "options": ["BIND", "ntpd", "OpenSSH", "OpenSSL"],
+                    "answer": "OpenSSH",
+                    "explanation": {
+                    "BIND": "The BIND package provides hostname resolution, not secure connections.",
+                    "ntpd": "The ntpd package provides time services on the network, not secure connections.",
+                    "OpenSSH": "The OpenSSH package allows you to use certificates to establish a secure connection between two devices on the network.",
+                    "OpenSSL": "The OpenSSL package allows you to create certificates used for encrypted communication but doesn't perform the communication itself."
+                    }
+                },
+                {
+                    "number": 74,
+                    "question": "What server role should you implement to block your local network clients from accessing sports websites during business hours?",
+                    "options": ["A DHCP server", "A web server", "A web proxy", "A container"],
+                    "answer": "A web proxy",
+                    "explanation": {
+                    "A DHCP server": "A DHCP server assigns IP addresses to devices on the local network; it doesn't intercept web requests.",
+                    "A web server": "A web server hosts websites but doesn't intercept requests made by local clients.",
+                    "A web proxy": "A web proxy server allows you to intercept client web requests and block any requests based on rules you define.",
+                    "A container": "A container allows developers to easily deploy web applications but doesn't intercept web requests from local clients."
+                    }
+                },
+                {
+                    "number": 75,
+                    "question": "What server role should you implement to increase performance on your company's website?",
+                    "options": ["A load balancer", "A web proxy", "A DHCP server", "A container"],
+                    "answer": "A load balancer",
+                    "explanation": {
+                    "A load balancer": "A load balancer sends client requests to one server within a cluster of servers to balance traffic among the servers.",
+                    "A web proxy": "A web proxy server intercepts web requests from clients but can only filter or pass the request to the destination host.",
+                    "A DHCP server": "A DHCP server assigns IP addresses to devices on the local network but doesn't help increase performance of network applications.",
+                    "A container": "A container allows a developer to easily deploy web applications to different environments but can't control what traffic goes to which server."
+                    }
+                },
+                {
+                    "number": 76,
+                    "question": "What allows your developers to easily deploy applications between development, test, and production?",
+                    "options": ["Web proxy", "DHCP server", "Container", "Load balancer"],
+                    "answer": "Container",
+                    "explanation": {
+                    "Web proxy": "A web proxy intercepts web requests from clients but doesn't control how applications are deployed.",
+                    "DHCP server": "A DHCP server assigns IP addresses to devices on the local network but doesn't control how applications are deployed.",
+                    "Container": "A container allows developers to develop applications in a controlled environment that can easily be deployed to other servers.",
+                    "Load balancer": "A load balancer helps with application performance but doesn't control how developers deploy the application to the servers."
+                    }
+                }
+            ]
+        }
+    ]
+}

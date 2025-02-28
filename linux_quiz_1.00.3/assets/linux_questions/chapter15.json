@@ -1,0 +1,143 @@
+
+
+
+{
+    "chapters": [
+        {
+            "chapter": 15,
+            "description": "Applying Ownership and Permissions",
+            "questions": [
+                {
+                    "number": 277,
+                    "question": "What permissions can be applied to a file or directory? (Choose three.)",
+                    "options": ["Read", "Write", "Delete", "Modify", "Execute"],
+                    "answer": ["Read", "Write", "Execute"],
+                    "explanation": {
+                        "Read": "This permission allows reading the contents of the file.",
+                        "Write": "This permission allows modifying the contents of the file.",
+                        "Delete": "This isn't a specific permission; it requires write access.",
+                        "Modify": "This isn't a specific permission; it requires write access.",
+                        "Execute": "This permission allows executing a file as a program."
+                    }
+                },
+                {
+                    "number": 278,
+                    "question": "What user categories can be assigned permissions in Linux? (Choose three.)",
+                    "options": ["Root", "Owner", "Group", "Others", "Department"],
+                    "answer": ["Owner", "Group", "Others"],
+                    "explanation": {
+                        "Root": "The root user account has full permissions but isn't a separate category.",
+                        "Owner": "This category refers to the user who owns the file.",
+                        "Group": "This category refers to the group assigned to the file.",
+                        "Others": "This category refers to all users not in the owner or group.",
+                        "Department": "This isn't a recognized user category in Linux."
+                    }
+                },
+                {
+                    "number": 279,
+                    "question": "Sam needs to allow standard users to run an application with root privileges. What special permissions bit should she apply to the application file?",
+                    "options": ["The sticky bit", "The SUID bit", "The GUID bit", "Execute", "Write"],
+                    "answer": "The SUID bit",
+                    "explanation": {
+                        "The sticky bit": "This prevents users from deleting files they don't own.",
+                        "The SUID bit": "This allows users to run applications as the root user.",
+                        "The GUID bit": "This sets the group ownership of new files created in a directory.",
+                        "Execute": "This sets execute permission but does not grant root privileges.",
+                        "Write": "This sets write permission but does not grant root privileges."
+                    }
+                },
+                {
+                    "number": 280,
+                    "question": "What are the equivalent symbolic mode permissions for the octal mode value of 644?",
+                    "options": ["rwxrw-r--", "-w--w--w-", "-w-r--r--", "rwxrw-rw-", "rw-r--r--"],
+                    "answer": "rw-r--r--",
+                    "explanation": {
+                        "rwxrw-r--": "This represents octal mode 764.",
+                        "-w--w--w-": "This represents octal mode 222.",
+                        "-w-r--r--": "This represents octal mode 244.",
+                        "rwxrw-rw-": "This represents octal mode 766.",
+                        "rw-r--r--": "This represents read/write for the owner and read-only for the group and others."
+                    }
+                },
+                {
+                    "number": 281,
+                    "question": "Fred was assigned the task of creating a new group on the company Linux server and now needs to assign permissions for that group to files and directories. What Linux utility should he use to change the group assigned to the files and directories? (Choose all that apply.)",
+                    "options": ["chgrp", "chown", "chmod", "chage", "ulimit"],
+                    "answer": ["chgrp", "chown"],
+                    "explanation": {
+                        "chgrp": "This command changes the group assigned to a file or directory.",
+                        "chown": "This command can change the owner and the group of a file or directory.",
+                        "chmod": "This command changes the permissions but not the group.",
+                        "chage": "This command is used for managing user passwords, not groups.",
+                        "ulimit": "This command restricts system resource usage but does not manage groups."
+                    }
+                },
+                {
+                    "number": 282,
+                    "question": "Sally needs to view the ACL permissions assigned to a file on her Linux server. What command should she use?",
+                    "options": ["ls -Z", "ls -l", "getfacl", "chmod", "setfacl"],
+                    "answer": "getfacl",
+                    "explanation": {
+                        "ls -Z": "This option shows SELinux context settings, not ACL permissions.",
+                        "ls -l": "This option displays standard Linux file permissions, not ACL permissions.",
+                        "getfacl": "This command retrieves all ACL permissions assigned to a file.",
+                        "chmod": "This command changes standard permissions, not displays them.",
+                        "setfacl": "This command allows changing ACL permissions but not viewing them."
+                    }
+                },
+                {
+                    "number": 283,
+                    "question": "What SELinux mode tracks policy violations but doesn't enforce them?",
+                    "options": ["Disabled", "Enforcing", "Targeted", "Permissive", "MLS"],
+                    "answer": "Permissive",
+                    "explanation": {
+                        "Disabled": "This mode allows all actions but does not log them.",
+                        "Enforcing": "This mode logs policy violations and enforces them.",
+                        "Targeted": "This is not an SELinux mode; it defines monitored daemon types.",
+                        "Permissive": "This mode logs policy violations but allows actions.",
+                        "MLS": "This is not an SELinux mode; it refers to multi-level security."
+                    }
+                },
+                {
+                    "number": 284,
+                    "question": "Ted is tasked with documenting the SELinux security context assigned to a group of files in a directory. What command should he use?",
+                    "options": ["getsebool", "setsebool", "ls -Z", "getenforce", "ls -l"],
+                    "answer": "ls -Z",
+                    "explanation": {
+                        "getsebool": "This command shows the current setting for a policy rule, not the security context.",
+                        "setsebool": "This command enables or disables a policy rule.",
+                        "ls -Z": "This option displays the SELinux security context assigned to files.",
+                        "getenforce": "This command displays the current SELinux mode.",
+                        "ls -l": "This option displays standard permissions, not security contexts."
+                    }
+                },
+                {
+                    "number": 285,
+                    "question": "Mary is required to log into her Linux system as a standard user but needs to run an application with administrator privileges. What commands can she use to do that? (Choose all that apply.)",
+                    "options": ["su", "wheel", "visudo", "sudo", "adm"],
+                    "answer": ["su", "sudo"],
+                    "explanation": {
+                        "su": "This command allows running applications as another user, including root.",
+                        "wheel": "This is a user group that provides admin privileges but is not a command.",
+                        "visudo": "This command opens an editor for the sudoers file but cannot run applications.",
+                        "sudo": "This command allows running applications as the root user.",
+                        "adm": "This is a user group but is not a command for running applications."
+                    }
+                },
+                {
+                    "number": 286,
+                    "question": "What user groups are commonly used to assign privileges for group members to run applications as the administrator? (Choose two.)",
+                    "options": ["lp", "adm", "wheel", "sudo", "su"],
+                    "answer": ["wheel", "sudo"],
+                    "explanation": {
+                        "lp": "This group is used for granting access to printers, not running applications.",
+                        "adm": "This group is used to grant access to log files but not run applications.",
+                        "wheel": "This group allows members to gain administrator privileges.",
+                        "sudo": "This group allows members to gain administrator privileges.",
+                        "su": "This is a command for switching users, not a user group."
+                    }
+                }
+            ]
+        }
+    ]
+}

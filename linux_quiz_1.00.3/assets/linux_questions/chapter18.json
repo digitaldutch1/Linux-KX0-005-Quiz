@@ -1,0 +1,143 @@
+
+
+
+{
+    "chapters": [
+        {
+            "chapter": 18,
+            "description": "Overseeing linux firewalls",
+            "questions": [
+                {
+                    "number": 307,
+                    "question": "Which of the following is true concerning firewalls on Linux that were covered in this chapter? (Choose all that apply.)",
+                    "options": ["They use ACLs for allowing packets.", "They detect malicious behavior.", "They inspect network packet control information.", "They use iptables embedded in the Linux kernel.", "They employ configuration files for persistency."],
+                    "answer": ["They use ACLs for allowing packets.", "They inspect network packet control information.", "They employ configuration files for persistency."],
+                    "explanation": {
+                        "They use ACLs for allowing packets.": "This is correct; firewalls use access control lists to identify allowed packets.",
+                        "They detect malicious behavior.": "This is incorrect; firewalls do not detect malicious behavior.",
+                        "They inspect network packet control information.": "This is correct; they inspect packet headers.",
+                        "They use iptables embedded in the Linux kernel.": "This is incorrect; they use netfilter, which is embedded in the kernel.",
+                        "They employ configuration files for persistency.": "This is correct; configuration files allow settings to survive reboots."
+                    }
+                },
+                {
+                    "number": 308,
+                    "question": "Which of the following options best describes packet filtering?",
+                    "options": ["Identifying network packets via their control information and allowing them into the system", "Identifying network packets via their control information and determining what to do based on ACL rules", "Identifying network packets via their payload and determining what to do based on ACL rules", "Identifying network packets by their source address and determining what to do based on ACL rules", "Identifying network packets by their payload and determining what to do based on their source address"],
+                    "answer": "Identifying network packets via their control information and determining what to do based on ACL rules",
+                    "explanation": {
+                        "Identifying network packets via their control information and allowing them into the system": "This is partially correct but does not encompass determination of ACL rules.",
+                        "Identifying network packets via their control information and determining what to do based on ACL rules": "This is correct; packet filtering uses control information and ACL rules to decide actions.",
+                        "Identifying network packets via their payload and determining what to do based on ACL rules": "This is incorrect; packet filtering focuses on control information.",
+                        "Identifying network packets by their source address and determining what to do based on ACL rules": "This is incorrect; packet filtering uses more than just source addresses.",
+                        "Identifying network packets by their payload and determining what to do based on their source address": "This is incorrect; again, packet filtering focuses on control information."
+                    }
+                },
+                {
+                    "number": 309,
+                    "question": "Which of the following are benefits of a stateful firewall over a stateless firewall? (Choose all that apply.)",
+                    "options": ["It operates faster.", "It is not as vulnerable to DDoS attacks.", "It determines if packets are fragmented.", "It operates faster for established connections.", "It is vulnerable to DDoS attacks."],
+                    "answer": ["It determines if packets are fragmented.", "It operates faster for established connections."],
+                    "explanation": {
+                        "It operates faster.": "This is incorrect; stateful firewalls can be slower due to tracking states.",
+                        "It is not as vulnerable to DDoS attacks.": "This is incorrect; stateful firewalls can be vulnerable to such attacks.",
+                        "It determines if packets are fragmented.": "This is correct; stateful firewalls can track fragmented packets.",
+                        "It operates faster for established connections.": "This is correct; they can process established connections more efficiently.",
+                        "It is vulnerable to DDoS attacks.": "This is true but not a benefit."
+                    }
+                },
+                {
+                    "number": 310,
+                    "question": "The firewalld service uses \\____\\_, which is a predefined rule set.",
+                    "options": ["netfilter", "firewall-cmd", "Services", "reject", "Zones"],
+                    "answer": "Zones",
+                    "explanation": {
+                        "netfilter": "This is the framework used in the kernel but not the rule set.",
+                        "firewall-cmd": "This command-line tool is used to interact with firewalld, not a rule set.",
+                        "Services": "This term refers to specific services but not to a rule set.",
+                        "reject": "This is a target action but not a predefined rule set.",
+                        "Zones": "This is correct; firewalld uses zones as predefined rule sets."
+                    }
+                },
+                {
+                    "number": 311,
+                    "question": "Peter, a Linux system administrator, has been testing a new firewalld configuration. The test was successful. What should Peter do next?",
+                    "options": ["Using super user privileges, issue the reboot command.", "Using super user privileges, issue the firewall-cmd --panic-on command.", "Nothing. If the test was successful, the runtime environment is the permanent environment.", "Issue the firewall-cmd --runtime-to-permanent command using super user privileges.", "Issue another firewall-cmd command, but add the --permanent option to it."],
+                    "answer": "Issue the firewall-cmd --runtime-to-permanent command using super user privileges.",
+                    "explanation": {
+                        "Using super user privileges, issue the reboot command.": "This would lose the runtime environment.",
+                        "Using super user privileges, issue the firewall-cmd --panic-on command.": "This would block all incoming traffic, not save the configuration.",
+                        "Nothing. If the test was successful, the runtime environment is the permanent environment.": "This is incorrect; the runtime must be saved to be persistent.",
+                        "Issue the firewall-cmd --runtime-to-permanent command using super user privileges.": "This is correct; it saves the current runtime configuration.",
+                        "Issue another firewall-cmd command, but add the --permanent option to it.": "This is not the right next step after testing."
+                    }
+                },
+                {
+                    "number": 312,
+                    "question": "Peter is a Linux system administrator of a system using the iptables service. He wants to add a rule to block only incoming ping packets and not send a rejection message to the source. What command should he employ?",
+                    "options": ["sudo iptables -P INPUT DROP", "sudo iptables -A INPUT -p icmp -j REJECT", "sudo iptables -A INPUT -p icmp -j DROP", "sudo iptables -D INPUT -p icmp -j DROP", "sudo iptables -A OUTPUT -p icmp -j REJECT"],
+                    "answer": "sudo iptables -A INPUT -p icmp -j DROP",
+                    "explanation": {
+                        "sudo iptables -P INPUT DROP": "This sets the policy to DROP for all incoming packets.",
+                        "sudo iptables -A INPUT -p icmp -j REJECT": "This sends a rejection message, which is not desired.",
+                        "sudo iptables -A INPUT -p icmp -j DROP": "This is correct; it drops incoming ping packets without sending a rejection message.",
+                        "sudo iptables -D INPUT -p icmp -j DROP": "This attempts to delete a rule, not add one.",
+                        "sudo iptables -A OUTPUT -p icmp -j REJECT": "This modifies the OUTPUT chain instead of INPUT."
+                    }
+                },
+                {
+                    "number": 313,
+                    "question": "Which of the following commands will allow you to view the various rules in a UFW firewall with their associated numbers?",
+                    "options": ["sudo ufw show numeric", "sudo ufw status", "sudo ufw status verbose", "sudo ufw status numbered", "sudo ufw enable"],
+                    "answer": "sudo ufw status numbered",
+                    "explanation": {
+                        "sudo ufw show numeric": "This option does not exist in the UFW command.",
+                        "sudo ufw status": "This shows rules but not their numbers.",
+                        "sudo ufw status verbose": "This option also shows rules but not their numbers.",
+                        "sudo ufw status numbered": "This is correct; it displays UFW rules with associated numbers.",
+                        "sudo ufw enable": "This command enables the firewall but does not display rules."
+                    }
+                },
+                {
+                    "number": 314,
+                    "question": "Which of the following is an example of UFW simple syntax for blocking all incoming and outgoing OpenSSH connections without providing a blocking message?",
+                    "options": ["sudo ufw deny 22/tcp", "sudo ufw drop 22/tcp", "sudo ufw reject 22/tcp", "sudo ufw accept 22/tcp", "sudo ufw block 22/tcp"],
+                    "answer": "sudo ufw deny 22/tcp",
+                    "explanation": {
+                        "sudo ufw deny 22/tcp": "This blocks all OpenSSH connections without providing a rejection message.",
+                        "sudo ufw drop 22/tcp": "This option does not exist in UFW.",
+                        "sudo ufw reject 22/tcp": "This sends a rejection message, which is not desired.",
+                        "sudo ufw accept 22/tcp": "This allows OpenSSH connections.",
+                        "sudo ufw block 22/tcp": "This option does not exist in UFW."
+                    }
+                },
+                {
+                    "number": 315,
+                    "question": "Which of the following are true concerning both DenyHosts and Fail2Ban? (Choose all that apply.)",
+                    "options": ["It is an intrusion detection system (IDS).", "It modifies the /etc/hosts.deny file.", "It only handles OpenSSH traffic.", "Its configuration file is named jail.conf.", "It can work with TCP Wrappers, iptables, and firewalld."],
+                    "answer": ["It is an intrusion detection system (IDS).", "It modifies the /etc/hosts.deny file.", "It can work with TCP Wrappers, iptables, and firewalld."],
+                    "explanation": {
+                        "It is an intrusion detection system (IDS).": "This is correct; both tools provide intrusion detection.",
+                        "It modifies the /etc/hosts.deny file.": "This is correct; DenyHosts modifies this file.",
+                        "It only handles OpenSSH traffic.": "This is incorrect; Fail2Ban can handle various types of traffic.",
+                        "Its configuration file is named jail.conf.": "This is incorrect; this file is specific to Fail2Ban, not DenyHosts.",
+                        "It can work with TCP Wrappers, iptables, and firewalld.": "This is correct; both can integrate with these security measures."
+                    }
+                },
+                {
+                    "number": 316,
+                    "question": "Virginia is administering a Linux system with a firewall. She has already set up an IPset and named it BlockThem. A new attack has begun to occur from the 72.32.138.96 address. Along with super user privileges, what command should she issue to add this IPv4 address to the IPset?",
+                    "options": ["ipset create BlockThem hash:net", "ipset -n BlockThem hash:net", "ipset save -f /etc/ipset.conf", "ipset -A BlockThem 72.32.138.0/24", "ipset add BlockThem 72.32.138.96"],
+                    "answer": "ipset add BlockThem 72.32.138.96",
+                    "explanation": {
+                        "ipset create BlockThem hash:net": "This command creates a new IPset, not adding an address.",
+                        "ipset -n BlockThem hash:net": "This command does not exist.",
+                        "ipset save -f /etc/ipset.conf": "This saves the current IPset configuration but does not add an address.",
+                        "ipset -A BlockThem 72.32.138.0/24": "This adds an entire subnet, not a single IP address.",
+                        "ipset add BlockThem 72.32.138.96": "This command correctly adds the specified IP address."
+                    }
+                }
+            ]
+        }
+    ]
+}
