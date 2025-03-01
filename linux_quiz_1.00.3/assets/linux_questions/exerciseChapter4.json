@@ -1252,7 +1252,94 @@
               "It searches and replaces the text 'cake' with the text from the script.sed file.": "Incorrect. This is incorrect because the sed command doesn't simply search for the word 'cake' and replace it with the text from script.sed.",
               "It displays the contents of the script.sed file alongside the contents of cake.txt.": "Incorrect. This is incorrect because the sed -f script.sed cake.txt command doesn't display the contents of script.sed or cake.txt."
             }
-          }          
+          },
+          {
+            "number": 74,
+            "question": "What does the following command do? sed -f script.sed cake.txt",
+            "options": [
+              "It executes all the replacements defined in the script.sed file on the cake.txt file.",
+              "It replaces the contents of cake.txt with the contents of script.sed.",
+              "It searches and replaces the text 'cake' with the text from the script.sed file.",
+              "It displays the contents of the script.sed file alongside the contents of cake.txt."
+            ],
+            "answer": "It executes all the replacements defined in the script.sed file on the cake.txt file.",
+            "explanation": {
+              "It executes all the replacements defined in the script.sed file on the cake.txt file.": "Correct. This is the correct answer. The -f script.sed option tells sed to read the commands from the file script.sed and apply them to the file cake.txt.",
+              "It replaces the contents of cake.txt with the contents of script.sed.": "Incorrect. This is incorrect because the sed command does not replace the contents of the input file (cake.txt) with the contents of the script file (script.sed).",
+              "It searches and replaces the text 'cake' with the text from the script.sed file.": "Incorrect. This is incorrect because the sed command doesn't simply search for the word 'cake' and replace it with the text from script.sed.",
+              "It displays the contents of the script.sed file alongside the contents of cake.txt.": "Incorrect. This is incorrect because the sed -f script.sed cake.txt command doesn't display the contents of script.sed or cake.txt."
+            }
+          },
+          {
+            "number": 75,
+            "question": "What is the primary role of the 'sed' command?",
+            "options": [
+              "To manipulate text within files.",
+              "To perform calculations on data.",
+              "To format output in a specific way.",
+              "To execute shell commands."
+            ],
+            "answer": "To manipulate text within files.",
+            "explanation": {
+              "To manipulate text within files.": "Correct. This is the main function of 'sed'.",
+              "To perform calculations on data.": "Incorrect. This is primarily the role of 'gawk' for calculations and complex data manipulation.",
+              "To format output in a specific way.": "Incorrect. 'printf' is used for formatting output.",
+              "To execute shell commands.": "Incorrect. This is not the primary function of 'sed'."
+            }
+          },
+          {
+            "number": 76,
+            "question": "Which command is primarily used to manipulate text within a file?",
+            "options": [
+              "sed",
+              "gawk",
+              "printf",
+              "echo",
+              "cut"
+            ],
+            "answer": "sed, gawk",
+            "explanation": {
+              "sed": "Correct. 'sed' is primarily used for stream editing and text manipulation.",
+              "gawk": "Correct. 'gawk' can manipulate text and is also mainly focused on data processing and calculations.",
+              "printf": "Incorrect. 'printf' is used for formatting output, not primarily for manipulating text.",
+              "echo": "Incorrect. While 'echo' displays text or variables, it does not manipulate text within files.",
+              "cut": "Incorrect. 'cut' is used for extracting sections from each line of input but is not primarily focused on text manipulation."
+            }
+          },
+          {
+            "number": 77,
+            "question": "Which command is used to format output in a specific way?",
+            "options": [
+              "sed",
+              "gawk",
+              "printf",
+              "echo"
+            ],
+            "answer": "printf",
+            "explanation": {
+              "sed": "Incorrect. 'sed' is used for text manipulation, not specifically for formatting output.",
+              "gawk": "Incorrect. 'gawk' is used for data manipulation and calculations.",
+              "printf": "Correct. 'printf' is specifically designed for formatting output.",
+              "echo": "Incorrect. While 'echo' can display text, it does not format output in a specific way."
+            }
+          },
+          {
+            "number": 78,
+            "question": "Which command is primarily used for data manipulation and calculations?",
+            "options": [
+              "sed",
+              "gawk",
+              "printf",
+              "awk"
+            ],
+            "answer": "gawk",
+            "explanation": {
+              "sed": "Incorrect. 'sed' is primarily used for text manipulation and stream editing, not specifically for calculations.",
+              "gawk": "Correct. 'gawk' is specifically designed for data manipulation and performing calculations on input data.",
+              "printf": "Incorrect. 'printf' is used for formatting output, not for data manipulation or calculations.",
+              "awk": "Incorrect. Although 'awk' can be used for data processing, 'gawk' is the GNU version that enhances these capabilities, making it more suited for advanced data manipulation and calculations."
+            }
+          }         
         ]
       }
     ]

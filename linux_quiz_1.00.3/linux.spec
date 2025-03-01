@@ -2,10 +2,10 @@
 
 
 a = Analysis(
-    ['H:\\linux trainer\\linux_quiz_1.00.3\\linux.py'],
+    ['C:\\Users\\denni\\OneDrive\\Bureaublad\\linux trainer\\linux_quiz_1.00.3\\linux.py'],
     pathex=[],
     binaries=[],
-    datas=[('H:\\linux trainer\\linux_quiz_1.00.3\\assets\\\\icon\\\\linux afbeelding 2.png', 'assets/icon'), ('H:\\linux trainer\\linux_quiz_1.00.3\\assets\\\\linux_questions', 'assets/linux_questions'), ('H:\\linux trainer\\linux_quiz_1.00.3\\assets\\\\linuxbook\\\\*.pdf', 'assets/linuxbook'), ('H:\\linux trainer\\linux_quiz_1.00.3\\assets\\\\linux_questions_images', 'assets/linux_questions_images')],
+    datas=[('C:\\Users\\denni\\OneDrive\\Bureaublad\\linux trainer\\linux_quiz_1.00.3\\assets\\\\icon\\\\linux afbeelding 2.png', 'assets/icon'), ('C:\\Users\\denni\\OneDrive\\Bureaublad\\linux trainer\\linux_quiz_1.00.3\\assets\\\\linux_questions', 'assets/linux_questions'), ('C:\\Users\\denni\\OneDrive\\Bureaublad\\linux trainer\\linux_quiz_1.00.3\\assets\\\\linuxbook\\\\*.pdf', 'assets/linuxbook'), ('C:\\Users\\denni\\OneDrive\\Bureaublad\\linux trainer\\linux_quiz_1.00.3\\assets\\\\linux_questions_images', 'assets/linux_questions_images')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
@@ -35,5 +35,5 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon=['H:\\linux trainer\\linux_quiz_1.00.3\\assets\\icon\\linux_icon2.ico'],
+    icon=['C:\\Users\\denni\\OneDrive\\Bureaublad\\linux trainer\\linux_quiz_1.00.3\\assets\\icon\\linux_icon2.ico'],
 )

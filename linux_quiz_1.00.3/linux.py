@@ -21,7 +21,7 @@ def load_questions_from_json(filename):
 
         with open(full_path, 'r') as file:
             data = json.load(file)
-            return data['chapters'][0]  # Neem het eerste hoofdstuk
+            return data['chapters'][0]
     except (FileNotFoundError, json.JSONDecodeError) as e:
         messagebox.showerror("Error", f"Could not load questions: {e}")
     return {}
@@ -53,6 +53,8 @@ class QuizApp:
         self.user_answers = []
         self.session_active = False
         self.assessment_mode = False
+        self.current_question = None  # Initialize current_question
+        self.current_session_title = ""  # Voeg dit toe om de huidige sessietitel op te slaan
 
         self.assessments = self.load_assessments()
 
@@ -69,7 +71,7 @@ class QuizApp:
         self.ebook_menu["menu"] = self.ebook_menu.menu
         self.ebook_menu.pack(side="left", padx=20)
 
-        # menu ebook
+        # Menu Ebook
         self.ebook_menu.menu.add_command(label="Linux +", command=self.open_ebook)
         self.ebook_menu.menu.add_command(label="Orchestration tools", command=self.open_orchestration_tools)
         self.ebook_menu.menu.add_command(label="Git & Github", command=self.open_git_github)
@@ -100,27 +102,28 @@ class QuizApp:
         self.exercise_menu.pack(side="left", padx=20)
 
         # Add exercises to the "Exercise" menu
+        # Use the standalone function directly
         exercise_chapter2_count = get_question_count_from_json("exerciseChapter2.json")
         self.exercise_menu.menu.add_command(
-            label=f"Exercise Chapter 2 ({exercise_chapter2_count})",
+            label=f"Chapter 2 Introduction to Services ({exercise_chapter2_count})",
             command=lambda: self.start_exercise2("exerciseChapter2.json")
         )
 
         exercise_chapter3_count = get_question_count_from_json("exerciseChapter3.json")
         self.exercise_menu.menu.add_command(
-            label=f"Exercise Chapter 3 ({exercise_chapter3_count})",
+            label=f"Chapter 3 Managing Files, Directories, and Text ({exercise_chapter3_count})",
             command=lambda: self.start_exercise3("exerciseChapter3.json")
         )
 
         exercise_chapter4_count = get_question_count_from_json("exerciseChapter4.json")
         self.exercise_menu.menu.add_command(
-            label=f"Exercise Chapter 4 ({exercise_chapter4_count})",
+            label=f"Chapter 4 Searching and Analyzing Text ({exercise_chapter4_count})",
             command=lambda: self.start_exercise4("exerciseChapter4.json")
         )
 
         exercise_chapter5_count = get_question_count_from_json("exerciseChapter5.json")
         self.exercise_menu.menu.add_command(
-            label=f"Exercise Chapter 5 ({exercise_chapter5_count})",
+            label=f"Chapter 5 Explaining the Boot Process ({exercise_chapter5_count})",
             command=lambda: self.start_exercise5("exerciseChapter5.json")
         )
 
@@ -145,9 +148,6 @@ class QuizApp:
             label=f"Assessment 3 ({assessment_3_count})",
             command=lambda: self.start_assessment3("assessment3.json")
         )
-
-        # Remove Exercise Chapter 2 and 3 from the Assessment menu
-        # These are now placed in the Exercise menu above
 
         # Voeg dynamisch gemaakte assessments toe aan het menu
         self.update_assessment_menu()
@@ -182,7 +182,7 @@ class QuizApp:
 
             self.image = tk.PhotoImage(file=image_path)
             self.image_label = tk.Label(self.master, image=self.image)
-            self.image_label.pack(pady=(50, 20))  # Afbeelding 30 pixels lager
+            self.image_label.pack(pady=(50, 20))
         except Exception as e:
             messagebox.showerror("Error", f"Could not load image: {e}")
 
@@ -290,7 +290,7 @@ class QuizApp:
         self.title_entry.grid(row=0, column=1, padx=10, pady=10)
 
         tk.Label(content_frame, text="Description:", font=("Helvetica", 14)).grid(row=1, column=0, padx=10, pady=10, sticky="e")
-        self.description_entry = tk.Text(content_frame, height=5, width=50)  # Maak het input veld 5 regels hoog
+        self.description_entry = tk.Text(content_frame, height=5, width=50)
         self.description_entry.grid(row=1, column=1, padx=10, pady=10)
 
         self.question_frame = tk.Frame(content_frame, borderwidth=1, relief="solid")
@@ -320,7 +320,7 @@ class QuizApp:
 
     def save_assessment(self):
         title = self.title_entry.get().strip()
-        description = self.description_entry.get("1.0", tk.END).strip()  # Haal de tekst op uit het Text veld
+        description = self.description_entry.get("1.0", tk.END).strip()
 
         if any(assessment['title'] == title for assessment in self.assessments):
             messagebox.showerror("Error", "Title already exists. Please choose a different title.")
@@ -344,16 +344,14 @@ class QuizApp:
 
     def update_assessment_json(self):
         try:
-            # Bepaal de huidige directory voor de EXE of script
             if getattr(sys, 'frozen', False):
-                current_directory = os.path.dirname(sys.executable)  # Gebruik de locatie van de EXE
+                current_directory = os.path.dirname(sys.executable)
             else:
-                current_directory = os.path.dirname(os.path.abspath(__file__))  # Gebruik de locatie van het script
+                current_directory = os.path.dirname(os.path.abspath(__file__))
 
-            # Pad naar de assessments JSON
             full_path = os.path.join(current_directory, 'assets', 'linux_questions', 'addedAssessments.json')
 
-            print(f"Saving assessments to: {full_path}")  # Debug info
+            print(f"Saving assessments to: {full_path}")
             
             with open(full_path, 'w') as file:
                 json.dump(self.assessments, file, indent=4)
@@ -362,39 +360,34 @@ class QuizApp:
 
     def load_assessments(self):
         try:
-            # Bepaal de huidige directory voor de EXE of script
             if getattr(sys, 'frozen', False):
-                current_directory = os.path.dirname(sys.executable)  # Gebruik de locatie van de EXE
+                current_directory = os.path.dirname(sys.executable)
             else:
-                current_directory = os.path.dirname(os.path.abspath(__file__))  # Gebruik de locatie van het script
+                current_directory = os.path.dirname(os.path.abspath(__file__))
             
-            # Pad naar de assessments JSON
             full_path = os.path.join(current_directory, 'assets', 'linux_questions', 'addedAssessments.json')
 
-            print(f"Loading assessments from: {full_path}")  # Debug info
+            print(f"Loading assessments from: {full_path}")
             
-            # Controleer of het bestand bestaat
             if not os.path.exists(full_path):
                 print(f"File not found. Creating a new one at: {full_path}")
                 with open(full_path, 'w') as file:
-                    json.dump([], file)  # Maak een leeg bestand aan
+                    json.dump([], file)
 
             with open(full_path, 'r') as file:
                 data = json.load(file)
                 return data
         except Exception as e:
-            print(f"Error loading assessments: {e}")  # Debug info
+            print(f"Error loading assessments: {e}")
             return []
 
     def update_assessment_menu(self):
-        # Start deleting dynamic items after the static ones
-        static_items_end_index = 3  # Assuming 4 static items: Assessment 1, Assessment 2, Exercise Chapter 2, Exercise Chapter 3
+        static_items_end_index = 3
         end_index = self.assessment_menu.menu.index('end')
         if end_index is not None:
             for index in range(static_items_end_index, end_index + 1):
                 self.assessment_menu.menu.delete(static_items_end_index)
 
-        # Add dynamically loaded assessments
         for assessment in self.assessments:
             title = assessment["title"]
             questions_count = assessment["questions_count"]
@@ -405,7 +398,6 @@ class QuizApp:
 
 
     def update_create_assessment_menu(self):
-        # Clear existing dynamic menu items, keeping the "Make Assessment" option
         while self.edit_assessment_menu.menu.index('end') > 0:
             self.edit_assessment_menu.menu.delete(1)
 
@@ -448,7 +440,6 @@ class QuizApp:
         except (FileNotFoundError, json.JSONDecodeError):
             return None
 
-    # breedte van de hoofd window
     def center_window(self):
         window_width = 1400
         window_height = 800
@@ -487,6 +478,12 @@ class QuizApp:
         self.user_answers = [None] * len(self.questions)
         self.session_active = True
         self.assessment_mode = False
+
+        # Set the session title according to the chapter data
+        chapter_number = self.current_chapter_data.get('chapter', 'Unknown')
+        chapter_title = self.current_chapter_data.get('description', 'Unknown Chapter')
+        self.current_session_title = f"Chapter {chapter_number}: {chapter_title}"
+
         self.question_window()
 
     def start_assessment(self, filename):
@@ -510,7 +507,11 @@ class QuizApp:
         self.user_answers = [None] * len(self.questions)
         self.session_active = True
         self.assessment_mode = True
-        self.question_window(title="Assessment 1 Questions")
+
+        # Use a consistent session title format
+        self.current_session_title = "Assessment 1 Questions"
+
+        self.question_window()
 
     def start_assessment2(self):
         self.reset_statistics()
@@ -520,30 +521,34 @@ class QuizApp:
             with open(filename, 'r') as file:
                 data = json.load(file)
 
-                if 'chapters' not in data or len(data['chapters']) == 0:
-                    messagebox.showerror("Error", "'chapters' key not found in the JSON file.")
-                    return
-                
-                questions = data['chapters'][0]['questions']
+            if 'chapters' not in data or len(data['chapters']) == 0:
+                messagebox.showerror("Error", "'chapters' key not found in the JSON file.")
+                return
 
-                if len(questions) < 90:
-                    messagebox.showerror("Error", "Niet genoeg vragen beschikbaar na filtering.")
-                    return
-                
-                self.questions = random.sample(questions, 90)
-                random.shuffle(self.questions)
+            questions = data['chapters'][0]['questions']
 
-                self.shuffled_options = []
-                for question in self.questions:
-                    options = list(question["options"])
-                    random.shuffle(options)
-                    self.shuffled_options.append(options)
+            if len(questions) < 90:
+                messagebox.showerror("Error", "Niet genoeg vragen beschikbaar na filtering.")
+                return
 
-                self.current_question_index = 0
-                self.user_answers = [None] * len(self.questions)
-                self.session_active = True
-                self.assessment_mode = True
-                self.question_window(title="Assessment 2 Questions")
+            self.questions = random.sample(questions, 90)
+            random.shuffle(self.questions)
+
+            self.shuffled_options = []
+            for question in self.questions:
+                options = list(question["options"])
+                random.shuffle(options)
+                self.shuffled_options.append(options)
+
+            self.current_question_index = 0
+            self.user_answers = [None] * len(self.questions)
+            self.session_active = True
+            self.assessment_mode = True
+
+            # Use a consistent session title format
+            self.current_session_title = "Assessment 2 Questions"
+
+            self.question_window()
         except (FileNotFoundError, json.JSONDecodeError) as e:
             messagebox.showerror("Error", f"Could not load assessment: {e}")
 
@@ -568,39 +573,40 @@ class QuizApp:
         self.user_answers = [None] * len(self.questions)
         self.session_active = True
         self.assessment_mode = True
-        self.question_window(title="Assessment 3 Questions")
+
+        # Use a consistent session title format
+        self.current_session_title = "Assessment 3 Questions"
+
+        self.question_window()
 
     def start_exercise2(self, filename):
-        # Reset any previous session statistics
         self.reset_statistics()
-        
-        # Load the questions from the specified JSON file
         self.current_chapter_data = load_questions_from_json(filename)
 
-        # Check if questions are loaded successfully
         if not self.current_chapter_data or "questions" not in self.current_chapter_data:
             messagebox.showerror("Error", "No questions found in Exercise Chapter 2.")
             return
 
-        # Shuffle the questions for the quiz
         self.questions = self.current_chapter_data['questions']
         random.shuffle(self.questions)
         
-        # Shuffle the options for each question
         self.shuffled_options = []
         for question in self.questions:
             options = list(question["options"])
             random.shuffle(options)
             self.shuffled_options.append(options)
 
-        # Initialize the quiz state
         self.current_question_index = 0
         self.user_answers = [None] * len(self.questions)
         self.session_active = True
         self.assessment_mode = False
 
-        # Open the quiz window with the appropriate title
-        self.question_window(title="Exercise Chapter 2 Questions")
+        # Set the session title using detailed information
+        chapter_number = self.current_chapter_data.get('chapter', '2')
+        chapter_title = self.current_chapter_data.get('description', 'Introduction to Services')
+        self.current_session_title = f"Exercise Chapter {chapter_number}: {chapter_title}"
+
+        self.question_window()
     
     def start_exercise3(self, filename):
         self.reset_statistics()
@@ -623,7 +629,13 @@ class QuizApp:
         self.user_answers = [None] * len(self.questions)
         self.session_active = True
         self.assessment_mode = False
-        self.question_window(title="Exercise Chapter 3 Questions")
+
+        # Set the session title using detailed information
+        chapter_number = self.current_chapter_data.get('chapter', '3')
+        chapter_title = self.current_chapter_data.get('description', 'Managing Files, Directories, and Text')
+        self.current_session_title = f"Exercise Chapter {chapter_number}: {chapter_title}"
+
+        self.question_window()
 
     def start_exercise4(self, filename):
         self.reset_statistics()
@@ -646,7 +658,13 @@ class QuizApp:
         self.user_answers = [None] * len(self.questions)
         self.session_active = True
         self.assessment_mode = False
-        self.question_window(title="Exercise Chapter 4 Questions")
+
+        # Set the session title using detailed information
+        chapter_number = self.current_chapter_data.get('chapter', '4')
+        chapter_title = self.current_chapter_data.get('description', 'Searching and Analyzing Text')
+        self.current_session_title = f"Exercise Chapter {chapter_number}: {chapter_title}"
+
+        self.question_window()
 
     def start_exercise5(self, filename):
         self.reset_statistics()
@@ -669,7 +687,13 @@ class QuizApp:
         self.user_answers = [None] * len(self.questions)
         self.session_active = True
         self.assessment_mode = False
-        self.question_window(title="Exercise Chapter 5 Questions")    
+
+        # Set the session title using detailed information
+        chapter_number = self.current_chapter_data.get('chapter', '5')
+        chapter_title = self.current_chapter_data.get('description', 'Explaining the Boot Process')
+        self.current_session_title = f"Exercise Chapter {chapter_number}: {chapter_title}"
+
+        self.question_window()  
 
     def question_window(self, title=None):
         self.question_win = tk.Toplevel(self.master)
@@ -677,13 +701,8 @@ class QuizApp:
         self.question_win.geometry("1800x1200")
         self.question_win.protocol("WM_DELETE_WINDOW", self.close_question_window)
 
-        if self.assessment_mode:
-            title_text = title if title else "Assessment Questions"
-        else:
-            chapter_number = self.current_chapter_data['chapter'] if self.current_chapter_data else ""
-            chapter_title = self.current_chapter_data['description'] if self.current_chapter_data else "Assessment"
-            title_text = f"Chapter {chapter_number}: {chapter_title}" if title is None else title
-
+        # Use the current session title for the window title
+        title_text = self.current_session_title if self.current_session_title else "Quiz"
         self.chapter_title_label = tk.Label(self.question_win, text=title_text, font=("Helvetica", 24, "bold"))
         self.chapter_title_label.pack(pady=10)
 
@@ -698,7 +717,7 @@ class QuizApp:
 
         self.var_list = []
         self.options_frame = tk.Frame(self.question_win)
-        self.options_frame.pack(pady=15)  # Add padding to separate options from the image
+        self.options_frame.pack(pady=15)
 
         saved_answers = self.user_answers[self.current_question_index]
         options = self.shuffled_options[self.current_question_index]
@@ -864,13 +883,8 @@ class QuizApp:
         self.review_win.title("Review Answers")
         self.review_win.geometry("1800x1200")
 
-        if self.assessment_mode:
-            title_text = "Assessment Questions"
-        else:
-            chapter_number = self.current_chapter_data['chapter']
-            chapter_title = self.current_chapter_data['description']
-            title_text = f"Chapter {chapter_number}: {chapter_title}"
-
+        # Use the current session title for the review window
+        title_text = self.current_session_title if self.current_session_title else "Review Answers"
         self.chapter_title_label = tk.Label(self.review_win, text=title_text, font=("Helvetica", 24, "bold"))
         self.chapter_title_label.pack(pady=10)
 
@@ -884,12 +898,12 @@ class QuizApp:
         self.display_question_image_review()
 
         self.options_frame = tk.Frame(self.review_win)
-        self.options_frame.pack()
+        self.options_frame.pack(pady=15)
 
         self.load_review_question()
 
         nav_frame = tk.Frame(self.review_win)
-        nav_frame.pack(side="bottom", pady=(0, 180))
+        nav_frame.pack(side="bottom", pady=(0, 120))
 
         self.previous_review_button = tk.Button(nav_frame, text="Previous", font=("Helvetica", 18), command=self.previous_review_question)
         self.previous_review_button.pack(side="left", padx=30)
@@ -914,14 +928,14 @@ class QuizApp:
             if os.path.exists(full_image_path):
                 image = Image.open(full_image_path)
                 image = image.resize((800, 300), Image.LANCZOS)
-                self.review_question_image = ImageTk.PhotoImage(image)
+                self.review_photo = ImageTk.PhotoImage(image)
 
                 if hasattr(self, 'review_image_label') and self.review_image_label:
-                    self.review_image_label.config(image=self.review_question_image)
-                    self.review_image_label.image = self.review_question_image
+                    self.review_image_label.config(image=self.review_photo)
+                    self.review_image_label.image = self.review_photo
                 else:
-                    self.review_image_label = tk.Label(self.review_win, image=self.review_question_image)
-                    self.review_image_label.pack(pady=15, before=self.options_frame)
+                    self.review_image_label = tk.Label(self.review_win, image=self.review_photo)
+                    self.review_image_label.pack(before=self.options_frame)
             else:
                 if hasattr(self, 'review_image_label') and self.review_image_label:
                     self.review_image_label.pack_forget()
@@ -948,13 +962,15 @@ class QuizApp:
             self.close_review_window()
 
     def load_review_question(self):
-        self.review_question_label.config(text=self.questions[self.current_question_index]["question"])
+        self.current_question = self.questions[self.current_question_index]  # Zorg ervoor dat current_question correct is ingesteld
+        
+        self.review_question_label.config(text=self.current_question["question"])
         self.question_counter_review.config(text=f"Question {self.current_question_index + 1} / {len(self.questions)}")
 
         for widget in self.options_frame.winfo_children():
             widget.destroy()
 
-        correct_answers = self.questions[self.current_question_index]["answer"]
+        correct_answers = self.current_question["answer"]
         user_selected = self.user_answers[self.current_question_index] if self.user_answers[self.current_question_index] is not None else []
 
         options = self.shuffled_options[self.current_question_index]
@@ -967,23 +983,25 @@ class QuizApp:
         for index, option in enumerate(options):
             is_correct = option in correct_answers_set
             user_selected_correct = index in user_selected
-            
+
             if user_selected_correct and is_correct:
                 answer_label = tk.Label(self.options_frame, text=f"[Correct ✓] {option}", fg="green", font=("Helvetica", 18, "bold"))
-                explanation_label = tk.Label(self.options_frame, text=self.questions[self.current_question_index].get("explanation", {}).get(option, ""), fg="black", font=("Helvetica", 16))
+                explanation_label = tk.Label(self.options_frame, text=self.current_question.get("explanation", {}).get(option, ""), fg="black", font=("Helvetica", 16))
             elif user_selected_correct and not is_correct:
                 answer_label = tk.Label(self.options_frame, text=f"[Incorrect X] {option}", fg="red", font=("Helvetica", 18, "bold"))
-                explanation_label = tk.Label(self.options_frame, text=self.questions[self.current_question_index].get("explanation", {}).get(option, ""), fg="black", font=("Helvetica", 16))
+                explanation_label = tk.Label(self.options_frame, text=self.current_question.get("explanation", {}).get(option, ""), fg="black", font=("Helvetica", 16))
             elif not user_selected_correct and is_correct:
                 answer_label = tk.Label(self.options_frame, text=f"{option}", fg="green", font=("Helvetica", 18))
-                explanation_label = tk.Label(self.options_frame, text=self.questions[self.current_question_index].get("explanation", {}).get(option, ""), fg="black", font=("Helvetica", 16))
+                explanation_label = tk.Label(self.options_frame, text=self.current_question.get("explanation", {}).get(option, ""), fg="black", font=("Helvetica", 16))
             else:
                 answer_label = tk.Label(self.options_frame, text=f"{option}", fg="red", font=("Helvetica", 18))
-                explanation_label = tk.Label(self.options_frame, text=self.questions[self.current_question_index].get("explanation", {}).get(option, ""), fg="black", font=("Helvetica", 16))
+                explanation_label = tk.Label(self.options_frame, text=self.current_question.get("explanation", {}).get(option, ""), fg="black", font=("Helvetica", 16))
 
             answer_label.pack(anchor="w")
-            explanation_label.pack(anchor="w", pady=5)
-            tk.Label(self.options_frame).pack()
+            explanation_label.pack(anchor="w", pady=(0, 5))
+
+        # Laad de afbeelding voor de vraag
+        self.display_question_image_review()
 
     def finish_review(self):
         self.close_review_window()
