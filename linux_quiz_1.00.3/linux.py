@@ -149,6 +149,12 @@ class QuizApp:
             command=lambda: self.start_assessment3("assessment3.json")
         )
 
+        assessment_4_count = get_question_count_from_json("assessment4.json")
+        self.assessment_menu.menu.add_command(
+            label=f"Assessment 4 ({assessment_4_count})",
+            command=lambda: self.start_assessment4("assessment4.json")
+        )
+
         # Voeg dynamisch gemaakte assessments toe aan het menu
         self.update_assessment_menu()
 
@@ -382,7 +388,7 @@ class QuizApp:
             return []
 
     def update_assessment_menu(self):
-        static_items_end_index = 3
+        static_items_end_index = 4
         end_index = self.assessment_menu.menu.index('end')
         if end_index is not None:
             for index in range(static_items_end_index, end_index + 1):
@@ -578,6 +584,33 @@ class QuizApp:
         self.current_session_title = "Assessment 3 Questions"
 
         self.question_window()
+    
+    def start_assessment4(self, filename):
+        self.reset_statistics()
+        self.current_chapter_data = load_questions_from_json(filename)
+
+        if not self.current_chapter_data or "questions" not in self.current_chapter_data:
+            messagebox.showerror("Error", "Geen vragen gevonden in de geselecteerde beoordeling.")
+            return
+
+        self.questions = self.current_chapter_data['questions']
+        random.shuffle(self.questions)
+
+        self.shuffled_options = []
+        for question in self.questions:
+            options = list(question["options"])
+            random.shuffle(options)
+            self.shuffled_options.append(options)
+
+        self.current_question_index = 0
+        self.user_answers = [None] * len(self.questions)
+        self.session_active = True
+        self.assessment_mode = True
+
+        # Use a consistent session title format
+        self.current_session_title = "Assessment 4 Questions"
+
+        self.question_window()
 
     def start_exercise2(self, filename):
         self.reset_statistics()
@@ -707,10 +740,10 @@ class QuizApp:
         self.chapter_title_label.pack(pady=10)
 
         self.question_counter = tk.Label(self.question_win, text=f"Question {self.current_question_index + 1} / {len(self.questions)}", font=("Helvetica", 18))
-        self.question_counter.pack(pady=15)
+        self.question_counter.pack(pady=10)
 
         self.question_label = tk.Label(self.question_win, text=self.questions[self.current_question_index]["question"], wraplength=800, font=("Helvetica", 18))
-        self.question_label.pack(pady=30)
+        self.question_label.pack(pady=15)
 
         # Display question image if available
         self.display_question_image()
@@ -756,7 +789,7 @@ class QuizApp:
 
             if os.path.exists(full_image_path):
                 image = Image.open(full_image_path)
-                image = image.resize((800, 300), Image.LANCZOS)
+                image = image.resize((600, 225), Image.LANCZOS)
                 self.question_image = ImageTk.PhotoImage(image)
 
                 if hasattr(self, 'image_label') and self.image_label:
@@ -889,10 +922,10 @@ class QuizApp:
         self.chapter_title_label.pack(pady=10)
 
         self.question_counter_review = tk.Label(self.review_win, text=f"Question {self.current_question_index + 1} / {len(self.questions)}", font=("Helvetica", 18))
-        self.question_counter_review.pack(pady=15)
+        self.question_counter_review.pack(pady=12)
 
         self.review_question_label = tk.Label(self.review_win, text=self.questions[self.current_question_index]["question"], wraplength=700, font=("Helvetica", 18))
-        self.review_question_label.pack(pady=30)
+        self.review_question_label.pack(pady=12)
 
         # Display question image in review
         self.display_question_image_review()
@@ -927,7 +960,7 @@ class QuizApp:
 
             if os.path.exists(full_image_path):
                 image = Image.open(full_image_path)
-                image = image.resize((800, 300), Image.LANCZOS)
+                image = image.resize((600, 225), Image.LANCZOS)
                 self.review_photo = ImageTk.PhotoImage(image)
 
                 if hasattr(self, 'review_image_label') and self.review_image_label:
@@ -959,11 +992,11 @@ class QuizApp:
             self.current_question_index += 1
             self.load_review_question()
         else:
-            self.close_review_window()
+            self.show_stats_from_review()  # Go to the statistics window on the last question
 
     def load_review_question(self):
-        self.current_question = self.questions[self.current_question_index]  # Zorg ervoor dat current_question correct is ingesteld
-        
+        self.current_question = self.questions[self.current_question_index]  # Ensure current_question is set
+
         self.review_question_label.config(text=self.current_question["question"])
         self.question_counter_review.config(text=f"Question {self.current_question_index + 1} / {len(self.questions)}")
 
@@ -986,21 +1019,21 @@ class QuizApp:
 
             if user_selected_correct and is_correct:
                 answer_label = tk.Label(self.options_frame, text=f"[Correct ✓] {option}", fg="green", font=("Helvetica", 18, "bold"))
-                explanation_label = tk.Label(self.options_frame, text=self.current_question.get("explanation", {}).get(option, ""), fg="black", font=("Helvetica", 16))
+                explanation_label = tk.Label(self.options_frame, text=self.current_question.get("explanation", {}).get(option, ""), fg="black", font=("Helvetica", 16), wraplength=1100)
             elif user_selected_correct and not is_correct:
                 answer_label = tk.Label(self.options_frame, text=f"[Incorrect X] {option}", fg="red", font=("Helvetica", 18, "bold"))
-                explanation_label = tk.Label(self.options_frame, text=self.current_question.get("explanation", {}).get(option, ""), fg="black", font=("Helvetica", 16))
+                explanation_label = tk.Label(self.options_frame, text=self.current_question.get("explanation", {}).get(option, ""), fg="black", font=("Helvetica", 16), wraplength=1100)
             elif not user_selected_correct and is_correct:
                 answer_label = tk.Label(self.options_frame, text=f"{option}", fg="green", font=("Helvetica", 18))
-                explanation_label = tk.Label(self.options_frame, text=self.current_question.get("explanation", {}).get(option, ""), fg="black", font=("Helvetica", 16))
+                explanation_label = tk.Label(self.options_frame, text=self.current_question.get("explanation", {}).get(option, ""), fg="black", font=("Helvetica", 16), wraplength=1100)
             else:
                 answer_label = tk.Label(self.options_frame, text=f"{option}", fg="red", font=("Helvetica", 18))
-                explanation_label = tk.Label(self.options_frame, text=self.current_question.get("explanation", {}).get(option, ""), fg="black", font=("Helvetica", 16))
+                explanation_label = tk.Label(self.options_frame, text=self.current_question.get("explanation", {}).get(option, ""), fg="black", font=("Helvetica", 16), wraplength=1100)
 
             answer_label.pack(anchor="w")
-            explanation_label.pack(anchor="w", pady=(0, 5))
+            explanation_label.pack(anchor="w", pady=(0, 10))
 
-        # Laad de afbeelding voor de vraag
+        # Load the image for the question
         self.display_question_image_review()
 
     def finish_review(self):

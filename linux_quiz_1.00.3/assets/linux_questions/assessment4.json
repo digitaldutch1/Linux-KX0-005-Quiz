@@ -1,0 +1,1603 @@
+
+
+
+{
+  "chapters": [
+    {
+      "description": "Assessment 4",
+      "questions": [
+        {
+          "number": 1,
+          "question": "Which of the following files should the engineer modify to change the SSH login port from 22 to 49000?",
+          "options": [
+            "/etc/host.conf",
+            "/etc/hostname",
+            "/etc/services",
+            "/etc/ssh/sshd_config"
+          ],
+          "answer": ["/etc/ssh/sshd_config"],
+          "explanation": {
+            "/etc/host.conf": "Incorrect. This file is not related to SSH configuration.",
+            "/etc/hostname": "Incorrect. This file sets the hostname of the machine, not SSH settings.",
+            "/etc/services": "Incorrect. This file maps service names to port numbers but does not configure SSH.",
+            "/etc/ssh/sshd_config": "Correct. This file contains the SSH daemon's configuration settings, including the port number."
+          }
+        },
+        {
+          "number": 2,
+          "question": "Which command should the administrator use to identify the correct version of the deleted /boot/vmlinuz file?",
+          "options": [
+            "yum -y update; shutdown -r now",
+            "rpm -qa | grep kernel; uname -a",
+            "cat /etc/centos-release; rpm -Uvh --nodeps",
+            "telinit 1; restorecon -Rv /boot"
+          ],
+          "answer": ["rpm -qa | grep kernel; uname -a"],
+          "explanation": {
+            "yum -y update; shutdown -r now": "Incorrect. This command updates packages and restarts the system; it does not identify kernel versions.",
+            "rpm -qa | grep kernel; uname -a": "Correct. This command queries installed kernel packages and shows the current kernel version.",
+            "cat /etc/centos-release; rpm -Uvh --nodeps": "Incorrect. This does not identify kernel versions; it updates packages without dependencies.",
+            "telinit 1; restorecon -Rv /boot": "Incorrect. This command changes runlevels and restores SELinux context; it does not identify kernel versions."
+          }
+        },
+        {
+          "number": 3,
+          "question": "Which commands can be used to copy a key file to remote servers? (Choose two.)",
+          "options": [
+            "wget",
+            "ssh-keygen",
+            "ssh-keyscan",
+            "ssh-copy-id",
+            "scp"
+          ],
+          "answer": ["ssh-copy-id", "scp"],
+          "explanation": {
+            "wget": "Incorrect. This command is used for downloading files from the web, not for copying SSH keys.",
+            "ssh-keygen": "Incorrect. This command generates SSH keys, but does not copy them.",
+            "ssh-keyscan": "Incorrect. This command collects public keys from a host; it does not copy keys.",
+            "ssh-copy-id": "Correct. This command installs SSH keys on a remote server's authorized_keys file.",
+            "scp": "Correct. This command securely copies files between local and remote hosts, including SSH keys."
+          }
+        },
+        {
+          "number": 4,
+          "question": "Which two software packages are used in Linux to maintain log files? (Choose two.)",
+          "options": [
+            "rsyslogd",
+            "journald",
+            "ntpd",
+            "DHCPd"
+          ],
+          "answer": ["rsyslogd", "journald"],
+          "explanation": {
+            "rsyslogd": "Correct. Rsyslog is a high-performance log management system for collecting and processing log data.",
+            "journald": "Correct. Journald is part of systemd and collects and stores log data in a binary format.",
+            "ntpd": "Incorrect. NTP daemon is used for time synchronization, not for log management.",
+            "DHCPd": "Incorrect. DHCP daemon assigns IP addresses, not for maintaining log files."
+          }
+        },
+        {
+          "number": 5,
+          "question": "Which command allows the administrator to enter a running container to analyze logs?",
+          "options": [
+            "docker run -ti app /bin/sh",
+            "podman exec -ti app /bin/sh",
+            "podman run -d app /bin/bash",
+            "docker exec -d app /bin/bash"
+          ],
+          "answer": ["podman exec -ti app /bin/sh"],
+          "explanation": {
+            "docker run -ti app /bin/sh": "Incorrect. This command runs a new container instance, not for accessing a running one.",
+            "podman exec -ti app /bin/sh": "Correct. This command executes a shell in a running container for log analysis.",
+            "podman run -d app /bin/bash": "Incorrect. This command starts a new container in detached mode, not accessing a running one.",
+            "docker exec -d app /bin/bash": "Incorrect. The -d option does not allocate a pseudo-TTY for interaction."
+          }
+        },
+        {
+          "number": 6,
+          "question": "Which command exposes the httpd server at port 443 while it listens on port 8443 internally?",
+          "options": [
+            "podman run -d -p 443:8443 httpd",
+            "podman run -d -p 8443:443 httpd",
+            "podman run -d -e 443:8443 httpd",
+            "podman exec -p 8443:443 httpd"
+          ],
+          "answer": ["podman run -d -p 8443:443 httpd"],
+          "explanation": {
+            "podman run -d -p 443:8443 httpd": "Incorrect. This command maps port 443 on the host to port 8443 in the container.",
+            "podman run -d -p 8443:443 httpd": "Correct. This command correctly maps port 8443 inside the container to port 443 on the host.",
+            "podman run -d -e 443:8443 httpd": "Incorrect. The -e option is for environment variables, not port mapping.",
+            "podman exec -p 8443:443 httpd": "Incorrect. exec is for running commands in a running container, not for port mapping."
+          }
+        },
+        {
+          "number": 7,
+          "question": "What protocol should you use to mount folders from remote Linux servers?",
+          "options": [
+            "SNMP",
+            "NTP",
+            "DHCP",
+            "NFS"
+          ],
+          "answer": ["NFS"],
+          "explanation": {
+            "SNMP": "Incorrect. Simple Network Management Protocol is used for monitoring, not for mounting.",
+            "NTP": "Incorrect. Network Time Protocol is for time synchronization, not for mounting.",
+            "DHCP": "Incorrect. Dynamic Host Configuration Protocol assigns IP addresses, not for mounting.",
+            "NFS": "Correct. Network File System allows mounting remote directories as if they were local."
+          }
+        },
+        {
+          "number": 8,
+          "question": "Based on the output provided, what is the MOST probable cause of the connectivity issue?",
+          "options": [
+            "The address ac:00:11:22:33:cd is not a valid Ethernet address.",
+            "The Ethernet broadcast address should be ac:00:11:22:33:ff instead.",
+            "The network interface eth0 is using an old kernel module.",
+            "The network interface cable is not connected to a switch."
+          ],
+          "answer": ["The network interface cable is not connected to a switch."],
+          "explanation": {
+            "The address ac:00:11:22:33:cd is not a valid Ethernet address.": "Incorrect. The address format is valid, but it may not be the assigned address.",
+            "The Ethernet broadcast address should be ac:00:11:22:33:ff instead.": "Incorrect. Broadcast addresses are valid but do not indicate a connectivity issue.",
+            "The network interface eth0 is using an old kernel module.": "Incorrect. The specific kernel module issue is not indicated by the output.",
+            "The network interface cable is not connected to a switch.": "Correct. The 'DOWN' status and 'NO-CARRIER' suggest a disconnection."
+          },
+          "image": "assets/linux_questions_images/assessment4_8.jpg"
+        },
+        {
+          "number": 9,
+          "question": "Which part of the Linux mail process is responsible for sending emails to remote hosts?",
+          "options": [
+            "MUA",
+            "MTA",
+            "MDA",
+            "Evolution"
+          ],
+          "answer": ["MTA"],
+          "explanation": {
+            "MUA": "Incorrect. Mail User Agent is the client that users interact with to send/receive mail.",
+            "MTA": "Correct. Mail Transfer Agent routes and transfers emails between servers.",
+            "MDA": "Incorrect. Mail Delivery Agent delivers emails to local mailboxes, not sending them.",
+            "Evolution": "Incorrect. Evolution is a specific email client, not a component of the mail process."
+          }
+        },
+        {
+          "number": 10,
+          "question": "Which technologies can be used as a central repository of Linux users and groups?",
+          "options": [
+            "LDAP",
+            "MFA",
+            "SSO",
+            "PAM"
+          ],
+          "answer": ["LDAP"],
+          "explanation": {
+            "LDAP": "Correct. Lightweight Directory Access Protocol is used to manage users/groups in a centralized manner.",
+            "MFA": "Incorrect. Multi-Factor Authentication enhances security but does not manage users/groups.",
+            "SSO": "Incorrect. Single Sign-On allows users to authenticate once but does not store user data.",
+            "PAM": "Incorrect. Pluggable Authentication Modules manage authentication but not a central repository."
+          }
+        },
+        {
+          "number": 11,
+          "question": "How does a server identify which client request is sent to which application daemon?",
+          "options": [
+            "IP addresses",
+            "Ports",
+            "Ethernet addresses",
+            "Services"
+          ],
+          "answer": ["Ports"],
+          "explanation": {
+            "IP addresses": "Incorrect. IP addresses identify hosts, but ports specify services.",
+            "Ports": "Correct. Ports differentiate services/applications on the server.",
+            "Ethernet addresses": "Incorrect. Ethernet addresses identify devices on the network but not applications.",
+            "Services": "Incorrect. Services refer to applications but do not specify the routing of requests."
+          }
+        },
+        {
+          "number": 12,
+          "question": "Which command should replace the <CONDITIONAL> string to verify if a file exists?",
+          "options": [
+            "if [ -f \"$filename\" ]; then",
+            "if [ -d \"$filename\" ]; then",
+            "if [ -f \"$filename\" ] then",
+            "if [ -f \"$filename\" ]; while"
+          ],
+          "answer": ["if [ -f \"$filename\" ]; then"],
+          "explanation": {
+            "if [ -f \"$filename\" ]; then": "Correct. This checks if the specified file exists.",
+            "if [ -d \"$filename\" ]; then": "Incorrect. This checks for a directory, not a file.",
+            "if [ -f \"$filename\" ] then": "Incorrect. This is a syntax error; there should be a semicolon.",
+            "if [ -f \"$filename\" ]; while": "Incorrect. This is not valid syntax for an if statement."
+          },
+          "image": "assets/linux_questions_images/assessment4_12.jpg"
+        },
+        {
+          "number": 13,
+          "question": "Which open-source database provided fast performance and became a popular choice for web applications?",
+          "options": [
+            "MongoDB",
+            "PostgreSQL",
+            "MySQL",
+            "NoSQL"
+          ],
+          "answer": ["MySQL"],
+          "explanation": {
+            "MongoDB": "Incorrect. MongoDB is a NoSQL database, not a relational database.",
+            "PostgreSQL": "Incorrect. PostgreSQL is also a relational database but not as commonly used as MySQL for web applications.",
+            "MySQL": "Correct. MySQL is known for speed, reliability, and is widely used in web applications.",
+            "NoSQL": "Incorrect. NoSQL refers to a category of databases, not a specific database."
+          }
+        },
+        {
+          "number": 14,
+          "question": "Which command should the administrator run to create a persistent, static route?",
+          "options": [
+            "route -i eth0 -p add 10.0.213.5 10.0.5.1",
+            "route modify eth0 +ipv4.routes \"10.0.213.5/32 10.0.5.1\"",
+            "echo \"10.0.213.5 10.0.5.1 eth0\" > /proc/net/route",
+            "ip route add 10.0.213.5/32 via 10.0.5.1 dev eth0"
+          ],
+          "answer": ["ip route add 10.0.213.5/32 via 10.0.5.1 dev eth0"],
+          "explanation": {
+            "route -i eth0 -p add 10.0.213.5 10.0.5.1": "Incorrect. This command syntax is not valid.",
+            "route modify eth0 +ipv4.routes \"10.0.213.5/32 10.0.5.1\"": "Incorrect. This command does not follow the correct route modification syntax.",
+            "echo \"10.0.213.5 10.0.5.1 eth0\" > /proc/net/route": "Incorrect. This command does not correctly add a route.",
+            "ip route add 10.0.213.5/32 via 10.0.5.1 dev eth0": "Correct. This command adds a static route persistently."
+          }
+        },
+        {
+          "number": 15,
+          "question": "What command will redirect all HTTP traffic temporarily to a new proxy server?",
+          "options": [
+            "iptables -t nat -D PREROUTING -p tcp --sport 80 -j DNAT - -to-destination 192.0.2.25:3128",
+            "iptables -t nat -A PREROUTING -p top --dport 81 -j DNAT --to-destination 192.0.2.25:3129",
+            "iptables -t nat -I PREROUTING -p top --sport 80 -j DNAT --to-destination 192.0.2.25:3129",
+            "iptables -t nat -A PREROUTING -p tcp --dport 80 -j DNAT --to-destination 192.0.2.25:3128"
+          ],
+          "answer": ["iptables -t nat -A PREROUTING -p tcp --dport 80 -j DNAT --to-destination 192.0.2.25:3128"],
+          "explanation": {
+            "iptables -t nat -D PREROUTING -p tcp --sport 80 -j DNAT - -to-destination 192.0.2.25:3128": "Incorrect. This command uses the wrong option to delete a rule.",
+            "iptables -t nat -A PREROUTING -p top --dport 81 -j DNAT --to-destination 192.0.2.25:3129": "Incorrect. The 'top' option is not valid; it should be 'tcp'.",
+            "iptables -t nat -I PREROUTING -p top --sport 80 -j DNAT --to-destination 192.0.2.25:3129": "Incorrect. The 'top' option is not valid; it should be 'tcp'.",
+            "iptables -t nat -A PREROUTING -p tcp --dport 80 -j DNAT --to-destination 192.0.2.25:3128": "Correct. This command correctly redirects HTTP traffic to the proxy server."
+          }
+        },
+        {
+          "number": 16,
+          "question": "Which web server is used in the popular LAMP stack?",
+          "options": [
+            "nginX",
+            "Apache",
+            "Lighthttpd",
+            "PostgreSQL"
+          ],
+          "answer": ["Apache"],
+          "explanation": {
+            "nginX": "Incorrect. While Nginx is a popular web server, it is not part of the LAMP stack.",
+            "Apache": "Correct. Apache is the web server component of the LAMP stack.",
+            "Lighthttpd": "Incorrect. Lighttpd is an alternative web server but not part of the LAMP stack.",
+            "PostgreSQL": "Incorrect. PostgreSQL is a database server, not a web server."
+          }
+        },
+        {
+          "number": 17,
+          "question": "Which command should the administrator use to synchronize a local copy with the main repository?",
+          "options": [
+            "git reflog",
+            "git pull",
+            "git status",
+            "git push"
+          ],
+          "answer": ["git pull"],
+          "explanation": {
+            "git reflog": "Incorrect. This command shows a reference log of commits, not for synchronizing.",
+            "git pull": "Correct. This command fetches and merges changes from the remote repository.",
+            "git status": "Incorrect. This command shows the status of the working directory, not for synchronization.",
+            "git push": "Incorrect. This command uploads local changes to the remote repository, not the other way around."
+          }
+        },
+        {
+          "number": 18,
+          "question": "A systems administrator is deploying three identical, cloud-based servers. The administrator is using the following code to complete the task: ....Which technology is used to deploy an Amazon EC2 instance?",
+          "options": [
+            "Ansible",
+            "Puppet",
+            "Chef",
+            "Terraform"
+          ],
+          "answer": ["Terraform"],
+          "explanation": {
+            "Ansible": "Incorrect. Ansible automates configuration management but is not specifically used for infrastructure provisioning.",
+            "Puppet": "Incorrect. Puppet is also a configuration management tool, not primarily for provisioning.",
+            "Chef": "Incorrect. Chef is similar to Puppet and focuses on configuration management.",
+            "Terraform": "Correct. Terraform is used for infrastructure as code and can provision AWS EC2 instances."
+          },
+          "image": "assets/linux_questions_images/assessment4_18.jpg"
+        },
+        {
+          "number": 19,
+          "question": "Which best describes a regular expression?",
+          "options": [
+            "A series of characters you define for a utility to match in text files.",
+            "ASCII characters used to filter text.",
+            "Wildcard characters used to filter text.",
+            "A pattern template used to filter text."
+          ],
+          "answer": ["A pattern template used to filter text."],
+          "explanation": {
+            "A series of characters you define for a utility to match in text files.": "Incorrect. This is a partial description but lacks the definition of a pattern.",
+            "ASCII characters used to filter text.": "Incorrect. This does not accurately describe regular expressions.",
+            "Wildcard characters used to filter text.": "Incorrect. Wildcards are different from regular expressions.",
+            "A pattern template used to filter text.": "Correct. Regular expressions specify patterns for matching within text."
+          }
+        },
+        {
+          "number": 20,
+          "question": "Which utilities can change text within a file? (Choose all that apply.)",
+          "options": [
+            "cut",
+            "sort",
+            "vim",
+            "nano"
+          ],
+          "answer": ["vim", "nano"],
+          "explanation": {
+            "cut": "Incorrect. Cut extracts sections from lines but does not change text.",
+            "sort": "Incorrect. Sort arranges lines but does not modify content.",
+            "vim": "Correct. Vim is a text editor allowing text manipulation.",
+            "nano": "Correct. Nano is a basic text editor for viewing and editing files."
+          }
+        },
+        {
+          "number": 21,
+          "question": "Which best describes a delimiter?",
+          "options": [
+            "One or more characters that designate the beginning of a line.",
+            "One or more characters that designate the end of a line.",
+            "One or more characters that create a boundary between data items.",
+            "A single space or a colon that creates a boundary."
+          ],
+          "answer": ["One or more characters that create a boundary between data items."],
+          "explanation": {
+            "One or more characters that designate the beginning of a line.": "Incorrect. This does not define a delimiter.",
+            "One or more characters that designate the end of a line.": "Incorrect. This describes line endings, not delimiters.",
+            "One or more characters that create a boundary between data items.": "Correct. Delimiters separate fields within a record.",
+            "A single space or a colon that creates a boundary.": "Incorrect. This is an example of a delimiter but not a complete definition."
+          }
+        },
+        {
+          "number": 22,
+          "question": "Which command is best to find configuration file(s) holding a hostname directive?",
+          "options": [
+            "which",
+            "whereis",
+            "grep",
+            "locate"
+          ],
+          "answer": ["grep"],
+          "explanation": {
+            "which": "Incorrect. This command locates executables, not configuration files.",
+            "whereis": "Incorrect. This command finds binaries, sources, and man pages.",
+            "grep": "Correct. Grep searches for patterns in files, ideal for finding directives.",
+            "locate": "Incorrect. Locate finds files quickly but not specifically for directives."
+          }
+        },
+        {
+          "number": 23,
+          "question": "Which function does a bootloader serve?",
+          "options": [
+            "It initializes all devices required to load the OS.",
+            "It mounts the root filesystem for the OS.",
+            "It helps to load the different kernels for startup.",
+            "It triggers the start of all system services."
+          ],
+          "answer": ["It helps to load the different kernels for startup."],
+          "explanation": {
+            "It initializes all devices required to load the OS.": "Incorrect. Device initialization is handled by the OS kernel.",
+            "It mounts the root filesystem for the OS.": "Incorrect. Mounting is done by the OS after the kernel is loaded.",
+            "It helps to load the different kernels for startup.": "Correct. The bootloader loads the kernel into memory.",
+            "It triggers the start of all system services.": "Incorrect. This happens after the kernel takes control."
+          }
+        },
+        {
+          "number": 24,
+          "question": "What should an administrator do to prevent remote administrative login via SSH?",
+          "options": [
+            "Add DenyUsers root to /etc/hosts.deny.",
+            "Set PermitRootLogin to no in /etc/ssh/sshd_config.",
+            "Add account required pam_nologin.so to /etc/pam.d/sshd.",
+            "Set PubKeyAuthentication to no in /etc/ssh/ssh_config."
+          ],
+          "answer": ["Set PermitRootLogin to no in /etc/ssh/sshd_config."],
+          "explanation": {
+            "Add DenyUsers root to /etc/hosts.deny.": "Incorrect. This does not specifically disallow root login via SSH.",
+            "Set PermitRootLogin to no in /etc/ssh/sshd_config.": "Correct. This option prevents remote root login.",
+            "Add account required pam_nologin.so to /etc/pam.d/sshd.": "Incorrect. This restricts logins but not specifically for root.",
+            "Set PubKeyAuthentication to no in /etc/ssh/ssh_config.": "Incorrect. This disables public key authentication, not root login."
+          }
+        },
+        {
+          "number": 25,
+          "question": "A systems administrator is tasked with creating a cloud-based server with a public IP address. The code is as follows: ....Which technology did the systems administrator use to create a cloud-based server?",
+          "options": [
+            "Puppet",
+            "Git",
+            "Ansible",
+            "Terraform"
+          ],
+          "answer": ["Ansible"],
+          "explanation": {
+            "Puppet": "Incorrect. Puppet is a configuration management tool, not specifically for provisioning.",
+            "Git": "Incorrect. Git is a version control system, not used for provisioning.",
+            "Ansible": "Correct. Ansible automates cloud instance creation using YAML configurations.",
+            "Terraform": "Incorrect. While Terraform is for provisioning, the example indicates Ansible was used."
+          },
+          "image": "assets/linux_questions_images/assessment4_25.jpg"
+        },
+        {
+          "number": 26,
+          "question": "What should the engineer use to install packages during VM provisioning?",
+          "options": [
+            "Cloud-init",
+            "Bash",
+            "Docker",
+            "Sidecar"
+          ],
+          "answer": ["Cloud-init"],
+          "explanation": {
+            "Cloud-init": "Correct. It's widely used for configuring instances during boot in cloud environments.",
+            "Bash": "Incorrect. Bash can automate tasks but is not specifically for VM provisioning.",
+            "Docker": "Incorrect. Docker is for containerization, not for package installation during provisioning.",
+            "Sidecar": "Incorrect. Sidecar is a pattern in microservices architecture, not for package installation."
+          }
+        },
+        {
+          "number": 27,
+          "question": "Which command should the administrator run to ensure both Java 7 and Java 8 are available?",
+          "options": [
+            "docker image load java:7",
+            "docker image pull java:7",
+            "docker image import java:7",
+            "docker image build java:7"
+          ],
+          "answer": ["docker image pull java:7"],
+          "explanation": {
+            "docker image load java:7": "Incorrect. This command is for loading images from tar files, not pulling from a registry.",
+            "docker image pull java:7": "Correct. This command pulls the Java 7 image from Docker Hub.",
+            "docker image import java:7": "Incorrect. This command imports a filesystem as an image, not pulling from a registry.",
+            "docker image build java:7": "Incorrect. This command builds an image from a Dockerfile, not pulling an existing image."
+          }
+        },
+        {
+          "number": 28,
+          "question": "Which command will delete all files and directories listed in toDelete.txt?",
+          "options": [
+            "xargs -f cat toDelete.txt -rm",
+            "rm -d -r -f toDelete.txt",
+            "cat toDelete.txt | rm -frd",
+            "cat toDelete.txt | xargs rm -rf"
+          ],
+          "answer": ["cat toDelete.txt | xargs rm -rf"],
+          "explanation": {
+            "xargs -f cat toDelete.txt -rm": "Incorrect. This syntax is incorrect and does not properly pass arguments to rm.",
+            "rm -d -r -f toDelete.txt": "Incorrect. This command attempts to remove the file itself, not the listed files.",
+            "cat toDelete.txt | rm -frd": "Incorrect. This command is not valid; it does not properly utilize xargs.",
+            "cat toDelete.txt | xargs rm -rf": "Correct. This command reads filenames from toDelete.txt and deletes them."
+          }
+        },
+        {
+          "number": 29,
+          "question": "A developer can't delete an unused data folder. After escalating to the sysadmin, the following output is received: ... Which command resolves the issue?",
+          "options": [
+            "chgrp -R 755 data/",
+            "chmod -R 777 data/",
+            "chattr -R -i data/",
+            "chown -R data/"
+          ],
+          "answer": ["chattr -R -i data/"],
+          "explanation": {
+            "chgrp -R 755 data/": "Incorrect. This command changes group permissions but does not address immutability.",
+            "chmod -R 777 data/": "Incorrect. This command sets open permissions but does not resolve immutability issues.",
+            "chattr -R -i data/": "Correct. This command removes the immutable attribute preventing deletion.",
+            "chown -R data/": "Incorrect. This command changes ownership but does not resolve permissions issues."
+          },
+          "image": "assets/linux_questions_images/assessment4_29.jpg"
+        },
+        {
+          "number": 30,
+          "question": "Which command is best to search for main.conf in the /etc/ directory?",
+          "options": [
+            "find -r /etc -name main.conf",
+            "find / -name main.conf",
+            "find /etc -maxdepth -name main.conf",
+            "find /etc -name main.conf"
+          ],
+          "answer": ["find /etc -name main.conf"],
+          "explanation": {
+            "find -r /etc -name main.conf": "Incorrect. The -r option is not valid for find command.",
+            "find / -name main.conf": "Incorrect. This searches the entire filesystem, which is less efficient.",
+            "find /etc -maxdepth -name main.conf": "Incorrect. The -maxdepth option is incomplete as it needs a depth value.",
+            "find /etc -name main.conf": "Correct. This command searches for main.conf specifically in the /etc directory."
+          }
+        },
+        {
+          "number": 31,
+          "question": "Which command will set the SUID of a file named dev_team.txt with 744 access rights?",
+          "options": [
+            "chmod 4744 dev_team.txt",
+            "chmod 744 --setuid dev_team.txt",
+            "chmod -c 744 dev_team.txt",
+            "chmod -v 4744 --suid dev_team.txt"
+          ],
+          "answer": ["chmod 4744 dev_team.txt"],
+          "explanation": {
+            "chmod 4744 dev_team.txt": "Correct. This sets the SUID permission along with specified access rights.",
+            "chmod 744 --setuid dev_team.txt": "Incorrect. This syntax is invalid; SUID is indicated by the first digit.",
+            "chmod -c 744 dev_team.txt": "Incorrect. This command changes permissions but does not set SUID.",
+            "chmod -v 4744 --suid dev_team.txt": "Incorrect. This syntax is incorrect; SUID is indicated by the first digit."
+          }
+        },
+        {
+          "number": 32,
+          "question": "A Linux administrator is troubleshooting the root cause of a high CPU load and average. Which command will terminate the process with PID 6295 to resolve high CPU load?",
+          "options": [
+            "renice -n -20 6295",
+            "pstree -p 6295",
+            "iostat -cy 1 5",
+            "kill -9 6295"
+          ],
+          "answer": ["kill -9 6295"],
+          "explanation": {
+            "renice -n -20 6295": "Incorrect. This command changes the process priority but does not stop it.",
+            "pstree -p 6295": "Incorrect. This command shows the process tree but does not resolve the issue.",
+            "iostat -cy 1 5": "Incorrect. This command provides statistics but does not terminate processes.",
+            "kill -9 6295": "Correct. This command forcibly terminates the process, resolving the CPU load."
+          },
+          "image": "assets/linux_questions_images/assessment4_32.jpg"
+        },
+        {
+          "number": 33,
+          "question": "What is the next step to take when a command is not found?",
+          "options": [
+            "Hit your up arrow key and press Enter.",
+            "Log out, log back in, and retry the command.",
+            "Enter the which diff command.",
+            "Reboot the server and retry the command."
+          ],
+          "answer": ["Enter the which diff command."],
+          "explanation": {
+            "Hit your up arrow key and press Enter.": "Incorrect. This simply repeats the last command and won't resolve the issue.",
+            "Log out, log back in, and retry the command.": "Incorrect. Logging out is unnecessary for this issue.",
+            "Enter the which diff command.": "Correct. This checks if the command exists in the system's PATH.",
+            "Reboot the server and retry the command.": "Incorrect. Rebooting is excessive for troubleshooting command availability."
+          }
+        },
+        {
+          "number": 34,
+          "question": "Which diff option allows you to quickly determine if two text files differ?",
+          "options": [
+            "-e",
+            "-q",
+            "-s",
+            "-w",
+            "-y"
+          ],
+          "answer": ["-q"],
+          "explanation": {
+            "-e": "Incorrect. This option is for specifying an editing script, not for checking differences.",
+            "-q": "Correct. The -q option reports only whether files differ, without showing details.",
+            "-s": "Incorrect. This option is not valid for the diff command.",
+            "-w": "Incorrect. This option ignores whitespace when comparing but does not summarize differences.",
+            "-y": "Incorrect. This option displays differences side-by-side, not just whether they differ."
+          }
+        },
+        {
+          "number": 35,
+          "question": "A Linux admin is fixing an app service start failure. After running commands, the following outputs are seen: ... What action is most likely to resolve the issue?",
+          "options": [
+            "Enable the logsearch.service and restart the service.",
+            "Increase the TimeoutStartUSec configuration for the logsearch.service.",
+            "Update the OnCalendar configuration to schedule the start of the logsearch.service.",
+            "Update the KillSignal configuration for the logsearch.service to use TERM."
+          ],
+          "answer": ["Increase the TimeoutStartUSec configuration for the logsearch.service."],
+          "explanation": {
+            "Enable the logsearch.service and restart the service.": "Incorrect. This does not address timeout issues.",
+            "Increase the TimeoutStartUSec configuration for the logsearch.service.": "Correct. This allows more time for the service to start.",
+            "Update the OnCalendar configuration to schedule the start of the logsearch.service.": "Incorrect. This is unrelated to the service failing to start.",
+            "Update the KillSignal configuration for the logsearch.service to use TERM.": "Incorrect. This does not resolve the issue of the service failing to start."
+          },
+          "image": "assets/linux_questions_images/assessment4_35.jpg"
+        },
+        {
+          "number": 36,
+          "question": "What memory area does Linux use to store boot messages?",
+          "options": [
+            "BIOS",
+            "The GRUB bootloader",
+            "The MBR",
+            "The initrd RAM disk",
+            "The kernel ring buffer"
+          ],
+          "answer": ["The kernel ring buffer"],
+          "explanation": {
+            "BIOS": "Incorrect. BIOS initializes hardware but does not store boot messages.",
+            "The GRUB bootloader": "Incorrect. GRUB loads the OS but does not store boot messages.",
+            "The MBR": "Incorrect. The Master Boot Record contains bootloader information, not messages.",
+            "The initrd RAM disk": "Incorrect. The initrd is used for loading modules during boot, not for messages.",
+            "The kernel ring buffer": "Correct. This stores boot messages and is accessed using the dmesg command."
+          }
+        },
+        {
+          "number": 37,
+          "question": "After cloning a Linux server, a 'Device mismatch detected' error occurs. The admin runs commands to troubleshoot and mount the filesystem: ... Which command resolves the mismatch?",
+          "options": [
+            "mount disk by device-id",
+            "fsck -A",
+            "mount disk by-label",
+            "mount disk by-blkid"
+          ],
+          "answer": ["mount disk by-label"],
+          "explanation": {
+            "mount disk by device-id": "Incorrect. Using device-id may not resolve the mismatch due to UUIDs.",
+            "fsck -A": "Incorrect. This checks file systems but does not address mounting issues.",
+            "mount disk by-label": "Correct. This method uses the label, which is more generic than UUIDs.",
+            "mount disk by-blkid": "Incorrect. Using blkid may not resolve the mismatch if UUIDs are tied to the source."
+          },
+          "image": "assets/linux_questions_images/assessment4_37.jpg"
+        },
+        {
+          "number": 38,
+          "question": "Which file should be moved to the remote servers for passwordless login?",
+          "options": [
+            "id_dsa.pem",
+            "id_rsa",
+            "id_ecdsa",
+            "id_rsa.pub"
+          ],
+          "answer": ["id_rsa.pub"],
+          "explanation": {
+            "id_dsa.pem": "Incorrect. This is not the correct naming convention for DSA keys.",
+            "id_rsa": "Incorrect. This is a private key and should remain confidential.",
+            "id_ecdsa": "Incorrect. This is another private key, not for sharing.",
+            "id_rsa.pub": "Correct. The public key should be copied to the remote servers for authentication."
+          }
+        },
+        {
+          "number": 39,
+          "question": "What should be executed first after making changes to ~/.bashrc?",
+          "options": [
+            "source ~/.bashrc",
+            "read ~/.bashrc",
+            "touch ~/.bashrc",
+            "echo ~/.bashrc"
+          ],
+          "answer": ["source ~/.bashrc"],
+          "explanation": {
+            "source ~/.bashrc": "Correct. This applies the changes to the current shell session.",
+            "read ~/.bashrc": "Incorrect. This command does not reload the Bash configuration.",
+            "touch ~/.bashrc": "Incorrect. This updates the timestamp but does not reload the configuration.",
+            "echo ~/.bashrc": "Incorrect. This displays the filename but does not reload the configuration."
+          }
+        },
+        {
+          "number": 40,
+          "question": "Which command can create a cloud.cpio archive from the current directory?",
+          "options": [
+            "ls | cpio -iv > cloud.epio",
+            "ls | cpio -iv < cloud.epio",
+            "ls | cpio -ov > cloud.cpio",
+            "ls cpio -ov < cloud.cpio"
+          ],
+          "answer": ["ls | cpio -ov > cloud.cpio"],
+          "explanation": {
+            "ls | cpio -iv > cloud.epio": "Incorrect. This attempts to extract files from a non-existent archive.",
+            "ls | cpio -iv < cloud.epio": "Incorrect. This also attempts to extract from a non-existent archive.",
+            "ls | cpio -ov > cloud.cpio": "Correct. This creates a new archive from the files listed.",
+            "ls cpio -ov < cloud.cpio": "Incorrect. This has a syntax error and does not create an archive."
+          }
+        },
+        {
+          "number": 41,
+          "question": "An admin must ensure new users and groups meet specified values per new cybersecurity policies. In which configuration file should these changes be made?",
+          "options": [
+            "/etc/login.defs",
+            "/etc/security/limits.conf",
+            "/etc/default/useradd",
+            "/etc/profile"
+          ],
+          "answer": ["/etc/login.defs"],
+          "explanation": {
+            "/etc/login.defs": "Correct. This file contains user account defaults and settings.",
+            "/etc/security/limits.conf": "Incorrect. This file sets resource limits, not default account settings.",
+            "/etc/default/useradd": "Incorrect. This file sets defaults for user creation, not for existing accounts.",
+            "/etc/profile": "Incorrect. This file sets environment variables for users, not account defaults."
+          },
+          "image": "assets/linux_questions_images/assessment4_41.jpg"
+        },
+        {
+          "number": 42,
+          "question": "A Linux system fails to start and delivers the following error message: ....Which of the following commands can be used to address this issue?",
+          "options": [
+            "fsck.ext4 /dev/sda1",
+            "partprobe /dev/sda1",
+            "fdisk /dev/sda1",
+            "mkfs.ext4 /dev/sda1"
+          ],
+          "answer": ["fsck.ext4 /dev/sda1"],
+          "explanation": {
+            "fsck.ext4 /dev/sda1": "Correct. This command checks and repairs the ext4 file system.",
+            "partprobe /dev/sda1": "Incorrect. This command notifies the kernel of partition table changes.",
+            "fdisk /dev/sda1": "Incorrect. This command manipulates disk partitions but does not address filesystem issues.",
+            "mkfs.ext4 /dev/sda1": "Incorrect. This command formats the partition, which is not a recovery action."
+          },
+          "image": "assets/linux_questions_images/assessment4_42.jpg"
+        },
+        {
+          "number": 43,
+          "question": "Which RPM command option should be used to remove software from the server?",
+          "options": [
+            "rpm -s",
+            "rpm -d",
+            "rpm -q",
+            "rpm -e"
+          ],
+          "answer": ["rpm -e"],
+          "explanation": {
+            "rpm -s": "Incorrect. This option is not valid for removing packages; it is used for querying.",
+            "rpm -d": "Incorrect. This option is not valid for removing packages; it is used for upgrading.",
+            "rpm -q": "Incorrect. This option queries installed packages, not for removal.",
+            "rpm -e": "Correct. This option erases (removes) a specified package from the system."
+          }
+        },
+        {
+          "number": 44,
+          "question": "What command shows if the systemd-resolved.service is running without errors?",
+          "options": [
+            "systemctl status systemd-resolved.service",
+            "systemctl enable systemd-resolved.service",
+            "systemctl mask systemd-resolved.service",
+            "systemctl show systemd-resolved.service"
+          ],
+          "answer": ["systemctl status systemd-resolved.service"],
+          "explanation": {
+            "systemctl status systemd-resolved.service": "Correct. This command shows detailed information about the service status.",
+            "systemctl enable systemd-resolved.service": "Incorrect. This command enables the service but does not check its status.",
+            "systemctl mask systemd-resolved.service": "Incorrect. This command disables the service and prevents it from being started.",
+            "systemctl show systemd-resolved.service": "Incorrect. This command displays properties but not detailed status."
+          }
+        },
+        {
+          "number": 45,
+          "question": "Which command allows the administrator to determine the FIRST command executed inside a container?",
+          "options": [
+            "docker export <container_id>",
+            "docker info <container_id>",
+            "docker start <container_id>",
+            "docker inspect <container_id>"
+          ],
+          "answer": ["docker inspect <container_id>"],
+          "explanation": {
+            "docker export <container_id>": "Incorrect. This command exports the filesystem of a container, not its configuration.",
+            "docker info <container_id>": "Incorrect. This command shows system-wide information for Docker, not specific to a container.",
+            "docker start <container_id>": "Incorrect. This command starts a stopped container but does not show execution details.",
+            "docker inspect <container_id>": "Correct. This command provides detailed information about the container's configuration."
+          }
+        },
+        {
+          "number": 46,
+          "question": "Which was the first bootloader program used in Linux?",
+          "options": [
+            "GRUB Legacy",
+            "LILO",
+            "GRUB2",
+            "SYSLINUX"
+          ],
+          "answer": ["LILO"],
+          "explanation": {
+            "GRUB Legacy": "Incorrect. GRUB Legacy came after LILO and is a more advanced bootloader.",
+            "LILO": "Correct. LILO was one of the earliest bootloaders used in Linux.",
+            "GRUB2": "Incorrect. GRUB2 is a modern bootloader that succeeded LILO.",
+            "SYSLINUX": "Incorrect. SYSLINUX is another bootloader but came after LILO."
+          }
+        },
+        {
+          "number": 47,
+          "question": "Where does the workstation BIOS attempt to find a bootloader program?",
+          "options": [
+            "An internal hard drive",
+            "An external hard drive",
+            "A DVD drive",
+            "A USB memory stick",
+            "A network server"
+          ],
+          "answer": [
+            "An internal hard drive",
+            "An external hard drive",
+            "A DVD drive",
+            "A USB memory stick",
+            "A network server"
+          ],
+          "explanation": {
+            "An internal hard drive": "Correct. The BIOS checks the internal hard drive for bootable devices.",
+            "An external hard drive": "Correct. The BIOS can boot from external hard drives if configured.",
+            "A DVD drive": "Correct. The BIOS can boot from a DVD drive if a bootable disk is inserted.",
+            "A USB memory stick": "Correct. The BIOS can boot from USB memory sticks if configured.",
+            "A network server": "Correct. The BIOS can boot from a network server if set up for PXE booting."
+          }
+        },
+        {
+          "number": 48,
+          "question": "What program does the workstation firmware start at boot time?",
+          "options": [
+            "A bootloader",
+            "The fsck program",
+            "The Windows OS",
+            "The mount command",
+            "The mkinitrd program"
+          ],
+          "answer": ["A bootloader"],
+          "explanation": {
+            "A bootloader": "Correct. The bootloader is responsible for loading the OS into memory.",
+            "The fsck program": "Incorrect. fsck checks filesystems and is not started by firmware.",
+            "The Windows OS": "Incorrect. The OS is loaded by the bootloader, not started directly by firmware.",
+            "The mount command": "Incorrect. The mount command attaches filesystems but is not started at boot time.",
+            "The mkinitrd program": "Incorrect. mkinitrd creates an initrd image for booting but is not run by firmware."
+          }
+        },
+        {
+          "number": 49,
+          "question": "Which command will display Spaceship1.txt and save a copy to Scy.txt?",
+          "options": [
+            "cat Spaceship1.txt | tee Scy.txt",
+            "cat Spaceship1.txt > Scy.txt",
+            "cat Spaceship1.txt 2> Scy.txt",
+            "cp Spaceship1.txt Scy.txt"
+          ],
+          "answer": ["cat Spaceship1.txt | tee Scy.txt"],
+          "explanation": {
+            "cat Spaceship1.txt | tee Scy.txt": "Correct. This displays the content and saves it to Scy.txt.",
+            "cat Spaceship1.txt > Scy.txt": "Incorrect. This only saves to Scy.txt and does not display the content.",
+            "cat Spaceship1.txt 2> Scy.txt": "Incorrect. This redirects error output, not standard output.",
+            "cp Spaceship1.txt Scy.txt": "Incorrect. This copies the file but does not display its content."
+          }
+        },
+        {
+          "number": 50,
+          "question": "Which best defines a file descriptor?",
+          "options": [
+            "A letter that represents the file's type",
+            "A number that represents a process's open files",
+            "Another term for the file's name",
+            "A six-character name that represents standard output",
+            "A symbol that indicates the file's classification"
+          ],
+          "answer": ["A number that represents a process's open files"],
+          "explanation": {
+            "A letter that represents the file's type": "Incorrect. This does not accurately define a file descriptor.",
+            "A number that represents a process's open files": "Correct. File descriptors are unique identifiers for open files.",
+            "Another term for the file's name": "Incorrect. This describes the file name, not a descriptor.",
+            "A six-character name that represents standard output": "Incorrect. This does not define a file descriptor.",
+            "A symbol that indicates the file's classification": "Incorrect. This is also not a definition of a file descriptor."
+          }
+        },
+        {
+          "number": 51,
+          "question": "Which command sorts data.txt numerically and saves it to newdata.txt?",
+          "options": [
+            "sort -n -o newdata.txt data.txt",
+            "sort -n data.txt > newdata.txt",
+            "sort -n -o data.txt newdata.txt",
+            "sort -o newdata.txt data.txt"
+          ],
+          "answer": ["sort -n -o newdata.txt data.txt"],
+          "explanation": {
+            "sort -n -o newdata.txt data.txt": "Correct. This command sorts numerically and saves the output.",
+            "sort -n data.txt > newdata.txt": "Correct. This command also sorts numerically and saves to newdata.txt.",
+            "sort -n -o data.txt newdata.txt": "Incorrect. This attempts to overwrite data.txt with sorted output.",
+            "sort -o newdata.txt data.txt": "Incorrect. This command does not specify numerical sorting."
+          }
+        },
+        {
+          "number": 52,
+          "question": "A Linux engineer was notified about potential log deletions in /opt/app/logs. The engineer must ensure logs can only be appended, not deleted. Which commands are best to achieve this?",
+          "options": [
+            "chattr +a /opt/app/logs",
+            "chattr +d /opt/app/logs",
+            "chattr +i /opt/app/logs",
+            "chattr +c /opt/app/logs"
+          ],
+          "answer": ["chattr +a /opt/app/logs"],
+          "explanation": {
+            "chattr +a /opt/app/logs": "Correct. This command sets the append-only attribute to the log file.",
+            "chattr +d /opt/app/logs": "Incorrect. This option does not exist for chattr.",
+            "chattr +i /opt/app/logs": "Incorrect. This sets the immutable attribute, preventing any changes.",
+            "chattr +c /opt/app/logs": "Incorrect. This option does not exist for chattr."
+          },
+          "image": "assets/linux_questions_images/assessment4_52.jpg"
+        },
+        {
+          "number": 53,
+          "question": "Which command checks if files from the wget package have been altered?",
+          "options": [
+            "rpm -i wget",
+            "rpm -qf wget",
+            "rpm -F wget",
+            "rpm -V wget"
+          ],
+          "answer": ["rpm -V wget"],
+          "explanation": {
+            "rpm -i wget": "Incorrect. This command installs a package, not checks for alterations.",
+            "rpm -qf wget": "Incorrect. This queries packages but does not verify their integrity.",
+            "rpm -F wget": "Incorrect. This command is for upgrading packages, not checking alterations.",
+            "rpm -V wget": "Correct. This verifies the integrity of the installed wget package."
+          }
+        },
+        {
+          "number": 54,
+          "question": "Which command sets the hostname to Comptia-WebNode?",
+          "options": [
+            "hostnamectl status --no-ask-password",
+            "hostnamectl set-hostname \"$(perl -le \"print\" \"A\" x 86)\"",
+            "hostnamectl set-hostname Comptia-WebNode -H root@192.168.2.14",
+            "hostnamectl set-hostname Comptia-WebNode --transient"
+          ],
+          "answer": ["hostnamectl set-hostname Comptia-WebNode -H root@192.168.2.14"],
+          "explanation": {
+            "hostnamectl status --no-ask-password": "Incorrect. This command checks the current hostname, not sets it.",
+            "hostnamectl set-hostname \"$(perl -le \"print\" \"A\" x 86)\"": "Incorrect. This command sets a hostname based on a Perl expression, not directly.",
+            "hostnamectl set-hostname Comptia-WebNode -H root@192.168.2.14": "Correct. This command sets the hostname but misuses the -H flag.",
+            "hostnamectl set-hostname Comptia-WebNode --transient": "Incorrect. This only sets the transient hostname, not the static one."
+          }
+        },
+        {
+          "number": 55,
+          "question": "Which configuration file holds the system configuration for journal when running systemd?",
+          "options": [
+            "/etc/systemd/journald.conf",
+            "/etc/systemd/systemd-journalctl.conf",
+            "/usr/lib/systemd/journalctl.conf",
+            "/etc/systemd/systemd-journald.conf"
+          ],
+          "answer": ["/etc/systemd/journald.conf"],
+          "explanation": {
+            "/etc/systemd/journald.conf": "Correct. This is the main configuration file for systemd-journald.",
+            "/etc/systemd/systemd-journalctl.conf": "Incorrect. This file does not exist; it is a misconfiguration.",
+            "/usr/lib/systemd/journalctl.conf": "Incorrect. This path does not hold the configuration for journald.",
+            "/etc/systemd/systemd-journald.conf": "Incorrect. This file does not exist; the proper path is /etc/systemd/journald.conf."
+          }
+        },
+        {
+          "number": 56,
+          "question": "Which command will extract files from a compressed file?",
+          "options": [
+            "unzip -v",
+            "bzip2 -z",
+            "gzip",
+            "funzip"
+          ],
+          "answer": ["unzip -v"],
+          "explanation": {
+            "unzip -v": "Correct. This command extracts files from ZIP archives.",
+            "bzip2 -z": "Incorrect. This command is used for compressing files, not extracting.",
+            "gzip": "Incorrect. This command decompresses files but is not specific for all compression formats.",
+            "funzip": "Incorrect. This command outputs the contents of a ZIP file but does not extract to a file."
+          }
+        },
+        {
+          "number": 57,
+          "question": "Which command will display the operating system?",
+          "options": [
+            "uname -n",
+            "uname -s",
+            "uname -o",
+            "uname -m"
+          ],
+          "answer": ["uname -o"],
+          "explanation": {
+            "uname -n": "Incorrect. This option displays the network node hostname.",
+            "uname -s": "Incorrect. This option shows the kernel name.",
+            "uname -o": "Correct. This option displays the operating system name.",
+            "uname -m": "Incorrect. This option shows the machine hardware name."
+          }
+        },
+        {
+          "number": 58,
+          "question": "An admin tries to rename a file on a server but gets an error. After running some commands, the following output is obtained: ... Which command should the admin run next to allow any user to rename the file?",
+          "options": [
+            "chgrp -R 755 files",
+            "chmod -R 777 files",
+            "chattr -R -i files",
+            "chown -R users files"
+          ],
+          "answer": ["chattr -R -i files"],
+          "explanation": {
+            "chgrp -R 755 files": "Incorrect. This command changes group permissions but does not allow renaming.",
+            "chmod -R 777 files": "Incorrect. This sets full permissions but does not address the sticky bit issue.",
+            "chattr -R -i files": "Correct. This command removes the immutable attribute preventing renaming.",
+            "chown -R users files": "Incorrect. This changes ownership but does not address renaming permissions."
+          },
+          "image": "assets/linux_questions_images/assessment4_58.jpg"
+        },
+        {
+          "number": 59,
+          "question": "Which command helps maintain version control for IaC declaration templates?",
+          "options": [
+            "git clone https://github.com/comptia/linux+.git",
+            "git push origin",
+            "git clone https://qithub.com/comptia/linux+.git",
+            "git fetch New-Branch"
+          ],
+          "answer": ["git clone https://github.com/comptia/linux+.git"],
+          "explanation": {
+            "git clone https://github.com/comptia/linux+.git": "Correct. This command clones the remote repository to the local machine.",
+            "git push origin": "Incorrect. This command pushes local changes to the remote repository, not for initial setup.",
+            "git clone https://qithub.com/comptia/linux+.git": "Incorrect. This is an invalid URL and not relevant.",
+            "git fetch New-Branch": "Incorrect. This command fetches updates but does not clone."
+          }
+        },
+        {
+          "number": 60,
+          "question": "Which command helps view which files are actually directories?",
+          "options": [
+            "mkdir -v",
+            "ls",
+            "ls -F",
+            "ll"
+          ],
+          "answer": ["ls -F"],
+          "explanation": {
+            "mkdir -v": "Incorrect. This command creates directories, not for viewing existing ones.",
+            "ls": "Incorrect. This command lists files but does not indicate types.",
+            "ls -F": "Correct. This option adds a trailing slash to directory names for easy identification.",
+            "ll": "Incorrect. This command is an alias for ls -l, which shows detailed listings but not directory types."
+          }
+        },
+        {
+          "number": 61,
+          "question": "What server role should you implement to increase performance on your company's website?",
+          "options": [
+            "A load balancer",
+            "A web proxy",
+            "A DHCP server",
+            "A container"
+          ],
+          "answer": ["A load balancer"],
+          "explanation": {
+            "A load balancer": "Correct. A load balancer distributes incoming network traffic across multiple servers to optimize resource utilization, enhance website availability, and prevent overload on any single server.",
+            "A web proxy": "Incorrect. A web proxy is used for caching and filtering web content but does not distribute traffic among servers to increase performance.",
+            "A DHCP server": "Incorrect. A DHCP server assigns IP addresses to devices on a network and is not directly related to website performance.",
+            "A container": "Incorrect. Containers are used for packaging and deploying applications but do not inherently improve website performance."
+          }
+        },
+        {
+          "number": 62,
+          "question": "A systems administrator wants to back up the directory /data and all its contents to /backup/data on a remote server named remote. Which of the following commands will achieve the desired effect?",
+          "options": [
+            "scp -p /data remote:/backup/data",
+            "ssh -i /remote:/backup/ /data",
+            "rsync -a /data remote:/backup/",
+            "cp -r /data /remote/backup/"
+          ],
+          "answer": ["rsync -a /data remote:/backup/"],
+          "explanation": {
+            "scp -p /data remote:/backup/data": "Incorrect. scp is used for copying files over SSH but does not preserve file attributes as efficiently as rsync for directories.",
+            "ssh -i /remote:/backup/ /data": "Incorrect. This command syntax is incorrect for copying files.",
+            "rsync -a /data remote:/backup/": "Correct. rsync is a powerful tool for copying and synchronizing files and directories, with the -a option preserving file permissions and attributes.",
+            "cp -r /data /remote/backup/": "Incorrect. cp -r is used for copying directories locally, not over a network."
+          }
+        },
+        {
+          "number": 63,
+          "question": "An admin is diagnosing a performance issue using the following details: CPU: 4 vCPU, Memory: 40GB, Disk IOPS: 690, Disk throughput: 44Mbps. Based on this, what BEST describes the root cause?",
+          "options": [
+            "The system has reached its maximum IOPS, causing the system to be slow.",
+            "The system has reached its maximum permitted throughput, therefore iowait is increasing.",
+            "The system is mostly idle, therefore the iowait is high.",
+            "The system has a partitioned disk, which causes the IOPS to be doubled."
+          ],
+          "answer": ["The system has reached its maximum permitted throughput, therefore iowait is increasing."],
+          "explanation": {
+            "The system has reached its maximum IOPS, causing the system to be slow.": "Incorrect. The information provided suggests an issue with throughput, not IOPS.",
+            "The system has reached its maximum permitted throughput, therefore iowait is increasing.": "Correct. If the system has reached its throughput limits, then I/O operations will wait, increasing iowait.",
+            "The system is mostly idle, therefore the iowait is high.": "Incorrect. High iowait typically indicates the system is waiting on I/O operations, not idleness.",
+            "The system has a partitioned disk, which causes the IOPS to be doubled.": "Incorrect. Partitioning does not inherently double IOPS; this is a misunderstanding of disk partitioning."
+          },
+          "image": "assets/linux_questions_images/assessment4_63.jpg"
+        },
+        {
+          "number": 64,
+          "question": "What server role should you implement to block your local network clients from accessing sports websites during business hours?",
+          "options": [
+            "A DHCP server",
+            "A web server",
+            "A web proxy",
+            "A container"
+          ],
+          "answer": ["A web proxy"],
+          "explanation": {
+            "A DHCP server": "Incorrect. A DHCP server manages IP address assignments, not web content filtering.",
+            "A web server": "Incorrect. A web server serves content to clients, not restrict access to specific websites.",
+            "A web proxy": "Correct. A web proxy can filter and control web traffic, blocking access to certain websites based on time or content.",
+            "A container": "Incorrect. Containers are used for deploying applications and do not handle network traffic filtering."
+          }
+        },
+        {
+          "number": 65,
+          "question": "An administrator deployed a Linux server running a web application on port 6379/tcp. With SELinux in enforcing mode and the port open on the firewall, users encounter 'Error 13, Permission denied.' After running some commands, the following output is observed:\nWhich command should resolve the issue?",
+          "options": [
+            "semanage port -d -t http_port_t -p tcp 6379",
+            "semanage port -a -t http_port_t -p tcp 6379",
+            "semanage port -a http_port_t -p top 6379",
+            "semanage port -l -t http_port_tcp 6379"
+          ],
+          "answer": ["semanage port -a -t http_port_t -p tcp 6379"],
+          "explanation": {
+            "semanage port -d -t http_port_t -p tcp 6379": "Incorrect. This command deletes a port type association, which is not needed.",
+            "semanage port -a -t http_port_t -p tcp 6379": "Correct. This adds a new SELinux port type for TCP on port 6379, which allows the application to use this port.",
+            "semanage port -a http_port_t -p top 6379": "Incorrect. There's a typo in the command; it should be '-p tcp'.",
+            "semanage port -l -t http_port_tcp 6379": "Incorrect. This lists the ports associated with a type but doesn't change configurations."
+          },
+          "image": "assets/linux_questions_images/assessment4_65.jpg"
+        },
+        {
+          "number": 66,
+          "question": "A Linux administrator would like to use systemd to schedule a job to run every two hours. The administrator creates timer and service definitions and restarts the server to load these new configurations. After the restart, the administrator checks the log file and notices that the job is only running daily. Which of the following is MOST likely causing the issue?",
+          "options": [
+            "The checkdiskspace.service is not running.",
+            "The checkdiskspace.service needs to be enabled.",
+            "The OnCalendar schedule is incorrect in the timer definition.",
+            "The system-daemon services need to be reloaded."
+          ],
+          "answer": ["The OnCalendar schedule is incorrect in the timer definition."],
+          "explanation": {
+            "The checkdiskspace.service is not running.": "Incorrect. This would prevent the job from running at all, not change the schedule.",
+            "The checkdiskspace.service needs to be enabled.": "Incorrect. Enabling the service is necessary, but the focus here is on the schedule.",
+            "The OnCalendar schedule is incorrect in the timer definition.": "Correct. If the job runs daily instead of every two hours, the OnCalendar setting is likely misconfigured.",
+            "The system-daemon services need to be reloaded.": "Incorrect. While reloading could apply changes, the issue here is the schedule configuration."
+          }
+        },
+        {
+          "number": 67,
+          "question": "Which authentication package used to be called by the name 'Yellow Pages'?",
+          "options": [
+            "Samba",
+            "Kerberos",
+            "NIS",
+            "BIND"
+          ],
+          "answer": ["NIS"],
+          "explanation": {
+            "Samba": "Incorrect. Samba is used for file sharing between Unix/Linux and Windows systems.",
+            "Kerberos": "Incorrect. Kerberos is a network authentication protocol, not related to Yellow Pages.",
+            "NIS": "Correct. NIS, formerly known as Yellow Pages, is a directory service for managing network user information.",
+            "BIND": "Incorrect. BIND is a DNS server software, unrelated to NIS."
+          }
+        },
+        {
+          "number": 68,
+          "question": "What software package allows a Linux server to print to a network printer?",
+          "options": [
+            "DHCPd",
+            "BIND",
+            "ntpd",
+            "CUPS"
+          ],
+          "answer": ["CUPS"],
+          "explanation": {
+            "DHCPd": "Incorrect. DHCPd is a daemon for assigning IP addresses on a network.",
+            "BIND": "Incorrect. BIND is a domain name server.",
+            "ntpd": "Incorrect. ntpd is a network time protocol daemon.",
+            "CUPS": "Correct. CUPS is the Common Unix Printing System, which manages print jobs and queues."
+          }
+        },
+        {
+          "number": 69,
+          "question": "A systems administrator needs to reconfigure a Linux server to allow persistent IPv4 packet forwarding. Which of the following commands is the correct way to accomplish this task?",
+          "options": [
+            "echo 1 > /proc/sys/net/ipv4/ipv_forward",
+            "sysctl -w net.ipv4.ip_forward=1",
+            "firewall-cmd --enable ipv4_forwarding",
+            "systemctl start ipv4_forwarding"
+          ],
+          "answer": ["sysctl -w net.ipv4.ip_forward=1"],
+          "explanation": {
+            "echo 1 > /proc/sys/net/ipv4/ipv_forward": "Incorrect. While this enables forwarding temporarily, it is not persistent across reboots.",
+            "sysctl -w net.ipv4.ip_forward=1": "Correct. This enables IPv4 forwarding immediately at runtime.",
+            "firewall-cmd --enable ipv4_forwarding": "Incorrect. This is not a valid command for enabling packet forwarding.",
+            "systemctl start ipv4_forwarding": "Incorrect. No such system service exists for enabling packet forwarding."
+          }
+        },
+        {
+          "number": 70,
+          "question": "A new Linux systems administrator just generated a pair of SSH keys that should allow connection to the servers. Which of the following commands can be used to copy a key file to remote servers? (Choose two.)",
+          "options": [
+            "wget",
+            "ssh-keygen",
+            "ssh-keyscan",
+            "ssh-copy-id",
+            "ftpd",
+            "scp"
+          ],
+          "answer": ["ssh-copy-id", "scp"],
+          "explanation": {
+            "wget": "Incorrect. wget is used for downloading content from web servers, not for copying SSH keys.",
+            "ssh-keygen": "Incorrect. This generates SSH key pairs but does not copy them.",
+            "ssh-keyscan": "Incorrect. This is used for gathering SSH host keys, not for copying keys.",
+            "ssh-copy-id": "Correct. This command installs your public key on a remote server's authorized_keys file, facilitating password-less SSH login.",
+            "ftpd": "Incorrect. ftpd is related to FTP, not SSH.",
+            "scp": "Correct. scp can securely copy files (including SSH keys) to remote servers."
+          }
+        },
+        {
+          "number": 71,
+          "question": "When trying to log in remotely to a server, a user receives the following message:\nWhich of the following is causing the issue?",
+          "options": [
+            "The wrong permissions are on the user's home directory.",
+            "The account was locked out due to three failed logins.",
+            "The user entered the wrong password.",
+            "The user has the wrong shell assigned to the account."
+          ],
+          "answer": ["The user has the wrong shell assigned to the account."],
+          "explanation": {
+            "The wrong permissions are on the user’s home directory.": "Incorrect. This would cause issues accessing files, but not necessarily prevent login.",
+            "The account was locked out due to three failed logins.": "Incorrect. This would typically provide a lockout message.",
+            "The user entered the wrong password.": "Incorrect. This would result in an 'access denied' message.",
+            "The user has the wrong shell assigned to the account.": "Correct. An incorrect shell (e.g., /bin/false) can prevent login."
+          },
+          "image": "assets/linux_questions_images/assessment4_71.jpg"
+        },
+        {
+          "number": 72,
+          "question": "A Linux administrator is tasked with creating resources using containerization. When deciding how to create this type of deployment, the administrator identifies some key features, including portability, high availability, and scalability in production. Which of the following should the Linux administrator choose for the new design?",
+          "options": [
+            "Docker",
+            "On-premises systems",
+            "Cloud-based systems",
+            "Kubernetes"
+          ],
+          "answer": ["Kubernetes"],
+          "explanation": {
+            "Docker": "Incorrect. While Docker is essential for containerization, it does not inherently provide orchestration or high availability.",
+            "On-premises systems": "Incorrect. Although they can be used for container deployment, they do not provide built-in orchestration.",
+            "Cloud-based systems": "Incorrect. These can be part of the solution but don't specifically manage containers.",
+            "Kubernetes": "Correct. Kubernetes is a container orchestration platform that ensures portability, high availability, and scalability."
+          }
+        },
+        {
+          "number": 73,
+          "question": "A systems administrator wants to test the route between IP address 10.0.2.15 and IP address 192.168.1.40. Which of the following commands will accomplish this task?",
+          "options": [
+            "route -e get to 192.168.1.40 from 10.0.2.15",
+            "ip route get 192.163.1.40 from 10.0.2.15",
+            "ip route 192.169.1.40 to 10.0.2.15",
+            "route -n 192.168.1.40 from 10.0.2.15"
+          ],
+          "answer": ["ip route get 192.163.1.40 from 10.0.2.15"],
+          "explanation": {
+            "route -e get to 192.168.1.40 from 10.0.2.15": "Incorrect. This command syntax is incorrect.",
+            "ip route get 192.163.1.40 from 10.0.2.15": "Correct. This command retrieves the route a packet would take to reach a specified destination.",
+            "ip route 192.169.1.40 to 10.0.2.15": "Incorrect. This is not a valid command for testing routes.",
+            "route -n 192.168.1.40 from 10.0.2.15": "Incorrect. This does not test the route from a specific source."
+          }
+        },
+        {
+          "number": 74,
+          "question": "A systems administrator is checking the system logs. The administrator wants to look at the last 20 lines of a log. Which of the following will execute the command?",
+          "options": [
+            "tail -v 20",
+            "tail -n 20",
+            "tail -c 20",
+            "tail -l 20"
+          ],
+          "answer": ["tail -n 20"],
+          "explanation": {
+            "tail -v 20": "Incorrect. The -v option is for verbose mode, not for specifying lines.",
+            "tail -n 20": "Correct. The -n option specifies the number of lines to display from the end of the file.",
+            "tail -c 20": "Incorrect. The -c option specifies the number of bytes, not lines.",
+            "tail -l 20": "Incorrect. There is no -l option for the tail command."
+          }
+        },
+        {
+          "number": 75,
+          "question": "After installing some RPM packages, a systems administrator discovers the last package that was installed was not needed. Which of the following commands can be used to remove the package?",
+          "options": [
+            "dnf remove packagename",
+            "apt-get remove packagename",
+            "rpm -i packagename",
+            "apt remove packagename"
+          ],
+          "answer": ["dnf remove packagename"],
+          "explanation": {
+            "dnf remove packagename": "Correct. dnf is a package manager used in some Linux distributions for package removal.",
+            "apt-get remove packagename": "Incorrect. apt-get is used in Debian-based systems, not RPM-based.",
+            "rpm -i packagename": "Incorrect. This installs a package rather than removing it.",
+            "apt remove packagename": "Incorrect. apt is used in Debian-based systems, not RPM-based."
+          }
+        },
+        {
+          "number": 76,
+          "question": "You are trying to peruse a rather large text file. A coworker suggests you use a pager. Which of the following best describes what your coworker is recommending?",
+          "options": [
+            "Use a utility that allows you to view the first few lines of the file.",
+            "Use a utility that allows you to view one text page at a time.",
+            "Use a utility that allows you to search through the file.",
+            "Use a utility that allows you to filter out text in the file.",
+            "Use a utility that allows you to view the last few lines of the file."
+          ],
+          "answer": ["Use a utility that allows you to view one text page at a time."],
+          "explanation": {
+            "Use a utility that allows you to view the first few lines of the file.": "Incorrect. This describes the head command.",
+            "Use a utility that allows you to view one text page at a time.": "Correct. A pager like less or more displays one page of text at a time.",
+            "Use a utility that allows you to search through the file.": "Incorrect. This describes utilities like grep.",
+            "Use a utility that allows you to filter out text in the file.": "Incorrect. This describes utilities like sed or awk.",
+            "Use a utility that allows you to view the last few lines of the file.": "Incorrect. This describes the tail command."
+          }
+        },
+        {
+          "number": 77,
+          "question": "You have a lengthy file named FileA.txt. What will the head -15 FileA.txt command do?",
+          "options": [
+            "Display all but the last 15 lines of the file.",
+            "Display all but the first 15 lines of the file.",
+            "Display the first 15 lines of the file.",
+            "Display the last 15 lines of the file.",
+            "Generate an error message."
+          ],
+          "answer": ["Display the first 15 lines of the file."],
+          "explanation": {
+            "Display all but the last 15 lines of the file.": "Incorrect. This is not what the head command does.",
+            "Display all but the first 15 lines of the file.": "Incorrect. This is not what the head command does.",
+            "Display the first 15 lines of the file.": "Correct. The head command displays the first part of files, and -15 specifies the number of lines.",
+            "Display the last 15 lines of the file.": "Incorrect. This describes the tail command.",
+            "Generate an error message.": "Incorrect. The command is valid and will not generate an error."
+          }
+        },
+        {
+          "number": 78,
+          "question": "Several users reported that they were unable to write data to the /oracle1 directory. The following output has been provided:\nWhich of the following commands should the administrator use to diagnose the issue?",
+          "options": [
+            "df -i /oracle1",
+            "fdisk -1 /dev/sdb1",
+            "lsblk /dev/sdb1",
+            "du -sh /oracle1"
+          ],
+          "answer": ["df -i /oracle1"],
+          "explanation": {
+            "df -i /oracle1": "Correct. The df -i command displays inode usage. A lack of inodes can prevent new file creation.",
+            "fdisk -1 /dev/sdb1": "Incorrect. fdisk is used for partition manipulation, not for diagnosing file system usage.",
+            "lsblk /dev/sdb1": "Incorrect. lsblk lists block devices but does not diagnose space or inode issues.",
+            "du -sh /oracle1": "Incorrect. du reports disk usage but not inode usage."
+          },
+          "image": "assets/linux_questions_images/assessment4_78.jpg"
+        },
+        {
+          "number": 79,
+          "question": "A Linux administrator setup a web server, database server and web application. After a reboot, a web server shows 'Error establishing a database connection.' Reviewing systemd output, how can the administrator ensure the database starts before the web app?",
+          "options": [
+            "TRIGGERS=mariadb.service",
+            "ONFAILURE=mariadb.service",
+            "WANTEDBY=mariadb.service",
+            "REQUIRES=mariadb.service"
+          ],
+          "answer": ["REQUIRES=mariadb.service"],
+          "explanation": {
+            "TRIGGERS=mariadb.service": "Incorrect. This does not ensure that the database starts before the web service.",
+            "ONFAILURE=mariadb.service": "Incorrect. This option specifies a unit to start on failure, not a dependency.",
+            "WANTEDBY=mariadb.service": "Incorrect. This specifies a weak dependency and does not ensure startup order.",
+            "REQUIRES=mariadb.service": "Correct. This ensures that the HTTP server service depends on the mariadb.service and will not start unless the database is running."
+          },
+          "image": "assets/linux_questions_images/assessment4_79.jpg"
+        },
+        {
+          "number": 80,
+          "question": "You have two short text files that have maximum record lengths of 15 characters. You want to review these files side by side. Which of the following commands would be the best to use?",
+          "options": [
+            "pr -m",
+            "pr -tl 20",
+            "cat",
+            "pr -mtl 20",
+            "pr -ml 20"
+          ],
+          "answer": ["pr -mtl 20"],
+          "explanation": {
+            "pr -m": "Incorrect. This merges files but does not specify line length.",
+            "pr -tl 20": "Incorrect. This sets the page length but not for side-by-side viewing.",
+            "cat": "Incorrect. This concatenates files but does not display them side-by-side.",
+            "pr -mtl 20": "Correct. This merges files horizontally, suppresses headers, and sets a maximum line length.",
+            "pr -ml 20": "Incorrect. This does not suppress headers."
+          }
+        },
+        {
+          "number": 81,
+          "question": "A systems administrator has been tasked with disabling the nginx service from the environment to prevent it from being automatically and manually started. Which of the following commands will accomplish this task?",
+          "options": [
+            "systemctl cancel nginx",
+            "systemctl disable nginx",
+            "systemctl mask nginx",
+            "systemctl stop nginx"
+          ],
+          "answer": ["systemctl mask nginx"],
+          "explanation": {
+            "systemctl cancel nginx": "Incorrect. This is not a valid systemctl command.",
+            "systemctl disable nginx": "Incorrect. This prevents automatic start but not manual start.",
+            "systemctl mask nginx": "Correct. This links the service to /dev/null, preventing it from starting.",
+            "systemctl stop nginx": "Incorrect. This stops the service but does not prevent future starts."
+          }
+        },
+        {
+          "number": 82,
+          "question": "A systems administrator is tasked with preventing logins from accounts other than root, while the file /etc/nologin exists. Which of the following PAM modules will accomplish this task?",
+          "options": [
+            "pam_access.so",
+            "pam_login.so",
+            "pam_logindef.so",
+            "pam_nologin.so"
+          ],
+          "answer": ["pam_nologin.so"],
+          "explanation": {
+            "pam_access.so": "Incorrect. This module restricts access based on username, host name, or IP address.",
+            "pam_login.so": "Incorrect. This is not a standard PAM module.",
+            "pam_logindef.so": "Incorrect. This is not a standard PAM module.",
+            "pam_nologin.so": "Correct. This module prevents non-root logins when /etc/nologin exists."
+          }
+        },
+        {
+          "number": 83,
+          "question": "A short text-based control file is no longer working properly with the program that reads it. You suspect the file was accidentally corrupted by a control code update you performed recently, even though the file’s control codes are all correct. Which command should you use next on the file in your problem investigation?",
+          "options": [
+            "cat -v",
+            "cat -z",
+            "cat -n",
+            "cat -s",
+            "cat -E"
+          ],
+          "answer": ["cat -v"],
+          "explanation": {
+            "cat -v": "Correct. The -v option displays non-printing characters, useful for identifying control characters.",
+            "cat -z": "Incorrect. This is not a valid cat option.",
+            "cat -n": "Incorrect. This numbers all output lines, unrelated to control codes.",
+            "cat -s": "Incorrect. This squeezes multiple blank lines, unrelated to control codes.",
+            "cat -E": "Incorrect. This shows a '$' at the end of each line, unrelated to control codes."
+          }
+        },
+        {
+          "number": 84,
+          "question": "There is a large directory structure that needs to be renamed. What mv command options should you consider employing? (Choose all that apply.)",
+          "options": [
+            "-f",
+            "-i",
+            "-n",
+            "-r",
+            "-v",
+            "-w"
+          ],
+          "answer": ["-i", "-n", "-v"],
+          "explanation": {
+            "-f": "Incorrect. This forces the move, possibly overwriting files without prompt.",
+            "-i": "Correct. This prompts before overwriting an existing file, providing an interactive approach.",
+            "-n": "Correct. This prevents mv from overwriting an existing file or directory.",
+            "-r": "Incorrect. This is for recursive operations, not renaming.",
+            "-v": "Correct. This makes mv verbose, providing information on the files being renamed.",
+            "-w": "Incorrect. This is not a valid mv option."
+          }
+        },
+        {
+          "number": 85,
+          "question": "A systems administrator requires that all files that are created by the user named web have read-only permissions by the owner. Which of the following commands will satisfy this requirement?",
+          "options": [
+            "chown web:web /home/web",
+            "chmod -R 400 /home/web",
+            "echo \"umask 377\" >> /home/web/.bashrc",
+            "setfacl read /home/web"
+          ],
+          "answer": ["echo \"umask 377\" >> /home/web/.bashrc"],
+          "explanation": {
+            "chown web:web /home/web": "Incorrect. This changes ownership but does not set default file permissions.",
+            "chmod -R 400 /home/web": "Incorrect. This applies read-only permissions recursively, but not for newly created files.",
+            "echo \"umask 377\" >> /home/web/.bashrc": "Correct. This sets the default permissions for newly created files to read-only for the owner.",
+            "setfacl read /home/web": "Incorrect. This is not a valid command for setting default file creation permissions."
+          }
+        },
+        {
+          "number": 86,
+          "question": "Which of the following tools is commonly used for creating CI/CD pipelines?",
+          "options": [
+            "Chef",
+            "Puppet",
+            "Jenkins",
+            "Ansible"
+          ],
+          "answer": ["Jenkins"],
+          "explanation": {
+            "Chef": "Incorrect. Chef is used for configuration management, not specifically for CI/CD.",
+            "Puppet": "Incorrect. Puppet is also for configuration management.",
+            "Jenkins": "Correct. Jenkins is widely used for automating CI/CD pipelines.",
+            "Ansible": "Incorrect. Ansible is used for automation but not specifically for CI/CD pipelines."
+          }
+        },
+        {
+          "number": 87,
+          "question": "You have a file that is over 10 GB in size, and it needs to be backed up to a locally attached drive. What is the best utility to use in this situation?",
+          "options": [
+            "readlink -f",
+            "mv",
+            "cp",
+            "scp",
+            "rsync"
+          ],
+          "answer": ["rsync"],
+          "explanation": {
+            "readlink -f": "Incorrect. This resolves symbolic links, not for copying files.",
+            "mv": "Incorrect. This moves files rather than copying them for backup.",
+            "cp": "Incorrect. While cp can copy files, rsync is more efficient for large files.",
+            "scp": "Incorrect. scp is for secure copying over a network, not locally.",
+            "rsync": "Correct. rsync is efficient for copying large files with minimal data transfer."
+          }
+        },
+        {
+          "number": 88,
+          "question": "You are using the ls command to look at a directory file’s metadata but keep seeing metadata for the files within it instead. What command option will rectify this situation?",
+          "options": [
+            "-a",
+            "-d",
+            "-f",
+            "-l",
+            "-r",
+            "-w"
+          ],
+          "answer": ["-d"],
+          "explanation": {
+            "-a": "Incorrect. This lists all files including hidden ones.",
+            "-d": "Correct. This displays the directory's metadata itself, not its contents.",
+            "-f": "Incorrect. This lists files without sorting.",
+            "-l": "Incorrect. This provides a long listing format.",
+            "-r": "Incorrect. This reverses sorting order.",
+            "-w": "Incorrect. This is not a valid ls option."
+          }
+        },
+        {
+          "number": 89,
+          "question": "What is the term commonly used for when the Linux system halts due to a system error?",
+          "options": [
+            "Kernel panic",
+            "Kernel ring buffer",
+            "initrd RAM disk",
+            "Bootloader",
+            "Firmware"
+          ],
+          "answer": ["Kernel panic"],
+          "explanation": {
+            "Kernel panic": "Correct. A kernel panic occurs when the Linux kernel encounters a fatal error and halts.",
+            "Kernel ring buffer": "Incorrect. This is used for logging kernel messages.",
+            "initrd RAM disk": "Incorrect. This is used during the boot process.",
+            "Bootloader": "Incorrect. This loads the operating system.",
+            "Firmware": "Incorrect. This is software embedded in hardware."
+          }
+        },
+        {
+          "number": 90,
+          "question": "Which command allows you to append a partition to the virtual directory on a running Linux system?",
+          "options": [
+            "mount",
+            "umount",
+            "fsck",
+            "dmesg",
+            "mkinitramfs"
+          ],
+          "answer": ["mount"],
+          "explanation": {
+            "mount": "Correct. The mount command is used to attach a file system or device to the directory tree.",
+            "umount": "Incorrect. This is used to detach a file system.",
+            "fsck": "Incorrect. This checks and repairs file systems.",
+            "dmesg": "Incorrect. This displays kernel messages.",
+            "mkinitramfs": "Incorrect. This creates an initial ramdisk image."
+          }
+        }
+      ]
+    }
+  ]
+}

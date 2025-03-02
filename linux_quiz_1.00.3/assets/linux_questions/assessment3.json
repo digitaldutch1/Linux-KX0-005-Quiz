@@ -1519,8 +1519,8 @@
                 "lscpu": "Incorrect. It displays CPU information.",
                 "lsmem": "Correct. It displays memory information."
             },
-            "image": "assets/linux_questions_images/assessment3_1.jpg"
-        },
+            "image": "assets/linux_questions_images/assessment3_89.jpg"
+          },
           {
             "number": 90,
             "question": "Betty, a system administrator at Linux Training, wants to scan all of the physical storage devices to detect any logical volumes contained within them. Which of the following commands should be used to accomplish this?",
