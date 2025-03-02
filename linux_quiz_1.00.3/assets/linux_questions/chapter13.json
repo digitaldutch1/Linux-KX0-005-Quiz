@@ -113,7 +113,7 @@
                 },
                 {
                     "number": 265,
-                    "question": "What tools do you use to install packages from a Red Hat–based repository? (Choose two.)",
+                    "question": "What tools do you use to install packages from a Red Hat-based repository? (Choose two.)",
                     "options": ["dpkg", "tar", "yum", "apt-get", "dnf"],
                     "answer": ["yum", "dnf"],
                     "explanation": {
@@ -126,12 +126,12 @@
                 },
                 {
                     "number": 266,
-                    "question": "What application container format do Red Hat–based Linux distributions utilize for installing applications?",
+                    "question": "What application container format do Red Hat-based Linux distributions utilize for installing applications?",
                     "options": ["flatpak", "rpm", "dpkg", "snap", "gcc"],
                     "answer": "rpm",
                     "explanation": {
                         "flatpak": "This application container format is used in various Linux distributions.",
-                        "rpm": "Red Hat–based Linux distributions use the rpm format for package management.",
+                        "rpm": "Red Hat-based Linux distributions use the rpm format for package management.",
                         "dpkg": "This format is used in Debian-based systems for package management.",
                         "snap": "This format is used primarily in Ubuntu for application containers.",
                         "gcc": "This program is used for compiling source code into executable programs."

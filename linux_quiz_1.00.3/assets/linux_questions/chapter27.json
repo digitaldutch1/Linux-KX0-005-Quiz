@@ -49,11 +49,11 @@
                 {
                     "number": 400,
                     "question": "Natasha has created her working directory for a new project. What should she do next to set up her Git project environment?",
-                    "options": ["Issue the mkdir command.", "Enter the git config ––list command.", "Set up her GitHub repository.", "Enter the git init command.", "Start creating her program files."],
+                    "options": ["Issue the mkdir command.", "Enter the git config --list command.", "Set up her GitHub repository.", "Enter the git init command.", "Start creating her program files."],
                     "answer": "Enter the git init command.",
                     "explanation": {
                         "Issue the mkdir command.": "This command is used for creating directories, not for setting up Git.",
-                        "Enter the git config ––list command.": "This shows configuration data, not setting up the environment.",
+                        "Enter the git config --list command.": "This shows configuration data, not setting up the environment.",
                         "Set up her GitHub repository.": "This can be done after initializing Git.",
                         "Enter the git init command.": "This initializes the .git/ directory in her project.",
                         "Start creating her program files.": "This can be done after setting up the Git environment."
@@ -61,7 +61,7 @@
                 },
                 {
                     "number": 401,
-                    "question": "When setting his Git configuration options, Bruce employs the ––global option on his commands. What does this mean?",
+                    "question": "When setting his Git configuration options, Bruce employs the --global option on his commands. What does this mean?",
                     "options": ["The configuration information is stored on GitHub.", "The configuration information is stored in ~/.gitconfig.", "The configuration information is stored in the working directory's .git/config file.", "The configuration information is stored in the working directory's .git/index file.", "The configuration information is stored in the working directory's .git/objects directory."],
                     "answer": "The configuration information is stored in ~/.gitconfig.",
                     "explanation": {
@@ -114,7 +114,7 @@
                 {
                     "number": 405,
                     "question": "Which of the following commands allows you to switch to a new Git branch called testing?",
-                    "options": ["git branch testing", "git ls-tree ––name-only -r testing", "git branch", "git commit -m \"testing\"", "git checkout testing"],
+                    "options": ["git branch testing", "git ls-tree --name-only -r testing", "git branch", "git commit -m \"testing\"", "git checkout testing"],
                     "answer": "git checkout testing",
                     "explanation": {
                         "git branch testing": "This command creates a new branch but does not switch to it.",

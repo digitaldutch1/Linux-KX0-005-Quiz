@@ -1339,7 +1339,160 @@
               "printf": "Incorrect. 'printf' is used for formatting output, not for data manipulation or calculations.",
               "awk": "Incorrect. Although 'awk' can be used for data processing, 'gawk' is the GNU version that enhances these capabilities, making it more suited for advanced data manipulation and calculations."
             }
-          }         
+          },
+          {
+            "number": 79,
+            "question": "Which command is used to filter text file data?",
+            "options": [
+                "grep",
+                "sort",
+                "pr",
+                "cat"
+            ],
+            "answer": "grep",
+            "explanation": {
+                "grep": "Correct. The grep command is used to search and filter text data.",
+                "sort": "Incorrect. The sort command is used to arrange text data.",
+                "pr": "Incorrect. The pr command is used to format text files for printing.",
+                "cat": "Incorrect. The cat command is used to concatenate and display file contents."
+            }
+        },
+        {
+            "number": 80,
+            "question": "Which command is suitable for formatting text files for viewing?",
+            "options": [
+                "cut",
+                "egrep",
+                "printf",
+                "wc"
+            ],
+            "answer": "printf",
+            "explanation": {
+                "cut": "Incorrect. The cut command is used to remove sections from each line of files.",
+                "egrep": "Incorrect. The egrep command is an extended version of grep for filtering.",
+                "printf": "Correct. The printf command is used for formatting and printing data.",
+                "wc": "Incorrect. The wc command is used for counting lines, words, and bytes."
+            }
+        },
+        {
+            "number": 81,
+            "question": "Which utility is used to obtain statistical information about a text file?",
+            "options": [
+                "grep",
+                "wc",
+                "sort",
+                "pr"
+            ],
+            "answer": "wc",
+            "explanation": {
+                "grep": "Incorrect. The grep command is used for searching text.",
+                "wc": "Correct. The wc command provides statistics like the number of lines, words, and bytes in a file.",
+                "sort": "Incorrect. The sort command is used to sort lines of text files.",
+                "pr": "Incorrect. The pr command is used to prepare text for printing."
+            }
+        },
+        {
+            "number": 82,
+            "question": "What is the purpose of STDOUT in Linux?",
+            "options": [
+                "To handle input from the keyboard",
+                "To display error messages",
+                "To display output from commands",
+                "To redirect input from one command to another"
+            ],
+            "answer": "To display output from commands",
+            "explanation": {
+                "To handle input from the keyboard": "Incorrect. STDIN handles input from the keyboard.",
+                "To display error messages": "Incorrect. STDERR is used for error messages.",
+                "To display output from commands": "Correct. STDOUT is used to display standard output.",
+                "To redirect input from one command to another": "Incorrect. Pipelines or redirection handle this."
+            }
+        },
+        {
+            "number": 83,
+            "question": "Which command is used to display a message on the screen and can assist in redirection?",
+            "options": [
+                "echo",
+                "sed",
+                "awk",
+                "nano"
+            ],
+            "answer": "echo",
+            "explanation": {
+                "echo": "Correct. The echo command is used to display messages and is often used in redirection.",
+                "sed": "Incorrect. The sed command is used for stream editing.",
+                "awk": "Incorrect. The awk command is used for pattern scanning and processing.",
+                "nano": "Incorrect. The nano command is a text editor."
+            }
+        },
+        {
+            "number": 84,
+            "question": "What is a pipeline in the context of Linux command execution?",
+            "options": [
+                "A method to execute commands in the background",
+                "A way to connect multiple commands where the output of one becomes the input of another",
+                "A tool to redirect only error messages",
+                "A technique to edit text files"
+            ],
+            "answer": "A way to connect multiple commands where the output of one becomes the input of another",
+            "explanation": {
+                "A method to execute commands in the background": "Incorrect. Background execution is not related to pipelines.",
+                "A way to connect multiple commands where the output of one becomes the input of another": "Correct. Pipelines allow the output of one command to be used as input for another.",
+                "A tool to redirect only error messages": "Incorrect. Pipelines are not specifically for error redirection.",
+                "A technique to edit text files": "Incorrect. Pipelines are for command chaining, not editing."
+            }
+        },
+        {
+            "number": 85,
+            "question": "Which text editor is described as simple and easy-to-use?",
+            "options": [
+                "vim",
+                "nano",
+                "sed",
+                "gawk"
+            ],
+            "answer": "nano",
+            "explanation": {
+                "vim": "Incorrect. Vim is a powerful but complex text editor.",
+                "nano": "Correct. Nano is known for being simple and easy-to-use.",
+                "sed": "Incorrect. Sed is a stream editor, not a traditional text editor.",
+                "gawk": "Incorrect. Gawk is a programming language for text processing."
+            }
+        },
+        {
+            "number": 86,
+            "question": "Which utility is used for fast and powerful text stream editing?",
+            "options": [
+                "vim",
+                "nano",
+                "sed",
+                "awk"
+            ],
+            "answer": "sed",
+            "explanation": {
+                "vim": "Incorrect. Vim is a full-screen text editor.",
+                "nano": "Incorrect. Nano is a simple text editor.",
+                "sed": "Correct. Sed is used for powerful text stream editing.",
+                "awk": "Incorrect. Awk is used for pattern scanning and processing, not just stream editing."
+            }
+        },
+        {
+            "number": 87,
+            "question": "What is the role of the gawk programming language in text processing?",
+            "options": [
+                "To provide a simple text editor",
+                "To offer advanced pattern scanning and processing",
+                "To manage system processes",
+                "To display directory contents"
+            ],
+            "answer": "To offer advanced pattern scanning and processing",
+            "explanation": {
+                "To provide a simple text editor": "Incorrect. Gawk is not a text editor.",
+                "To offer advanced pattern scanning and processing": "Correct. Gawk is used for advanced text processing.",
+                "To manage system processes": "Incorrect. Gawk is not used for process management.",
+                "To display directory contents": "Incorrect. Gawk is not used for displaying directory contents."
+            }
+        }         
         ]
       }
     ]

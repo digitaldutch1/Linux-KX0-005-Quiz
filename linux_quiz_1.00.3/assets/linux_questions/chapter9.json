@@ -151,7 +151,7 @@
                 },
                 {
                     "number": 208,
-                    "question": "What file do Red Hat–based systems use to define the time zone for the Linux system?",
+                    "question": "What file do Red Hat-based systems use to define the time zone for the Linux system?",
                     "options": ["/etc/localtime", "/etc/timezone", "/usr/share/zoneinfo", "/usr/share/timezone", "/usr/share/localtime"],
                     "answer": "/etc/localtime",
                     "explanation": {
@@ -216,7 +216,7 @@
                 },
                 {
                     "number": 213,
-                    "question": "What network time package do Red Hat–based Linux systems use to synchronize the system time with a network time server?",
+                    "question": "What network time package do Red Hat-based Linux systems use to synchronize the system time with a network time server?",
                     "options": ["ntpd", "chrony", "localectl", "timedatectl", "timesyncd"],
                     "answer": "chrony",
                     "explanation": {

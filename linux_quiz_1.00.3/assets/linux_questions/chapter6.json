@@ -229,12 +229,12 @@
                 {
                     "number": 152,
                     "question": "A customer has complained that a service on your SysV init system is not working. Which of the following commands is the best command to use to check the service?",
-                    "options": ["service start", "service status", "service ––status-all", "service stop", "service reload"],
+                    "options": ["service start", "service status", "service --status-all", "service stop", "service reload"],
                     "answer": "service status",
                     "explanation": {
                         "service start": "This command will start the designated service but does not check its status.",
                         "service status": "This command displays the current status of the service.",
-                        "service ––status-all": "This command shows the status of all services, not the best for a specific service.",
+                        "service --status-all": "This command shows the status of all services, not the best for a specific service.",
                         "service stop": "This command stops the designated service.",
                         "service reload": "This command reloads the configuration but does not check status."
                     }
@@ -244,17 +244,17 @@
                     "question": "You need to enable the DHCP service on your Red Hat–based SysV init system for runlevels 3 and 5. Which of the following commands should you use?",
                     "options": [
                         "service enable dhcp 3,5",
-                        "chkconfig ––levels 3,5 dhcp on",
-                        "chkconfig ––levels 35 on dhcp",
-                        "chkconfig ––levels 35 dhcp on",
+                        "chkconfig --levels 3,5 dhcp on",
+                        "chkconfig --levels 35 on dhcp",
+                        "chkconfig --levels 35 dhcp on",
                         "service enable dhcp 35"
                     ],
-                    "answer": "chkconfig ––levels 35 dhcp on",
+                    "answer": "chkconfig --levels 35 dhcp on",
                     "explanation": {
                         "service enable dhcp 3,5": "This command does not work for enabling SysV init services.",
-                        "chkconfig ––levels 3,5 dhcp on": "This command syntax is incorrect; levels should not have a delimiter.",
-                        "chkconfig ––levels 35 on dhcp": "This command has the order of arguments flipped.",
-                        "chkconfig ––levels 35 dhcp on": "This command is correct for enabling the DHCP service.",
+                        "chkconfig --levels 3,5 dhcp on": "This command syntax is incorrect; levels should not have a delimiter.",
+                        "chkconfig --levels 35 on dhcp": "This command has the order of arguments flipped.",
+                        "chkconfig --levels 35 dhcp on": "This command is correct for enabling the DHCP service.",
                         "service enable dhcp 35": "This command does not work for enabling SysV init services."
                     }
                 },
@@ -263,7 +263,7 @@
                     "question": "You need to enable the DHCP service on your Debian-based SysV init system for the default runlevels. Which of the following commands should you use?",
                     "options": [
                         "update-rc.d dhcp default",
-                        "chkconfig ––default dhcp on",
+                        "chkconfig --default dhcp on",
                         "update-rc.d default dhcp",
                         "update-rc.d defaults dhcp",
                         "update-rc.d dhcp defaults"
@@ -271,7 +271,7 @@
                     "answer": "update-rc.d dhcp defaults",
                     "explanation": {
                         "update-rc.d dhcp default": "The last command argument should be defaults, not default.",
-                        "chkconfig ––default dhcp on": "This command does not work on Debian-based distributions.",
+                        "chkconfig --default dhcp on": "This command does not work on Debian-based distributions.",
                         "update-rc.d default dhcp": "This command has the order of arguments flipped.",
                         "update-rc.d defaults dhcp": "This command is correct for enabling the DHCP service.",
                         "update-rc.d dhcp defaults": "This command is correct for enabling the DHCP service."

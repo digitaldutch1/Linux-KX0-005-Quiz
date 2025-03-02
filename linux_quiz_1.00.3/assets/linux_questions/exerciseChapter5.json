@@ -417,19 +417,19 @@
           },
           {
             "number": 25,
-            "question": "Which command is used to check and repair filesystem errors?",
+            "question": "During the boot process, how would you troubleshoot a system that is not displaying the boot messages on a graphical Linux distribution?",
             "options": [
-              "fsck",
-              "chkfs",
-              "repairfs",
-              "fsck.ext4"
+              "Press Esc or Ctrl+Alt+F1 during boot to view boot messages.",
+              "Edit the GRUB configuration file to enable verbose logging.",
+              "Reboot the system using a different bootloader.",
+              "Use the dmesg command after booting to review boot messages."
             ],
-            "answer": "fsck",
+            "answer": "Press Esc or Ctrl+Alt+F1 during boot to view boot messages.",
             "explanation": {
-              "fsck": "Correct. The fsck command is used to check and repair filesystems.",
-              "chkfs": "Incorrect. This command does not exist in Linux.",
-              "repairfs": "Incorrect. This is not a standard command.",
-              "fsck.ext4": "Incorrect. While this can be used for ext4 filesystems, 'fsck' is the general command."
+              "Press Esc or Ctrl+Alt+F1 during boot to view boot messages.": "Correct. These key combinations can be used to reveal boot messages hidden by graphical interfaces.",
+              "Edit the GRUB configuration file to enable verbose logging.": "Incorrect. This is not a standard method for viewing hidden boot messages.",
+              "Reboot the system using a different bootloader.": "Incorrect. Changing the bootloader is not necessary to view boot messages.",
+              "Use the dmesg command after booting to review boot messages.": "Incorrect. While dmesg shows boot messages, it is used after booting, not during the boot process."
             }
           },
           {
@@ -1060,7 +1060,211 @@
               "stop": "Incorrect. This command does not exist as a standard command.",
               "exit": "Incorrect. This command is used to exit the shell, not to terminate processes."
             }
-          }
+          },
+          {
+            "number": 63,
+            "question": "What is the first stage of the Linux boot process?",
+            "options": [
+                "Kernel Initialization",
+                "Bootloader Loading",
+                "BIOS/UEFI Initialization",
+                "System Services Start"
+            ],
+            "answer": "BIOS/UEFI Initialization",
+            "explanation": {
+                "Kernel Initialization": "Incorrect. Kernel initialization occurs after the bootloader is loaded.",
+                "Bootloader Loading": "Incorrect. This stage follows BIOS/UEFI initialization.",
+                "BIOS/UEFI Initialization": "Correct. This is the first stage where the hardware is initialized.",
+                "System Services Start": "Incorrect. This is one of the final stages of the boot process."
+            }
+        },
+        {
+            "number": 64,
+            "question": "During the BIOS/UEFI initialization, what test is performed?",
+            "options": [
+                "POST (Power-On Self-Test)",
+                "MBR Check",
+                "Kernel Test",
+                "Systemd Initialization"
+            ],
+            "answer": "POST (Power-On Self-Test)",
+            "explanation": {
+                "POST (Power-On Self-Test)": "Correct. POST checks the system components for errors.",
+                "MBR Check": "Incorrect. The MBR check occurs in the bootloader stage.",
+                "Kernel Test": "Incorrect. The kernel is not yet loaded during this stage.",
+                "Systemd Initialization": "Incorrect. Systemd initialization occurs after the kernel is loaded."
+            }
+        },
+        {
+            "number": 65,
+            "question": "Where does BIOS/UEFI look for a bootable device?",
+            "options": [
+                "RAM",
+                "Hard drive, USB, or CD/DVD",
+                "Kernel memory",
+                "Network interface"
+            ],
+            "answer": "Hard drive, USB, or CD/DVD",
+            "explanation": {
+                "RAM": "Incorrect. RAM is not a bootable device.",
+                "Hard drive, USB, or CD/DVD": "Correct. These are typical bootable devices.",
+                "Kernel memory": "Incorrect. The kernel is loaded later in the process.",
+                "Network interface": "Incorrect. While network booting is possible, it's not the default method."
+            }
+        },
+        {
+            "number": 66,
+            "question": "What is the role of the bootloader in the Linux boot process?",
+            "options": [
+                "Initialize hardware components",
+                "Load the BIOS/UEFI firmware",
+                "Load the Linux kernel into memory",
+                "Start system services"
+            ],
+            "answer": "Load the Linux kernel into memory",
+            "explanation": {
+                "Initialize hardware components": "Incorrect. This is the role of BIOS/UEFI.",
+                "Load the BIOS/UEFI firmware": "Incorrect. BIOS/UEFI is already loaded before the bootloader.",
+                "Load the Linux kernel into memory": "Correct. The bootloader loads the kernel.",
+                "Start system services": "Incorrect. System services are started after the kernel initializes."
+            }
+        },
+        {
+            "number": 67,
+            "question": "Which configuration file is used by GRUB Legacy?",
+            "options": [
+                "grub.cfg",
+                "menu.lst or grub.conf",
+                "/etc/default/grub",
+                "/etc/grub.d/"
+            ],
+            "answer": "menu.lst or grub.conf",
+            "explanation": {
+                "grub.cfg": "Incorrect. This file is used by GRUB2.",
+                "menu.lst or grub.conf": "Correct. These are the configuration files for GRUB Legacy.",
+                "/etc/default/grub": "Incorrect. This file is used for GRUB2 configuration.",
+                "/etc/grub.d/": "Incorrect. This directory is used in GRUB2 configuration."
+            }
+        },
+        {
+            "number": 68,
+            "question": "How is the grub.cfg file generated in GRUB2?",
+            "options": [
+                "Manually editing grub.cfg",
+                "Running grub-mkconfig",
+                "Using the grub-install command",
+                "Editing /boot/grub/grub.cfg directly"
+            ],
+            "answer": "Running grub-mkconfig",
+            "explanation": {
+                "Manually editing grub.cfg": "Incorrect. Direct editing of grub.cfg is not recommended in GRUB2.",
+                "Running grub-mkconfig": "Correct. grub-mkconfig generates grub.cfg from configuration files.",
+                "Using the grub-install command": "Incorrect. grub-install installs the bootloader.",
+                "Editing /boot/grub/grub.cfg directly": "Incorrect. Direct editing is not advised; use grub-mkconfig."
+            }
+        },
+        {
+            "number": 69,
+            "question": "What is LILO?",
+            "options": [
+                "A modern bootloader for Linux",
+                "A deprecated Linux bootloader",
+                "A network bootloader",
+                "A file system repair tool"
+            ],
+            "answer": "A deprecated Linux bootloader",
+            "explanation": {
+                "A modern bootloader for Linux": "Incorrect. LILO is no longer commonly used.",
+                "A deprecated Linux bootloader": "Correct. LILO is an older bootloader.",
+                "A network bootloader": "Incorrect. PXELINUX is used for network booting.",
+                "A file system repair tool": "Incorrect. LILO is not used for repairing file systems."
+            }
+        },
+        {
+            "number": 70,
+            "question": "Which bootloader is used for booting Linux from CD/DVD media?",
+            "options": [
+                "SYSLINUX",
+                "ISOLINUX",
+                "PXELINUX",
+                "EXTLINUX"
+            ],
+            "answer": "ISOLINUX",
+            "explanation": {
+                "SYSLINUX": "Incorrect. SYSLINUX is used for FAT-based filesystems.",
+                "ISOLINUX": "Correct. ISOLINUX is used for booting from CD/DVD media.",
+                "PXELINUX": "Incorrect. PXELINUX is used for network booting.",
+                "EXTLINUX": "Incorrect. EXTLINUX is used in embedded systems."
+            }
+        },
+        {
+            "number": 71,
+            "question": "Which bootloader is designed for booting a system over a network?",
+            "options": [
+                "GRUB",
+                "LILO",
+                "PXELINUX",
+                "ISOLINUX"
+            ],
+            "answer": "PXELINUX",
+            "explanation": {
+                "GRUB": "Incorrect. GRUB is a general bootloader for Linux systems.",
+                "LILO": "Incorrect. LILO is a legacy bootloader for local booting.",
+                "PXELINUX": "Correct. PXELINUX is used for network booting.",
+                "ISOLINUX": "Incorrect. ISOLINUX is used for booting from CD/DVD."
+            }
+        },
+        {
+            "number": 72,
+            "question": "What can you do at the GRUB boot menu to recover from a kernel panic?",
+            "options": [
+                "Press the R key to reset the kernel",
+                "Press the D key to delete the kernel",
+                "Press the E key to edit the boot menu entry",
+                "Press the H key to halt the system"
+            ],
+            "answer": "Press the E key to edit the boot menu entry",
+            "explanation": {
+                "Press the R key to reset the kernel": "Incorrect. There is no R key function in GRUB for recovery.",
+                "Press the D key to delete the kernel": "Incorrect. Deleting the kernel is not a recovery step.",
+                "Press the E key to edit the boot menu entry": "Correct. This allows you to modify boot parameters for recovery.",
+                "Press the H key to halt the system": "Incorrect. Halting the system does not aid in recovery."
+            }
+        },
+        {
+            "number": 73,
+            "question": "What is a common use for a rescue disk in Linux?",
+            "options": [
+                "To install new software packages",
+                "To boot into a live environment for system repair",
+                "To upgrade the kernel",
+                "To create new user accounts"
+            ],
+            "answer": "To boot into a live environment for system repair",
+            "explanation": {
+                "To install new software packages": "Incorrect. Rescue disks are primarily for recovery, not installation.",
+                "To boot into a live environment for system repair": "Correct. Rescue disks allow access to tools for system repair.",
+                "To upgrade the kernel": "Incorrect. Kernel upgrades are not typically performed from a rescue disk.",
+                "To create new user accounts": "Incorrect. User account creation is not a main function of rescue disks."
+            }
+        },
+        {
+            "number": 74,
+            "question": "Which tool is used to check and repair corrupted filesystems on a hard drive?",
+            "options": [
+                "fsck",
+                "dd",
+                "tar",
+                "gzip"
+            ],
+            "answer": "fsck",
+            "explanation": {
+                "fsck": "Correct. The fsck command checks and repairs filesystems.",
+                "dd": "Incorrect. The dd command is used for low-level copying and conversion.",
+                "tar": "Incorrect. The tar command is used for archiving files.",
+                "gzip": "Incorrect. The gzip command is used for file compression."
+            }
+        }
         ]
       }
     ]

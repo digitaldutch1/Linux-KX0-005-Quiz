@@ -152,7 +152,7 @@
                 },
                 {
                     "number": 168,
-                    "question": "What directory do Red Hat–based systems use to store network configuration files?",
+                    "question": "What directory do Red Hat-based systems use to store network configuration files?",
                     "options": [
                         "/etc/sysconfig/network-scripts",
                         "/etc/network",

@@ -2106,32 +2106,32 @@
                 {
                     "number": 152,
                     "question": "A customer has complained that a service on your SysV init system is not working. Which of the following commands is the best command to use to check the service?",
-                    "options": ["service start", "service status", "service ––status-all", "service stop", "service reload"],
+                    "options": ["service start", "service status", "service --status-all", "service stop", "service reload"],
                     "answer": "service status",
                     "explanation": {
                         "service start": "This command will start the designated service but does not check its status.",
                         "service status": "This command displays the current status of the service.",
-                        "service ––status-all": "This command shows the status of all services, not the best for a specific service.",
+                        "service --status-all": "This command shows the status of all services, not the best for a specific service.",
                         "service stop": "This command stops the designated service.",
                         "service reload": "This command reloads the configuration but does not check status."
                     }
                 },
                 {
                     "number": 153,
-                    "question": "You need to enable the DHCP service on your Red Hat–based SysV init system for runlevels 3 and 5. Which of the following commands should you use?",
+                    "question": "You need to enable the DHCP service on your Red Hat-based SysV init system for runlevels 3 and 5. Which of the following commands should you use?",
                     "options": [
                         "service enable dhcp 3,5",
-                        "chkconfig ––levels 3,5 dhcp on",
-                        "chkconfig ––levels 35 on dhcp",
-                        "chkconfig ––levels 35 dhcp on",
+                        "chkconfig --levels 3,5 dhcp on",
+                        "chkconfig --levels 35 on dhcp",
+                        "chkconfig --levels 35 dhcp on",
                         "service enable dhcp 35"
                     ],
-                    "answer": "chkconfig ––levels 35 dhcp on",
+                    "answer": "chkconfig --levels 35 dhcp on",
                     "explanation": {
                         "service enable dhcp 3,5": "This command does not work for enabling SysV init services.",
-                        "chkconfig ––levels 3,5 dhcp on": "This command syntax is incorrect; levels should not have a delimiter.",
-                        "chkconfig ––levels 35 on dhcp": "This command has the order of arguments flipped.",
-                        "chkconfig ––levels 35 dhcp on": "This command is correct for enabling the DHCP service.",
+                        "chkconfig --levels 3,5 dhcp on": "This command syntax is incorrect; levels should not have a delimiter.",
+                        "chkconfig --levels 35 on dhcp": "This command has the order of arguments flipped.",
+                        "chkconfig --levels 35 dhcp on": "This command is correct for enabling the DHCP service.",
                         "service enable dhcp 35": "This command does not work for enabling SysV init services."
                     }
                 },
@@ -2140,7 +2140,7 @@
                     "question": "You need to enable the DHCP service on your Debian-based SysV init system for the default runlevels. Which of the following commands should you use?",
                     "options": [
                         "update-rc.d dhcp default",
-                        "chkconfig ––default dhcp on",
+                        "chkconfig --default dhcp on",
                         "update-rc.d default dhcp",
                         "update-rc.d defaults dhcp",
                         "update-rc.d dhcp defaults"
@@ -2325,7 +2325,7 @@
                 },
                 {
                     "number": 168,
-                    "question": "What directory do Red Hat–based systems use to store network configuration files?",
+                    "question": "What directory do Red Hat-based systems use to store network configuration files?",
                     "options": [
                         "/etc/sysconfig/network-scripts",
                         "/etc/network",
@@ -2941,7 +2941,7 @@
                 },
                 {
                     "number": 208,
-                    "question": "What file do Red Hat–based systems use to define the time zone for the Linux system?",
+                    "question": "What file do Red Hat-based systems use to define the time zone for the Linux system?",
                     "options": ["/etc/localtime", "/etc/timezone", "/usr/share/zoneinfo", "/usr/share/timezone", "/usr/share/localtime"],
                     "answer": "/etc/localtime",
                     "explanation": {
@@ -3006,7 +3006,7 @@
                 },
                 {
                     "number": 213,
-                    "question": "What network time package do Red Hat–based Linux systems use to synchronize the system time with a network time server?",
+                    "question": "What network time package do Red Hat-based Linux systems use to synchronize the system time with a network time server?",
                     "options": ["ntpd", "chrony", "localectl", "timedatectl", "timesyncd"],
                     "answer": "chrony",
                     "explanation": {
@@ -3700,7 +3700,7 @@
                 },
                 {
                     "number": 265,
-                    "question": "What tools do you use to install packages from a Red Hat–based repository? (Choose two.)",
+                    "question": "What tools do you use to install packages from a Red Hat-based repository? (Choose two.)",
                     "options": ["dpkg", "tar", "yum", "apt-get", "dnf"],
                     "answer": ["yum", "dnf"],
                     "explanation": {
@@ -3713,12 +3713,12 @@
                 },
                 {
                     "number": 266,
-                    "question": "What application container format do Red Hat–based Linux distributions utilize for installing applications?",
+                    "question": "What application container format do Red Hat-based Linux distributions utilize for installing applications?",
                     "options": ["flatpak", "rpm", "dpkg", "snap", "gcc"],
                     "answer": "rpm",
                     "explanation": {
                         "flatpak": "This application container format is used in various Linux distributions.",
-                        "rpm": "Red Hat–based Linux distributions use the rpm format for package management.",
+                        "rpm": "Red Hat-based Linux distributions use the rpm format for package management.",
                         "dpkg": "This format is used in Debian-based systems for package management.",
                         "snap": "This format is used primarily in Ubuntu for application containers.",
                         "gcc": "This program is used for compiling source code into executable programs."
@@ -5456,11 +5456,11 @@
                 {
                     "number": 400,
                     "question": "Natasha has created her working directory for a new project. What should she do next to set up her Git project environment?",
-                    "options": ["Issue the mkdir command.", "Enter the git config ––list command.", "Set up her GitHub repository.", "Enter the git init command.", "Start creating her program files."],
+                    "options": ["Issue the mkdir command.", "Enter the git config --list command.", "Set up her GitHub repository.", "Enter the git init command.", "Start creating her program files."],
                     "answer": "Enter the git init command.",
                     "explanation": {
                         "Issue the mkdir command.": "This command is used for creating directories, not for setting up Git.",
-                        "Enter the git config ––list command.": "This shows configuration data, not setting up the environment.",
+                        "Enter the git config --list command.": "This shows configuration data, not setting up the environment.",
                         "Set up her GitHub repository.": "This can be done after initializing Git.",
                         "Enter the git init command.": "This initializes the .git/ directory in her project.",
                         "Start creating her program files.": "This can be done after setting up the Git environment."
@@ -5468,7 +5468,7 @@
                 },
                 {
                     "number": 401,
-                    "question": "When setting his Git configuration options, Bruce employs the ––global option on his commands. What does this mean?",
+                    "question": "When setting his Git configuration options, Bruce employs the --global option on his commands. What does this mean?",
                     "options": ["The configuration information is stored on GitHub.", "The configuration information is stored in ~/.gitconfig.", "The configuration information is stored in the working directory's .git/config file.", "The configuration information is stored in the working directory's .git/index file.", "The configuration information is stored in the working directory's .git/objects directory."],
                     "answer": "The configuration information is stored in ~/.gitconfig.",
                     "explanation": {
@@ -5521,11 +5521,11 @@
                 {
                     "number": 405,
                     "question": "Which of the following commands allows you to switch to a new Git branch called testing?",
-                    "options": ["git branch testing", "git ls-tree ––name-only -r testing", "git branch", "git commit -m \"testing\"", "git checkout testing"],
+                    "options": ["git branch testing", "git ls-tree --name-only -r testing", "git branch", "git commit -m \"testing\"", "git checkout testing"],
                     "answer": "git checkout testing",
                     "explanation": {
                         "git branch testing": "This command creates a new branch but does not switch to it.",
-                        "git ls-tree ––name-only -r testing": "This command lists files in a branch but does not switch branches.",
+                        "git ls-tree --name-only -r testing": "This command lists files in a branch but does not switch branches.",
                         "git branch": "This command lists branches but does not switch branches.",
                         "git commit -m \"testing\"": "This command commits changes, not switching branches.",
                         "git checkout testing": "This command switches to the specified branch."

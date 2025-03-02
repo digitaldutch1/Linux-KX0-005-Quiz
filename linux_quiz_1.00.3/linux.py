@@ -869,8 +869,31 @@ class QuizApp:
 
     def exit_quiz(self):
         self.session_active = False
-        self.question_win.destroy()
+
+        # Destroy the question window to ensure all question-related images and labels are removed
+        if hasattr(self, 'question_win') and self.question_win:
+            self.question_win.destroy()
+
+        # Execute any logic within add_image, assuming it is necessary for your main window
         self.add_image()
+
+        # Reset main window image if applicable
+        if hasattr(self, 'image_label') and self.image_label:
+            try:
+                # Reload the original main window image
+                if getattr(sys, 'frozen', False):
+                    current_directory = sys._MEIPASS
+                else:
+                    current_directory = os.path.dirname(os.path.abspath(__file__))
+                image_path = os.path.join(current_directory, 'assets', 'icon', 'linux afbeelding 2.png')
+
+                # Load the main window image if needed
+                self.image = tk.PhotoImage(file=image_path)
+                self.image_label.config(image=self.image)
+                self.image_label.image = self.image
+            except Exception as e:
+                messagebox.showerror("Error", f"Could not reload main window image: {e}")
+
         messagebox.showinfo("Quiz Exited", "Quiz is exited. Returning to the main window.")
 
     def show_stats(self):

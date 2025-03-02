@@ -1026,6 +1026,397 @@
                         "Compresses files into a tar archive": "Incorrect. -z compresses with gzip; it does not create an archive.",
                         "Displays the contents of a tar archive": "Incorrect. -t is used to display contents."
                     }
+                },
+                {
+                    "number": 61,
+                    "question": "What is a daemon in Linux?",
+                    "options": [
+                        "A command-line utility for monitoring processes",
+                        "A program that runs automatically in the background and waits for client requests",
+                        "A graphical user interface tool",
+                        "A scripting language"
+                    ],
+                    "answer": "A program that runs automatically in the background and waits for client requests",
+                    "explanation": {
+                        "A command-line utility for monitoring processes": "Incorrect. This describes a monitoring tool, not a daemon.",
+                        "A program that runs automatically in the background and waits for client requests": "Correct. A daemon is a program that runs automatically in the background and waits for client requests.",
+                        "A graphical user interface tool": "Incorrect. Daemons are not GUI tools.",
+                        "A scripting language": "Incorrect. Daemons are not programming languages."
+                    }
+                },
+                {
+                    "number": 62,
+                    "question": "How can server programs in Linux be started?",
+                    "options": [
+                        "Manually by the user",
+                        "By a super-server daemon or as a background daemon process",
+                        "Only through a graphical user interface",
+                        "By directly editing system files"
+                    ],
+                    "answer": "By a super-server daemon or as a background daemon process",
+                    "explanation": {
+                        "Manually by the user": "Incorrect. Although possible, server programs typically start automatically.",
+                        "By a super-server daemon or as a background daemon process": "Correct. Server programs can run as background daemons or be started by a super-server daemon.",
+                        "Only through a graphical user interface": "Incorrect. Server programs can be started without a GUI.",
+                        "By directly editing system files": "Incorrect. Editing system files is not a method to start server programs."
+                    }
+                },
+                {
+                    "number": 63,
+                    "question": "Which of the following describes a super-server daemon?",
+                    "options": [
+                        "A daemon that runs continuously without user intervention",
+                        "A service that starts other daemons as needed upon client requests",
+                        "A graphical tool for managing server daemons",
+                        "A script that automates server updates"
+                    ],
+                    "answer": "A service that starts other daemons as needed upon client requests",
+                    "explanation": {
+                        "A daemon that runs continuously without user intervention": "Incorrect. This describes a regular daemon process.",
+                        "A service that starts other daemons as needed upon client requests": "Correct. A super-server daemon starts other daemons as requested by clients.",
+                        "A graphical tool for managing server daemons": "Incorrect. This is not a description of a super-server daemon.",
+                        "A script that automates server updates": "Incorrect. This describes a maintenance script, not a super-server daemon."
+                    }
+                },
+                {
+                    "number": 64,
+                    "question": "How do clients typically connect to server applications?",
+                    "options": [
+                        "Through random ports assigned at runtime",
+                        "By sending a connection request to a well-known port",
+                        "Through direct IP address only",
+                        "By using a DNS service"
+                    ],
+                    "answer": "By sending a connection request to a well-known port",
+                    "explanation": {
+                        "Through random ports assigned at runtime": "Incorrect. Well-known ports are standardized for server applications.",
+                        "By sending a connection request to a well-known port": "Correct. Clients connect to server applications using well-known ports.",
+                        "Through direct IP address only": "Incorrect. While IP is used, the port number is crucial for identifying the service.",
+                        "By using a DNS service": "Incorrect. DNS resolves hostnames to IPs; actual connection uses ports."
+                    }
+                },
+                {
+                    "number": 65,
+                    "question": "What role do well-known ports play in client-server communication?",
+                    "options": [
+                        "They determine the security level of the connection",
+                        "They provide a standardized way for clients to connect to specific services",
+                        "They are used to encrypt data between client and server",
+                        "They assign IP addresses to client devices"
+                    ],
+                    "answer": "They provide a standardized way for clients to connect to specific services",
+                    "explanation": {
+                        "They determine the security level of the connection": "Incorrect. Ports do not determine security levels.",
+                        "They provide a standardized way for clients to connect to specific services": "Correct. Well-known ports are standardized for specific services.",
+                        "They are used to encrypt data between client and server": "Incorrect. Encryption is handled separately.",
+                        "They assign IP addresses to client devices": "Incorrect. Ports do not assign IP addresses."
+                    }
+                },
+                {
+                    "number": 66,
+                    "question": "Why are well-known ports important for server applications?",
+                    "options": [
+                        "They ensure data integrity during transmission",
+                        "They allow clients to easily identify and connect to services",
+                        "They improve the speed of data transmission",
+                        "They provide a backup communication method"
+                    ],
+                    "answer": "They allow clients to easily identify and connect to services",
+                    "explanation": {
+                        "They ensure data integrity during transmission": "Incorrect. Data integrity is managed by protocols, not port numbers.",
+                        "They allow clients to easily identify and connect to services": "Correct. Well-known ports help clients connect to the correct service.",
+                        "They improve the speed of data transmission": "Incorrect. Ports do not affect transmission speed.",
+                        "They provide a backup communication method": "Incorrect. Ports are the main method of communication, not backup."
+                    }
+                },
+                {
+                    "number": 67,
+                    "question": "What is included in a LAMP stack?",
+                    "options": [
+                        "Linux, Apache, MySQL, PHP",
+                        "Linux, Angular, MongoDB, Python",
+                        "Linux, Apache, MariaDB, Perl",
+                        "Linux, Apache, MongoDB, PHP"
+                    ],
+                    "answer": "Linux, Apache, MySQL, PHP",
+                    "explanation": {
+                        "Linux, Apache, MySQL, PHP": "Correct. This is the standard LAMP stack configuration.",
+                        "Linux, Angular, MongoDB, Python": "Incorrect. This is not a LAMP stack.",
+                        "Linux, Apache, MariaDB, Perl": "Incorrect. Although similar, it uses MariaDB and Perl instead.",
+                        "Linux, Apache, MongoDB, PHP": "Incorrect. MongoDB is not part of the traditional LAMP stack."
+                    }
+                },
+                {
+                    "number": 68,
+                    "question": "Which software forms the database component of a LAMP stack?",
+                    "options": [
+                        "PostgreSQL",
+                        "MySQL",
+                        "MongoDB",
+                        "SQLite"
+                    ],
+                    "answer": "MySQL",
+                    "explanation": {
+                        "PostgreSQL": "Incorrect. PostgreSQL is not part of the traditional LAMP stack.",
+                        "MySQL": "Correct. MySQL is the database component of the LAMP stack.",
+                        "MongoDB": "Incorrect. MongoDB is a NoSQL database, not part of LAMP.",
+                        "SQLite": "Incorrect. SQLite is not part of the traditional LAMP stack."
+                    }
+                },
+                {
+                    "number": 69,
+                    "question": "What is the role of PHP in a LAMP stack?",
+                    "options": [
+                        "It serves as the operating system",
+                        "It acts as the database server",
+                        "It processes dynamic content for web applications",
+                        "It functions as the web server"
+                    ],
+                    "answer": "It processes dynamic content for web applications",
+                    "explanation": {
+                        "It serves as the operating system": "Incorrect. Linux is the operating system.",
+                        "It acts as the database server": "Incorrect. MySQL is the database server.",
+                        "It processes dynamic content for web applications": "Correct. PHP is used for processing dynamic web content.",
+                        "It functions as the web server": "Incorrect. Apache functions as the web server."
+                    }
+                },
+                {
+                    "number": 70,
+                    "question": "What is a key difference between relational and NoSQL databases?",
+                    "options": [
+                        "Relational databases use tables; NoSQL uses documents",
+                        "Relational databases are faster than NoSQL databases",
+                        "NoSQL databases require a fixed schema; relational databases do not",
+                        "Relational databases are used only for small datasets"
+                    ],
+                    "answer": "Relational databases use tables; NoSQL uses documents",
+                    "explanation": {
+                        "Relational databases use tables; NoSQL uses documents": "Correct. This is a fundamental difference between the two types of databases.",
+                        "Relational databases are faster than NoSQL databases": "Incorrect. Speed depends on the use case and implementation.",
+                        "NoSQL databases require a fixed schema; relational databases do not": "Incorrect. It's the opposite; relational databases have a fixed schema.",
+                        "Relational databases are used only for small datasets": "Incorrect. Relational databases can handle large datasets."
+                    }
+                },
+                {
+                    "number": 71,
+                    "question": "How do relational databases store data?",
+                    "options": [
+                        "In a flat file",
+                        "In individual data tables",
+                        "As JSON documents",
+                        "As plain text"
+                    ],
+                    "answer": "In individual data tables",
+                    "explanation": {
+                        "In a flat file": "Incorrect. Relational databases do not store data in flat files.",
+                        "In individual data tables": "Correct. Relational databases store data in tables.",
+                        "As JSON documents": "Incorrect. JSON is typically used by NoSQL databases.",
+                        "As plain text": "Incorrect. Plain text is not used for relational database storage."
+                    }
+                },
+                {
+                    "number": 72,
+                    "question": "How do NoSQL databases typically store data?",
+                    "options": [
+                        "In tables with fixed schemas",
+                        "As individual data elements",
+                        "In documents",
+                        "In flat files"
+                    ],
+                    "answer": "In documents",
+                    "explanation": {
+                        "In tables with fixed schemas": "Incorrect. NoSQL databases do not use fixed schemas.",
+                        "As individual data elements": "Incorrect. Data elements are part of documents in NoSQL databases.",
+                        "In documents": "Correct. NoSQL databases store data in documents.",
+                        "In flat files": "Incorrect. NoSQL databases typically do not use flat files."
+                    }
+                },
+                {
+                    "number": 73,
+                    "question": "What protocol do Linux servers use to share files with other Linux servers?",
+                    "options": [
+                        "SMB/CIFS",
+                        "NFS (Network File System)",
+                        "FTP",
+                        "HTTP"
+                    ],
+                    "answer": "NFS (Network File System)",
+                    "explanation": {
+                        "SMB/CIFS": "Incorrect. SMB/CIFS is used for Windows network file sharing.",
+                        "NFS (Network File System)": "Correct. NFS is used to share files between Linux servers.",
+                        "FTP": "Incorrect. FTP is for file transfer, not network file sharing.",
+                        "HTTP": "Incorrect. HTTP is used for serving web pages."
+                    }
+                },
+                {
+                    "number": 74,
+                    "question": "Which package allows a Linux server to share files with Windows networks?",
+                    "options": [
+                        "nfs-utils",
+                        "Samba",
+                        "Apache",
+                        "BIND"
+                    ],
+                    "answer": "Samba",
+                    "explanation": {
+                        "nfs-utils": "Incorrect. nfs-utils is used for NFS services between Linux servers.",
+                        "Samba": "Correct. Samba enables file sharing with Windows networks.",
+                        "Apache": "Incorrect. Apache is a web server, not a file-sharing service.",
+                        "BIND": "Incorrect. BIND is used for DNS services."
+                    }
+                },
+                {
+                    "number": 75,
+                    "question": "What is the function of the nfs-utils package in Linux?",
+                    "options": [
+                        "It provides DNS server services",
+                        "It allows file sharing using NFS",
+                        "It manages network time protocols",
+                        "It offers remote device management"
+                    ],
+                    "answer": "It allows file sharing using NFS",
+                    "explanation": {
+                        "It provides DNS server services": "Incorrect. BIND provides DNS services.",
+                        "It allows file sharing using NFS": "Correct. nfs-utils is used for NFS file sharing.",
+                        "It manages network time protocols": "Incorrect. ntpd manages network time protocols.",
+                        "It offers remote device management": "Incorrect. net-snmp is used for remote device management."
+                    }
+                },
+                {
+                    "number": 76,
+                    "question": "What does the DHCPd package provide?",
+                    "options": [
+                        "DNS server services",
+                        "DHCP server services to assign IP addresses",
+                        "Remote device management",
+                        "Web server services"
+                    ],
+                    "answer": "DHCP server services to assign IP addresses",
+                    "explanation": {
+                        "DNS server services": "Incorrect. BIND provides DNS services.",
+                        "DHCP server services to assign IP addresses": "Correct. DHCPd assigns IP addresses to clients.",
+                        "Remote device management": "Incorrect. net-snmp is used for remote device management.",
+                        "Web server services": "Incorrect. Apache provides web server services."
+                    }
+                },
+                {
+                    "number": 77,
+                    "question": "Which package is used to provide DNS services on a Linux server?",
+                    "options": [
+                        "DHCPd",
+                        "BIND",
+                        "Apache",
+                        "Samba"
+                    ],
+                    "answer": "BIND",
+                    "explanation": {
+                        "DHCPd": "Incorrect. DHCPd provides DHCP services.",
+                        "BIND": "Correct. BIND provides DNS services.",
+                        "Apache": "Incorrect. Apache is a web server.",
+                        "Samba": "Incorrect. Samba is used for file sharing with Windows."
+                    }
+                },
+                {
+                    "number": 78,
+                    "question": "What is the purpose of the OpenLDAP package in Linux?",
+                    "options": [
+                        "To provide web server services",
+                        "To create an LDAP directory of users and devices",
+                        "To manage network time protocols",
+                        "To offer remote device management"
+                    ],
+                    "answer": "To create an LDAP directory of users and devices",
+                    "explanation": {
+                        "To provide web server services": "Incorrect. Apache provides web server services.",
+                        "To create an LDAP directory of users and devices": "Correct. OpenLDAP is used for LDAP directories.",
+                        "To manage network time protocols": "Incorrect. ntpd manages network time protocols.",
+                        "To offer remote device management": "Incorrect. net-snmp is used for remote device management."
+                    }
+                },
+                {
+                    "number": 79,
+                    "question": "How can Linux servers use LDAP?",
+                    "options": [
+                        "To assign IP addresses to devices",
+                        "To authenticate users and devices via a directory",
+                        "To share files on a network",
+                        "To host web applications"
+                    ],
+                    "answer": "To authenticate users and devices via a directory",
+                    "explanation": {
+                        "To assign IP addresses to devices": "Incorrect. DHCPd assigns IP addresses.",
+                        "To authenticate users and devices via a directory": "Correct. LDAP is used for authentication.",
+                        "To share files on a network": "Incorrect. NFS or Samba is used for file sharing.",
+                        "To host web applications": "Incorrect. Apache is used to host web applications."
+                    }
+                },
+                {
+                    "number": 80,
+                    "question": "What is an advantage of using LDAP?",
+                    "options": [
+                        "It encrypts all network traffic",
+                        "It centralizes user and device authentication",
+                        "It speeds up file transfers",
+                        "It simplifies database management"
+                    ],
+                    "answer": "It centralizes user and device authentication",
+                    "explanation": {
+                        "It encrypts all network traffic": "Incorrect. LDAP does not inherently encrypt traffic.",
+                        "It centralizes user and device authentication": "Correct. LDAP centralizes authentication.",
+                        "It speeds up file transfers": "Incorrect. LDAP is not for file transfers.",
+                        "It simplifies database management": "Incorrect. LDAP is not used for database management."
+                    }
+                },
+                {
+                    "number": 81,
+                    "question": "What can improve the performance of a network application in a high-traffic environment?",
+                    "options": [
+                        "Using a single powerful server",
+                        "Implementing a cluster or load balancing environment",
+                        "Increasing network bandwidth",
+                        "Reducing application features"
+                    ],
+                    "answer": "Implementing a cluster or load balancing environment",
+                    "explanation": {
+                        "Using a single powerful server": "Incorrect. A single server may become a bottleneck.",
+                        "Implementing a cluster or load balancing environment": "Correct. Clustering and load balancing distribute the load.",
+                        "Increasing network bandwidth": "Incorrect. Bandwidth alone does not address server load issues.",
+                        "Reducing application features": "Incorrect. This may not improve performance significantly."
+                    }
+                },
+                {
+                    "number": 82,
+                    "question": "What is the role of a load balancer in a network application?",
+                    "options": [
+                        "It provides encryption for data in transit",
+                        "It distributes client connections between multiple servers",
+                        "It manages user authentication",
+                        "It compresses data to save bandwidth"
+                    ],
+                    "answer": "It distributes client connections between multiple servers",
+                    "explanation": {
+                        "It provides encryption for data in transit": "Incorrect. Encryption is not the primary role of a load balancer.",
+                        "It distributes client connections between multiple servers": "Correct. Load balancers distribute client connections.",
+                        "It manages user authentication": "Incorrect. Authentication is handled by other components.",
+                        "It compresses data to save bandwidth": "Incorrect. Load balancers focus on distributing traffic."
+                    }
+                },
+                {
+                    "number": 83,
+                    "question": "Which package can be used for clustering in a Linux environment?",
+                    "options": [
+                        "Apache",
+                        "HAProxy",
+                        "Apache Hadoop",
+                        "OpenLDAP"
+                    ],
+                    "answer": "Apache Hadoop",
+                    "explanation": {
+                        "Apache": "Incorrect. Apache is primarily a web server.",
+                        "HAProxy": "Incorrect. HAProxy is used for load balancing.",
+                        "Apache Hadoop": "Correct. Apache Hadoop is used for clustering.",
+                        "OpenLDAP": "Incorrect. OpenLDAP is used for directory services."
+                    }
                 }
             ]
         }

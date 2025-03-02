@@ -1151,7 +1151,211 @@
               "whereis": "Incorrect. 'whereis' is used to locate command files and manual pages.",
               "which": "Incorrect. 'which' shows the path to executables, not file searches."
             }
-          }        
+          },
+          {
+            "number": 71,
+            "question": "Which command is used to create a new directory in Linux?",
+            "options": [
+                "mkdir",
+                "touch",
+                "ls",
+                "cp"
+            ],
+            "answer": "mkdir",
+            "explanation": {
+                "mkdir": "Correct. The mkdir command is used to create a new directory.",
+                "touch": "Incorrect. The touch command is used to create empty files.",
+                "ls": "Incorrect. The ls command is used to list directory contents.",
+                "cp": "Incorrect. The cp command is used to copy files and directories."
+            }
+        },
+        {
+            "number": 72,
+            "question": "When you need to duplicate or move a file, which command would you NOT use?",
+            "options": [
+                "mv",
+                "cp",
+                "rsync",
+                "ls"
+            ],
+            "answer": "ls",
+            "explanation": {
+                "mv": "Incorrect. The mv command is used to move or rename files.",
+                "cp": "Incorrect. The cp command is used to copy files.",
+                "rsync": "Incorrect. The rsync command can be used for efficient file copying.",
+                "ls": "Correct. The ls command is used to list directory contents, not for duplicating or moving files."
+            }
+        },
+        {
+            "number": 73,
+            "question": "Which command allows you to quickly delete an empty directory?",
+            "options": [
+                "rm -r",
+                "rmdir",
+                "unlink",
+                "rm -i"
+            ],
+            "answer": "rmdir",
+            "explanation": {
+                "rm -r": "Incorrect. The rm -r command is used to delete directories and their contents recursively.",
+                "rmdir": "Correct. The rmdir command is used to delete an empty directory.",
+                "unlink": "Incorrect. The unlink command is used to delete a single file.",
+                "rm -i": "Incorrect. The rm -i command prompts for confirmation before deleting files."
+            }
+        },
+        {
+            "number": 74,
+            "question": "What is the difference between hard-linked and soft-linked files?",
+            "options": [
+                "Hard-linked files share the same inode number; soft-linked files do not.",
+                "Soft-linked files share the same inode number; hard-linked files do not.",
+                "Hard-linked files can be broken; soft-linked files cannot.",
+                "Soft-linked files are faster to access than hard-linked files."
+            ],
+            "answer": "Hard-linked files share the same inode number; soft-linked files do not.",
+            "explanation": {
+                "Hard-linked files share the same inode number; soft-linked files do not.": "Correct. Hard-linked files share the same inode, whereas soft-linked files do not.",
+                "Soft-linked files share the same inode number; hard-linked files do not.": "Incorrect. Soft links do not share inodes with the target file.",
+                "Hard-linked files can be broken; soft-linked files cannot.": "Incorrect. Soft links can be broken if the target is removed.",
+                "Soft-linked files are faster to access than hard-linked files.": "Incorrect. Access speed is not typically a distinguishing factor."
+            }
+        },
+        {
+            "number": 75,
+            "question": "Which command is used to create both hard and soft links in Linux?",
+            "options": [
+                "ln",
+                "link",
+                "symlink",
+                "connect"
+            ],
+            "answer": "ln",
+            "explanation": {
+                "ln": "Correct. The ln command is used to create both hard and soft links.",
+                "link": "Incorrect. The link command is typically used for creating hard links only.",
+                "symlink": "Incorrect. There is no symlink command; use ln with the -s option for symbolic links.",
+                "connect": "Incorrect. There is no connect command for linking files."
+            }
+        },
+        {
+            "number": 76,
+            "question": "Which utility would you use to explore files with multiple links?",
+            "options": [
+                "readlink",
+                "cat",
+                "ls",
+                "tail"
+            ],
+            "answer": "readlink",
+            "explanation": {
+                "readlink": "Correct. The readlink utility helps explore files that have multiple links.",
+                "cat": "Incorrect. The cat command is used to concatenate and display file contents.",
+                "ls": "Incorrect. The ls command lists directory contents.",
+                "tail": "Incorrect. The tail command displays the last part of files."
+            }
+        },
+        {
+            "number": 77,
+            "question": "Which command is NOT used to read entire text files?",
+            "options": [
+                "cat",
+                "bat",
+                "pr",
+                "head"
+            ],
+            "answer": "head",
+            "explanation": {
+                "cat": "Incorrect. The cat command is used to display the contents of a file.",
+                "bat": "Incorrect. The bat command is an enhanced version of cat.",
+                "pr": "Incorrect. The pr command formats a text file for printing.",
+                "head": "Correct. The head command displays the first few lines of a file, not the entire file."
+            }
+        },
+        {
+            "number": 78,
+            "question": "Which command would you use to display only the last lines of a text file?",
+            "options": [
+                "head",
+                "tail",
+                "grep",
+                "less"
+            ],
+            "answer": "tail",
+            "explanation": {
+                "head": "Incorrect. The head command displays the first few lines of a file.",
+                "tail": "Correct. The tail command displays the last part of files.",
+                "grep": "Incorrect. The grep command searches for patterns within files.",
+                "less": "Incorrect. The less command is a pager for viewing file contents."
+            }
+        },
+        {
+            "number": 79,
+            "question": "Which utility is used to view the contents of a file one page at a time?",
+            "options": [
+                "cat",
+                "more",
+                "head",
+                "grep"
+            ],
+            "answer": "more",
+            "explanation": {
+                "cat": "Incorrect. The cat command displays the entire file content at once.",
+                "more": "Correct. The more command allows you to view file contents one page at a time.",
+                "head": "Incorrect. The head command displays the first few lines of a file.",
+                "grep": "Incorrect. The grep command searches for patterns within files."
+            }
+        },
+        {
+            "number": 80,
+            "question": "Which command is used to find differences between two text files?",
+            "options": [
+                "diff",
+                "cmp",
+                "find",
+                "locate"
+            ],
+            "answer": "diff",
+            "explanation": {
+                "diff": "Correct. The diff command is used to compare files line by line.",
+                "cmp": "Incorrect. The cmp command compares files byte by byte.",
+                "find": "Incorrect. The find command searches for files in a directory hierarchy.",
+                "locate": "Incorrect. The locate command searches for files by name."
+            }
+        },
+        {
+            "number": 81,
+            "question": "Which command updates the locate database?",
+            "options": [
+                "updatedb",
+                "refreshdb",
+                "locate",
+                "find"
+            ],
+            "answer": "updatedb",
+            "explanation": {
+                "updatedb": "Correct. The updatedb command updates the locate database.",
+                "refreshdb": "Incorrect. There is no refreshdb command for this purpose.",
+                "locate": "Incorrect. The locate command is used to search for files, not update the database.",
+                "find": "Incorrect. The find command searches for files in a directory hierarchy."
+            }
+        },
+        {
+            "number": 82,
+            "question": "Which command is more powerful than locate for searching files with specific criteria?",
+            "options": [
+                "which",
+                "whereis",
+                "find",
+                "ls"
+            ],
+            "answer": "find",
+            "explanation": {
+                "which": "Incorrect. The which command locates a command in the user's path.",
+                "whereis": "Incorrect. The whereis command locates binaries, sources, and man pages.",
+                "find": "Correct. The find command is more powerful and allows for complex search criteria.",
+                "ls": "Incorrect. The ls command lists directory contents."
+            }
+        }        
       ]
     }
   ]
