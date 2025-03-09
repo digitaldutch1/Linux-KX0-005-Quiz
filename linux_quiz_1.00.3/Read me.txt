@@ -10,7 +10,3 @@ Daarna zou het moeten werken.
 Heb je geen pdf reader, ik heb in de map assets/pdf reader een pdf reader exe toegevoegd, je kan die installeren door uit te voeren.
 
 
-In de quiz heb je opties edit assessment en add questions, beide functies zijn momenteel niet functioneel.
-Ik ga die later pas functioneel maken.
-Je kan al wel een assessment toevoegen, die wordt dan bijgeschreven in assets\linux_questions\addedAssessments.json
-maar is nog op het moment dus niet functioneel

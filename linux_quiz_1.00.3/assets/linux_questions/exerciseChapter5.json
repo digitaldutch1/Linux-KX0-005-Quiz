@@ -60,7 +60,7 @@
           },
           {
             "number": 4,
-            "question": "What is the purpose of the ‘dmesg’ command?",
+            "question": "What is the purpose of the 'dmesg' command?",
             "options": [
               "To display the kernel ring buffer messages.",
               "To edit the bootloader configuration.",
@@ -570,21 +570,21 @@
           },
           {
             "number": 34,
-            "question": "What command can you use to forcefully unmount a filesystem?",
+            "question": "What command can you use to forcefully unmount a filesystem? (Select all that apply)",
             "options": [
-              "umount -f",
-              "umount -l",
-              "umount --force",
-              "Both umount -f and umount -l"
+                "umount -f",
+                "umount -l",
+                "umount --force",
+                "fuser -km /mountpoint"
             ],
-            "answer": "Both umount -f and umount -l",
+            "answer": ["umount -f", "umount -l"],
             "explanation": {
-              "umount -f": "Correct. The '-f' option forces the unmount.",
-              "umount -l": "Correct. The '-l' option lazily unmounts, detaching it immediately.",
-              "umount --force": "Incorrect. While not standard, '-f' is the accepted syntax.",
-              "Both umount -f and umount -l": "Correct. Both commands can force unmounting."
+                "umount -f": "Correct. The '-f' option forces the unmount.",
+                "umount -l": "Correct. The '-l' option lazily unmounts, detaching it immediately.",
+                "umount --force": "Incorrect. While it may seem logical, this option does not exist in standard umount.",
+                "fuser -km /mountpoint": "Incorrect. While this command kills processes using the mountpoint, it does not directly unmount the filesystem."
             }
-          },
+        },
           {
             "number": 35,
             "question": "What is the purpose of the 'shutdown' command?",
@@ -706,21 +706,21 @@
           },
           {
             "number": 42,
-            "question": "How can you view the kernel version currently running on your system?",
+            "question": "How can you view the kernel version currently running on your system? (Select all that apply)",
             "options": [
-              "uname -r",
-              "kernel -v",
-              "cat /proc/version",
-              "Both uname -r and cat /proc/version"
+                "uname -r",
+                "kernel -v",
+                "cat /proc/version",
+                "ls /boot/vmlinuz-*"
             ],
-            "answer": "Both uname -r and cat /proc/version",
+            "answer": ["uname -r", "cat /proc/version"],
             "explanation": {
-              "uname -r": "Correct. This command shows the running kernel version.",
-              "kernel -v": "Incorrect. This command does not exist.",
-              "cat /proc/version": "Correct. This also provides the kernel version.",
-              "Both uname -r and cat /proc/version": "Correct. Both commands display the kernel version."
+                "uname -r": "Correct. This command shows the running kernel version.",
+                "kernel -v": "Incorrect. This command does not exist.",
+                "cat /proc/version": "Correct. This also provides the kernel version.",
+                "ls /boot/vmlinuz-*": "Incorrect. While it lists kernel images, it does not show the currently running version."
             }
-          },
+        },
           {
             "number": 43,
             "question": "What is the purpose of the 'lsblk' command?",
@@ -978,38 +978,38 @@
           },
           {
             "number": 58,
-            "question": "What command can be used to forcefully unmount a filesystem?",
+            "question": "What command can be used to forcefully unmount a filesystem? (Select all that apply)",
             "options": [
-              "umount -f",
-              "umount -l",
-              "umount --force",
-              "Both umount -f and umount -l"
+                "umount -f",
+                "umount -l",
+                "umount --force",
+                "mount -o remount,ro /mountpoint"
             ],
-            "answer": "Both umount -f and umount -l",
+            "answer": ["umount -f", "umount -l"],
             "explanation": {
-              "umount -f": "Correct. The '-f' option forces unmounting.",
-              "umount -l": "Correct. The '-l' option lazily unmounts the filesystem.",
-              "umount --force": "Incorrect. While not standard, '-f' is the accepted syntax.",
-              "Both umount -f and umount -l": "Correct. Both commands can force unmounting."
+                "umount -f": "Correct. The '-f' option forces unmounting, useful when a remote filesystem is unresponsive.",
+                "umount -l": "Correct. The '-l' option lazily unmounts the filesystem, detaching it immediately.",
+                "umount --force": "Incorrect. While it may seem logical, this option does not exist in standard umount.",
+                "mount -o remount,ro /mountpoint": "Incorrect. This command remounts the filesystem as read-only but does not unmount it."
             }
-          },
+        },
           {
             "number": 59,
-            "question": "Which command would you use to reboot a Linux system immediately?",
+            "question": "Which command would you use to reboot a Linux system immediately? (Select all that apply)",
             "options": [
-              "shutdown -r now",
-              "reboot",
-              "systemctl reboot",
-              "All of the above"
+                "shutdown -r now",
+                "reboot",
+                "systemctl reboot",
+                "init 6"
             ],
-            "answer": "All of the above",
+            "answer": ["shutdown -r now", "reboot", "systemctl reboot"],
             "explanation": {
-              "shutdown -r now": "Correct. This command reboots the system immediately.",
-              "reboot": "Correct. This command also reboots the system.",
-              "systemctl reboot": "Correct. This is a valid command to reboot the system.",
-              "All of the above": "Correct. All commands listed successfully reboot the system."
+                "shutdown -r now": "Correct. This command reboots the system immediately, ensuring all processes are terminated properly.",
+                "reboot": "Correct. This is a direct command to reboot the system.",
+                "systemctl reboot": "Correct. This is the recommended way to reboot modern Linux distributions using systemd.",
+                "init 6": "Incorrect. While 'init 6' does reboot the system, it is outdated and not recommended on modern systems using systemd."
             }
-          },
+        },
           {
             "number": 60,
             "question": "What does the command 'lsblk' do?",
@@ -1134,14 +1134,14 @@
             "question": "Which configuration file is used by GRUB Legacy?",
             "options": [
                 "grub.cfg",
-                "menu.lst or grub.conf",
+                "/boot/grub/menu.lst",
                 "/etc/default/grub",
                 "/etc/grub.d/"
             ],
             "answer": "menu.lst or grub.conf",
             "explanation": {
                 "grub.cfg": "Incorrect. This file is used by GRUB2.",
-                "menu.lst or grub.conf": "Correct. These are the configuration files for GRUB Legacy.",
+                "/boot/grub/menu.lst": "Correct. These are the configuration files for GRUB Legacy.",
                 "/etc/default/grub": "Incorrect. This file is used for GRUB2 configuration.",
                 "/etc/grub.d/": "Incorrect. This directory is used in GRUB2 configuration."
             }
@@ -1264,7 +1264,77 @@
                 "tar": "Incorrect. The tar command is used for archiving files.",
                 "gzip": "Incorrect. The gzip command is used for file compression."
             }
-        }
+          },
+            {
+              "number": 75,
+              "question": "Where is the primary GRUB2 configuration file located?",
+              "options": [
+                  "/etc/grub.d/",
+                  "/boot/grub/grub.cfg",
+                  "/etc/default/grub",
+                  "/var/lib/grub/"
+              ],
+              "answer": "/boot/grub/grub.cfg",
+              "explanation": {
+                  "/etc/grub.d/": "Incorrect. This directory contains scripts that help generate the grub.cfg file.",
+                  "/boot/grub/grub.cfg": "Correct. The primary configuration file for GRUB2 is located here.",
+                  "/etc/default/grub": "Incorrect. This file is used to set defaults that influence grub.cfg generation.",
+                  "/var/lib/grub/": "Incorrect. This is not a location used for storing GRUB2 configuration files."
+              }
+          },
+          {
+              "number": 76,
+              "question": "Where should you make changes to GRUB2 settings to affect the generated configuration?",
+              "options": [
+                  "/boot/grub/grub.cfg",
+                  "/etc/grub.d/",
+                  "/etc/default/grub",
+                  "/var/log/grub/"
+              ],
+              "answer": "/etc/default/grub",
+              "explanation": {
+                  "/boot/grub/grub.cfg": "Incorrect. This file is generated and should not be edited directly.",
+                  "/etc/grub.d/": "Incorrect. This directory contains scripts but not the main configuration settings.",
+                  "/etc/default/grub": "Correct. Changes here affect the generated grub.cfg file.",
+                  "/var/log/grub/": "Incorrect. This is not a valid location for GRUB2 configuration settings."
+              }
+          },
+            {
+              "number": 77,
+              "question": "Where are the GRUB2 script files stored that influence the generation of the main configuration?",
+              "options": [
+                  "/etc/default/grub",
+                  "/boot/grub/grub.cfg",
+                  "/etc/grub.d/",
+                  "/usr/lib/grub/"
+              ],
+              "answer": "/etc/grub.d/",
+              "explanation": {
+                  "/etc/default/grub": "Incorrect. This file contains default settings, not scripts.",
+                  "/boot/grub/grub.cfg": "Incorrect. This is the main configuration file generated by scripts.",
+                  "/etc/grub.d/": "Correct. This directory contains scripts that help generate the grub.cfg file.",
+                  "/usr/lib/grub/": "Incorrect. This directory is used for GRUB binaries, not scripts."
+              }
+          },
+            {
+              "number": 78,
+              "question": "Where are the `systemd` configuration files primarily located? (Select two)",
+              "options": [
+                  "/etc/systemd/system/",
+                  "/lib/systemd/system/",
+                  "/var/systemd/config/",
+                  "/usr/systemd/conf/",
+                  "/opt/systemd/settings/"
+              ],
+              "answer": ["/etc/systemd/system/", "/lib/systemd/system/"],
+              "explanation": {
+                  "/etc/systemd/system/": "Correct. This directory contains user-specific configuration files for systemd.",
+                  "/lib/systemd/system/": "Correct. This directory contains default configuration files for systemd.",
+                  "/var/systemd/config/": "Incorrect. This is not a standard directory for systemd configuration files.",
+                  "/usr/systemd/conf/": "Incorrect. This is not a standard directory for systemd configuration files.",
+                  "/opt/systemd/settings/": "Incorrect. This is not a standard directory for systemd configuration files."
+              }
+          }
         ]
       }
     ]
