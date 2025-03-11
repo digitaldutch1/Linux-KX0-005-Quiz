@@ -146,6 +146,7 @@ class QuizApp:
         self.ebook_menu.menu.add_command(label="Summary Chapter 3: Managing Files, Directories, and Text", command=self.open_summary_chapter_3)
         self.ebook_menu.menu.add_command(label="Summary Chapter 4: Searching and Analyzing tekst", command=self.open_summary_chapter_4)
         self.ebook_menu.menu.add_command(label="Summary Chapter 5: Explaining the Boot Process", command=self.open_summary_chapter_5)
+        self.ebook_menu.menu.add_command(label="Summary Chapter 6: Maintaining System Startup and Services in Linux", command=self.open_summary_chapter_6)
 
         # ---------------- Chapters Menu ---------------
         self.chapter_menu = tk.Menubutton(
@@ -753,6 +754,9 @@ class QuizApp:
 
     def open_summary_chapter_5(self):
         self.open_pdf_in_browser('Chapter 5 Explaining the Boot Process.pdf')
+
+    def open_summary_chapter_6(self):
+        self.open_pdf_in_browser('Chapter 6 Maintaining System Startup and Services in Linux.pdf')
 
     def open_pdf_in_browser(self, filename):
         if getattr(sys, 'frozen', False):
