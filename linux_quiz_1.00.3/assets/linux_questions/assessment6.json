@@ -1,0 +1,1687 @@
+
+
+
+{
+    "chapters": [
+      {
+        "description": "Assessment 6",
+        "questions": [
+          {
+            "number": 1,
+            "question": "A Linux administrator needs to create an image named sda.img from the sda disk and store it in the /tmp directory. Which of the following commands should be used to accomplish this task?",
+            "options": [
+              "dd of=/dev/sda if=/tmp/sda.img",
+              "dd if=/dev/sda of=/tmp/sda.img",
+              "dd --if=/dev/sda --of=/tmp/sda.img",
+              "dd --of=/dev/sda --if=/tmp/sda.img"
+            ],
+            "answer": ["dd if=/dev/sda of=/tmp/sda.img"],
+            "explanation": {
+              "dd of=/dev/sda if=/tmp/sda.img": "Syntax is reversed; 'of' should be the output file and 'if' the input file.",
+              "dd if=/dev/sda of=/tmp/sda.img": "Correct. 'if=/dev/sda' (input), 'of=/tmp/sda.img' (output).",
+              "dd --if=/dev/sda --of=/tmp/sda.img": "Alternate syntax but typically 'if' and 'of' do not use double dashes in standard dd usage.",
+              "dd --of=/dev/sda --if=/tmp/sda.img": "Again, reversed syntax and non-standard option style."
+            }
+          },
+          {
+            "number": 2,
+            "question": "A Linux administrator created the directory /project/access2all to avoid the deletion or modification of files from non-owners. Which of the following will accomplish this goal?",
+            "options": [
+              "chmod +t /project/access2all",
+              "chmod +rws /project/access2all",
+              "chmod 2770 /project/access2all",
+              "chmod ugo+rwx /project/access2all"
+            ],
+            "answer": ["chmod 2770 /project/access2all"],
+            "explanation": {
+              "chmod +t /project/access2all": "Sets the sticky bit on the directory but does not address group permissions or setgid requirements.",
+              "chmod +rws /project/access2all": "Sets SUID (on a directory often meaningless) and read/write/execute for user, but not correct setgid approach.",
+              "chmod 2770 /project/access2all": "Correct. The leading '2' sets setgid; '770' gives full permissions to owner/group, none to others.",
+              "chmod ugo+rwx /project/access2all": "Gives read/write/execute to everyone, which does not prevent non-owners from deleting files."
+            }
+          },
+          {
+            "number": 3,
+            "question": "You need to enable the DHCP service on your Debian-based SysV init system for the default runlevels. Which of the following commands should you use?",
+            "options": [
+              "update-rc.d dhcp default",
+              "chkconfig --default dhcp on",
+              "update-rc.d default dhcp",
+              "update-rc.d dhcp defaults"
+            ],
+            "answer": ["update-rc.d dhcp defaults"],
+            "explanation": {
+              "update-rc.d dhcp default": "Syntax is incorrect; 'defaults' is the right keyword.",
+              "chkconfig --default dhcp on": "chkconfig is typical for Red Hat-based, not Debian-based systems.",
+              "update-rc.d default dhcp": "Incorrect ordering of parameters.",
+              "update-rc.d dhcp defaults": "Correct. Creates the appropriate symlinks in /etc/rc*.d/ for Debian-based SysV init systems."
+            }
+          },
+          {
+            "number": 4,
+            "question": "You are managing a systemd system and need to create an automount unit file. Which of the following directives should you review to possibly include in this file’s [Automount] section? (Choose all that apply.)",
+            "options": [
+              "Where",
+              "Options",
+              "DirectoryMode",
+              "TimeOutIdleSec",
+              "What"
+            ],
+            "answer": ["Where", "Options", "DirectoryMode", "TimeOutIdleSec"],
+            "explanation": {
+              "Where": "Correct. Specifies the mount point path for the automount.",
+              "Options": "Correct. Additional mount options can be specified here.",
+              "DirectoryMode": "Correct. Sets the mode for directories created by automount, if needed.",
+              "TimeOutIdleSec": "Correct. Defines how long to wait before unmounting when idle.",
+              "What": "Typically found in [Mount] section, not [Automount]."
+            }
+          },
+          {
+            "number": 5,
+            "question": "Which two commands can be used to set the IP address, subnet mask, and default router information on an interface using the command line?",
+            "options": [
+              "netstat",
+              "ping",
+              "nmtui",
+              "ip",
+              "route"
+            ],
+            "answer": ["nmtui", "ip"],
+            "explanation": {
+              "netstat": "Displays active connections, routing tables, etc., not primarily for configuring addresses.",
+              "ping": "Used to check connectivity, not configure IP settings.",
+              "nmtui": "Correct. A text-based NetworkManager utility to set IP settings in many distros.",
+              "ip": "Correct. 'ip addr add ...' can set IP, netmask, etc.",
+              "route": "Displays/modifies routing tables but not typically a direct single-step IP config tool."
+            }
+          },
+          {
+            "number": 6,
+            "question": "Which command displays the duplex settings for an Ethernet card?",
+            "options": [
+              "ethtool",
+              "netstat",
+              "iwconfig",
+              "iwlist",
+              "route"
+            ],
+            "answer": ["ethtool"],
+            "explanation": {
+              "ethtool": "Correct. Shows detailed info, including speed and duplex for Ethernet interfaces.",
+              "netstat": "Displays network connections, routing tables, stats, not Ethernet duplex directly.",
+              "iwconfig": "Used for configuring wireless network interfaces, not Ethernet.",
+              "iwlist": "Scans wireless networks, not Ethernet link duplex.",
+              "route": "Shows/manipulates IP routing table, not interface duplex."
+            }
+          },
+          {
+            "number": 7,
+            "question": "What network setting defines the network device that routes packets intended for hosts on remote networks?",
+            "options": [
+              "Default router",
+              "Netmask",
+              "Hostname",
+              "IP address",
+              "DNS server"
+            ],
+            "answer": ["Default router"],
+            "explanation": {
+              "Default router": "Correct. Also known as the default gateway, handles traffic to remote networks.",
+              "Netmask": "Defines network portion vs. host portion of IP, not default route.",
+              "Hostname": "Name identifying the machine, unrelated to routing.",
+              "IP address": "The address of the machine itself, not the next-hop router.",
+              "DNS server": "Maps hostnames to IP addresses, not for routing traffic."
+            }
+          },
+          {
+            "number": 8,
+            "question": "A systems administrator is investigating why one of the servers has stopped connecting to the internet. Which of the following is causing the issue?",
+            "options": [
+              "The search entry in the /etc/resolv.conf file is incorrect.",
+              "Wired connection 1 is offline.",
+              "No default route is defined.",
+              "The DNS address has been commented out in the configuration file."
+            ],
+            "answer": ["The DNS address has been commented out in the configuration file."],
+            "explanation": {
+              "The search entry in the /etc/resolv.conf file is incorrect.": "Would affect domain search, but not necessarily kill all internet access unless DNS is fully broken.",
+              "Wired connection 1 is offline.": "Possible, but the scenario specifically mentions DNS being commented out, from the question context.",
+              "No default route is defined.": "That would appear as no route to the internet, not necessarily DNS. Also not indicated as the direct cause by the question text.",
+              "The DNS address has been commented out in the configuration file.": "Correct. Without a valid DNS server entry, name resolution fails, causing internet connectivity to fail (in many typical usage scenarios)."
+            },
+            "image": "assets/linux_questions_images/assessment6_8.jpg"
+          },
+          {
+            "number": 9,
+            "question": "A systems administrator is tasked with installing GRUB on the legacy MBR of the SATA hard drive. Which of the following commands will help the administrator accomplish this task?",
+            "options": [
+              "grub-install /dev/hda",
+              "grub-install /dev/sda",
+              "grub-install /dev/sr0",
+              "grub-install /dev/hd0,0"
+            ],
+            "answer": ["grub-install /dev/sda"],
+            "explanation": {
+              "grub-install /dev/hda": "Refers to an older naming scheme (IDE?), not typical for SATA which is usually /dev/sda.",
+              "grub-install /dev/sda": "Correct for installing GRUB on the first SATA drive’s MBR.",
+              "grub-install /dev/sr0": "sr0 is typically an optical (CD/DVD) device, not a hard disk.",
+              "grub-install /dev/hd0,0": "Grub syntax from older GRUB Legacy might do that, but in Linux device naming it's not standard."
+            }
+          },
+          {
+            "number": 10,
+            "question": "A junior Linux administrator is tasked with installing an application. The installation guide states the application should only be installed in a runlevel 5 environment. Which of the following commands would ensure the server is set to runlevel 5?",
+            "options": [
+              "systemctl isolate multi-user.target",
+              "systemctl isolate graphical.target",
+              "systemctl isolate network.target",
+              "systemctl isolate basic.target"
+            ],
+            "answer": ["systemctl isolate graphical.target"],
+            "explanation": {
+              "systemctl isolate multi-user.target": "Equivalent to runlevel 3, not 5.",
+              "systemctl isolate graphical.target": "Correct. This corresponds to runlevel 5 with GUI.",
+              "systemctl isolate network.target": "This is an early systemd target for bringing up networking, not runlevel 5.",
+              "systemctl isolate basic.target": "Basic system initialization target, not runlevel 5."
+            },
+            "image": "assets/linux_questions_images/assessment6_10.jpg"
+          },
+          {
+            "number": 11,
+            "question": "A Linux administrator is tasked with adding users to the system and wants to ensure the users’ access will be disabled once the project is over. The expiration date should be 2021-09-30. Which of the following commands will accomplish this task?",
+            "options": [
+              "sudo useradd -e 2021-09-30 Project_user",
+              "sudo useradd -c 2021-09-30 Project_user",
+              "sudo modinfo -F 2021-09-30 Project_uses",
+              "sudo useradd -m -d 2021-09-30 Project_user"
+            ],
+            "answer": ["sudo useradd -e 2021-09-30 Project_user"],
+            "explanation": {
+              "sudo useradd -e 2021-09-30 Project_user": "Correct. The -e option sets the account expiration date.",
+              "sudo useradd -c 2021-09-30 Project_user": "The -c option sets a comment, not an expiration date.",
+              "sudo modinfo -F 2021-09-30 Project_uses": "modinfo is for kernel modules, not user management.",
+              "sudo useradd -m -d 2021-09-30 Project_user": "-m creates a home directory, -d sets home path. Not an expiration date."
+            }
+          },
+          {
+            "number": 12,
+            "question": "A DevOps engineer needs to download a Git repository from https://git.company.com/admin/project.git. Which of the following commands will achieve this goal?",
+            "options": [
+              "git clone https://git.company.com/admin/project.git",
+              "git checkout https://git.company.com/admin/project.git",
+              "git pull https://git.company.com/admin/project.git",
+              "git branch https://git.company.com/admin/project.git"
+            ],
+            "answer": ["git clone https://git.company.com/admin/project.git"],
+            "explanation": {
+              "git clone https://git.company.com/admin/project.git": "Correct. Clones the repo from the URL to a local directory.",
+              "git checkout https://git.company.com/admin/project.git": "checkout is used to switch branches or commits, not to download a new repo.",
+              "git pull https://git.company.com/admin/project.git": "pull updates an existing local repo from remote, doesn't clone new.",
+              "git branch https://git.company.com/admin/project.git": "branch manages or lists branches, not for downloading repos."
+            }
+          },
+          {
+            "number": 13,
+            "question": "What device setting defines a host that maps a host name to an IP address?",
+            "options": [
+              "Default router",
+              "Netmask",
+              "Hostname",
+              "IP address",
+              "DNS server"
+            ],
+            "answer": ["DNS server"],
+            "explanation": {
+              "Default router": "Used for routing traffic to non-local networks, not host-to-IP resolution.",
+              "Netmask": "Defines local network boundary, not name resolution.",
+              "Hostname": "Local system name, not the service that resolves names to IPs.",
+              "IP address": "Address assigned to a host, not the name-to-IP resolution service.",
+              "DNS server": "Correct. A DNS server handles mapping of names to IP addresses."
+            }
+          },
+          {
+            "number": 14,
+            "question": "What type of address is used so local applications can use network protocols to communicate with each other?",
+            "options": [
+              "Dynamic address",
+              "Loopback address",
+              "Static address",
+              "Hostname",
+              "MAC address"
+            ],
+            "answer": ["Loopback address"],
+            "explanation": {
+              "Dynamic address": "Assigned by DHCP, does not specifically enable local app communication via 127.0.0.1.",
+              "Loopback address": "Correct. 127.0.0.1 is used for local communications with itself.",
+              "Static address": "Manually assigned IP, not specifically for local communications only.",
+              "Hostname": "Name for a system, not specifically the IP loopback mechanism.",
+              "MAC address": "Layer 2 hardware address, not a network-layer loopback IP."
+            }
+          },
+          {
+            "number": 15,
+            "question": "Which command would you use to find the mail server for a domain?",
+            "options": [
+              "dig",
+              "netstat",
+              "ping6",
+              "host",
+              "ss"
+            ],
+            "answer": ["dig"],
+            "explanation": {
+              "dig": "Correct. 'dig domain.com MX' can identify the mail (MX) records for a domain.",
+              "netstat": "Shows network connections/stats, not DNS queries for mail servers.",
+              "ping6": "ICMPv6 connectivity test, not DNS queries for mail servers.",
+              "host": "Can show DNS info but is less specialized for retrieving MX details than dig. (Though 'host -t mx domain.com' can also do it, typically dig is the standard recommended.)",
+              "ss": "Socket Statistics utility for active connections, not DNS queries."
+            }
+          },
+          {
+            "number": 16,
+            "question": "What directory do Red Hat–based systems use to store network configuration files?",
+            "options": [
+              "/etc/sysconfig/network-scripts",
+              "/etc/network",
+              "/etc/ifcfg-eth0",
+              "/etc/ifconfig",
+              "/etc/iwconfig"
+            ],
+            "answer": ["/etc/sysconfig/network-scripts"],
+            "explanation": {
+              "/etc/sysconfig/network-scripts": "Correct. Contains ifcfg-* interface config files on Red Hat–based systems.",
+              "/etc/network": "Debian-based location, not Red Hat–based.",
+              "/etc/ifcfg-eth0": "An example file that might reside under network-scripts, but not the main directory name for everything.",
+              "/etc/ifconfig": "No such typical directory for config files by default.",
+              "/etc/iwconfig": "Used for wireless config, not the standard path for all network interface files."
+            }
+          },
+          {
+            "number": 17,
+            "question": "Which configuration line sets a dynamic IP address for a Debian system?",
+            "options": [
+              "iface eth0 inet static",
+              "iface eth0 inet dhcp",
+              "auto eth0",
+              "iface eth0 inet6 auto",
+              "BOOTPROTO=dynamic"
+            ],
+            "answer": ["iface eth0 inet dhcp"],
+            "explanation": {
+              "iface eth0 inet static": "Specifies a static IP address, not dynamic.",
+              "iface eth0 inet dhcp": "Correct. Tells ifup/ifdown to use DHCP on eth0.",
+              "auto eth0": "Ensures interface is started automatically but doesn't specify DHCP by itself.",
+              "iface eth0 inet6 auto": "Indicates IPv6, not IPv4 DHCP.",
+              "BOOTPROTO=dynamic": "Red Hat–style configuration, not typical Debian /etc/network/interfaces syntax."
+            }
+          },
+          {
+            "number": 18,
+            "question": "An administrator installed an application from source into /opt/operations1/ and received numerous reports that users are not able to access the application without specifying the full path. Which of the following commands should be used to resolve this issue?",
+            "options": [
+              "echo 'export PATH=$PATH:/opt/operations1/bin' >> /etc/profile",
+              "echo 'export PATH=/opt/operations1/bin' >> /etc/profile",
+              "echo 'export PATH=$PATH/opt/operations1/bin' >> /etc/profile",
+              "echo 'export $PATH:/opt/operations1/bin' >> /etc/profile"
+            ],
+            "answer": ["echo 'export PATH=$PATH:/opt/operations1/bin' >> /etc/profile"],
+            "explanation": {
+              "echo 'export PATH=$PATH:/opt/operations1/bin' >> /etc/profile": "Correct. Appends the new path to PATH in a system-wide init script.",
+              "echo 'export PATH=/opt/operations1/bin' >> /etc/profile": "Would overwrite PATH entirely instead of appending.",
+              "echo 'export PATH=$PATH/opt/operations1/bin' >> /etc/profile": "Missing a colon after $PATH, so it wouldn't parse properly.",
+              "echo 'export $PATH:/opt/operations1/bin' >> /etc/profile": "Syntax is incorrect, the environment variable name is missing after 'export'."
+            }
+          },
+          {
+            "number": 19,
+            "question": "A Linux system is getting an error indicating the root filesystem is full. Which of the following commands should be used by the systems administrator to resolve this issue? (Choose three.)",
+            "options": [
+              "df -h /",
+              "fdisk -1 /dev/sdb",
+              "growpart /dev/mapper/rootvg-rootlv",
+              "pvcreate /dev/sdb",
+              "lvresize –L +10G -r /dev/mapper/rootvg-rootlv",
+              "lsblk /dev/sda",
+              "parted -l /dev/mapper/rootvg-rootlv",
+              "vgextend /dev/rootvg /dev/sdb"
+            ],
+            "answer": [
+              "pvcreate /dev/sdb",
+              "lvresize –L +10G -r /dev/mapper/rootvg-rootlv",
+              "vgextend /dev/rootvg /dev/sdb"
+            ],
+            "explanation": {
+              "df -h /": "Displays free disk space but does not fix the issue of a full filesystem.",
+              "fdisk -1 /dev/sdb": "Likely a typo for 'fdisk -l', doesn't directly fix the full filesystem issue.",
+              "growpart /dev/mapper/rootvg-rootlv": "Used in some distributions (e.g., cloud images) but not always standard LVM approach.",
+              "pvcreate /dev/sdb": "Correct. Initializes the new disk as a physical volume for LVM.",
+              "lvresize –L +10G -r /dev/mapper/rootvg-rootlv": "Correct. Resizes the logical volume and filesystem by +10G.",
+              "lsblk /dev/sda": "Lists block devices, does not fix the problem.",
+              "parted -l /dev/mapper/rootvg-rootlv": "Shows partition info, doesn't fix the issue.",
+              "vgextend /dev/rootvg /dev/sdb": "Correct. Adds the new PV to the existing volume group to allow LV expansion."
+            }
+          },
+          {
+            "number": 20,
+            "question": "A cloud engineer is asked to copy the file deployment.yaml from a container to the host where the container is running. Which of the following commands can accomplish this task?",
+            "options": [
+              "docker cp container_id/deployment.yaml deployment.yaml",
+              "docker cp container_id:/deployment.yaml deployment.yaml",
+              "docker cp deployment.yaml local://deployment.yaml",
+              "docker cp container_id/deployment.yaml local://deployment.yaml"
+            ],
+            "answer": ["docker cp container_id:/deployment.yaml deployment.yaml"],
+            "explanation": {
+              "docker cp container_id/deployment.yaml deployment.yaml": "Missing the colon syntax (container_id:/path). Docker requires container:filepath.",
+              "docker cp container_id:/deployment.yaml deployment.yaml": "Correct. Copies from container’s /deployment.yaml to local system’s deployment.yaml.",
+              "docker cp deployment.yaml local://deployment.yaml": "Invalid syntax; docker cp doesn't use 'local://'.",
+              "docker cp container_id/deployment.yaml local://deployment.yaml": "Again, invalid local:// usage and missing colon syntax."
+            }
+          },
+          {
+            "number": 21,
+            "question": "A Linux system is failing to start due to issues with several critical system processes. Which of the following options can be used to boot the system into the single user mode? (Choose two.)",
+            "options": [
+              "Execute the following command from the GRUB rescue shell: mount -o remount,ro /sysroot.",
+              "Interrupt the boot process in the GRUB menu and add systemd.unit=single in the kernel line.",
+              "Interrupt the boot process in the GRUB menu and add systemd.unit=rescue.target in the kernel line.",
+              "Interrupt the boot process in the GRUB menu and add single=user in the kernel line.",
+              "Interrupt the boot process in the GRUB menu and add init=/bin/bash in the kernel line.",
+              "Interrupt the boot process in the GRUB menu and add systemd.unit=single.target in the kernel line."
+            ],
+            "answer": [
+              "Interrupt the boot process in the GRUB menu and add systemd.unit=rescue.target in the kernel line.",
+              "Interrupt the boot process in the GRUB menu and add init=/bin/bash in the kernel line."
+            ],
+            "explanation": {
+              "Execute the following command from the GRUB rescue shell: mount -o remount,ro /sysroot.": "Typically used for troubleshooting in rescue environments but not specifically single-user mode approach.",
+              "Interrupt the boot process in the GRUB menu and add systemd.unit=single in the kernel line.": "systemd.unit=single is not standard; rescue.target or emergency.target is typical.",
+              "Interrupt the boot process in the GRUB menu and add systemd.unit=rescue.target in the kernel line.": "Correct. rescue.target is effectively single-user mode in systemd.",
+              "Interrupt the boot process in the GRUB menu and add single=user in the kernel line.": "Typo/no standard argument; you typically just add 'single' or use systemd.unit=.",
+              "Interrupt the boot process in the GRUB menu and add init=/bin/bash in the kernel line.": "Correct. This is a known approach for single-user shell at boot in older systems or certain systemd fallback.",
+              "Interrupt the boot process in the GRUB menu and add systemd.unit=single.target in the kernel line.": "Rescue mode or emergency.target are recognized. 'single.target' is not typically a standard systemd target name."
+            }
+          },
+          {
+            "number": 22,
+            "question": "A DevOps engineer needs to allow incoming traffic to ports in the range of 4000 to 5000 on a Linux server. Which of the following commands will enforce this rule?",
+            "options": [
+              "iptables -f filter -I INPUT -p tcp --dport 4000:5000 -A ACCEPT",
+              "iptables -t filter -A INPUT -p tcp --dport 4000:5000 -j ACCEPT",
+              "iptables filter -A INPUT -p tcp --dport 4000:5000 -D ACCEPT",
+              "iptables filter -S INPUT -p tcp --dport 4000:5000 -A ACCEPT"
+            ],
+            "answer": ["iptables -t filter -A INPUT -p tcp --dport 4000:5000 -j ACCEPT"],
+            "explanation": {
+              "iptables -f filter -I INPUT -p tcp --dport 4000:5000 -A ACCEPT": "-f flushes rules, and syntax order is incorrect. '-I' and '-A' used incorrectly together.",
+              "iptables -t filter -A INPUT -p tcp --dport 4000:5000 -j ACCEPT": "Correct. Appends rule to INPUT chain for TCP ports 4000-5000, action ACCEPT.",
+              "iptables filter -A INPUT -p tcp --dport 4000:5000 -D ACCEPT": "The -D option is for deleting a rule, not adding.",
+              "iptables filter -S INPUT -p tcp --dport 4000:5000 -A ACCEPT": "Invalid usage of '-S' which lists rules, not adding a new rule."
+            }
+          },
+          {
+            "number": 23,
+            "question": "Which ifconfig format correctly assigns an IP address and netmask to the eth0 interface?",
+            "options": [
+              "ifconfig eth0 up 192.168.1.50 netmask 255.255.255.0",
+              "ifconfig eth0 255.255.255.0 192.168.1.50",
+              "ifconfig up 192.168.1.50 netmask 255.255.255.0",
+              "ifconfig up",
+              "ifconfig down"
+            ],
+            "answer": ["ifconfig eth0 up 192.168.1.50 netmask 255.255.255.0"],
+            "explanation": {
+              "ifconfig eth0 up 192.168.1.50 netmask 255.255.255.0": "Correct. Format is 'ifconfig <iface> <IP> netmask <mask>' plus 'up'.",
+              "ifconfig eth0 255.255.255.0 192.168.1.50": "Order is reversed; typically 'ifconfig eth0 192.168.1.50 netmask 255.255.255.0'.",
+              "ifconfig up 192.168.1.50 netmask 255.255.255.0": "'up' usually follows the interface name, not first.",
+              "ifconfig up": "Just brings interface up, no IP assignment.",
+              "ifconfig down": "Brings interface down, not relevant to assigning IP."
+            }
+          },
+          {
+            "number": 24,
+            "question": "What option sets the wireless access point name in the iwconfig command?",
+            "options": [
+              "key",
+              "netmask",
+              "address",
+              "essid",
+              "channel"
+            ],
+            "answer": ["essid"],
+            "explanation": {
+              "key": "Used to set the WEP key for older Wi-Fi encryption.",
+              "netmask": "Not relevant for wireless ESSID setting; netmask is for IP.",
+              "address": "Might set a MAC address or IP in certain contexts, not the AP name.",
+              "essid": "Correct. 'iwconfig wlan0 essid <Name>' sets the network name (SSID).",
+              "channel": "Sets the wireless channel, not the ESSID."
+            }
+          },
+          {
+            "number": 25,
+            "question": "What tool allows you to send ICMP messages to a remote host to test network connectivity?",
+            "options": [
+              "netstat",
+              "ifconfig",
+              "ping",
+              "iwconfig",
+              "ss"
+            ],
+            "answer": ["ping"],
+            "explanation": {
+              "netstat": "Displays network connections and routes, not specifically sending ICMP to test connectivity.",
+              "ifconfig": "Configures or displays network interface parameters, not sending ICMP echo requests.",
+              "ping": "Correct. Uses ICMP echo requests to test reachability.",
+              "iwconfig": "Configures wireless interfaces, not used to send ICMP requests.",
+              "ss": "Displays socket statistics, not primarily an ICMP test tool."
+            }
+          },
+          {
+            "number": 26,
+            "question": "You have a network application that fails to connect to a remote server. What command-line tool should you use to watch the network packets that leave your system to ensure that they use the correct network port?",
+            "options": [
+              "nc",
+              "tcpdump",
+              "ping",
+              "traceroute",
+              "mtr"
+            ],
+            "answer": ["tcpdump"],
+            "explanation": {
+              "nc": "Netcat can test connections but does not provide a packet-by-packet view.",
+              "tcpdump": "Correct. Captures and displays packets to/from the network interface.",
+              "ping": "ICMP echo test, not raw packet capture for arbitrary protocols.",
+              "traceroute": "Shows routing hops, not capturing packets.",
+              "mtr": "Combines ping and traceroute info, still not a packet capture utility."
+            }
+          },
+          {
+            "number": 27,
+            "question": "Which of the following is not used by default within GNOME Shell?",
+            "options": [
+              "SDDM",
+              "Files",
+              "Mutter",
+              "GDM",
+              "Dock"
+            ],
+            "answer": ["SDDM"],
+            "explanation": {
+              "SDDM": "Correct. It's the display manager typically used by KDE, not default for GNOME Shell.",
+              "Files": "GNOME's file manager (formerly Nautilus). Used by GNOME.",
+              "Mutter": "Default GNOME window manager. Used by GNOME Shell.",
+              "GDM": "GNOME Display Manager, used by default in GNOME Shell environment.",
+              "Dock": "GNOME can have a dock (Dash or via extension)."
+            }
+          },
+          {
+            "number": 28,
+            "question": "A Linux administrator needs to determine whether a hostname is in the DNS. Which of the following would supply the information that is needed?",
+            "options": [
+              "nslookup",
+              "rsync",
+              "netstat",
+              "host"
+            ],
+            "answer": ["host"],
+            "explanation": {
+              "nslookup": "An older DNS query tool, can indeed show if a hostname is in DNS as well. This question's official correct was 'host', though nslookup is also valid. The question calls out 'host' specifically.",
+              "rsync": "File copying/syncing tool.",
+              "netstat": "Displays connections and routing, not DNS queries.",
+              "host": "Correct. Resolves domain names and displays DNS records."
+            }
+          },
+          {
+            "number": 29,
+            "question": "A cloud engineer needs to block the IP address 192.168.10.50 from accessing a Linux server. Which of the following commands will achieve this goal?",
+            "options": [
+              "iptables -F INPUT -j 192.168.10.50 -m DROP",
+              "iptables -A INPUT -s 192.168.10.30 -j DROP",
+              "iptables -i INPUT --ipv4 192.168.10.50 -z DROP",
+              "iptables -j INPUT 192.168.10.50 -p DROP"
+            ],
+            "answer": ["iptables -A INPUT -s 192.168.10.30 -j DROP"],
+            "explanation": {
+              "iptables -F INPUT -j 192.168.10.50 -m DROP": "-F flushes rules from a chain, doesn't specify correct syntax to drop traffic from the IP.",
+              "iptables -A INPUT -s 192.168.10.30 -j DROP": "Correct in principle for blocking 192.168.10.30 (though the question text said 10.50, there's a mismatch in question wording; presumably the correct usage is -s 192.168.10.50).",
+              "iptables -i INPUT --ipv4 192.168.10.50 -z DROP": "Invalid option usage.",
+              "iptables -j INPUT 192.168.10.50 -p DROP": "Incorrect ordering and usage of parameters."
+            }
+          },
+          {
+            "number": 30,
+            "question": "A Linux systems administrator is configuring a new filesystem that needs the capability to be mounted persistently across reboots. Which of the following commands will accomplish this task? (Choose two.)",
+            "options": [
+              "df -h /data",
+              "mkfs.ext4 /dev/sdc1",
+              "fsck /dev/sdc1",
+              "fdisk -l /dev/sdc1",
+              "echo \"/data /dev/sdc1 ext4 defaults 0 0\" >> /etc/fstab",
+              "echo \"/dev/sdc1 /data ext4 defaults 0 0\" >> /etc/fstab"
+            ],
+            "answer": [
+              "mkfs.ext4 /dev/sdc1",
+              "echo \"/dev/sdc1 /data ext4 defaults 0 0\" >> /etc/fstab"
+            ],
+            "explanation": {
+              "df -h /data": "Shows disk usage for /data if mounted, doesn't configure mounting.",
+              "mkfs.ext4 /dev/sdc1": "Correct. Creates an ext4 filesystem on /dev/sdc1.",
+              "fsck /dev/sdc1": "Checks filesystem consistency, doesn't create or persist mount.",
+              "fdisk -l /dev/sdc1": "Lists partition info, not for mounting or filesystem creation alone.",
+              "echo \"/data /dev/sdc1 ext4 defaults 0 0\" >> /etc/fstab": "Inversion of the typical line. Typically we do device first then mountpoint. Not usually the correct order, though some distributions interpret it differently. The standard approach is device then mount point. The question's official solutions highlight the other line.",
+              "echo \"/dev/sdc1 /data ext4 defaults 0 0\" >> /etc/fstab": "Correct. This ensures the filesystem is mounted at boot time."
+            }
+          },
+          {
+            "number": 31,
+            "question": "A Linux administrator is alerted to a storage capacity issue on a server without a specific mount point or directory. Which of the following commands would be MOST helpful for troubleshooting? (Choose two.)",
+            "options": [
+              "parted",
+              "df",
+              "mount",
+              "du",
+              "fdisk",
+              "dd",
+              "ls"
+            ],
+            "answer": ["df", "du"],
+            "explanation": {
+              "parted": "Used for partition management, not direct usage analysis.",
+              "df": "Correct. Shows which filesystems are near capacity.",
+              "mount": "Displays mounted filesystems and options, less direct usage info.",
+              "du": "Correct. Displays usage by directory/file, helps find what's filling space.",
+              "fdisk": "Partition table manipulator, not for usage breakdown.",
+              "dd": "Data copy tool, not usage or capacity analysis.",
+              "ls": "Lists directory contents, but doesn't show comprehensive usage."
+            }
+          },
+          {
+            "number": 32,
+            "question": "Which of the following describes the sound keys accessibility setting?",
+            "options": [
+              "Sounds are made when the Caps Lock or Num Lock key is turned on or off.",
+              "A program that reads the GUI aloud, such as Orca.",
+              "A cursor blink rate modification to make it easier to locate the cursor on the screen.",
+              "Output to a refreshable braille display that is provided by the Orca screen reader.",
+              "The screen or a screen portion is amplified to different magnification levels."
+            ],
+            "answer": ["Sounds are made when the Caps Lock or Num Lock key is turned on or off."],
+            "explanation": {
+              "Sounds are made when the Caps Lock or Num Lock key is turned on or off.": "Correct. This is typically referred to as 'toggle keys' or 'sound keys'.",
+              "A program that reads the GUI aloud, such as Orca.": "That is a screen reader.",
+              "A cursor blink rate modification to make it easier to locate the cursor on the screen.": "Cursor or caret accessibility, not sound keys.",
+              "Output to a refreshable braille display that is provided by the Orca screen reader.": "Braille output, not sound keys.",
+              "The screen or a screen portion is amplified to different magnification levels.": "Screen magnifier, not a 'sound keys' feature."
+            }
+          },
+          {
+            "number": 33,
+            "question": "Which of the following best describes the slow keys accessibility setting?",
+            "options": [
+              "A keyboard option that modifies how long a key must be pressed down to acknowledge the key",
+              "A keyboard option that sets keyboard modifier keys, such as Ctrl and Shift, to maintain their pressed status until a subsequent key is pressed",
+              "A keyboard option that modifies how long a key must be pressed down and that defines a delay to acknowledge the key repeat",
+              "A keyboard option that sets a primary key to be pressed along with a mouse click to emulate secondary mouse clicks",
+              "A keyboard option that displays a visual keyboard on the UI that can be manipulated by a mouse or other pointing device to emulate keystrokes"
+            ],
+            "answer": ["A keyboard option that modifies how long a key must be pressed down to acknowledge the key"],
+            "explanation": {
+              "A keyboard option that modifies how long a key must be pressed down to acknowledge the key": "Correct. 'Slow keys' introduces a delay between key press and acceptance.",
+              "A keyboard option that sets keyboard modifier keys...": "That describes 'sticky keys', not slow keys.",
+              "A keyboard option that modifies how long a key must be pressed down and that defines a delay to acknowledge the key repeat": "Likely confusion with 'bounce keys' or combination. The typical definition of slow keys is purely about a press-and-hold threshold before acceptance.",
+              "A keyboard option that sets a primary key to be pressed along with a mouse click...": "That is 'mouse keys' or similar, not slow keys.",
+              "A keyboard option that displays a visual keyboard on the UI...": "That's an on-screen keyboard, not slow keys."
+            }
+          },
+          {
+            "number": 34,
+            "question": "Which of the following communicates with the Linux operating system to transmit the UI wants and needs?",
+            "options": [
+              "Window manager",
+              "Display manager",
+              "Desktop environment",
+              "Windows server",
+              "Display server"
+            ],
+            "answer": ["Display server"],
+            "explanation": {
+              "Window manager": "Manages how windows appear and interact, sits on top of display server.",
+              "Display manager": "Provides the login screen and session management, not direct UI-to-kernel communication.",
+              "Desktop environment": "High-level suite of tools and settings on top of window manager.",
+              "Windows server": "Likely a confusion; correct term is 'X server' or 'Wayland compositor'.",
+              "Display server": "Correct. E.g., X server or Wayland server is the interface between UI and OS."
+            }
+          },
+          {
+            "number": 35,
+            "question": "Which of the following are true concerning Wayland? (Choose all that apply.)",
+            "options": [
+              "Currently X11 is more secure than Wayland.",
+              "Wayland uses the $WAYLAND_DISPLAY environment variable.",
+              "Wayland’s only compositor is Weston.",
+              "XWayland supports legacy X11 programs.",
+              "Set WaylandDisable to true to disable Wayland in GNOME Shell."
+            ],
+            "answer": [
+              "Wayland uses the $WAYLAND_DISPLAY environment variable.",
+              "XWayland supports legacy X11 programs."
+            ],
+            "explanation": {
+              "Currently X11 is more secure than Wayland.": "No, Wayland is generally considered more modern and with better security model in many respects.",
+              "Wayland uses the $WAYLAND_DISPLAY environment variable.": "Correct. It's typically set to 'wayland-0' or similar.",
+              "Wayland’s only compositor is Weston.": "Not true. GNOME uses Mutter, KDE uses KWin, etc., with Wayland support.",
+              "XWayland supports legacy X11 programs.": "Correct. XWayland is the layer for running X11 apps on Wayland.",
+              "Set WaylandDisable to true to disable Wayland in GNOME Shell.": "Typically you'd set 'WaylandEnable=false' or similar in gdm config, but the statement might be slightly off or referencing a different config line."
+            }
+          },
+          {
+            "number": 36,
+            "question": "You use the command gnome-shell --replace at the command line and receive an error message from the utility. What does this indicate?",
+            "options": [
+              "The X11 display server is hung. You need to reboot the server.",
+              "The --replace option should be swapped for the -R option.",
+              "Your display server is Wayland.",
+              "XWayland is currently being used.",
+              "Wayland has been disabled for this session."
+            ],
+            "answer": ["Your display server is Wayland."],
+            "explanation": {
+              "The X11 display server is hung. You need to reboot the server.": "No direct evidence from the error message that it's hung.",
+              "The --replace option should be swapped for the -R option.": "No, gnome-shell doesn't use -R in place of --replace.",
+              "Your display server is Wayland.": "Correct. On Wayland, gnome-shell --replace typically doesn't work because that's an X11-specific approach.",
+              "XWayland is currently being used.": "If XWayland was used, you might still do certain commands, but the question states an error indicates pure Wayland session.",
+              "Wayland has been disabled for this session.": "Opposite scenario. The error is because you're in Wayland, not X."
+            }
+          },
+          {
+            "number": 37,
+            "question": "Which of the following protocols does Xrdp employ?",
+            "options": [
+              "Remote Frame Buffer protocol",
+              "Wayland protocol",
+              "NX technology protocol",
+              "Simple protocol for ICEs",
+              "Remote Desktop Protocol"
+            ],
+            "answer": ["Remote Desktop Protocol"],
+            "explanation": {
+              "Remote Frame Buffer protocol": "Used by VNC, not xrdp.",
+              "Wayland protocol": "A display server protocol, not an RDP equivalent.",
+              "NX technology protocol": "Used by NX for remote sessions, not xrdp.",
+              "Simple protocol for ICEs": "Related to session negotiation in X, not xrdp's main protocol.",
+              "Remote Desktop Protocol": "Correct. xrdp uses RDP under the hood to provide remote desktop services."
+            }
+          },
+          {
+            "number": 38,
+            "question": "A systems administrator pressed Ctrl+Z after starting a program using the command line, and the shell prompt was presented. In order to go back to the program, which of the following commands can the administrator use?",
+            "options": [
+              "fg",
+              "su",
+              "bg",
+              "ed"
+            ],
+            "answer": ["fg"],
+            "explanation": {
+              "fg": "Correct. Brings the most recently suspended job back to the foreground.",
+              "su": "Switch user, unrelated to suspended jobs.",
+              "bg": "Runs the suspended job in the background, not foreground.",
+              "ed": "Text editor command, not related to job control."
+            }
+          },
+          {
+            "number": 39,
+            "question": "A systems administrator received a notification that a system is performing slowly. When running the top command, the administrator sees high %wa (I/O wait). Which of the following commands will the administrator most likely run NEXT?",
+            "options": [
+              "vmstat",
+              "strace",
+              "htop",
+              "lsof"
+            ],
+            "answer": ["vmstat"],
+            "explanation": {
+              "vmstat": "Correct. Helps identify memory and I/O wait issues with real-time stats on processes, swap, I/O, etc.",
+              "strace": "Traces system calls for a single process, not the immediate choice for I/O bottlenecks overall.",
+              "htop": "An interactive top alternative, but vmstat specifically helps break down I/O wait and memory usage further.",
+              "lsof": "Lists open files and sockets, not specifically diagnosing I/O wait across the system."
+            },
+            "image": "assets/linux_questions_images/assessment6_39.jpg"
+          },
+          {
+            "number": 40,
+            "question": "Which of the following technologies provides load balancing, encryption, and observability in containerized environments?",
+            "options": [
+              "Virtual private network",
+              "Sidecar pod",
+              "Overlay network",
+              "Service mesh"
+            ],
+            "answer": ["Service mesh"],
+            "explanation": {
+              "Virtual private network": "Secures connections over untrusted networks, not specifically for container inter-service communication features.",
+              "Sidecar pod": "A container pattern within Kubernetes, doesn't by itself provide load balancing and encryption across all services.",
+              "Overlay network": "Virtual network on top of another network, not necessarily providing encryption/observability at the service layer.",
+              "Service mesh": "Correct. Infrastructure layer for microservices that handles load balancing, encryption (mTLS), traffic routing, and metrics."
+            }
+          },
+          {
+            "number": 41,
+            "question": "A development team asks an engineer to guarantee the persistency of journal log files across system reboots. Which of the following commands would accomplish this task?",
+            "options": [
+              "grep -i auto /etc/systemd/journald.conf && systemctl restart systemd-journald.service",
+              "cat /etc/systemd/journald.conf | awk '(print $1,$3)'",
+              "sed -i 's/auto/persistent/g' /etc/systemd/journald.conf && sed -i 'persistent/s/ˆ#//q' /etc/systemd/journald.conf",
+              "journalctl --list-boots && systemctl restart systemd-journald.service"
+            ],
+            "answer": ["sed -i 's/auto/persistent/g' /etc/systemd/journald.conf && sed -i 'persistent/s/ˆ#//q' /etc/systemd/journald.conf"],
+            "explanation": {
+              "grep -i auto /etc/systemd/journald.conf && systemctl restart systemd-journald.service": "Just searches for 'auto' and restarts, not actually changing persistence to 'persistent'.",
+              "cat /etc/systemd/journald.conf | awk '(print $1,$3)'": "Displays lines but doesn't set persistent storage.",
+              "sed -i 's/auto/persistent/g' /etc/systemd/journald.conf && sed -i 'persistent/s/ˆ#//q' /etc/systemd/journald.conf": "Correct. Switches from 'auto' to 'persistent', uncomments if necessary, ensuring logs persist across reboots.",
+              "journalctl --list-boots && systemctl restart systemd-journald.service": "Lists boots and restarts the service, but doesn't change from auto to persistent."
+            }
+          },
+          {
+            "number": 42,
+            "question": "A systems administrator is receiving tickets from users who cannot reach the application that should be listening on port 9443/tcp on a Linux server. The netstat output shows the service is bound to 127.0.0.1:9443. Based on the information, which of the following is causing the issue?",
+            "options": [
+              "The IP address 0.0.0.0 is not valid.",
+              "The application is listening on the loopback interface.",
+              "The application is listening on port 1234.",
+              "The application is not running."
+            ],
+            "answer": ["The application is listening on the loopback interface."],
+            "explanation": {
+              "The IP address 0.0.0.0 is not valid.": "0.0.0.0 can be used to bind all interfaces, so it's not the direct cause.",
+              "The application is listening on the loopback interface.": "Correct. Binding to 127.0.0.1 means it's only accessible locally, not externally.",
+              "The application is listening on port 1234.": "No evidence from netstat to show port 1234 usage. The question states 9443 is used.",
+              "The application is not running.": "It is running, just on the wrong interface (localhost)."
+            },
+            "image": "assets/linux_questions_images/assessment6_42.jpg"
+          },
+          {
+            "number": 43,
+            "question": "Which character set uses 7 bits to store characters?",
+            "options": [
+              "UTF-8",
+              "UTF-16",
+              "ASCII",
+              "Unicode",
+              "UTF-32"
+            ],
+            "answer": ["ASCII"],
+            "explanation": {
+              "UTF-8": "Variable-length encoding for Unicode, typically 1-4 bytes.",
+              "UTF-16": "16-bit encoding for Unicode, not 7-bit.",
+              "ASCII": "Correct. Classic ASCII uses 7 bits (128 possible characters).",
+              "Unicode": "Encompasses a wide range of characters, generally more than 7 bits needed.",
+              "UTF-32": "32-bit encoding for Unicode, definitely not 7-bit."
+            }
+          },
+          {
+            "number": 44,
+            "question": "Which character set uses a 3-byte code and can represent characters from most languages used in the world?",
+            "options": [
+              "ASCII",
+              "LC_ALL",
+              "UTF-8",
+              "UTF-16",
+              "Unicode"
+            ],
+            "answer": ["Unicode"],
+            "explanation": {
+              "ASCII": "7-bit, limited to 128 characters.",
+              "LC_ALL": "An environment variable for locale, not a character set.",
+              "UTF-8": "Can use 1-4 bytes, not strictly 3. It's variable length. Often covers all Unicode though.",
+              "UTF-16": "16-bit (2 or 4 bytes, surrogate pairs).",
+              "Unicode": "Correct as a broad standard covering nearly all languages (though frequently implemented via variable-length encodings like UTF-8). The question statement about '3-byte' might be a simplified reference, but 'Unicode' is the broad coverage answer."
+            }
+          },
+          {
+            "number": 45,
+            "question": "What two environment variables control all the localization settings?",
+            "options": [
+              "LC_NUMERIC, LC_MONETARY",
+              "LANG, LC_ALL",
+              "LC_CTYPE, LANG."
+            ],
+            "answer": ["LANG, LC_ALL"],
+            "explanation": {
+              "LC_NUMERIC, LC_MONETARY": "Only numeric and monetary formats, not all localization aspects.",
+              "LANG, LC_ALL": "Correct. LC_ALL can override all LC_* variables, and LANG is the base fallback.",
+              "LC_CTYPE, LANG.": "LC_CTYPE only affects character classification, not all locale categories."
+            }
+          },
+          {
+            "number": 46,
+            "question": "What Systemd utility allows you to change the localization on your Linux system?",
+            "options": [
+              "timedatectl",
+              "time",
+              "date",
+              "localectl",
+              "locale"
+            ],
+            "answer": ["localectl"],
+            "explanation": {
+              "timedatectl": "Used for controlling system time/timezone, not locale settings.",
+              "time": "Shows resource usage of a command, not a system config tool.",
+              "date": "Shows/sets the date/time, not locale.",
+              "localectl": "Correct. Tool for viewing/changing system locale and keyboard layout in systemd-based distros.",
+              "locale": "Displays or modifies session locale, but localectl is the systemd-level manager."
+            }
+          },
+          {
+            "number": 47,
+            "question": "Which LC_ environment variable determines how Linux displays dollar and cents values?",
+            "options": [
+              "LC_NUMERIC",
+              "LC_MONETARY",
+              "LC_CTYPE",
+              "LC_TIME",
+              "LC_COLLATE"
+            ],
+            "answer": ["LC_MONETARY"],
+            "explanation": {
+              "LC_NUMERIC": "Controls numeric formatting (decimal separator, thousands separator) for non-monetary numbers.",
+              "LC_MONETARY": "Correct. Affects currency symbols, decimal points, etc. for monetary values.",
+              "LC_CTYPE": "Character classification, uppercase/lowercase, etc.",
+              "LC_TIME": "Date/time formats.",
+              "LC_COLLATE": "String sorting rules."
+            }
+          },
+          {
+            "number": 48,
+            "question": "A systems administrator is troubleshooting a connectivity issue to a system named db.example.com. The system IP should be 192.168.20.88. The administrator finds /etc/hosts has 192.168.20.89 db.example.com. Which of the following should the administrator do to address this issue?",
+            "options": [
+              "Modify the /etc/hosts file and change the db.example.com entry to 192.168.20.89.",
+              "Modify the /etc/network file and change the db.example.com entry to 192.168.20.88.",
+              "Modify the /etc/network file and change the db.example.com entry to 192.168.20.89.",
+              "Modify the /etc/hosts file and change the db.example.com entry to 192.168.20.88."
+            ],
+            "answer": ["Modify the /etc/hosts file and change the db.example.com entry to 192.168.20.88."],
+            "explanation": {
+              "Modify the /etc/hosts file and change the db.example.com entry to 192.168.20.89.": "This would keep the incorrect IP. We need 192.168.20.88 as stated.",
+              "Modify the /etc/network file and change the db.example.com entry to 192.168.20.88.": "/etc/network is not typically used for host-to-IP mappings.",
+              "Modify the /etc/network file and change the db.example.com entry to 192.168.20.89.": "Again, not relevant for DNS/host resolution. Also IP is incorrect.",
+              "Modify the /etc/hosts file and change the db.example.com entry to 192.168.20.88.": "Correct. /etc/hosts has the wrong IP, so fix it to the correct one."
+            },
+            "image": "assets/linux_questions_images/assessment6_48.jpg"
+          },
+          {
+            "number": 49,
+            "question": "A systems technician is working on deploying several microservices to various RPM-based systems, some of which could run up to two hours. Which of the following commands will allow the technician to execute those services and continue deploying other microservices within the same terminal session?",
+            "options": [
+              "gedit & disown",
+              "kill 9 %1",
+              "fg %1",
+              "bg %1 job name"
+            ],
+            "answer": ["bg %1 job name"],
+            "explanation": {
+              "gedit & disown": "Runs gedit in background and disowns it, but not specifically for continuing microservices in that same session in a controlled manner.",
+              "kill 9 %1": "Terminates the job, not continuing it in background.",
+              "fg %1": "Brings a suspended job to foreground, not letting you continue other tasks easily.",
+              "bg %1 job name": "Correct. Moves job to the background, freeing the shell for additional commands."
+            }
+          },
+          {
+            "number": 50,
+            "question": "A Linux administrator was notified that a virtual server has an I/O bottleneck. The Linux administrator analyzes vmstat output and sees high swap in/out and block I/O. Given there is a single CPU, which of the following is causing the slowness?",
+            "options": [
+              "The system is running out of swap space.",
+              "The CPU is overloaded.",
+              "The memory is exhausted.",
+              "The processes are paging."
+            ],
+            "answer": ["The processes are paging."],
+            "explanation": {
+              "The system is running out of swap space.": "Not stated in the question, it mentions high swap activity but doesn't confirm out-of-swap condition.",
+              "The CPU is overloaded.": "High I/O wait doesn't necessarily mean CPU overload.",
+              "The memory is exhausted.": "Possibly close but the direct cause is processes are paging heavily, leading to I/O bottlenecks.",
+              "The processes are paging.": "Correct. Excessive paging (swap in/out) is typically the root cause of the slowdown."
+            },
+            "image": "assets/linux_questions_images/assessment6_50.jpg"
+          },
+          {
+            "number": 51,
+            "question": "Employees in the finance department are having trouble accessing the file /opt/work/file. IT employees can read and write the file. The file is: rw-rw----+ 1 root it 4 sep 5 17:29 file. Which of the following commands would permanently fix the access issue while limiting access to IT and finance department employees?",
+            "options": [
+              "chattr +i file",
+              "chown it:finance file",
+              "chmod 666 file",
+              "setfacl -m g:finance:rw file"
+            ],
+            "answer": ["setfacl -m g:finance:rw file"],
+            "explanation": {
+              "chattr +i file": "Makes file immutable; not relevant to sharing with finance group.",
+              "chown it:finance file": "Changes the group owner to finance, but that might conflict with the IT group ownership needed, and doesn't handle both groups easily without ACL.",
+              "chmod 666 file": "Gives read/write to everyone, not limiting to IT and finance.",
+              "setfacl -m g:finance:rw file": "Correct. Sets an ACL so finance group can read/write, while IT group retains its existing permissions."
+            }
+          },
+          {
+            "number": 52,
+            "question": "A Linux engineer needs to create a custom script, cleanup.sh, to run at boot as part of the system services. Which of the following processes would accomplish this task?",
+            "options": [
+              "Create a unit file in the /etc/default/ directory, systemctl enable cleanup, systemctl is-enabled cleanup",
+              "Create a unit file in the /etc/ske1/ directory, systemctl enable cleanup, systemctl is-enabled cleanup",
+              "Create a unit file in the /etc/systemd/system/ directory, systemctl enable cleanup, systemctl is-enabled cleanup",
+              "Create a unit file in the /etc/sysctl.d/ directory, systemctl enable cleanup, systemctl is-enabled cleanup"
+            ],
+            "answer": ["Create a unit file in the /etc/systemd/system/ directory, systemctl enable cleanup, systemctl is-enabled cleanup"],
+            "explanation": {
+              "/etc/default/": "Holds environment variable configs for some services, not systemd unit files.",
+              "/etc/ske1/": "Typo or invalid directory.",
+              "/etc/systemd/system/": "Correct location for custom user-created systemd service unit files.",
+              "/etc/sysctl.d/": "Used for kernel parameters, not systemd services."
+            }
+          },
+          {
+            "number": 53,
+            "question": "A Linux system is failing to boot. The following error is displayed: 'DEPEND Dependency failed for /data. Dependency failed for Local File Systems...' Then it enters emergency mode. Which of the following files will need to be modified for this server to be able to boot again?",
+            "options": [
+              "/etc/mtab",
+              "/dev/sda",
+              "/etc/fstab",
+              "/etc/grub.conf"
+            ],
+            "answer": ["/etc/fstab"],
+            "explanation": {
+              "/etc/mtab": "Reflects currently mounted filesystems but is typically auto-generated on modern systems.",
+              "/dev/sda": "A block device, not a config file for mount points.",
+              "/etc/fstab": "Correct. Contains persistent mount definitions. If one is incorrect for /data, it can fail to boot properly.",
+              "/etc/grub.conf": "A bootloader config, not about local filesystems specifically failing to mount."
+            }
+          },
+          {
+            "number": 54,
+            "question": "A systems administrator frequently connects to a remote host via SSH on a non-standard port. The administrator would like to avoid passing the port parameter on the command line every time. Which of the following files can be used to set a different port value for that host?",
+            "options": [
+              "/etc/ssh/sshd_config",
+              "/etc/ssh/moduli",
+              "~/.ssh/config",
+              "~/.ssh/authorized_keys"
+            ],
+            "answer": ["~/.ssh/config"],
+            "explanation": {
+              "/etc/ssh/sshd_config": "Server-side config for SSH daemon, not per-user client config.",
+              "/etc/ssh/moduli": "Contains Diffie-Hellman moduli for key exchange, not relevant to client port override.",
+              "~/.ssh/config": "Correct. Per-user SSH client config can specify Host, Port, etc.",
+              "~/.ssh/authorized_keys": "Holds public keys for passwordless login, not port info for outbound SSH connections."
+            }
+          },
+          {
+            "number": 55,
+            "question": "A Linux administrator modified the SSH configuration file. Which of the following commands should be used to apply the configuration changes?",
+            "options": [
+              "systemctl stop sshd",
+              "systemctl mask sshd",
+              "systemctl reload sshd",
+              "systemctl start sshd"
+            ],
+            "answer": ["systemctl reload sshd"],
+            "explanation": {
+              "systemctl stop sshd": "Stops the service entirely, not just reloading config.",
+              "systemctl mask sshd": "Prevents it from being started, definitely not applying new config in a running environment.",
+              "systemctl reload sshd": "Correct. Reloads the SSH daemon config without terminating existing sessions (where supported).",
+              "systemctl start sshd": "Would start the service if stopped, but doesn't reload new config if already running."
+            }
+          },
+          {
+            "number": 56,
+            "question": "A cloud engineer needs to check the link status of a network interface named eth1 in a Linux server. Which of the following commands can help to achieve the goal?",
+            "options": [
+              "ifconfig hw eth1",
+              "netstat -r eth1",
+              "ss -ti eth1",
+              "ip link show eth1"
+            ],
+            "answer": ["ip link show eth1"],
+            "explanation": {
+              "ifconfig hw eth1": "Syntax doesn't exist in standard usage, 'ifconfig eth1 hw' might set hardware address, not show link.",
+              "netstat -r eth1": "Shows routing table, doesn't filter by interface link status.",
+              "ss -ti eth1": "Shows socket stats, not link status for eth1.",
+              "ip link show eth1": "Correct. Displays link state and flags for eth1."
+            }
+          },
+          {
+            "number": 57,
+            "question": "What file do Red Hat-based systems use to define the time zone for the Linux system?",
+            "options": [
+              "/etc/localtime",
+              "/etc/timezone",
+              "/usr/share/zoneinfo",
+              "/usr/share/timezone",
+              "/usr/share/localtime"
+            ],
+            "answer": ["/etc/localtime"],
+            "explanation": {
+              "/etc/localtime": "Correct. Usually a symlink to /usr/share/zoneinfo/<Region>/<City> on Red Hat (and others).",
+              "/etc/timezone": "Used on Debian-based systems to store timezone name, not Red Hat-based standard.",
+              "/usr/share/zoneinfo": "Directory containing zone data, not the system's config file itself.",
+              "/usr/share/timezone": "Not typically used. The real data is in /usr/share/zoneinfo.",
+              "/usr/share/localtime": "No standard usage there, timezones are in /usr/share/zoneinfo, not localtime."
+            }
+          },
+          {
+            "number": 58,
+            "question": "A systems administrator installed a new software program on a Linux server. When the systems administrator tries to run the program, an error indicates that the system may not support virtualization. Which of the following commands will allow the administrator to check whether the system supports virtualization?",
+            "options": [
+              "dmidecode -s system-version",
+              "lscpu",
+              "sysctl -a",
+              "cat /sys/device/system/cpu/possible"
+            ],
+            "answer": ["lscpu"],
+            "explanation": {
+              "dmidecode -s system-version": "Shows system firmware info, not specifically virtualization flags.",
+              "lscpu": "Correct. Lists CPU architecture flags (e.g., vmx or svm) for virtualization support.",
+              "sysctl -a": "Lists all kernel parameters but won't necessarily highlight virtualization CPU flags.",
+              "cat /sys/device/system/cpu/possible": "Shows possible CPU indexes, not virtualization support info."
+            },
+            "image": "assets/linux_questions_images/assessment6_58.jpg"
+          },
+          {
+            "number": 59,
+            "question": "A Linux administrator created the directory /project/access2all to avoid the deletion or modification of files from non-owners. Which of the following will accomplish this goal?",
+            "options": [
+              "chmod +t /project/access2all",
+              "chmod +rws /project/access2all",
+              "chmod 2770 /project/access2all",
+              "chmod ugo+rwx /project/access2all"
+            ],
+            "answer": ["chmod 2770 /project/access2all"],
+            "explanation": {
+              "chmod +t /project/access2all": "Sets sticky bit (useful in /tmp) but doesn't set setgid nor group-specific perms.",
+              "chmod +rws /project/access2all": "SUID on a directory is not the correct approach. Typically you want setgid '2'.",
+              "chmod 2770 /project/access2all": "Correct, setting setgid bit and giving rwx for owner/group, none for others.",
+              "chmod ugo+rwx /project/access2all": "Opens directory to all, does not restrict modifications by non-owners."
+            }
+          },
+          {
+            "number": 60,
+            "question": "A Linux systems administrator needs to persistently enable IPv4 forwarding in one of the Linux systems. Which of the following commands can be used together to accomplish this task? (Choose two.)",
+            "options": [
+              "sysctl net.ipv4.ip_forward",
+              "sysctl -w net.ipv4.ip_forward=1",
+              "echo \"net.ipv4.ip_forward=1\" >> /etc/sysctl.conf",
+              "echo 1 > /proc/sys/net/ipv4/ip_forward",
+              "sysctl -p",
+              "echo \"net.ipv6.conf.all.forwarding=l\" >> /etc/sysctl.conf"
+            ],
+            "answer": [
+              "sysctl -w net.ipv4.ip_forward=1",
+              "echo \"net.ipv4.ip_forward=1\" >> /etc/sysctl.conf"
+            ],
+            "explanation": {
+              "sysctl net.ipv4.ip_forward": "Queries the current setting, doesn't enable it persistently.",
+              "sysctl -w net.ipv4.ip_forward=1": "Correct. Sets IP forwarding immediately at runtime.",
+              "echo \"net.ipv4.ip_forward=1\" >> /etc/sysctl.conf": "Correct. Makes the change persist after reboot.",
+              "echo 1 > /proc/sys/net/ipv4/ip_forward": "Sets it temporarily, not combined with the other. Typically you'd prefer sysctl -w or sysctl commands for consistency.",
+              "sysctl -p": "Applies changes in /etc/sysctl.conf. Possibly relevant, but the question specifically highlights enabling it. The two best answers from the question’s text are the ones above.",
+              "echo \"net.ipv6.conf.all.forwarding=l\" >> /etc/sysctl.conf": "Enables IPv6 forwarding, not IPv4, plus the 'l' is suspicious."
+            }
+          },
+          {
+            "number": 61,
+            "question": "Due to low disk space, a Linux administrator is finding and removing all log files that were modified more than 180 days ago. Which of the following commands will accomplish this task?",
+            "options": [
+              "find /var/log -type d -mtime +180 -print -exec rm {} \\;",
+              "find /var/log -type f -modified +180 -rm",
+              "find /var/log -type f -mtime +180 -exec rm {} \\",
+              "find /var/log -type c -atime +180 -remove"
+            ],
+            "answer": ["find /var/log -type f -mtime +180 -exec rm {} \\"],
+            "explanation": {
+              "find /var/log -type d -mtime +180 -print -exec rm {} \\;": "That finds directories, not files, so not correct for log files specifically.",
+              "find /var/log -type f -modified +180 -rm": "Not standard find syntax. The predicate would be '-mtime' not '-modified', and '-rm' is not correct usage.",
+              "find /var/log -type f -mtime +180 -exec rm {} \\": "Correct. Locates files older than 180 days, executes rm on each.",
+              "find /var/log -type c -atime +180 -remove": "Type c is for character device, not typical log files."
+            }
+          },
+          {
+            "number": 62,
+            "question": "A junior administrator is setting up a new Linux server that is intended to be used as a router at a remote site. Which of the following parameters will accomplish this goal?",
+            "options": [
+              "echo 1 > /proc/sys/net/ipv4/ip forward\niptables -t nat -A PREROUTING -i ethO -j MASQUERADE",
+              "echo 1 > /proc/sys/net/ipv4/ip forward\niptables -t nat -D POSTROUTING -o ethO -j MASQUERADE",
+              "echo 1 > /proc/sys/net/ipv4/ip forward\niptables -t nat -A POSTROUTING -o ethO -j MASQUERADE",
+              "echo 1 > /proc/sys/net/ipv4/ip forward\niptables -t nat -A PREROUTING -o ethO -j MASQUERADE"
+            ],
+            "answer": ["echo 1 > /proc/sys/net/ipv4/ip forward\niptables -t nat -A POSTROUTING -o ethO -j MASQUERADE"],
+            "explanation": {
+              "Option1": "Uses PREROUTING chain for NAT, typically you do MASQUERADE in POSTROUTING for outbound traffic.",
+              "Option2": "Deletes a rule from POSTROUTING, not adding it.",
+              "Option3": "Correct. Enables IP forwarding, then sets up NAT for outbound on eth0.",
+              "Option4": "PREROUTING with -o eth0 is incorrect for masquerading typical outbound traffic."
+            }
+          },
+          {
+            "number": 63,
+            "question": "Which of the following is true concerning systemd service units? (Choose all that apply.)",
+            "options": [
+              "Services can be started at system boot time.",
+              "Services can be started in parallel.",
+              "A service can be started based on a timer.",
+              "A service can be started after all other services are started.",
+              "A service can be prevented from starting at system boot time."
+            ],
+            "answer": [
+              "Services can be started at system boot time.",
+              "Services can be started in parallel.",
+              "A service can be started based on a timer.",
+              "A service can be started after all other services are started.",
+              "A service can be prevented from starting at system boot time."
+            ],
+            "explanation": {
+              "Services can be started at system boot time.": "Correct. 'enable' them in systemctl to start at boot.",
+              "Services can be started in parallel.": "Correct. systemd starts units in parallel when dependencies allow.",
+              "A service can be started based on a timer.": "Correct. Timer units can trigger service units.",
+              "A service can be started after all other services are started.": "Correct. Through dependency or 'After=' directives in the unit file.",
+              "A service can be prevented from starting at system boot time.": "Correct. 'disable' them or set conditions so they don't auto-start."
+            }
+          },
+          {
+            "number": 64,
+            "question": "You need to modify a systemd service unit configuration. Where should the modified file be located?",
+            "options": [
+              "/etc/system/systemd/",
+              "/usr/lib/system/systemd/",
+              "/etc/systemd/system/",
+              "/usr/lib/systemd/system/",
+              "/run/system/systemd/"
+            ],
+            "answer": ["/etc/systemd/system/"],
+            "explanation": {
+              "/etc/system/systemd/": "Invalid path structure.",
+              "/usr/lib/system/systemd/": "Vendor-supplied unit files typically, not for local overrides.",
+              "/etc/systemd/system/": "Correct. Systemd reads local override unit files here first.",
+              "/usr/lib/systemd/system/": "Contains default units from the distribution, not for custom modifications.",
+              "/run/system/systemd/": "Runtime unit files generated on the fly, not persistent."
+            }
+          },
+          {
+            "number": 65,
+            "question": "For setting environment parameters within a unit configuration file, which directive should you potentially employ?",
+            "options": [
+              "Type",
+              "Environment",
+              "EnvironmentParam",
+              "PATH"
+            ],
+            "answer": ["Environment"],
+            "explanation": {
+              "Type": "Defines the startup type of a service (simple, forking, etc.), not environment variables.",
+              "Environment": "Correct. environment variables can be declared here, e.g. 'Environment=\"VAR=val\"'.",
+              "EnvironmentParam": "Not a valid directive name in standard systemd.",
+              "PATH": "Just a typical environment variable; not a directive in systemd unit files."
+            }
+          },
+          {
+            "number": 66,
+            "question": "A junior administrator is trying to set up a passwordless SSH connection to one of the servers. The admin places the key in authorized_key (typo) but is still prompted for a password. Which of the following commands would resolve the issue and allow an SSH connection without a password?",
+            "options": [
+              "restorecon -rv .ssh/authorized_key",
+              "mv .ssh/authorized_key .ssh/authorized_keys",
+              "systemctl restart sshd.service",
+              "chmod 600 mv .ssh/authorized_key"
+            ],
+            "answer": ["mv .ssh/authorized_key .ssh/authorized_keys"],
+            "explanation": {
+              "restorecon -rv .ssh/authorized_key": "Used if SELinux contexts are incorrect, but doesn't fix the actual filename problem.",
+              "mv .ssh/authorized_key .ssh/authorized_keys": "Correct. The standard file name for public keys is 'authorized_keys', not 'authorized_key'.",
+              "systemctl restart sshd.service": "Would only help if config changed, but the real problem is the wrong file name.",
+              "chmod 600 mv .ssh/authorized_key": "Not valid syntax; also doesn't fix the wrong filename."
+            },
+            "image": "assets/linux_questions_images/assessment6_66.jpg"
+          },
+          {
+            "number": 67,
+            "question": "A Linux system is failing to start a service. The startup file cannot be owned by root according to the error message. Which of the following is MOST likely the issue?",
+            "options": [
+              "The service does not have permissions to read/write the startup file.",
+              "The service startup file size cannot be 81k.",
+              "The service startup file cannot be owned by root.",
+              "The service startup file should not be owned by the root group."
+            ],
+            "answer": ["The service startup file cannot be owned by root."],
+            "explanation": {
+              "The service does not have permissions to read/write the startup file.": "No direct mention that read/write is missing, the error specifically references ownership by root being a problem.",
+              "The service startup file size cannot be 81k.": "No typical systemd or SysV restriction on file size like that.",
+              "The service startup file cannot be owned by root.": "Correct. The question states the error message indicates it must not be owned by root.",
+              "The service startup file should not be owned by the root group.": "The question specifically mentions user ownership, not group."
+            },
+            "image": "assets/linux_questions_images/assessment6_67.jpg"
+          },
+          {
+            "number": 68,
+            "question": "A Linux engineer is setting the sticky bit on a directory called devops with 755 file permission. Which of the following commands will accomplish this task?",
+            "options": [
+              "chown -s 755 devops",
+              "chown 1755 devops",
+              "chmod -s 755 devops",
+              "chmod 1755 devops"
+            ],
+            "answer": ["chmod 1755 devops"],
+            "explanation": {
+              "chown -s 755 devops": "Chown changes ownership, -s not standard usage for sticky bit.",
+              "chown 1755 devops": "Again, changes ownership to '1755' user or group, not correct.",
+              "chmod -s 755 devops": "Removes suid, doesn't set sticky bit. Also incorrect usage of '-s'.",
+              "chmod 1755 devops": "Correct. The leading '1' sets the sticky bit, '7' owner perms, '5' group perms, '5' others."
+            }
+          },
+          {
+            "number": 69,
+            "question": "A Linux administrator booted up the server and was presented with a non-GUI terminal. The admin ran 'systemctl isolate graphical.target' and rebooted, which fixed the issue for that session. However, the next day the same problem occurred. Which of the following is the issue?",
+            "options": [
+              "The administrator did not reboot the server properly.",
+              "The administrator did not set the default target to basic.target.",
+              "The administrator did not set the default target to graphical.target.",
+              "The administrator did not shut down the server properly."
+            ],
+            "answer": ["The administrator did not set the default target to graphical.target."],
+            "explanation": {
+              "The administrator did not reboot the server properly.": "One reboot wouldn't matter if the default target is still multi-user.target.",
+              "The administrator did not set the default target to basic.target.": "That's just another systemd target, not the GUI target.",
+              "The administrator did not set the default target to graphical.target.": "Correct. You must run 'systemctl set-default graphical.target' for it to persist.",
+              "The administrator did not shut down the server properly.": "Irrelevant to ensuring the correct default target after reboot."
+            }
+          },
+          {
+            "number": 70,
+            "question": "You attempt to jump to a systemd target using the 'systemctl isolate' command, but it does not work. You decide to look at the target unit file. What might you see there that is causing this problem?",
+            "options": [
+              "static",
+              "AllowIsolate=yes",
+              "Type=oneshot",
+              "AllowIsolate=no",
+              "disabled"
+            ],
+            "answer": ["AllowIsolate=no"],
+            "explanation": {
+              "static": "Means the unit cannot be enabled or disabled, but not specifically about isolation.",
+              "AllowIsolate=yes": "Would allow isolating, not the cause of the problem.",
+              "Type=oneshot": "A service type, not specifically about isolating a target.",
+              "AllowIsolate=no": "Correct. This forbids using 'systemctl isolate' on that target.",
+              "disabled": "Refers to startup enabling, not whether it can be isolated."
+            }
+          },
+          {
+            "number": 71,
+            "question": "You have modified an OpenSSH service's configuration file, /etc/ssh/ssh_config, while the service is running. What is the best command to use with systemctl to make this modified file take immediate effect?",
+            "options": [
+              "daemon-reload",
+              "restart",
+              "mask",
+              "unmask",
+              "reload"
+            ],
+            "answer": ["reload"],
+            "explanation": {
+              "daemon-reload": "Reloads systemd manager configuration, not necessarily the SSH service config.",
+              "restart": "Stops and starts the service, terminating ongoing connections, less graceful.",
+              "mask": "Prevents service from being started, not relevant here.",
+              "unmask": "Opposite of mask, not relevant.",
+              "reload": "Correct. Tells SSH to re-read its config without dropping existing connections if supported."
+            }
+          },
+          {
+            "number": 72,
+            "question": "Your systemd system is set to not start a certain service at system boot. You want to change this behavior so it does start at boot. Which systemctl command should you employ for this service?",
+            "options": [
+              "restart",
+              "start",
+              "isolate",
+              "disable",
+              "enable"
+            ],
+            "answer": ["enable"],
+            "explanation": {
+              "restart": "Restarts the service once, doesn't change boot behavior.",
+              "start": "Starts the service immediately but doesn't ensure it starts on next boot.",
+              "isolate": "Used for switching targets, not typical for enabling a service at boot.",
+              "disable": "Prevents it from starting at boot, opposite of what we want.",
+              "enable": "Correct. Creates symlinks so the service starts automatically on system boot."
+            }
+          },
+          {
+            "number": 73,
+            "question": "Users report that connections to a MariaDB service are being closed unexpectedly. A systems administrator sees 'Out of Memory: Killed process 1234 (mysqld)' in logs. Which of the following is causing the connection issue?",
+            "options": [
+              "The process mysqld is using too many semaphores.",
+              "The server is running out of file descriptors.",
+              "Something is starving the server resources.",
+              "The amount of RAM allocated to the server is too high."
+            ],
+            "answer": ["Something is starving the server resources."],
+            "explanation": {
+              "The process mysqld is using too many semaphores.": "No direct mention from the OOM killer message, which is about memory usage, not semaphores.",
+              "The server is running out of file descriptors.": "Would not trigger OOM killer, that's a different limit.",
+              "Something is starving the server resources.": "Correct. OOM killer kills mysqld because memory is exhausted.",
+              "The amount of RAM allocated to the server is too high.": "That doesn't cause OOM. The problem is insufficient memory or overcommit leading to OOM kill."
+            },
+            "image": "assets/linux_questions_images/assessment6_73.jpg"
+          },
+          {
+            "number": 74,
+            "question": "A developer is trying to install an application remotely that requires a graphical interface. The developer requested assistance to set up environment variables with X11 forwarding in SSH. Which environment variable must be set in the remote shell in order to launch the graphical interface?",
+            "options": [
+              "$RHOST",
+              "SETENV",
+              "$SHELL",
+              "$DISPLAY"
+            ],
+            "answer": ["$DISPLAY"],
+            "explanation": {
+              "$RHOST": "Not a standard environment variable for X forwarding.",
+              "SETENV": "Not a typical environment variable for X sessions.",
+              "$SHELL": "Specifies user's shell, not X display info.",
+              "$DISPLAY": "Correct. Tells the X client which display server to connect to."
+            }
+          },
+          {
+            "number": 75,
+            "question": "A systems administrator is implementing a new service task with systems at startup and needs to execute a script entitled test.sh. After chmod +x, the script will not run. Which two actions should the administrator take to address the issue? (Choose two.)",
+            "options": [
+              "Add #!/bin/bash to the bottom of the script.",
+              "Create a unit file for the new service in /etc/systemd/system/ with the name helpme.service in the location.",
+              "Add #!//bin/bash to the top of the script.",
+              "Restart the computer to enable the new service.",
+              "Create a unit file for the new service in /etc/init.d with the name helpme.service in the location.",
+              "Shut down the computer to enable the new service."
+            ],
+            "answer": [
+              "Create a unit file for the new service in /etc/systemd/system/ with the name helpme.service in the location.",
+              "Add #!//bin/bash to the top of the script."
+            ],
+            "explanation": {
+              "Add #!/bin/bash to the bottom of the script.": "Shebang line belongs at the top. Also correct syntax is '#!/bin/bash' (one slash).",
+              "Create a unit file for the new service in /etc/systemd/system/ with the name helpme.service in the location.": "Correct. Ties the script into systemd at boot time.",
+              "Add #!//bin/bash to the top of the script.": "Correct concept, though typically '#!/bin/bash' (one slash). The question’s text has double slash but presumably means setting the shebang at the top.",
+              "Restart the computer to enable the new service.": "Often you can systemctl enable and start without a full reboot.",
+              "Create a unit file for the new service in /etc/init.d with the name helpme.service in the location.": "That's SysV style, not systemd recommended. Also the question mentions systemd usage.",
+              "Shut down the computer to enable the new service.": "Unnecessary step. 'systemctl enable' is enough."
+            },
+            "image": "assets/linux_questions_images/assessment6_75.jpg"
+          },
+          {
+            "number": 76,
+            "question": "A Linux administrator needs to correct the permissions of a log file on the server. Which of the following commands should be used to set filename.log permissions to -rwxr—r--?",
+            "options": [
+              "chmod 755 filename.log",
+              "chmod 640 filename.log",
+              "chmod 740 filename.log",
+              "chmod 744 filename.log"
+            ],
+            "answer": ["chmod 744 filename.log"],
+            "explanation": {
+              "chmod 755 filename.log": "That is rwxr-xr-x, not rwxr--r--.",
+              "chmod 640 filename.log": "rw-r-----, not matching the question's requested bits.",
+              "chmod 740 filename.log": "rwxr-----, leaving no read for 'others'.",
+              "chmod 744 filename.log": "Correct. 7=rwx for owner, 4=r-- for group, 4=r-- for others => -rwxr--r--."
+            }
+          },
+          {
+            "number": 77,
+            "question": "After listing the properties of a system account, a systems administrator wants to remove the expiration date of a user account. Which of the following commands will accomplish this task?",
+            "options": [
+              "chgrp system accountname",
+              "passwd –s accountname",
+              "chmod -G system account name",
+              "chage -E -1 accountname"
+            ],
+            "answer": ["chage -E -1 accountname"],
+            "explanation": {
+              "chgrp system accountname": "Changes group ownership, not account expiration date.",
+              "passwd –s accountname": "Shows or modifies password info, but not removing expiration date in this manner.",
+              "chmod -G system account name": "Incorrect usage of chmod and -G. Possibly you meant chgrp or usermod?",
+              "chage -E -1 accountname": "Correct. Sets the expiration date to 'never expire' (i.e., -1)."
+            }
+          },
+          {
+            "number": 78,
+            "question": "You need to change the system's default target. What systemctl command should you use to accomplish this task?",
+            "options": [
+              "get-default",
+              "set-default",
+              "isolate",
+              "is-enabled",
+              "is-active"
+            ],
+            "answer": ["set-default"],
+            "explanation": {
+              "get-default": "Displays current default target but doesn't change it.",
+              "set-default": "Correct. 'systemctl set-default <target>' changes the default target.",
+              "isolate": "Switches the system to a target immediately, not persistently set as default.",
+              "is-enabled": "Checks if a service or unit is enabled, not setting a default target.",
+              "is-active": "Checks if a service or unit is active, not setting defaults."
+            }
+          },
+          {
+            "number": 79,
+            "question": "Your systemd system is taking a long time to boot and you need to reduce the boot time. Which systemd-analyze command is the best to start narrowing down which units need to be investigated first?",
+            "options": [
+              "time",
+              "dump",
+              "failure",
+              "blame",
+              "verify"
+            ],
+            "answer": ["blame"],
+            "explanation": {
+              "time": "No direct subcommand of systemd-analyze named 'time'; systemd-analyze time is a partial usage to show overall time, not the top slow units individually.",
+              "dump": "systemd-analyze dump prints internal state info, not a sorted time list.",
+              "failure": "Lists only failed units, not slow ones necessarily.",
+              "blame": "Correct. Lists units by time to initialize, from slowest to fastest.",
+              "verify": "Checks unit file syntax, not relevant to performance analysis."
+            }
+          },
+          {
+            "number": 80,
+            "question": "A systems administrator wants to be sure the sudo rules just added to /etc/sudoers are valid. Which of the following commands can be used for this task?",
+            "options": [
+              "visudo -c",
+              "test -f /etc/sudoers",
+              "sudo vi check",
+              "cat /etc/sudoers | tee test"
+            ],
+            "answer": ["visudo -c"],
+            "explanation": {
+              "visudo -c": "Correct. Checks sudoers file for syntax errors without making changes.",
+              "test -f /etc/sudoers": "Just checks if the file exists, doesn't validate syntax.",
+              "sudo vi check": "Opens a file named 'check', not verifying /etc/sudoers syntax.",
+              "cat /etc/sudoers | tee test": "Displays & copies content but doesn't validate correctness."
+            }
+          },
+          {
+            "number": 81,
+            "question": "A user generated a pair of private-public keys on a workstation. Which of the following commands will allow the user to upload the public key to a remote server and enable passwordless login?",
+            "options": [
+              "scp ~/.ssh/id_rsa user@server:~/",
+              "rsync ~ /.ssh/ user@server:~/",
+              "ssh-add user server",
+              "ssh-copy-id user@server"
+            ],
+            "answer": ["ssh-copy-id user@server"],
+            "explanation": {
+              "scp ~/.ssh/id_rsa user@server:~/": "Copies the private key to the server, which is not correct for passwordless login. You want to keep private key local.",
+              "rsync ~ /.ssh/ user@server:~/": "Would sync the entire .ssh directory, potentially exposing private keys. Not the typical approach.",
+              "ssh-add user server": "Adds private key to local agent, doesn't copy public key to remote authorized_keys.",
+              "ssh-copy-id user@server": "Correct. Appends the local public key to the server's ~/.ssh/authorized_keys."
+            }
+          },
+          {
+            "number": 82,
+            "question": "You've recently become the system administrator for an older Linux server, which still uses SysV init. You determine that its default runlevel is 3. What file did you find that information in?",
+            "options": [
+              "/etc/inittab",
+              "/etc/rc.d",
+              "/etc/init.d/rc",
+              "/etc/rc.d/rc",
+              "/etc/rc.local"
+            ],
+            "answer": ["/etc/inittab"],
+            "explanation": {
+              "/etc/inittab": "Correct. Holds default runlevel info on SysV init systems.",
+              "/etc/rc.d": "Directory containing service scripts or subdirectories, not the default runlevel config.",
+              "/etc/init.d/rc": "A SysV script for multi-runlevel, but not storing the default runlevel.",
+              "/etc/rc.d/rc": "A script used to run scripts in /etc/rc.d/rcN.d, not the config for default runlevel.",
+              "/etc/rc.local": "Executed at the end of boot, doesn't define the default runlevel."
+            }
+          },
+          {
+            "number": 83,
+            "question": "Which directory on an old SysV init system stores the service startup scripts?",
+            "options": [
+              "/usr/lib/systemd/system/",
+              "/etc/rc.d/rcn.d/",
+              "/etc/init.d/",
+              "/etc/systemd/system/",
+              "/run/systemd/system/"
+            ],
+            "answer": ["/etc/init.d/"],
+            "explanation": {
+              "/usr/lib/systemd/system/": "Systemd location for vendor-provided unit files, not SysV scripts.",
+              "/etc/rc.d/rcn.d/": "Holds symlinks to /etc/init.d scripts for each runlevel, but not the scripts themselves. The question specifically asks for the directory storing the scripts.",
+              "/etc/init.d/": "Correct. The main location for SysV service scripts.",
+              "/etc/systemd/system/": "Systemd path for local unit files, not SysV.",
+              "/run/systemd/system/": "Runtime systemd files, not SysV."
+            }
+          },
+          {
+            "number": 84,
+            "question": "A Linux administrator created a new file system. Which of the following files must be updated to ensure the filesystem mounts at boot time?",
+            "options": [
+              "/etc/sysctl",
+              "/etc/filesystems",
+              "/etc/fstab",
+              "/etc/nfsmount.conf"
+            ],
+            "answer": ["/etc/fstab"],
+            "explanation": {
+              "/etc/sysctl": "Kernel parameter config, not for mounting filesystems.",
+              "/etc/filesystems": "Defines supported filesystem types, not mount instructions.",
+              "/etc/fstab": "Correct. Tells the system how/where to mount filesystems at boot.",
+              "/etc/nfsmount.conf": "Specific to NFS mount behavior, not local mount definitions."
+            }
+          },
+          {
+            "number": 85,
+            "question": "A Linux administrator is troubleshooting a memory-related issue. Which of the following commands would address an out-of-memory process that needs to be terminated based on the top or vmstat data?",
+            "options": [
+              "top -p 8321",
+              "kill -9 8321",
+              "renice -10 8321",
+              "free 8321"
+            ],
+            "answer": ["kill -9 8321"],
+            "explanation": {
+              "top -p 8321": "Displays info for process 8321 in top, not terminating it.",
+              "kill -9 8321": "Correct. Immediately terminates the process with process ID 8321.",
+              "renice -10 8321": "Changes process priority, not guaranteed to fix OOM issue.",
+              "free 8321": "Shows memory usage, not a valid argument with a PID."
+            },
+            "image": "assets/linux_questions_images/assessment6_85.jpg"
+          },
+          {
+            "number": 86,
+            "question": "A systems administrator made some unapproved package changes prior to leaving the company. The newly hired admin must revert the system to a compliant state. Which of the following commands will list the past package transactions and undo the last one?",
+            "options": [
+              "dnf list and dnf remove last",
+              "dnf remove and dnf check",
+              "dnf info and dnf upgrade",
+              "dnf history and dnf history undo last"
+            ],
+            "answer": ["dnf history and dnf history undo last"],
+            "explanation": {
+              "dnf list and dnf remove last": "Not a valid usage to revert a transaction.",
+              "dnf remove and dnf check": "Removes a package, but doesn't revert a specific prior transaction.",
+              "dnf info and dnf upgrade": "Shows package info or updates packages, not rolling back changes.",
+              "dnf history and dnf history undo last": "Correct. 'dnf history' shows transactions, 'dnf history undo' reverts them."
+            }
+          },
+          {
+            "number": 87,
+            "question": "You need to enable the DHCP service on your Red Hat-based SysV init system for runlevels 3 and 5. Which of the following commands should you use?",
+            "options": [
+              "service enable dhcp 3,5",
+              "chkconfig --levels 3,5 dhcp on",
+              "chkconfig --levels 35 on dhcp",
+              "chkconfig --levels 35 dhcp on",
+              "service enable dhcp 35"
+            ],
+            "answer": ["chkconfig --levels 35 dhcp on"],
+            "explanation": {
+              "service enable dhcp 3,5": "Not the correct syntax for SysV init on Red Hat.",
+              "chkconfig --levels 3,5 dhcp on": "Close but the typical usage is 'chkconfig --level 35 dhcp on'.",
+              "chkconfig --levels 35 on dhcp": "Syntax mismatch (the order is typically 'chkconfig --level 35 service on').",
+              "chkconfig --levels 35 dhcp on": "Correct. Tells the system to start DHCP at runlevels 3 and 5.",
+              "service enable dhcp 35": "Not a standard usage, 'service' is used to start/stop services, not for runlevel enabling."
+            }
+          },
+          {
+            "number": 88,
+            "question": "An administrator transferred a key for SSH authentication to a home directory on a remote server. The key file was moved to .ssh/authorized_keys location, but the SSH command still asked for the password. SELinux is enabled. Which of the following commands would resolve the issue?",
+            "options": [
+              "restorecon .ssh/authorized_keys",
+              "ssh_keygen -t rsa -o .ssh/authorized_keys",
+              "chown root:root .ssh/authorized_keys",
+              "chmod 600 .ssh/authorized_keys"
+            ],
+            "answer": ["restorecon .ssh/authorized_keys"],
+            "explanation": {
+              "restorecon .ssh/authorized_keys": "Correct. Resets SELinux security context to default, so SSH can read it properly.",
+              "ssh_keygen -t rsa -o .ssh/authorized_keys": "Generates a new key, not resetting contexts.",
+              "chown root:root .ssh/authorized_keys": "Should be owned by the user, not root, for key-based auth to work. Also doesn't fix SELinux context.",
+              "chmod 600 .ssh/authorized_keys": "While correct permissions are important (600), the question specifically mentions SELinux context as the likely culprit. If the context is wrong, chmod alone won’t fix it."
+            },
+            "image": "assets/linux_questions_images/assessment6_88.jpg"
+          },
+          {
+            "number": 89,
+            "question": "A cloud engineer needs to remove all dangling images and delete all the images that do not have an associated container. Which of the following commands will help to accomplish this task?",
+            "options": [
+              "docker images prune -a",
+              "docker push images -a",
+              "docker rmi -a images",
+              "docker images rmi --all"
+            ],
+            "answer": ["docker images prune -a"],
+            "explanation": {
+              "docker images prune -a": "Correct. Removes all dangling images and images not associated with containers.",
+              "docker push images -a": "Pushes images to a registry, not removing anything.",
+              "docker rmi -a images": "Syntax doesn't quite match the typical usage, and may try removing by name, not necessarily only dangling ones.",
+              "docker images rmi --all": "Not a standard docker command usage. 'docker images' and 'docker rmi' are separate commands, might not do exactly what's described in one go."
+            }
+          },
+          {
+            "number": 90,
+            "question": "A Linux system is failing to boot with a GRUB error. Which of the following actions will resolve this issue? (Choose two.)",
+            "options": [
+              "Execute grub-install --root-directory=/mnt and reboot.",
+              "Execute grub-install /dev/sdX and reboot.",
+              "Interrupt the boot process in the GRUB menu and add rescue to the kernel line.",
+              "Fix the partition modifying /etc/default/grub and reboot.",
+              "Interrupt the boot process in the GRUB menu and add single to the kernel line.",
+              "Boot the system on a LiveCD/ISO."
+            ],
+            "answer": [
+              "Execute grub-install /dev/sdX and reboot.",
+              "Boot the system on a LiveCD/ISO."
+            ],
+            "explanation": {
+              "Execute grub-install --root-directory=/mnt and reboot.": "Possible approach if you have the correct chroot environment, but typically 'grub-install /dev/sdX' is simpler after you chroot. Not enough detail for a standard fix.",
+              "Execute grub-install /dev/sdX and reboot.": "Correct. Reinstalls GRUB on the correct drive's MBR/EFI partition. Replace sdX with the actual device.",
+              "Interrupt the boot process in the GRUB menu and add rescue to the kernel line.": "This might get you into rescue mode, but doesn't fix the GRUB installation error permanently.",
+              "Fix the partition modifying /etc/default/grub and reboot.": "Might not fix a broken GRUB if the MBR or EFI is missing the bootloader code. /etc/default/grub is for config, not for re-installing the loader.",
+              "Interrupt the boot process in the GRUB menu and add single to the kernel line.": "Single user mode does not fix a GRUB installation error if GRUB can't load properly.",
+              "Boot the system on a LiveCD/ISO.": "Correct. Then you can mount and chroot to reinstall GRUB or do needed repairs."
+            },
+            "image": "assets/linux_questions_images/assessment6_90.jpg"
+          }
+        ]
+      }
+    ]
+  }
+  

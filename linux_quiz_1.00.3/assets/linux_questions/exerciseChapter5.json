@@ -502,19 +502,22 @@
           },
           {
             "number": 30,
-            "question": "What command is used to reboot a Linux system?",
+            "question": "What command is used to reboot a Linux system? (choose all that apply)",
             "options": [
               "reboot",
               "shutdown -r",
               "poweroff",
-              "Both reboot and shutdown -r"
+              "halt"
             ],
-            "answer": "Both reboot and shutdown -r",
+            "answer": [
+              "reboot",
+              "shutdown -r"
+            ],
             "explanation": {
-              "reboot": "Correct. The 'reboot' command restarts the system.",
-              "shutdown -r": "Correct. This command also reboots the system.",
-              "poweroff": "Incorrect. This command turns off the system, not reboot.",
-              "Both reboot and shutdown -r": "Correct. Both commands will successfully reboot the system."
+              "reboot": "Correct. The 'reboot' command restarts the system immediately.",
+              "shutdown -r": "Correct. The 'shutdown -r' command will reboot the system (often after a short delay).",
+              "poweroff": "Incorrect. The 'poweroff' command shuts down the system entirely, rather than rebooting.",
+              "halt": "Incorrect. The 'halt' command stops the CPU (and on some systems halts without powering off); it does not perform a reboot."
             }
           },
           {
@@ -1138,7 +1141,7 @@
                 "/etc/default/grub",
                 "/etc/grub.d/"
             ],
-            "answer": "menu.lst or grub.conf",
+            "answer": "/boot/grub/menu.lst",
             "explanation": {
                 "grub.cfg": "Incorrect. This file is used by GRUB2.",
                 "/boot/grub/menu.lst": "Correct. These are the configuration files for GRUB Legacy.",

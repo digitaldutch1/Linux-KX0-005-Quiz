@@ -206,6 +206,12 @@ class QuizApp:
             command=lambda: self.start_exercise5("exerciseChapter5.json")
         )
 
+        exercise_chapter6_count = get_question_count_from_json("exersiceChapter6.json")
+        self.exercise_menu.menu.add_command(
+            label=f"Chapter 6 Maintaining System Startup and Services in Linux ({exercise_chapter6_count})",
+            command=lambda: self.start_exercise6("exersiceChapter6.json")
+        )     
+
         # ---------------- Assessment Menu ---------------
         self.assessment_menu = tk.Menubutton(
             self.navbar_frame,
@@ -239,6 +245,18 @@ class QuizApp:
         self.assessment_menu.menu.add_command(
             label=f"Assessment 4 ({assessment_4_count})",
             command=lambda: self.start_assessment4("assessment4.json")
+        )
+
+        assessment_5_count = get_question_count_from_json("assessment5.json")
+        self.assessment_menu.menu.add_command(
+            label=f"Assessment 5 ({assessment_5_count})",
+            command=lambda: self.start_assessment5("assessment5.json")
+        )        
+
+        assessment_6_count = get_question_count_from_json("assessment6.json")
+        self.assessment_menu.menu.add_command(
+            label=f"Assessment 6 ({assessment_6_count})",
+            command=lambda: self.start_assessment6("assessment6.json")
         )
 
         # Custom (user-added) assessments
@@ -989,7 +1007,7 @@ class QuizApp:
             return []
 
     def update_assessment_menu(self):
-        static_items_end_index = 4
+        static_items_end_index = 6
         end_index = self.assessment_menu.menu.index('end')
 
         # Remove old dynamically-added items first (anything beyond the static 4)
@@ -1237,6 +1255,56 @@ class QuizApp:
 
         self.question_window()
 
+    def start_assessment5(self, filename):
+        self.reset_statistics()
+        self.current_chapter_data = load_questions_from_json(filename)
+
+        if not self.current_chapter_data or "questions" not in self.current_chapter_data:
+            self.show_error_message("Geen vragen gevonden in de geselecteerde beoordeling.")
+            return
+
+        self.questions = self.current_chapter_data['questions']
+        random.shuffle(self.questions)
+
+        self.shuffled_options = []
+        for question in self.questions:
+            opts = list(question["options"])
+            random.shuffle(opts)
+            self.shuffled_options.append(opts)
+
+        self.current_question_index = 0
+        self.user_answers = [None] * len(self.questions)
+        self.session_active = True
+        self.assessment_mode = True
+        self.current_session_title = "Assessment 5 Questions"
+
+        self.question_window()
+
+    def start_assessment6(self, filename):
+        self.reset_statistics()
+        self.current_chapter_data = load_questions_from_json(filename)
+
+        if not self.current_chapter_data or "questions" not in self.current_chapter_data:
+            self.show_error_message("Geen vragen gevonden in de geselecteerde beoordeling.")
+            return
+
+        self.questions = self.current_chapter_data['questions']
+        random.shuffle(self.questions)
+
+        self.shuffled_options = []
+        for question in self.questions:
+            opts = list(question["options"])
+            random.shuffle(opts)
+            self.shuffled_options.append(opts)
+
+        self.current_question_index = 0
+        self.user_answers = [None] * len(self.questions)
+        self.session_active = True
+        self.assessment_mode = True
+        self.current_session_title = "Assessment 6 Questions"
+
+        self.question_window()
+
     def start_exercise2(self, filename):
         self.reset_statistics()
         self.current_chapter_data = load_questions_from_json(filename)
@@ -1327,6 +1395,34 @@ class QuizApp:
 
         if not self.current_chapter_data or "questions" not in self.current_chapter_data:
             self.show_error_message("No questions found in Exercise Chapter 5.")
+            return
+
+        self.questions = self.current_chapter_data['questions']
+        random.shuffle(self.questions)
+
+        self.shuffled_options = []
+        for question in self.questions:
+            opts = list(question["options"])
+            random.shuffle(opts)
+            self.shuffled_options.append(opts)
+
+        self.current_question_index = 0
+        self.user_answers = [None] * len(self.questions)
+        self.session_active = True
+        self.assessment_mode = False
+
+        chapter_number = self.current_chapter_data.get('chapter', '5')
+        chapter_title = self.current_chapter_data.get('description', 'Explaining the Boot Process')
+        self.current_session_title = f"Exercise Chapter {chapter_number}: {chapter_title}"
+
+        self.question_window()
+
+    def start_exercise6(self, filename):
+        self.reset_statistics()
+        self.current_chapter_data = load_questions_from_json(filename)
+
+        if not self.current_chapter_data or "questions" not in self.current_chapter_data:
+            self.show_error_message("No questions found in Exercise Chapter 6.")
             return
 
         self.questions = self.current_chapter_data['questions']
@@ -1528,13 +1624,27 @@ class QuizApp:
             if os.path.exists(full_image_path):
                 try:
                     image = Image.open(full_image_path)
-                    image = image.resize((500, 250), Image.LANCZOS)
+                    
+                    # ----- DYNAMIC SCALING (Option #2) -----
+                    max_width = 800
+                    max_height = 600
+                    orig_w, orig_h = image.size
+                    scale_factor = min(max_width / orig_w, max_height / orig_h)
+                    
+                    # Scale the image only if it exceeds max dimensions.
+                    if scale_factor < 1:
+                        new_w = int(orig_w * scale_factor)
+                        new_h = int(orig_h * scale_factor)
+                        image = image.resize((new_w, new_h), Image.LANCZOS)
+                    # ---------------------------------------
+
                     self.question_img = ImageTk.PhotoImage(image)
                     self.question_img_label = tk.Label(self.question_content_frame, image=self.question_img)
                     self.question_img_label.image = self.question_img
+                    # Display the image above/before the options frame
                     self.question_img_label.pack(before=self.options_frame, pady=10)
-                except:
-                    pass
+                except Exception as e:
+                    print(f"Could not load/resize image: {e}")
 
     def previous_question(self):
         if self.current_question_index > 0:
@@ -1789,14 +1899,26 @@ class QuizApp:
 
             if os.path.exists(full_image_path):
                 try:
-                    image = Image.open(full_image_path)
-                    image = image.resize((500, 250), Image.LANCZOS)
-                    self.review_img = ImageTk.PhotoImage(image)
+                    img = Image.open(full_image_path)
+                    
+                    # ----- DYNAMIC SCALING (Option #2) -----
+                    max_width = 800
+                    max_height = 600
+                    orig_w, orig_h = img.size
+                    scale_factor = min(max_width / orig_w, max_height / orig_h)
+                    
+                    if scale_factor < 1:
+                        new_w = int(orig_w * scale_factor)
+                        new_h = int(orig_h * scale_factor)
+                        img = img.resize((new_w, new_h), Image.LANCZOS)
+                    # ---------------------------------------
+                    
+                    self.review_img = ImageTk.PhotoImage(img)
                     self.review_img_label = tk.Label(self.review_content_frame, image=self.review_img)
                     self.review_img_label.image = self.review_img
                     self.review_img_label.pack(before=self.options_frame_review, pady=10)
-                except:
-                    pass
+                except Exception as e:
+                    print(f"Could not load/resize image: {e}")
 
         correct_answers = current_q["answer"]
         user_selected = self.user_answers[self.current_question_index] if self.user_answers[self.current_question_index] is not None else []

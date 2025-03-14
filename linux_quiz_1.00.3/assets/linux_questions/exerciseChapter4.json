@@ -1492,7 +1492,398 @@
                 "To manage system processes": "Incorrect. Gawk is not used for process management.",
                 "To display directory contents": "Incorrect. Gawk is not used for displaying directory contents."
             }
-        }         
+          },
+          {
+            "number": 88,
+            "question": "text:\nDennis,22,Tilburg,man\nAnna,28,London,woman\n\nAssignment:\nUse gawk to display only the name and age for individuals older than 25.\n",
+            "options": [
+              "gawk '{ if($2>25) print $1, $2 }' people.csv",
+              "gawk -F \",\" '{ if($2>25) print $1, $2 }' people.csv",
+              "gawk -F \":\" '{ if($2>25) print $1, $2 }' people.csv",
+              "gawk -F \" \" '{ if($1>25) print $2 }' people.csv"
+            ],
+            "answer": "gawk -F \",\" '{ if($2>25) print $1, $2 }' people.csv",
+            "explanation": {
+              "gawk '{ if($2>25) print $1, $2 }' people.csv": "No field separator set, assumes whitespace delimiter.",
+              "gawk -F \",\" '{ if($2>25) print $1, $2 }' people.csv": "Correct. Uses the comma delimiter, filtering where the second field (age) is > 25, printing name and age.",
+              "gawk -F \":\" '{ if($2>25) print $1, $2 }' people.csv": "Incorrect delimiter: colon instead of comma.",
+              "gawk -F \" \" '{ if($1>25) print $2 }' people.csv": "Assumes whitespace delimiter and checks the wrong field for age."
+            }
+          },
+          {
+            "number": 89,
+            "question": "text:\nDennis likes cake\nAnna likes donuts\n\nAssignment:\nReplace the first occurrence of 'likes' with 'loves' using sed, without affecting the word 'likes' if it appears again.\n",
+            "options": [
+              "sed 's/likes/loves/' text.txt",
+              "sed 's/likes/loves/g' text.txt",
+              "sed 's/^likes/loves/' text.txt",
+              "sed 's/donuts/likes/' text.txt"
+            ],
+            "answer": "sed 's/likes/loves/' text.txt",
+            "explanation": {
+              "sed 's/likes/loves/' text.txt": "Correct. Substitutes only the first match of 'likes' per line.",
+              "sed 's/likes/loves/g' text.txt": "Global replacement, affecting all occurrences of 'likes'.",
+              "sed 's/^likes/loves/' text.txt": "Matches 'likes' only if at line start.",
+              "sed 's/donuts/likes/' text.txt": "Changes 'donuts' to 'likes', unrelated to the requirement."
+            }
+          },
+          {
+            "number": 90,
+            "question": "text:\n\"Price: 4.567\nPrice: 8.1\"\n\nAssignment:\nUse printf (via a pipeline) to format these numeric values to two decimal places.\n",
+            "options": [
+              "cut -f 1 file.txt | xargs printf \"%.2f\\n\"",
+              "grep 'Price:' file.txt | cut -d ' ' -f 2 | xargs -n1 printf \"%.2f\\n\"",
+              "grep -o 'Price' file.txt | wc -l",
+              "gawk '{ printf \"%2.2s\\n\", $2 }' file.txt"
+            ],
+            "answer": "grep 'Price:' file.txt | cut -d ' ' -f 2 | xargs -n1 printf \"%.2f\\n\"",
+            "explanation": {
+              "cut -f 1 file.txt | xargs printf \"%.2f\\n\"": "Not extracting the right field if the file is space-delimited with 'Price:'.",
+              "grep 'Price:' file.txt | cut -d ' ' -f 2 | xargs -n1 printf \"%.2f\\n\"": "Correct. Filters lines with 'Price:', extracts the numeric part (field 2), and prints with two decimals.",
+              "grep -o 'Price' file.txt | wc -l": "Counts occurrences of 'Price', not formatting numeric values.",
+              "gawk '{ printf \"%2.2s\\n\", $2 }' file.txt": "Tries to treat the second field as a string with length 2, not a floating-point number."
+            }
+          },
+          {
+            "number": 91,
+            "question": "text:\nAlpha Beta\nGamma Delta\n\nAssignment:\nExtract only the second field (space-delimited) and then sort it in alphabetical order.\n",
+            "options": [
+              "cut -d ' ' -f 1 data.txt | sort",
+              "cut -d ' ' -f 2 data.txt | sort",
+              "cut -c 2 data.txt | sort",
+              "sort data.txt | cut -d ' ' -f 1"
+            ],
+            "answer": "cut -d ' ' -f 2 data.txt | sort",
+            "explanation": {
+              "cut -d ' ' -f 1 data.txt | sort": "Extracts the first field, not the second.",
+              "cut -d ' ' -f 2 data.txt | sort": "Correct. Takes the second field, then pipes to sort.",
+              "cut -c 2 data.txt | sort": "Extracts the second character of each line, not the second field.",
+              "sort data.txt | cut -d ' ' -f 1": "Sorts entire file then extracts the first field, ignoring the second."
+            }
+          },
+          {
+            "number": 92,
+            "question": "text:\nroot:x:0:0\nbin:x:1:1\n\nAssignment:\nPrint only the usernames (field 1) that contain 'bin', then display the count of matching lines.\n",
+            "options": [
+              "grep bin /etc/passwd | cut -d ':' -f 1 | wc -l",
+              "cut -d ':' -f 1 /etc/passwd | grep bin | wc -c",
+              "cut -f 1 /etc/passwd | grep 'x:1' | sort",
+              "grep '0:0' /etc/passwd | wc -l"
+            ],
+            "answer": "grep bin /etc/passwd | cut -d ':' -f 1 | wc -l",
+            "explanation": {
+              "grep bin /etc/passwd | cut -d ':' -f 1 | wc -l": "Correct. Filters lines with 'bin', extracts the first field, then counts them.",
+              "cut -d ':' -f 1 /etc/passwd | grep bin | wc -c": "Counts characters, not lines.",
+              "cut -f 1 /etc/passwd | grep 'x:1' | sort": "No -d ':' means default tab delimiter, might fail, also searching for x:1 is partial logic.",
+              "grep '0:0' /etc/passwd | wc -l": "Looks for lines with '0:0', ignoring 'bin'."
+            }
+          },
+          {
+            "number": 93,
+            "question": "text:\nDennis 20\nLucy 30\nTim 40\n\nAssignment:\nUse gawk to sum the second field across all lines and print the total.\n",
+            "options": [
+              "gawk '{ total=$2 } END { print total }' data.txt",
+              "gawk '{ sum+=$2 } END { print sum }' data.txt",
+              "gawk '{ if($2>20) print $2 }' data.txt",
+              "gawk -F ':' '{ sum+=$2 } END { print sum }' data.txt"
+            ],
+            "answer": "gawk '{ sum+=$2 } END { print sum }' data.txt",
+            "explanation": {
+              "gawk '{ total=$2 } END { print total }' data.txt": "Overwrites total with the last line's second field, ignoring previous lines.",
+              "gawk '{ sum+=$2 } END { print sum }' data.txt": "Correct. Adds each second field, then prints final sum in the END block.",
+              "gawk '{ if($2>20) print $2 }' data.txt": "Only prints values above 20, doesn't sum them.",
+              "gawk -F ':' '{ sum+=$2 } END { print sum }' data.txt": "Colon delimiter is incorrect if data is space-delimited."
+            }
+          },
+          {
+            "number": 94,
+            "question": "text:\nZero1.txt\nZero2.txt\nZero3.txt\n\nAssignment:\nRemove all zero-sized files in 'tmp' directory with one confirmation prompt using find and xargs.\n",
+            "options": [
+              "find tmp -size 0 | xargs rm",
+              "find tmp -size 0 -exec rm {} \\;",
+              "find tmp -size 0 | xargs -p rm",
+              "rm `find tmp -size 0`"
+            ],
+            "answer": "find tmp -size 0 | xargs -p rm",
+            "explanation": {
+              "find tmp -size 0 | xargs rm": "No single confirmation prompt, removes them directly.",
+              "find tmp -size 0 -exec rm {} \\;": "Removes files directly, also no single confirmation prompt unless rm -i used.",
+              "find tmp -size 0 | xargs -p rm": "Correct. '-p' prompts once for the entire rm command.",
+              "rm `find tmp -size 0`": "Older syntax with backticks, also no confirmation by default."
+            }
+          },
+          {
+            "number": 95,
+            "question": "text:\nName: Bob Age: 22\nName: Carol Age: 29\n\nAssignment:\nFilter lines with 'Age:' >= 30 using a grep pattern.\n",
+            "options": [
+              "grep 'Age:[2-9][0-9]' file.txt",
+              "grep -v 'Age:' file.txt",
+              "grep -i 'age:30' file.txt",
+              "grep '^Age:' file.txt"
+            ],
+            "answer": "grep 'Age:[2-9][0-9]' file.txt",
+            "explanation": {
+              "grep 'Age:[2-9][0-9]' file.txt": "Correct pattern matching ages from 30 to 99. Among these options, it's the best match for >=30 lines.",
+              "grep -v 'Age:' file.txt": "Displays lines without 'Age:'.",
+              "grep -i 'age:30' file.txt": "Matches 'age:30' ignoring case, but only that specific number.",
+              "grep '^Age:' file.txt": "Matches lines that start with 'Age:', ignoring numeric part or preceding text."
+            }
+          },
+          {
+            "number": 96,
+            "question": "text:\n'Likes to code'\n'Likes to eat'\n\nAssignment:\nReplace every occurrence of 'Likes' with 'Loves' in each line globally.\n",
+            "options": [
+              "sed 's/Likes/Loves/' lines.txt",
+              "sed 's/Likes/Loves/g' lines.txt",
+              "sed 's/^Likes/Loves/' lines.txt",
+              "sed -e 'Likes -> Loves' lines.txt"
+            ],
+            "answer": "sed 's/Likes/Loves/g' lines.txt",
+            "explanation": {
+              "sed 's/Likes/Loves/' lines.txt": "Only replaces the first occurrence per line.",
+              "sed 's/Likes/Loves/g' lines.txt": "Correct. Global replacement of 'Likes' with 'Loves'.",
+              "sed 's/^Likes/Loves/' lines.txt": "Matches 'Likes' only if at start of the line.",
+              "sed -e 'Likes -> Loves' lines.txt": "Not valid sed substitution syntax."
+            }
+          },
+          {
+            "number": 97,
+            "question": "text:\nAlpha:45\nBeta:70\n\nAssignment:\nCut the second field using ':' as a delimiter, then pipe into wc -l to see how many lines exist.\n",
+            "options": [
+              "cut -d ':' -f 2 file.txt | wc -l",
+              "cut -d ' ' -f 2 file.txt | wc -l",
+              "wc -l file.txt | cut -d ':' -f 2",
+              "cut -c 2 file.txt | grep ':' | wc -l"
+            ],
+            "answer": "cut -d ':' -f 2 file.txt | wc -l",
+            "explanation": {
+              "cut -d ':' -f 2 file.txt | wc -l": "Correct. Extracts the second field, then counts the resulting lines.",
+              "cut -d ' ' -f 2 file.txt | wc -l": "Assumes space delimiter, which is incorrect for a colon-based file.",
+              "wc -l file.txt | cut -d ':' -f 2": "Counts lines in the file, then tries to cut the numeric output with a colon delimiter. Irrelevant to extracting the second field from each line.",
+              "cut -c 2 file.txt | grep ':' | wc -l": "Grabs the second character, not the second field."
+            }
+          },
+          {
+            "number": 98,
+            "question": "text:\nAlpha 3.1\nGamma 5.5\n\nAssignment:\nUse gawk to add 2 to each numeric value (the second field) and print the new value.\n",
+            "options": [
+              "gawk '{ print $2+2 }' data.txt",
+              "gawk '{ sum+=$1; print sum }' data.txt",
+              "gawk -F ':' '{ print $2+2 }' data.txt",
+              "sed 's/3.1/5.1/' data.txt"
+            ],
+            "answer": "gawk '{ print $2+2 }' data.txt",
+            "explanation": {
+              "gawk '{ print $2+2 }' data.txt": "Correct. For each line, prints the second field plus 2.",
+              "gawk '{ sum+=$1; print sum }' data.txt": "Adds the first field, which is a string (Alpha, Gamma).",
+              "gawk -F ':' '{ print $2+2 }' data.txt": "Uses a colon delimiter, which doesn't match space-based data.",
+              "sed 's/3.1/5.1/' data.txt": "Only replaces '3.1' with '5.1' literally, ignoring 'Gamma 5.5'."
+            }
+          },
+          {
+            "number": 99,
+            "question": "text:\nhello.txt:\nHello Universe\n\nAssignment:\nUse echo with command substitution to list the sorted contents of 'words.txt' on the same line.\n",
+            "options": [
+              "echo $sort words.txt",
+              "echo $(sort words.txt)",
+              "echo `sort words.txt` wc -l",
+              "sort words.txt > echo"
+            ],
+            "answer": "echo $(sort words.txt)",
+            "explanation": {
+              "echo $sort words.txt": "Invalid variable reference, won't run the sort command.",
+              "echo $(sort words.txt)": "Correct modern command substitution syntax.",
+              "echo `sort words.txt` wc -l": "Would attempt to echo and then run wc -l, not just a single substitution for echo.",
+              "sort words.txt > echo": "Redirects sorted output to a file named 'echo', not printing to screen."
+            }
+          },
+          {
+            "number": 100,
+            "question": "text:\nEmptyFile1.txt\nEmptyFile2.txt\n\nAssignment:\nPrompt to remove all empty files in 'test/' directory with a single confirmation, using find + xargs.\n",
+            "options": [
+              "find test -size 0 | xargs rm",
+              "find test -size 0 -exec rm -i {} \\;",
+              "find test -size 0 | xargs -p rm",
+              "rm `find test -size 0`"
+            ],
+            "answer": "find test -size 0 | xargs -p rm",
+            "explanation": {
+              "find test -size 0 | xargs rm": "Removes them without a confirmation prompt.",
+              "find test -size 0 -exec rm -i {} \\;": "Prompts for each file individually, not a single confirmation for all.",
+              "find test -size 0 | xargs -p rm": "Correct. '-p' yields a single prompt for the entire rm command.",
+              "rm `find test -size 0`": "No prompt, uses backticks."
+            }
+          },
+          {
+            "number": 101,
+            "question": "text:\nLine: I like code and code\n\nAssignment:\nUse sed to replace all occurrences of 'code' with 'scripts' on the same line.\n",
+            "options": [
+              "sed 's/code/scripts/' line.txt",
+              "sed 's/code/scripts/g' line.txt",
+              "sed -e 'code to scripts' line.txt",
+              "sed 's/^code$/scripts/' line.txt"
+            ],
+            "answer": "sed 's/code/scripts/g' line.txt",
+            "explanation": {
+              "sed 's/code/scripts/' line.txt": "Only the first occurrence per line is replaced.",
+              "sed 's/code/scripts/g' line.txt": "Correct for global substitution on each line.",
+              "sed -e 'code to scripts' line.txt": "Invalid sed syntax.",
+              "sed 's/^code$/scripts/' line.txt": "Matches 'code' only if it's the entire line."
+            }
+          },
+          {
+            "number": 102,
+            "question": "text:\nAlice,CAKE\nBob,DONUT\n\nAssignment:\nPrint the second field in lowercase using gawk (assume we handle uppercase by some technique).\n",
+            "options": [
+              "gawk -F \",\" '{ print tolower($2) }' file.txt",
+              "gawk '{ print $3 }' file.txt",
+              "sed 's/CAKE/Donut/' file.txt",
+              "cut -d ',' -f 2 file.txt | wc -l"
+            ],
+            "answer": "gawk -F \",\" '{ print tolower($2) }' file.txt",
+            "explanation": {
+              "gawk -F \",\" '{ print tolower($2) }' file.txt": "Correct. Uses tolower on the second comma-delimited field.",
+              "gawk '{ print $3 }' file.txt": "No delimiter set, plus possibly out of range for two fields.",
+              "sed 's/CAKE/Donut/' file.txt": "Literal replacement, no dynamic lowercase.",
+              "cut -d ',' -f 2 file.txt | wc -l": "Just counts how many lines have a second field."
+            }
+          },
+          {
+            "number": 103,
+            "question": "text:\nX 10\nY 5\n\nAssignment:\nSum the second field with gawk, then print the final total.\n",
+            "options": [
+              "gawk '{ total=$2 } END { print total }' data.txt",
+              "gawk '{ sum+=$2 } END { print sum }' data.txt",
+              "gawk -F ':' '{ sum=$2 } END { print sum }' data.txt",
+              "sed 's/10/15/' data.txt"
+            ],
+            "answer": "gawk '{ sum+=$2 } END { print sum }' data.txt",
+            "explanation": {
+              "gawk '{ total=$2 } END { print total }' data.txt": "Overwrites total with the last line's second field, ignoring previous lines.",
+              "gawk '{ sum+=$2 } END { print sum }' data.txt": "Correct. Adds second field on each line, prints sum at the end.",
+              "gawk -F ':' '{ sum=$2 } END { print sum }' data.txt": "Incorrect delimiter (colon). Also sets sum to $2 for each line but doesn't accumulate unless using sum+=.",
+              "sed 's/10/15/' data.txt": "Literal replacement, no summation logic."
+            }
+          },
+          {
+            "number": 104,
+            "question": "text:\nA B\nC D\n\nAssignment:\nUse a pipeline with cut to extract the second field, then pass it to xargs to run 'printf \"%s\\n\"'.\n",
+            "options": [
+              "cut -d ' ' -f 2 lines.txt | xargs printf \"%s\\n\"",
+              "cut -d ':' -f 2 lines.txt | xargs printf \"%s\\n\"",
+              "grep 'A' lines.txt | wc -l",
+              "gawk '{ print $1 }' lines.txt"
+            ],
+            "answer": "cut -d ' ' -f 2 lines.txt | xargs printf \"%s\\n\"",
+            "explanation": {
+              "cut -d ' ' -f 2 lines.txt | xargs printf \"%s\\n\"": "Correct. Extracts field 2, then uses xargs to run printf on each value.",
+              "cut -d ':' -f 2 lines.txt | xargs printf \"%s\\n\"": "Colon delimiter is incorrect if text is space-delimited.",
+              "grep 'A' lines.txt | wc -l": "Counts lines containing 'A', unrelated to cut or xargs usage.",
+              "gawk '{ print $1 }' lines.txt": "Just prints the first field with gawk, ignoring xargs pipeline."
+            }
+          },
+          {
+            "number": 105,
+            "question": "text:\nName=Tim Age=35\nName=Lucy Age=20\n\nAssignment:\nReplace 'Age=' with 'Years=' globally using sed.\n",
+            "options": [
+              "sed 's/Age=/Years=/' file.txt",
+              "sed 's/Age=/Years=/g' file.txt",
+              "sed 's/^Age=/Years=' file.txt",
+              "sed -e 'Years=Age=' file.txt"
+            ],
+            "answer": "sed 's/Age=/Years=/g' file.txt",
+            "explanation": {
+              "sed 's/Age=/Years=/' file.txt": "Only the first occurrence per line.",
+              "sed 's/Age=/Years=/g' file.txt": "Correct. Global substitution from 'Age=' to 'Years='. ",
+              "sed 's/^Age=/Years=' file.txt": "Matches 'Age=' only at line start.",
+              "sed -e 'Years=Age=' file.txt": "Invalid sed substitution syntax."
+            }
+          },
+          {
+            "number": 106,
+            "question": "text:\nFruit 2.50\nVegetable 1.75\n\nAssignment:\nUse gawk to print the item (field 1) and the price multiplied by 2 (field 2 * 2), space-delimited.\n",
+            "options": [
+              "gawk '{ print $1, $2*2 }' items.txt",
+              "gawk -F ':' '{ print $1, $2*2 }' items.txt",
+              "sed 's/2.50/5.00/' items.txt",
+              "cut -d ' ' -f 2 items.txt | wc -l"
+            ],
+            "answer": "gawk '{ print $1, $2*2 }' items.txt",
+            "explanation": {
+              "gawk '{ print $1, $2*2 }' items.txt": "Correct. Prints field 1 and field 2 multiplied by 2, space-delimited.",
+              "gawk -F ':' '{ print $1, $2*2 }' items.txt": "Colon delimiter is incorrect.",
+              "sed 's/2.50/5.00/' items.txt": "Literal replacement, not dynamic calculation.",
+              "cut -d ' ' -f 2 items.txt | wc -l": "Just counts how many lines have a second field, no multiplication."
+            }
+          },
+          {
+            "number": 107,
+            "question": "text:\nEmptyA.txt\nEmptyB.txt\n\nAssignment:\nRemove these zero-sized files in 'logs/' with a single confirmation using find + xargs.\n",
+            "options": [
+              "find logs/ -size 0 | xargs rm",
+              "find logs/ -size 0 -exec rm {} \\;",
+              "find logs/ -size 0 | xargs -p rm",
+              "rm `find logs/ -size 0`"
+            ],
+            "answer": "find logs/ -size 0 | xargs -p rm",
+            "explanation": {
+              "find logs/ -size 0 | xargs rm": "No prompt for confirmation.",
+              "find logs/ -size 0 -exec rm {} \\;": "Executes rm for each file individually, no single prompt unless rm -i used.",
+              "find logs/ -size 0 | xargs -p rm": "Correct. '-p' requests confirmation once for all files.",
+              "rm `find logs/ -size 0`": "Removes them without prompting."
+            }
+          },
+          {
+            "number": 108,
+            "question": "text:\nEcho:\nHello World\n\nAssignment:\nDisplay the output of sorting 'words.txt' in one line using command substitution and echo.\n",
+            "options": [
+              "echo $sort words.txt",
+              "echo $(sort words.txt)",
+              "echo `sort words.txt` wc -l",
+              "sort words.txt > echo"
+            ],
+            "answer": "echo $(sort words.txt)",
+            "explanation": {
+              "echo $sort words.txt": "Invalid variable reference, won't run the sort command.",
+              "echo $(sort words.txt)": "Correct modern command substitution syntax.",
+              "echo `sort words.txt` wc -l": "Chaining echo with wc -l isn't what's asked; we just need a single line of sorted output in echo.",
+              "sort words.txt > echo": "Redirects sorted output to a file named 'echo', not the screen."
+            }
+          },
+          {
+            "number": 109,
+            "question": "text:\nUser: Alice Age:24\nUser: Mark Age:30\n\nAssignment:\nFilter lines with 'Age:' >= 30 using a grep pattern.\n",
+            "options": [
+              "grep 'Age:[3-9][0-9]' users.txt",
+              "grep -v 'Age:' users.txt",
+              "grep -i 'age:30' users.txt",
+              "grep '^Age:' users.txt"
+            ],
+            "answer": "grep 'Age:[3-9][0-9]' users.txt",
+            "explanation": {
+              "grep 'Age:[3-9][0-9]' users.txt": "Correct pattern for ages 30 to 99. Captures '30'.",
+              "grep -v 'Age:' users.txt": "Shows lines without 'Age:'.",
+              "grep -i 'age:30' users.txt": "Matches only 'age:30' ignoring case, not ages above 30.",
+              "grep '^Age:' users.txt": "Matches lines starting with 'Age:', doesn't check the numeric range."
+            }
+          },
+          {
+            "number": 110,
+            "question": "text:\nLine: code code more code\n\nAssignment:\nUse sed to replace 'code' with 'script' in every occurrence on that line.\n",
+            "options": [
+              "sed 's/code/script/' line.txt",
+              "sed 's/code/script/g' line.txt",
+              "sed '/code/script/g' line.txt",
+              "sed 's/^code$/script/' line.txt"
+            ],
+            "answer": "sed 's/code/script/g' line.txt",
+            "explanation": {
+              "sed 's/code/script/' line.txt": "Only the first occurrence per line is replaced.",
+              "sed 's/code/script/g' line.txt": "Correct. Applies substitution globally for all occurrences of 'code'.",
+              "sed '/code/script/g' line.txt": "Invalid syntax missing 's' for substitution.",
+              "sed 's/^code$/script/' line.txt": "Matches 'code' only if it's the entire line."
+            }
+          }                  
         ]
       }
     ]

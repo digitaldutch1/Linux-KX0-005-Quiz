@@ -1,0 +1,1545 @@
+
+
+
+{
+    "chapters": [
+      {
+        "description": "Assessment 5",
+        "questions": [
+          {
+            "number": 1,
+            "question": "Trevor, a cybersecurity analyst at Linux Training, wants to convert a permission string into its corresponding octet value. The permission string for the file is RWXR-X--X. Which of the following octets would represent this permission string?",
+            "options": [
+              "777",
+              "741",
+              "147",
+              "751"
+            ],
+            "answer": ["751"],
+            "explanation": {
+              "777": "This octet corresponds to rwx for user, group, and others (rwxrwxrwx), which does not match RWXR-X--X.",
+              "741": "User=7 (rwx), Group=4 (r--), Others=1 (--x). That would be rwxr----x, which differs from the needed R-X for group.",
+              "147": "User=1 (--x), Group=4 (r--), Others=7 (rwx). That would be --xr--rwx, not matching RWXR-X--X.",
+              "751": "User=7 (RWX), Group=5 (R-X), Others=1 (--X). This exactly matches RWXR-X--X."
+            }
+          },
+          {
+            "number": 2,
+            "question": "Scarlett, a system administrator at Linux Training, is having trouble resolving hosts to their associated IP addresses. Scarlett believes the issue may be that the server's name has not been added to the /etc/hosts file properly. Which of the following commands should Scarlett execute on the server to quickly identify the proper name to use in the hosts file?",
+            "options": [
+              "ifconfig",
+              "hostname",
+              "ifcfg",
+              "arp"
+            ],
+            "answer": ["hostname"],
+            "explanation": {
+              "ifconfig": "Enables a user to view the IP address information for each network adapter, but not the hostname itself.",
+              "hostname": "Displays the system's current network name configuration. This helps identify the proper host name for /etc/hosts.",
+              "ifcfg": "An alternative to ifconfig or ip for managing IP addressing, not for retrieving hostname.",
+              "arp": "Used to discover MAC-to-IP mappings, not directly showing the system's hostname."
+            }
+          },
+          {
+            "number": 3,
+            "question": "Charles, a system administrator at Linux Training, is trying to see if one of their previous shells disconnected from the remote server when using the ssh command. Which of the following commands could he use to determine if there is currently an established connection over port 22?",
+            "options": [
+              "ip",
+              "ss",
+              "lsof",
+              "blkid"
+            ],
+            "answer": ["ss"],
+            "explanation": {
+              "ip": "A suite of tools used for configuring network interfaces and showing interface information, not focusing on established connections by port.",
+              "ss": "Socket Statistics (ss) is a network utility that displays detailed information about established TCP connections or listening ports, including those on port 22.",
+              "lsof": "Lists open files and processes, could be used but is not as direct for established connections over a specific port as ss.",
+              "blkid": "Displays known information about partitions on a device, unrelated to network connections."
+            }
+          },
+          {
+            "number": 4,
+            "question": "Roland, a cybersecurity analyst at Linux Training, is conducting an audit of the company's service accounts on a Linux server. To increase the security of the server, Roland wants to block interactive logins from these service accounts and prevent the service accounts from accessing the shell. Which of the following should be placed in the shell field of each service account in the /etc/passwd file?",
+            "options": [
+              "/log/audit",
+              "/sbin/nologin",
+              "/etc/shadow",
+              "/sbin/noshell"
+            ],
+            "answer": ["/sbin/nologin"],
+            "explanation": {
+              "/log/audit": "Not a valid path for blocking shell access; typically used for logs or auditing.",
+              "/sbin/nologin": "Correct method for blocking interactive logins in many Linux distributions.",
+              "/etc/shadow": "A file storing hashed passwords, not relevant for blocking shell access.",
+              "/sbin/noshell": "Not the commonly used method for blocking interactive logins (some distros might have it, but /sbin/nologin is standard)."
+            }
+          },
+          {
+            "number": 5,
+            "question": "Kathryn, a cybersecurity analyst at Linux Training, wants to decrypt a message that she received from Paul. Paul encrypted the message so that only Kathryn can decrypt it. Which of the following keys should Kathryn use to decrypt his message?",
+            "options": [
+              "Kathryn's public key",
+              "Certificate authority",
+              "Kathryn's private key",
+              "Wildcard certificate"
+            ],
+            "answer": ["Kathryn's private key"],
+            "explanation": {
+              "Kathryn's public key": "Used by others to encrypt messages to Kathryn, not for her to decrypt them.",
+              "Certificate authority": "An entity that issues digital certificates, not directly used for decrypting messages.",
+              "Kathryn's private key": "Correct. Used to decrypt a message encrypted with her public key.",
+              "Wildcard certificate": "Used to secure subdomains, unrelated to decrypting a private message in this context."
+            }
+          },
+          {
+            "number": 6,
+            "question": "Edna, a system administrator at Linux Training, needs to edit or modify the sudoers file to change privileges for users on a Linux server. Which command should be used to accomplish this safely?",
+            "options": [
+              "useradd",
+              "usermod",
+              "passwd",
+              "visudo"
+            ],
+            "answer": ["visudo"],
+            "explanation": {
+              "useradd": "Used to create user accounts but not for editing sudoers file privileges.",
+              "usermod": "Modifies system account files for a user, not the sudoers file privileges.",
+              "passwd": "Changes user passwords, unrelated to sudoers file modification.",
+              "visudo": "Safely edits the sudoers file, locking against simultaneous edits and checking syntax."
+            }
+          },
+          {
+            "number": 7,
+            "question": "June, a system administrator at Linux Training, wants to select a new shell for use with a Linux server. Which of the following is NOT a commonly used shell in Linux?",
+            "options": [
+              "Bash",
+              "Korn",
+              "Z-shell",
+              "Darwin"
+            ],
+            "answer": ["Darwin"],
+            "explanation": {
+              "Bash": "A very common default shell on Linux distributions.",
+              "Korn": "Another valid shell (ksh) often available on Unix/Linux.",
+              "Z-shell": "Zsh is also commonly used in Linux and Unix-based systems.",
+              "Darwin": "This is an Apple-based Unix-like operating system, not a commonly used Linux shell."
+            }
+          },
+          {
+            "number": 8,
+            "question": "Rose, a network administrator at Linux Training, wants to review all of the configuration settings for the DMZ of the firewall on a Linux server. Which of the following commands should be used to accomplish this?",
+            "options": [
+              "firewall-cmd -get-zones",
+              "firewall-cmd --zone=dmz --list-all",
+              "firewall-cmd --zone=dmz --add-port=21/tcp",
+              "firewall-cmd --zone=dmz --remove-port=21/tcp"
+            ],
+            "answer": ["firewall-cmd --zone=dmz --list-all"],
+            "explanation": {
+              "firewall-cmd -get-zones": "Lists all zones in the firewall but not the specific DMZ settings.",
+              "firewall-cmd --zone=dmz --list-all": "Correct. Displays all rules set in the dmz zone.",
+              "firewall-cmd --zone=dmz --add-port=21/tcp": "Used to allow FTP on port 21 but does not list the entire configuration.",
+              "firewall-cmd --zone=dmz --remove-port=21/tcp": "Used to remove the FTP port rule, not for listing all settings."
+            }
+          },
+          {
+            "number": 9,
+            "question": "Iris, a cybersecurity analyst at Linux Training, wants to isolate the process associated with her web browser to prevent malware from affecting the rest of the system. Which of the following techniques changes the apparent root directory for a process (and its children)?",
+            "options": [
+              "SUID",
+              "SGID",
+              "chroot jail",
+              "firewalld"
+            ],
+            "answer": ["chroot jail"],
+            "explanation": {
+              "SUID": "Allows a user to run an application with file owner privileges, unrelated to changing root directories.",
+              "SGID": "Allows a file to inherit group ownership, not for isolating processes' root directories.",
+              "chroot jail": "Correct. Places a process in a limited sandbox by changing the root directory.",
+              "firewalld": "Service that manages firewall rules, not a sandboxing mechanism."
+            }
+          },
+          {
+            "number": 10,
+            "question": "Which of the following best security practices requires a user to utilize at least two forms of authentication (e.g., password plus token) when logging into a Linux server?",
+            "options": [
+              "Multifactor Authentication (MFA)",
+              "Token",
+              "Pluggable Authentication Module (PAM)",
+              "System Security Services Daemon (sssd)"
+            ],
+            "answer": ["Multifactor Authentication (MFA)"],
+            "explanation": {
+              "Multifactor Authentication (MFA)": "Correct. Requires two or more factors of authentication.",
+              "Token": "A single factor or device used in authentication, not an overall multifactor scheme by itself.",
+              "Pluggable Authentication Module (PAM)": "A framework for authentication modules, not specifically MFA itself.",
+              "System Security Services Daemon (sssd)": "Connects local systems to remote authentication but doesn't enforce MFA alone."
+            }
+          },
+          {
+            "number": 11,
+            "question": "Louis, a software developer at Linux Training, created a hash for a software package and then encrypted the hash with the organization's private key. Which term is used to describe this encrypted hash?",
+            "options": [
+              "Wildcard certificate",
+              "Digital signature",
+              "Public key",
+              "Certificate authority"
+            ],
+            "answer": ["Digital signature"],
+            "explanation": {
+              "Wildcard certificate": "A certificate covering subdomains, unrelated to sending a hashed package.",
+              "Digital signature": "Correct. Created by encrypting a hash with a private key to ensure authenticity/integrity.",
+              "Public key": "Used by others to encrypt data or verify signatures, not the signature itself.",
+              "Certificate authority": "Issues digital certificates, not the entity used to encrypt the hash."
+            }
+          },
+          {
+            "number": 12,
+            "question": "Which of the following types of firewalls checks source, destination, protocol, and also tracks the connection's state?",
+            "options": [
+              "zone",
+              "services",
+              "stateful",
+              "stateless"
+            ],
+            "answer": ["stateful"],
+            "explanation": {
+              "zone": "A grouping concept in some firewall tools, not a firewall type describing stateful/stateless operation.",
+              "services": "Could indicate certain allowed/blocked services, but does not define a stateful firewall itself.",
+              "stateful": "Correct. Tracks connection state plus IP and protocol information.",
+              "stateless": "Only checks IP, protocol, port but does not track connection states."
+            }
+          },
+          {
+            "number": 13,
+            "question": "Rhys, a cybersecurity analyst at Linux Training, wants to review information about the Instructors and Development groups on a Linux server. Which of the following files would contain group names and group IDs?",
+            "options": [
+              "/etc/passwd",
+              "/etc/profile",
+              "/etc/shadow",
+              "/etc/group"
+            ],
+            "answer": ["/etc/group"],
+            "explanation": {
+              "/etc/passwd": "Stores user accounts and their basic information, not specifically group definitions.",
+              "/etc/profile": "A shell script for setting system-wide environment variables on login.",
+              "/etc/shadow": "Stores hashed passwords and password expiration info for user accounts.",
+              "/etc/group": "Correct. Contains groups and their associated group IDs."
+            }
+          },
+          {
+            "number": 14,
+            "question": "Mazen, a system administrator at Linux Training, wants to create a new volume group in LVM. Which of the following commands should he use?",
+            "options": [
+              "lvscan",
+              "lvresize",
+              "pvcreate",
+              "vgcreate"
+            ],
+            "answer": ["vgcreate"],
+            "explanation": {
+              "lvscan": "Scans physical devices for existing logical volumes, not for creating a volume group.",
+              "lvresize": "Used to resize existing logical volumes.",
+              "pvcreate": "Initializes a disk or partition for LVM as a physical volume but doesn't create the volume group itself.",
+              "vgcreate": "Correct. Creates a new volume group from one or more physical volumes."
+            }
+          },
+          {
+            "number": 15,
+            "question": "Wilfred, a system administrator at Linux Training, installed only the kernel modules, services, network capabilities, and performance settings that match the server's role. Which security hardening best practice is this?",
+            "options": [
+              "Setting a strong default umask",
+              "Securing service accounts",
+              "Tune kernel parameters",
+              "Managing file access"
+            ],
+            "answer": ["Tune kernel parameters"],
+            "explanation": {
+              "Setting a strong default umask": "Refers to default file permissions on new files or directories.",
+              "Securing service accounts": "Refers to auditing and restricting service accounts, not matching OS parameters to role.",
+              "Tune kernel parameters": "Correct. Involves customizing the OS configuration to suit the server's role and performance needs.",
+              "Managing file access": "Involves file permissions, ACLs, SELinux, but not specifically about OS-level modules or network capabilities for the role."
+            }
+          },
+          {
+            "number": 16,
+            "question": "Ada, a cybersecurity analyst at Linux Training, wants to require system administrators to use multi-factor authentication (MFA) when logging in. When they enter their username/password, they must also enter a 6-digit code from a portable hardware device. Which would that hardware device be considered?",
+            "options": [
+              "SSO",
+              "Token",
+              "PAM",
+              "SSSD"
+            ],
+            "answer": ["Token"],
+            "explanation": {
+              "SSO": "Single sign-on uses one set of credentials for multiple services, not specifically describing a hardware code device.",
+              "Token": "Correct. A physical or logical item that presents a code, commonly used as the second factor in MFA.",
+              "PAM": "A framework for authentication modules, not a hardware device factor.",
+              "SSSD": "Connects a local system to remote authentication sources, not a hardware token device."
+            }
+          },
+          {
+            "number": 17,
+            "question": "Gwendoline, a cybersecurity analyst at Linux Training, sees a file with chmod value 642. Which of the following permissions does the user have?",
+            "options": [
+              "read only",
+              "read and write",
+              "read, write, and execute",
+              "none"
+            ],
+            "answer": ["read and write"],
+            "explanation": {
+              "read only": "Would correspond to a chmod digit of 4, not 6.",
+              "read and write": "Correct. 6 corresponds to read (4) + write (2).",
+              "read, write, and execute": "Would be 7, not 6.",
+              "none": "Would be 0, not 6."
+            }
+          },
+          {
+            "number": 18,
+            "question": "Eliza, a system administrator at Linux Training, needs to generate a new public/private key pair for SSH. Which of the following commands should be used?",
+            "options": [
+              "ssh-add",
+              "ssh-keygen",
+              "ssh-copy-id",
+              "systemctl enable sshd"
+            ],
+            "answer": ["ssh-keygen"],
+            "explanation": {
+              "ssh-add": "Adds private key identities to the SSH agent but does not generate them.",
+              "ssh-keygen": "Correct. Generates a new public/private key pair for SSH.",
+              "ssh-copy-id": "Copies a local public key to a remote server's authorized_keys file but doesn't create keys.",
+              "systemctl enable sshd": "Enables the SSH daemon at boot, unrelated to generating key pairs."
+            }
+          },
+          {
+            "number": 19,
+            "question": "Gabrielle, a software developer at Linux Training, created a penetration testing simulator on a remote server. Students connect by tunneling the application's traffic from port 2101 through port 22. Which term describes this configuration?",
+            "options": [
+              "X11 forwarding",
+              "SSH port forwarding",
+              "Dynamic forwarding",
+              "Multifactor authentication"
+            ],
+            "answer": ["SSH port forwarding"],
+            "explanation": {
+              "X11 forwarding": "Specifically tunnels the X11 graphical environment over SSH, not a custom port like 2101.",
+              "SSH port forwarding": "Correct. Tunnels an application's port over SSH from client to server.",
+              "Dynamic forwarding": "Sets up a proxy listening on a local port for multiple remote destinations, not a single port.",
+              "Multifactor authentication": "Refers to requiring multiple factors for login, irrelevant to tunneling a port."
+            }
+          },
+          {
+            "number": 20,
+            "question": "Carl, a system administrator at Linux Training, wants to configure SELinux policies. Which command should be used to do this?",
+            "options": [
+              "semanage",
+              "sestatus",
+              "getsebool",
+              "setsebool"
+            ],
+            "answer": ["semanage"],
+            "explanation": {
+              "semanage": "Correct. Configures SELinux policies (contexts, booleans, etc.) at a higher level.",
+              "sestatus": "Shows the current SELinux status, policy type, and mount point, but does not configure policies.",
+              "getsebool": "Shows on/off status of specific SELinux booleans, not general policy config changes.",
+              "setsebool": "Changes the status of an SELinux boolean, but is more limited than semanage for configuring policies."
+            }
+          },
+          {
+            "number": 21,
+            "question": "Marie, a system administrator at Linux Training, wants to modify a file's permissions to give read-only access to the assigned group. Which of the following commands should be used?",
+            "options": [
+              "getfacl",
+              "chown",
+              "chage",
+              "chmod"
+            ],
+            "answer": ["chmod"],
+            "explanation": {
+              "getfacl": "Retrieves ACLs of files and directories, not primarily used to change standard permissions.",
+              "chown": "Changes owner or group of a file, not the permission bits.",
+              "chage": "Controls password expiration for user accounts, unrelated to file permissions.",
+              "chmod": "Correct. Used to modify the permission bits for user/group/others."
+            }
+          },
+          {
+            "number": 22,
+            "question": "Kay, a cybersecurity analyst at Linux Training, wants to connect local systems to a remote authentication service. Which daemon should be used?",
+            "options": [
+              "MFA",
+              "SSO",
+              "PAM",
+              "SSSD"
+            ],
+            "answer": ["SSSD"],
+            "explanation": {
+              "MFA": "Refers to multifactor authentication, not a daemon connecting to remote services.",
+              "SSO": "Single sign-on, not specifically a daemon used for bridging local and remote auth.",
+              "PAM": "A framework for authentication modules, not a daemon for connecting to remote servers.",
+              "SSSD": "Correct. Connects local Linux systems to remote authentication sources."
+            }
+          },
+          {
+            "number": 23,
+            "question": "Which character is used for the logical NOT operator in Bash scripting?",
+            "options": [
+              "!",
+              "*",
+              "-ge",
+              "-gt"
+            ],
+            "answer": ["!"],
+            "explanation": {
+              "!": "Correct. Represents logical negation (NOT) in Bash conditionals.",
+              "*": "Used as a wildcard in filename expansion or multiplication in arithmetic.",
+              "-ge": "Integer comparison operator (greater or equal).",
+              "-gt": "Integer comparison operator (greater than)."
+            }
+          },
+          {
+            "number": 24,
+            "question": "Allen, a software developer at Linux Training, needs to upload a new container image to the company's Docker registry. Which command is used to upload the image?",
+            "options": [
+              "docker port",
+              "docker inspect",
+              "docker push",
+              "docker rmi"
+            ],
+            "answer": ["docker push"],
+            "explanation": {
+              "docker port": "Lists port mappings for a given container, not uploading images.",
+              "docker inspect": "Displays detailed info about containers or images, not for uploading.",
+              "docker push": "Correct. Pushes (uploads) a local container image to a registry.",
+              "docker rmi": "Removes images from the local Docker host."
+            }
+          },
+          {
+            "number": 25,
+            "question": "Leanne, a software developer at Linux Training, wants to combine a sequence of commits into a single history. Which git command should be used?",
+            "options": [
+              "git pull",
+              "git add",
+              "git checkout",
+              "git merge"
+            ],
+            "answer": ["git merge"],
+            "explanation": {
+              "git pull": "Updates local repo with changes from a remote repo.",
+              "git add": "Stages changes in the working directory for commit.",
+              "git checkout": "Switches between branches or commits.",
+              "git merge": "Correct. Combines sequences of commits from one branch into another."
+            }
+          },
+          {
+            "number": 26,
+            "question": "Josephine, a system administrator at Linux Training, wants to automate integration and testing phases of the software development lifecycle. Which approach is used to automate integration and testing?",
+            "options": [
+              "Continuous Integration/Continuous Deployment (CI/CD)",
+              "Infrastructure as Code (IaC)",
+              "Orchestration",
+              "DevOps"
+            ],
+            "answer": ["Continuous Integration/Continuous Deployment (CI/CD)"],
+            "explanation": {
+              "Continuous Integration/Continuous Deployment (CI/CD)": "Correct. Automates building, testing, and deployment for software changes.",
+              "Infrastructure as Code (IaC)": "Version-controlled config for infrastructure, not specifically for integration/testing phases.",
+              "Orchestration": "Automation of tasks that collectively form a complete solution, broader than CI/CD pipelines alone.",
+              "DevOps": "A broader cultural and procedural approach combining development and operations, not only the automation pipeline."
+            }
+          },
+          {
+            "number": 27,
+            "question": "Owen, a network administrator at Linux Training, wants to analyze packets on the outbound interface of the firewall. Which command is used for packet captures on Linux?",
+            "options": [
+              "tcpdump",
+              "netstat",
+              "hostnamectl",
+              "nslookup"
+            ],
+            "answer": ["tcpdump"],
+            "explanation": {
+              "tcpdump": "Correct. Captures and analyzes network traffic on interfaces.",
+              "netstat": "Displays active connections and listening ports, not a raw packet capture tool.",
+              "hostnamectl": "Manages or displays system hostname and related info, not packet capture.",
+              "nslookup": "Queries DNS resolution, not capturing raw packets."
+            }
+          },
+          {
+            "number": 28,
+            "question": "Avery, a network administrator at Linux Training, wants to document the IP addresses of four network adapters on a Linux server. Which command (with no extra options) displays the IP info for all adapters?",
+            "options": [
+              "ifconfig",
+              "hostname",
+              "ifcfg",
+              "arp"
+            ],
+            "answer": ["ifconfig"],
+            "explanation": {
+              "ifconfig": "Correct. Shows IP info for each network adapter by default (on older distros).",
+              "hostname": "Displays or changes the system's hostname.",
+              "ifcfg": "Alternative script-based method or config file approach, not a direct listing tool without arguments.",
+              "arp": "Shows MAC-to-IP mappings in the ARP table, not the direct IP details of all adapters."
+            }
+          },
+          {
+            "number": 29,
+            "question": "Logan, a network administrator at Linux Training, needs the MAC addresses for assigned IPs to configure sticky MAC on a switch. Which command reveals MAC-to-IP bindings?",
+            "options": [
+              "ifconfig",
+              "hostname",
+              "ifcfg",
+              "arp"
+            ],
+            "answer": ["arp"],
+            "explanation": {
+              "ifconfig": "Shows IP info but not necessarily the MAC addresses mapped to IP outside the local system.",
+              "hostname": "Displays the system's hostname, not MAC details.",
+              "ifcfg": "Manages interface config but not for discovering MAC addresses mapped to IPs on the network.",
+              "arp": "Correct. Displays ARP cache of IP-to-MAC bindings."
+            }
+          },
+          {
+            "number": 30,
+            "question": "Ethan, a Linux user at Linux Training, accidentally opened the parted application. Which keystroke stops the currently running process?",
+            "options": [
+              "CTRL + Z",
+              "CTRL + D",
+              "CTRL + C",
+              "End Key"
+            ],
+            "answer": ["CTRL + C"],
+            "explanation": {
+              "CTRL + Z": "Pauses (suspends) the process but does not stop it.",
+              "CTRL + D": "Signals end of input or logs out of a session if running in a shell, not the typical kill signal.",
+              "CTRL + C": "Correct. Sends SIGINT to stop (interrupt) a running process.",
+              "End Key": "Just moves the cursor or input focus to the line end in many shells, does not terminate a process."
+            }
+          },
+          {
+            "number": 31,
+            "question": "Linux Training wants to encrypt data at rest on a server's storage device for security. Which command is commonly used for full-drive encryption on Linux?",
+            "options": [
+              "LUKS",
+              "rsync",
+              "scp",
+              "netcat"
+            ],
+            "answer": ["LUKS"],
+            "explanation": {
+              "LUKS": "Correct. Linux Unified Key Setup for full-disk encryption on Linux.",
+              "rsync": "Syncs files over the network, not encryption at rest.",
+              "scp": "Secure copy for transferring files over SSH, not disk encryption.",
+              "netcat": "nc for sending data or testing connectivity, unrelated to disk encryption."
+            }
+          },
+          {
+            "number": 32,
+            "question": "System administrators at Linux Training need a command to securely copy files between servers using port 22. Which command meets this need?",
+            "options": [
+              "xz",
+              "rsync",
+              "scp",
+              "nc"
+            ],
+            "answer": ["scp"],
+            "explanation": {
+              "xz": "A compression utility handling .xz archives, not secure file transfer.",
+              "rsync": "Data transfer that can use SSH but often used for syncing changes. scp is the direct, simpler approach for encrypted copies.",
+              "scp": "Correct. Secure copy via SSH on port 22.",
+              "nc": "Netcat, used for raw network connections and testing, not specifically secure file transfer."
+            }
+          },
+          {
+            "number": 33,
+            "question": "Penelope, a system administrator at Linux Training, installed a new server named ServerDT. Linux Training naming conventions require function-based hostnames. Which command changes the system hostname from ServerDT to FileServer02?",
+            "options": [
+              "hostnamectl",
+              "arp",
+              "resolvectl",
+              "ifcfg"
+            ],
+            "answer": ["hostnamectl"],
+            "explanation": {
+              "hostnamectl": "Correct. Views/changes the system's hostname on systemd-based distros.",
+              "arp": "Views and manipulates the ARP cache, not hostnames.",
+              "resolvectl": "Queries name resolution or sets DNS stub resolver, not hostnames.",
+              "ifcfg": "Network interface config scripts, not hostnames."
+            }
+          },
+          {
+            "number": 34,
+            "question": "Kieran, a cybersecurity analyst at Linux Training, wants to ensure security patches are only installed outside work hours. He decides to update the APT database now (without installing). Which command accomplishes this?",
+            "options": [
+              "apt purge",
+              "apt update",
+              "apt upgrade",
+              "apt remove"
+            ],
+            "answer": ["apt update"],
+            "explanation": {
+              "apt purge": "Removes a package and its config files, not for updating package indices.",
+              "apt update": "Correct. Updates the local package index from repositories, no actual package installs.",
+              "apt upgrade": "Upgrades installed packages to newer versions, beyond just updating the index.",
+              "apt remove": "Uninstalls a package but leaves config files intact, irrelevant to updating indexes."
+            }
+          },
+          {
+            "number": 35,
+            "question": "Which hidden directory is created the first time a user runs the ssh command?",
+            "options": [
+              ".sshconfig",
+              ".tcp",
+              ".ssh",
+              ".bashrc"
+            ],
+            "answer": [".ssh"],
+            "explanation": {
+              ".sshconfig": "No standard directory with that name; possibly a confusion with ~/.ssh/config file.",
+              ".tcp": "Not a standard directory for SSH use.",
+              ".ssh": "Correct. Automatically created to store SSH keys/config.",
+              ".bashrc": "A hidden file, not a directory. Used to configure shell initialization."
+            }
+          },
+          {
+            "number": 36,
+            "question": "David, CTO at Linux Training, wants tasks automatically performed at specific times daily. Which is the primary Linux task scheduler?",
+            "options": [
+              "GRUB2",
+              "SMB",
+              "CRON",
+              "LUKS"
+            ],
+            "answer": ["CRON"],
+            "explanation": {
+              "GRUB2": "Linux bootloader for selecting OS kernels, not a task scheduler.",
+              "SMB": "Protocol for file sharing across Windows networks, not scheduling tasks.",
+              "CRON": "Correct. Primary mechanism for scheduling recurring tasks on Linux.",
+              "LUKS": "Disk encryption solution, unrelated to scheduling tasks."
+            }
+          },
+          {
+            "number": 37,
+            "question": "Which command determines how the system will represent culture-specific elements (like keyboard layout or currency symbols) on a Linux system?",
+            "options": [
+              "timedatectl",
+              "localectl",
+              "lsmod",
+              "sysctl"
+            ],
+            "answer": ["localectl"],
+            "explanation": {
+              "timedatectl": "Sets system date/time, not localization settings (beyond timezones).",
+              "localectl": "Correct. Views/changes locale and keyboard layout for the system.",
+              "lsmod": "Displays loaded kernel modules, unrelated to localization.",
+              "sysctl": "Displays or sets kernel parameters, not locale."
+            }
+          },
+          {
+            "number": 38,
+            "question": "Consider the CLI command: bg %1. Which action is being performed?",
+            "options": [
+              "Refers to a job started by a command beginning with 'abc'",
+              "Runs the specified job in the background",
+              "Specifies the previous job in the list",
+              "Refers to a job started by a command containing 'abc'"
+            ],
+            "answer": ["Runs the specified job in the background"],
+            "explanation": {
+              "Refers to a job started by a command beginning with 'abc'": "That would be bg %abc, not %1.",
+              "Runs the specified job in the background": "Correct. %1 references job #1.",
+              "Specifies the previous job in the list": "Would be bg %- in many shells, not %1.",
+              "Refers to a job started by a command containing 'abc'": "Would be bg %?abc, not %1."
+            }
+          },
+          {
+            "number": 39,
+            "question": "Luna, a system administrator at Linux Training, wants to edit the crontab to change scheduled tasks. Which command is used to edit these tasks?",
+            "options": [
+              "crontab",
+              "at",
+              "fcstat",
+              "curl"
+            ],
+            "answer": ["crontab"],
+            "explanation": {
+              "crontab": "Correct. Manages scheduled tasks in the cron table file.",
+              "at": "Schedules a one-off command at a particular time, not recurring tasks.",
+              "fcstat": "Displays info about Fibre Channel adapters, unrelated to scheduling.",
+              "curl": "Transfers data from/to servers using supported protocols, not scheduling."
+            }
+          },
+          {
+            "number": 40,
+            "question": "Hazel, a system administrator at Linux Training, wants to install and run sandboxed apps via the Flatpak package manager. Which term describes the repositories used by Flatpak?",
+            "options": [
+              "snaps",
+              "remotes",
+              "AppImage",
+              "zip"
+            ],
+            "answer": ["remotes"],
+            "explanation": {
+              "snaps": "Packages used by Snap, not Flatpak.",
+              "remotes": "Correct. Flatpak repositories are known as remotes.",
+              "AppImage": "A self-contained package format for Linux, not a Flatpak repository name.",
+              "zip": "Compressed archive format, unrelated to Flatpak repos."
+            }
+          },
+          {
+            "number": 41,
+            "question": "Which DNS resolution tool uses question and answer sections in its output to show name resolution details?",
+            "options": [
+              "dig",
+              "nslookup",
+              "host",
+              "ifcfg"
+            ],
+            "answer": ["dig"],
+            "explanation": {
+              "dig": "Correct. Displays queries and answers in detail.",
+              "nslookup": "Older tool for DNS lookups, doesn't show the same question/answer breakdown as dig does.",
+              "host": "Simpler DNS lookup tool, output is less verbose than dig.",
+              "ifcfg": "Manages interface configuration, unrelated to DNS resolution details."
+            }
+          },
+          {
+            "number": 42,
+            "question": "Aiden, a system administrator at Linux Training, needs an efficient daily backup method that only transfers changed files. Which command is designed to reduce network bandwidth usage for this purpose?",
+            "options": [
+              "mtr",
+              "nc",
+              "rsync",
+              "sftp"
+            ],
+            "answer": ["rsync"],
+            "explanation": {
+              "mtr": "Combines ping and traceroute for checking network path quality, not file sync.",
+              "nc": "Netcat for raw connections or simple data transfer, not incremental backups.",
+              "rsync": "Correct. Only transfers changed files, minimizing bandwidth usage.",
+              "sftp": "Secure FTP-like usage over SSH but lacks rsync's built-in incremental logic."
+            }
+          },
+          {
+            "number": 43,
+            "question": "Which systemd tool helps troubleshoot name resolution issues on a Linux system?",
+            "options": [
+              "dig",
+              "nslookup",
+              "resolvectl",
+              "ifcfg"
+            ],
+            "answer": ["resolvectl"],
+            "explanation": {
+              "dig": "Standalone DNS query tool, not part of systemd suite.",
+              "nslookup": "Another DNS query tool, not systemd-based.",
+              "resolvectl": "Correct. Part of systemd-resolved, used to query/resolve DNS in systemd environments.",
+              "ifcfg": "Manages or configures network interfaces, not specifically DNS resolution in systemd."
+            }
+          },
+          {
+            "number": 44,
+            "question": "Duncan, a system administrator at Linux Training, was asked to create a RAID array. Which command is used to create/manage/monitor software RAID arrays?",
+            "options": [
+              "/dev/urandom",
+              "mdadm",
+              "fdisk",
+              "partprobe"
+            ],
+            "answer": ["mdadm"],
+            "explanation": {
+              "/dev/urandom": "A source of random data, not for RAID management.",
+              "mdadm": "Correct. Manages, creates, and monitors RAID devices in Linux.",
+              "fdisk": "Disk partitioning utility, not specifically for RAID arrays.",
+              "partprobe": "For re-reading partition tables, not RAID creation/management."
+            }
+          },
+          {
+            "number": 45,
+            "question": "Jayden, a system administrator at Linux Training, wants to create files of specific lengths for script testing. Which special device file can fill them with zeroes?",
+            "options": [
+              "/dev/urandom",
+              "/dev/null",
+              "/dev/zero",
+              "/tmp"
+            ],
+            "answer": ["/dev/zero"],
+            "explanation": {
+              "/dev/urandom": "Produces random data, not zeroes.",
+              "/dev/null": "Discards data written to it, doesn't produce data for file creation.",
+              "/dev/zero": "Correct. Provides a continuous stream of zero bytes to create files of fixed size.",
+              "/tmp": "A standard directory for temporary files but doesn't auto-generate data."
+            }
+          },
+          {
+            "number": 46,
+            "question": "Katie, a system administrator at Linux Training, wants to display info about a kernel module's version or author name. Which command should she use?",
+            "options": [
+              "lsmod",
+              "rmmod",
+              "modinfo",
+              "modprobe"
+            ],
+            "answer": ["modinfo"],
+            "explanation": {
+              "lsmod": "Lists currently loaded modules and usage, but not in-depth metadata like author/version.",
+              "rmmod": "Removes a module from the kernel, no info about it.",
+              "modinfo": "Correct. Shows details like filename, author, version, description for kernel modules.",
+              "modprobe": "Loads or removes modules, automatically handling dependencies, not showing detailed info."
+            }
+          },
+          {
+            "number": 47,
+            "question": "Patricia, a system administrator at Linux Training, wants to move a config file from her Desktop to her home directory, effectively renaming or relocating it. Which single command accomplishes that?",
+            "options": [
+              "cp",
+              "rm",
+              "mkdir",
+              "mv"
+            ],
+            "answer": ["mv"],
+            "explanation": {
+              "cp": "Copies files but doesn't remove the source file unless combined with separate rm command.",
+              "rm": "Removes or deletes files, no copying or moving to new location.",
+              "mkdir": "Creates directories, not for moving or renaming files.",
+              "mv": "Correct. Moves (or renames) files/directories from one location to another in one step."
+            }
+          },
+          {
+            "number": 48,
+            "question": "Noah is teaching a new Linux administrator basic commands. Which function does cat perform?",
+            "options": [
+              "Display file contents even if larger than one screen page",
+              "Display the contents of a text file on the screen",
+              "Delete the contents of the specified file",
+              "Move the contents of the specified file"
+            ],
+            "answer": ["Display the contents of a text file on the screen"],
+            "explanation": {
+              "Display file contents even if larger than one screen page": "It will scroll off the screen if too large. If you only see a page at a time, use less or more.",
+              "Display the contents of a text file on the screen": "Correct. cat dumps the file content to STDOUT.",
+              "Delete the contents of the specified file": "rm would remove a file, not cat.",
+              "Move the contents of the specified file": "mv relocates or renames a file; cat just displays."
+            }
+          },
+          {
+            "number": 49,
+            "question": "Which command displays bus information about devices attached to the Universal Serial Bus (USB)?",
+            "options": [
+              "lspci",
+              "dmidecode",
+              "lsusb",
+              "make"
+            ],
+            "answer": ["lsusb"],
+            "explanation": {
+              "lspci": "Lists devices on the PCI bus, not USB.",
+              "dmidecode": "Dumps the DMI (hardware/firmware) data, not specifically USB info.",
+              "lsusb": "Correct. Shows USB bus info about attached devices.",
+              "make": "Build utility for compiling code, no hardware listing functionality."
+            }
+          },
+          {
+            "number": 50,
+            "question": "Rodney, a system administrator at Linux Training, is having issues installing yum. Which other package manager can handle .rpm packages?",
+            "options": [
+              "rpm",
+              "dpkg",
+              "zypp",
+              "apt"
+            ],
+            "answer": ["rpm"],
+            "explanation": {
+              "rpm": "Correct. Installs/upgrades .rpm packages directly if yum is unavailable.",
+              "dpkg": "Installs .deb packages, not .rpm.",
+              "zypp": "SUSE-based manager using .zypp, not pure .rpm handling alone.",
+              "apt": "Installs/upgrades .deb packages in Debian/Ubuntu environments."
+            }
+          },
+          {
+            "number": 51,
+            "question": "When a new application starts, its processes load into memory. When the user stops using it, the system terminates the process and frees resources. Which process state best describes this termination state?",
+            "options": [
+              "sleeping",
+              "running",
+              "stopped",
+              "zombie"
+            ],
+            "answer": ["stopped"],
+            "explanation": {
+              "sleeping": "Process is waiting for resources or I/O, not finishing execution.",
+              "running": "Process is actively executing instructions or scheduled to run.",
+              "stopped": "Correct. The process is ending/terminated, releasing its resources.",
+              "zombie": "A child process that ended but has not been reaped by its parent. The question states full termination."
+            }
+          },
+          {
+            "number": 52,
+            "question": "Alexander, a system administrator at Linux Training, just used the vim text editor and typed :q to quit. Which signal is used to close the editor gracefully?",
+            "options": [
+              "SIGTERM",
+              "SIGKILL",
+              "SIGHUP",
+              "CTRL+Z"
+            ],
+            "answer": ["SIGTERM"],
+            "explanation": {
+              "SIGTERM": "Correct. A graceful termination signal (the user instructs the program to exit).",
+              "SIGKILL": "Forcibly ends the process without cleanup.",
+              "SIGHUP": "Hangup signal, used if a terminal disconnects.",
+              "CTRL+Z": "Suspends (pauses) the process, not a direct kill."
+            }
+          },
+          {
+            "number": 53,
+            "question": "Antony, a system administrator at Linux Training, ran top and saw an abnormally high %id value. What does %id measure?",
+            "options": [
+              "Time a virtual CPU waits for the physical CPU",
+              "Time CPU waits for I/O access",
+              "Time CPU is idle",
+              "Time CPU spent running user processes"
+            ],
+            "answer": ["Time CPU is idle"],
+            "explanation": {
+              "Time a virtual CPU waits for the physical CPU": "That's the steal metric (%st).",
+              "Time CPU waits for I/O access": "That's the wait metric (%wa).",
+              "Time CPU is idle": "Correct. A high %id means significant idle CPU cycles.",
+              "Time CPU spent running user processes": "That's the %us metric in top."
+            }
+          },
+          {
+            "number": 54,
+            "question": "Janet, a network administrator at Linux Training, ran ping 8.8.8.8 and saw 'request timed out.' Which is most likely true?",
+            "options": [
+              "Connection to the remote server was successful",
+              "No valid path to the destination",
+              "Request reached the destination but no timely response",
+              "DHCP server is misconfigured"
+            ],
+            "answer": ["Request reached the destination but no timely response"],
+            "explanation": {
+              "Connection to the remote server was successful": "That would yield replies, not a timeout.",
+              "No valid path to the destination": "An unknown host or unreachable error might show up, but 'timed out' indicates no echo reply in time.",
+              "Request reached the destination but no timely response": "Correct. The ping packets are not answered within the threshold.",
+              "DHCP server is misconfigured": "Possible but not necessarily the main cause of ping timeouts to 8.8.8.8. Could also be firewalls or other network issues."
+            }
+          },
+          {
+            "number": 55,
+            "question": "Joanne, in the Instructors group at Linux Training, cannot execute ExamResults with rw-r--r--. The file is owned by Jason, group=Instructors. Which chmod command grants the group execute permission (and keeps other permissions as needed)?",
+            "options": [
+              "chmod 744 ExamReport",
+              "chmod 451 ExamReport",
+              "chmod 654 ExamReport",
+              "chmod 766 ExamReport"
+            ],
+            "answer": ["chmod 654 ExamReport"],
+            "explanation": {
+              "chmod 744 ExamReport": "User=7 (rwx), group=4 (r--), others=4 (r--). Lacks group execute.",
+              "chmod 451 ExamReport": "User=4 (r--), group=5 (r-x), others=1 (--x), drastically changes user's permission from rw- to r--.",
+              "chmod 654 ExamReport": "Correct. user=6 (rw-), group=5 (r-x), others=4 (r--). So group can execute while user remains rw- and others r--.",
+              "chmod 766 ExamReport": "User=7 (rwx), group=6 (rw-), others=6 (rw-). Not the intended result."
+            }
+          },
+          {
+            "number": 56,
+            "question": "Victor, a system administrator at Linux Training, suspects a user exceeded their assigned storage quota. Which type of quota issues a warning when users exceed it?",
+            "options": [
+              "User soft quota limit",
+              "User hard quota limit",
+              "Inode soft quota limit",
+              "Inode hard quota limit"
+            ],
+            "answer": ["User soft quota limit"],
+            "explanation": {
+              "User soft quota limit": "Correct. Allows exceeding for a grace period and issues warnings.",
+              "User hard quota limit": "No data can be written once the user hits the hard limit, no extended grace/warning scenario.",
+              "Inode soft quota limit": "Same idea but for number of files, not data usage. Possibly a warning if over but typically focusing on file count.",
+              "Inode hard quota limit": "No more inodes can be created once reached, with no grace once it's over limit."
+            }
+          },
+          {
+            "number": 57,
+            "question": "Fanny, a system administrator at Linux Training, wants a custom script run at shutdown. The Description, ExecStart, and WantedBy directives are present. Which directive is required for a custom script to run during shutdown?",
+            "options": [
+              "ExecStart",
+              "ExecStop",
+              "Before",
+              "After"
+            ],
+            "answer": ["ExecStop"],
+            "explanation": {
+              "ExecStart": "Runs commands when the service starts, not at shutdown.",
+              "ExecStop": "Correct. Runs commands upon service stop or system shutdown.",
+              "Before": "Specifies ordering relative to another unit's start, not specifically for shutdown scripts.",
+              "After": "Specifies ordering relative to another unit's start, not for the actual stop process script."
+            }
+          },
+          {
+            "number": 58,
+            "question": "Aimee, a system administrator at Linux Training, finds the system over-allocating memory. She needs a program to reclaim memory from certain processes. Which utility does this?",
+            "options": [
+              "iostat",
+              "tcpdump",
+              "OOM killer",
+              "ioping"
+            ],
+            "answer": ["OOM killer"],
+            "explanation": {
+              "iostat": "Displays CPU and device I/O stats, not forcibly reclaiming memory from processes.",
+              "tcpdump": "Packet capture utility, irrelevant to memory management.",
+              "OOM killer": "Correct. Kills over-allocating processes so resources return to the system.",
+              "ioping": "Tests I/O latency, not memory usage or management."
+            }
+          },
+          {
+            "number": 59,
+            "question": "Kyle, a system administrator at Linux Training, sees a process that is functioning properly and getting all required resources. Which state describes this process?",
+            "options": [
+              "Running",
+              "Sleeping",
+              "Stopped",
+              "Zombie"
+            ],
+            "answer": ["Running"],
+            "explanation": {
+              "Running": "Correct. The process is actively executing or ready to run with needed resources.",
+              "Sleeping": "Waiting for an event, resource, or I/O, not fully running.",
+              "Stopped": "Terminated or suspended, not actively running.",
+              "Zombie": "Exited but waiting for its parent to reap the exit code, not operational."
+            }
+          },
+          {
+            "number": 60,
+            "question": "Cheryl, a system administrator at Linux Training, has a script that should run at boot. The Description, ExecStop, and WantedBy directives exist, but the script isn't running. Which directive is required to run a custom script on startup?",
+            "options": [
+              "ExecStart",
+              "ExecStop",
+              "Before",
+              "After"
+            ],
+            "answer": ["ExecStart"],
+            "explanation": {
+              "ExecStart": "Correct. Tells systemd what command to execute when the service (or script) starts, i.e., at boot.",
+              "ExecStop": "Runs on service stop or system shutdown.",
+              "Before": "Specifies order relative to another unit's start, not the actual command to run at start.",
+              "After": "Also about ordering but not the actual command to start the script."
+            }
+          },
+          {
+            "number": 61,
+            "question": "Anne, a system administrator at Linux Training, can't reach a remote server. She wants to identify which router or firewall is dropping traffic. Which command displays each hop in the path?",
+            "options": [
+              "ping",
+              "dig",
+              "traceroute",
+              "nslookup"
+            ],
+            "answer": ["traceroute"],
+            "explanation": {
+              "ping": "Checks basic connectivity but doesn't show each hop.",
+              "dig": "DNS lookup utility, unrelated to hop-based path tracing.",
+              "traceroute": "Correct. Displays intermediate hops to find where traffic is blocked or delayed.",
+              "nslookup": "Legacy DNS lookup, not for path discovery."
+            }
+          },
+          {
+            "number": 62,
+            "question": "Dale, a system administrator at Linux Training, deleted files on an SSD. Another admin recovered them. Which is most likely the reason for the successful recovery?",
+            "options": [
+              "The inodes were exhausted",
+              "SSD trimming was not performed",
+              "A RAID misconfiguration exists",
+              "Incorrect partition size"
+            ],
+            "answer": ["SSD trimming was not performed"],
+            "explanation": {
+              "The inodes were exhausted": "That would limit file creation, not lead to successful file recovery.",
+              "SSD trimming was not performed": "Correct. Without TRIM, blocks marked 'deleted' aren't actually cleared, allowing data recovery.",
+              "A RAID misconfiguration exists": "Possible data issues but not the primary cause for easy file recovery on an SSD.",
+              "Incorrect partition size": "Would be a mismatch error, not specifically leading to recovering previously 'deleted' data."
+            }
+          },
+          {
+            "number": 63,
+            "question": "Lisa, a software developer at Linux Training, wants to raise the CPU priority of her custom software. Which approach is correct?",
+            "options": [
+              "Increase its priority by raising the nice value",
+              "Increase its priority by lowering the nice value",
+              "Decrease its priority by raising the nice value",
+              "Decrease its priority by lowering the nice value"
+            ],
+            "answer": ["Increase its priority by lowering the nice value"],
+            "explanation": {
+              "Increase its priority by raising the nice value": "Raising the nice value actually lowers priority (less CPU time).",
+              "Increase its priority by lowering the nice value": "Correct. Lower nice means higher CPU scheduling priority.",
+              "Decrease its priority by raising the nice value": "That is a correct statement for decreasing priority, but not what Lisa wants.",
+              "Decrease its priority by lowering the nice value": "Would result in even higher priority, not decreasing it."
+            }
+          },
+          {
+            "number": 64,
+            "question": "Helen, a system administrator at Linux Training, must unlock the user account jsnow. Which command is used to unlock a Linux user account?",
+            "options": [
+              "chage",
+              "passwd",
+              "chmod",
+              "userdel"
+            ],
+            "answer": ["passwd"],
+            "explanation": {
+              "chage": "Controls user password aging and expiration, but not directly unlocking an account.",
+              "passwd": "Correct. Using 'passwd -u jsnow' unlocks the jsnow account.",
+              "chmod": "Changes file permissions, not account lock status.",
+              "userdel": "Removes the user account entirely, not unlocking it."
+            }
+          },
+          {
+            "number": 65,
+            "question": "Kathleen, a data forensic technician at Linux Training, recovered sensitive files after a system administrator 'deleted' them. Why was recovery possible?",
+            "options": [
+              "Storage device was corrupted/damaged",
+              "SSH didn't encrypt data at rest",
+              "Kernel was misconfigured",
+              "Files remain on disk after deletion until overwritten"
+            ],
+            "answer": ["Files remain on disk after deletion until overwritten"],
+            "explanation": {
+              "Storage device was corrupted/damaged": "That would usually hinder recovery, not help.",
+              "SSH didn't encrypt data at rest": "SSH is for network encryption, not disk-level encryption or overwrites.",
+              "Kernel was misconfigured": "No direct reason for leftover data to be recoverable.",
+              "Files remain on disk after deletion until overwritten": "Correct. Deletion typically marks blocks as free, data can still be retrieved."
+            }
+          },
+          {
+            "number": 66,
+            "question": "Graham, a system administrator at Linux Training, accidentally erased the DNS configurations. Which file must be updated with the DNS server IP addresses?",
+            "options": [
+              "/etc/DNS",
+              "/etc/host/",
+              "/etc/resolv.conf",
+              "/proc"
+            ],
+            "answer": ["/etc/resolv.conf"],
+            "explanation": {
+              "/etc/DNS": "Not standard. Typically resolv.conf is used for DNS settings.",
+              "/etc/host/": "'hosts' file is for local name resolution but not specifying DNS servers. Also not a directory.",
+              "/etc/resolv.conf": "Correct. Contains DNS server IP addresses for name resolution on many Linux systems.",
+              "/proc": "A virtual filesystem representing kernel data, not DNS configuration."
+            }
+          },
+          {
+            "number": 67,
+            "question": "Bryan, a system administrator at Linux Training, wants to see if a user account actually has a valid password set. Which file should he check?",
+            "options": [
+              "cat /etc/user",
+              "cat /usr/bin",
+              "cat /etc/passwd",
+              "cat /etc/shadow"
+            ],
+            "answer": ["cat /etc/shadow"],
+            "explanation": {
+              "cat /etc/user": "Not a standard file. Possibly user confusion, doesn't exist by default.",
+              "cat /usr/bin": "Directory with executables, not user password info.",
+              "cat /etc/passwd": "Shows user accounts but the password field is 'x' if shadow is in use, not the actual or hashed password info.",
+              "cat /etc/shadow": "Correct. Contains hashed passwords and can indicate if a password is set."
+            }
+          },
+          {
+            "number": 68,
+            "question": "Eva, a system administrator at Linux Training, is troubleshooting a gateway at 192.168.1.1. She wants to send exactly 4 ICMP echo requests. Which ping syntax accomplishes this?",
+            "options": [
+              "ping 192.168.1.1 # 4",
+              "ping 192.168.1.1 -c 4",
+              "ping 192.168.1.1",
+              "ping 192.168.1.1 -n 4"
+            ],
+            "answer": ["ping 192.168.1.1 -c 4"],
+            "explanation": {
+              "ping 192.168.1.1 # 4": "The # is typically a comment in most shells, not a valid ping option.",
+              "ping 192.168.1.1 -c 4": "Correct. -c 4 sends exactly 4 packets in Linux ping.",
+              "ping 192.168.1.1": "Default indefinite ping until user stops it.",
+              "ping 192.168.1.1 -n 4": "-n is typically a Windows ping option, not standard in Linux."
+            }
+          },
+          {
+            "number": 69,
+            "question": "Bertha, a system administrator at Linux Training, wants to see the default systemd target to confirm GUI access. Which command shows the default target?",
+            "options": [
+              "systemctl get-default",
+              "systemctl isolate",
+              "systemctl set-default",
+              "systemctl status"
+            ],
+            "answer": ["systemctl get-default"],
+            "explanation": {
+              "systemctl get-default": "Correct. Reveals which target is the system default (e.g. graphical.target).",
+              "systemctl isolate": "Switches the system to a different target, doesn't just display the default.",
+              "systemctl set-default": "Changes the default target but doesn't display it.",
+              "systemctl status": "Shows status of a specified unit, not the default target."
+            }
+          },
+          {
+            "number": 70,
+            "question": "Which is the default nice value assigned to an application on Linux?",
+            "options": [
+              "0",
+              "-19",
+              "20",
+              "5"
+            ],
+            "answer": ["0"],
+            "explanation": {
+              "0": "Correct. Default nice value is 0, meaning no adjustment.",
+              "-19": "Represents highest priority, not default.",
+              "20": "Lowest priority, not default.",
+              "5": "Some distros might shift default nicing for certain processes, but standard is 0."
+            }
+          },
+          {
+            "number": 71,
+            "question": "Chantelle, a cybersecurity analyst at Linux Training, sees a file with chmod 777. Which permission set does the group have in that scenario?",
+            "options": [
+              "read only",
+              "read and write",
+              "read, write, and execute",
+              "none"
+            ],
+            "answer": ["read, write, and execute"],
+            "explanation": {
+              "read only": "That would be 4, not 7.",
+              "read and write": "That would be 6, not 7.",
+              "read, write, and execute": "Correct. 7 corresponds to rwx.",
+              "none": "0, no access, not relevant to 7."
+            }
+          },
+          {
+            "number": 72,
+            "question": "Gavin, a system administrator at Linux Training, is in his home directory and types 'cd /var/log/'. Which path traversal is that?",
+            "options": [
+              "Absolute",
+              "Relative",
+              "Parent",
+              "Same"
+            ],
+            "answer": ["Absolute"],
+            "explanation": {
+              "Absolute": "Correct. Starts at root '/', specifying the full path /var/log.",
+              "Relative": "Would not start with '/', would be something like 'cd var/log' or 'cd ../someOtherDir'.",
+              "Parent": "Navigating up with '..', not the case here.",
+              "Same": "Using '.', just referencing the same directory, not the case."
+            }
+          },
+          {
+            "number": 73,
+            "question": "Which of the following controls service-to-service interactions within a container environment?",
+            "options": [
+              "Service mesh",
+              "Container registry",
+              "Virtual machine",
+              "Container image"
+            ],
+            "answer": ["Service mesh"],
+            "explanation": {
+              "Service mesh": "Correct. Provides routing, observability, security between microservices within container setups.",
+              "Container registry": "A repo for container images, not controlling interactions at runtime.",
+              "Virtual machine": "Emulates entire OS environment; distinct from containers' service interaction layer.",
+              "Container image": "A static blueprint for containers, not controlling network interactions among services."
+            }
+          },
+          {
+            "number": 74,
+            "question": "Suzanne, a system administrator at Linux Training, needs to execute a command in a running container. Which Docker command is used?",
+            "options": [
+              "docker build",
+              "docker inspect",
+              "docker port",
+              "docker run"
+            ],
+            "answer": ["docker run"],
+            "explanation": {
+              "docker build": "Builds an image from a Dockerfile, not running commands in an existing container.",
+              "docker inspect": "Shows detailed configuration info about containers/images, not executing commands.",
+              "docker port": "Lists port mappings for a container, not running commands.",
+              "docker run": "Correct. Runs a new container or executes a command in a container context."
+            }
+          },
+          {
+            "number": 75,
+            "question": "Catherine, a cybersecurity analyst at Linux Training, installed multiple versions of nmap. She wants to see which nmap command is used from PATH. Which command checks that?",
+            "options": [
+              "find",
+              "locate",
+              "which",
+              "echo"
+            ],
+            "answer": ["which"],
+            "explanation": {
+              "find": "Searches the filesystem based on conditions, not the PATH order specifically.",
+              "locate": "Uses an indexed DB of filenames, not the PATH-based usage.",
+              "which": "Correct. Displays the full path of the command the shell will execute from PATH.",
+              "echo": "Displays arguments or variables, not verifying the location of an executable."
+            }
+          },
+          {
+            "number": 76,
+            "question": "Andrea, a system administrator at Linux Training, wants to create a here document so that input is read until a specific string is found. Which redirection operator accomplishes this?",
+            "options": [
+              "<",
+              ">",
+              "<<",
+              ">>"
+            ],
+            "answer": ["<<"],
+            "explanation": {
+              "<": "Redirects input from a file, but doesn't define a termination string.",
+              ">": "Redirects output to a file, overwriting it.",
+              "<<": "Correct. Reads input until a matching delimiter line is found.",
+              ">>": "Appends output to a file, not relevant to the here document input concept."
+            }
+          },
+          {
+            "number": 77,
+            "question": "Margaret, a system administrator at Linux Training, wants to display the first ten lines of a config file. Which command should she use?",
+            "options": [
+              "head",
+              "tail",
+              "source",
+              "read"
+            ],
+            "answer": ["head"],
+            "explanation": {
+              "head": "Correct. By default, prints the first 10 lines of a file.",
+              "tail": "Prints the last 10 lines, not the first 10.",
+              "source": "Executes commands from a file in the current shell, doesn't just display lines.",
+              "read": "Reads a line of input into a variable in scripts, not for displaying 10 lines."
+            }
+          },
+          {
+            "number": 78,
+            "question": "Joy, a system administrator at Linux Training, wants an agentless orchestration tool that can interpret Bash, Python, Ruby, YAML, and PowerShell config files. Which one should she use?",
+            "options": [
+              "Ansible",
+              "Chef",
+              "Puppet",
+              "SaltStack"
+            ],
+            "answer": ["Puppet"],
+            "explanation": {
+              "Ansible": "Agentless, but typically uses YAML and Python, not all the listed languages in one config approach.",
+              "Chef": "Uses Ruby and an agent-based approach.",
+              "Puppet": "Correct. Agentless with recognized configuration in multiple script types, including Bash/Python/Ruby/YAML/PowerShell.",
+              "SaltStack": "Has both agent-based and agentless modes but is heavily Python and YAML based, less about Bash or PowerShell."
+            }
+          },
+          {
+            "number": 79,
+            "question": "Julia, a software developer at Linux Training, wants to upload local code changes to a remote repo. Which git command uploads local commits to the central repository?",
+            "options": [
+              "git checkout",
+              "git push",
+              "gitignore",
+              "git add"
+            ],
+            "answer": ["git push"],
+            "explanation": {
+              "git checkout": "Switches branches or commits, not uploading local changes to remote.",
+              "git push": "Correct. Sends local commits to the remote repository.",
+              "gitignore": "File name (prefix with a dot .gitignore) specifying ignored files, not a command.",
+              "git add": "Stages changes for commit but not uploading to remote until commit and push."
+            }
+          },
+          {
+            "number": 80,
+            "question": "The screenshot shows a simple JavaScript Object Notation structure. Which file type does it represent?",
+            "options": [
+              ".json",
+              ".yaml",
+              ".py",
+              ".terraformrc"
+            ],
+            "answer": [".json"],
+            "explanation": {
+              ".json": "Correct. Standard text-based format for structured data (JavaScript Object Notation).",
+              ".yaml": "Different format (YAML Ain't Markup Language), no braces or quoted keys typically.",
+              ".py": "Python script file extension, not JSON data.",
+              ".terraformrc": "Terraform config file, not JSON by default."
+            },
+            "image": "assets/linux_questions_images/assessment5_80.jpg"
+          },
+          {
+            "number": 81,
+            "question": "Doris, a software developer at Linux Training, needs to build a container image from a Dockerfile. Which of the following commands should be used?",
+            "options": [
+              "docker build",
+              "docker inspect",
+              "docker port",
+              "docker rmi"
+            ],
+            "answer": ["docker build"],
+            "explanation": {
+              "docker build": "Correct. Compiles a Docker image from a Dockerfile.",
+              "docker inspect": "Shows detailed info about containers or images, not building one.",
+              "docker port": "Shows port mappings, unrelated to building images.",
+              "docker rmi": "Removes an image from the local Docker host."
+            }
+          },
+          {
+            "number": 82,
+            "question": "Miriam, a system administrator at Linux Training, sees that ip addr shows 169.254.25.1. Why is network connectivity failing?",
+            "options": [
+              "The workstation has no valid Layer 2 address",
+              "A private IP is assigned and it's not routable internally",
+              "The client failed to get a valid DHCP lease",
+              "A public IP is assigned and it's not routable on the internal network"
+            ],
+            "answer": ["The client failed to get a valid DHCP lease"],
+            "explanation": {
+              "The workstation has no valid Layer 2 address": "ARP or MAC layer is not necessarily the issue. The IP stack is giving an APIPA address.",
+              "A private IP is assigned and it's not routable internally": "169.254.x.x is link-local APIPA, not just a normal private IP like 192.168.x.x.",
+              "The client failed to get a valid DHCP lease": "Correct. 169.254.x.x (APIPA) is used when DHCP fails.",
+              "A public IP is assigned and it's not routable": "169.254 is not a public IP range; it's specifically link-local."
+            }
+          },
+          {
+            "number": 83,
+            "question": "Benjamin, a software developer at Linux Training, wants to label important code versions. Which git command adds a label to the repository’s commit history?",
+            "options": [
+              "git checkout",
+              "git add",
+              "git tag",
+              "git branch"
+            ],
+            "answer": ["git tag"],
+            "explanation": {
+              "git checkout": "Switches between branches or commits, not labeling them.",
+              "git add": "Stages changes for commit, no tagging functionality.",
+              "git tag": "Correct. Creates a label on specific commits to mark a version or release.",
+              "git branch": "Manages branches, not commits labeling."
+            }
+          },
+          {
+            "number": 84,
+            "question": "Olive, a system administrator at Linux Training, runs a script to collect serial numbers from a text file. She wants to redirect the output to inventory.txt (overwriting it). Which operator is used?",
+            "options": [
+              "<",
+              ">",
+              "<<",
+              ">>"
+            ],
+            "answer": [">"],
+            "explanation": {
+              "<": "Reads input from a file, not output to a file.",
+              ">": "Correct. Redirects STDOUT to a file, overwriting its contents.",
+              "<<": "Begins a here document, reading multiple lines until a delimiter.",
+              ">>": "Appends to a file instead of overwriting."
+            }
+          },
+          {
+            "number": 85,
+            "question": "Anthony, a system administrator at Linux Training, wants an orchestration tool using agents and Ruby. Which tool meets these requirements?",
+            "options": [
+              "Ansible",
+              "Chef",
+              "Puppet",
+              "SaltStack"
+            ],
+            "answer": ["Chef"],
+            "explanation": {
+              "Ansible": "Agentless, relies on Python, not Ruby and agents.",
+              "Chef": "Correct. Uses agents and the Ruby DSL for configurations.",
+              "Puppet": "Agentless, recognizes multiple languages, including Ruby, but can also be agent-based. However, Chef is the classic agent+Ruby approach.",
+              "SaltStack": "Supports agent-based or agentless, but typically Python not Ruby as the main language."
+            }
+          },
+          {
+            "number": 86,
+            "question": "Laurence, a system administrator at Linux Training, rebooted a server and found that port 21/tcp wasn't allowed anymore. He re-adds the rule. Which firewall-cmd option makes it persist across reboots?",
+            "options": [
+              "firewall-cmd --save",
+              "firewall-cmd --stay",
+              "firewall-cmd --permanent",
+              "firewall-cmd --reload"
+            ],
+            "answer": ["firewall-cmd --permanent"],
+            "explanation": {
+              "firewall-cmd --save": "Not a valid official subcommand with permanent effect in current firewall-cmd usage.",
+              "firewall-cmd --stay": "Not a valid firewall-cmd option.",
+              "firewall-cmd --permanent": "Correct. Ensures the rule persists after reboot.",
+              "firewall-cmd --reload": "Reloads the config but doesn't make ephemeral rules permanent."
+            }
+          },
+          {
+            "number": 87,
+            "question": "Minnie, a system administrator at Linux Training, needs to change file ownership from a recently terminated employee to someone else. Which command accomplishes this?",
+            "options": [
+              "chage",
+              "chmod",
+              "chown",
+              "usermod"
+            ],
+            "answer": ["chown"],
+            "explanation": {
+              "chage": "Changes password aging and expiration settings.",
+              "chmod": "Changes file/directory permissions, not ownership.",
+              "chown": "Correct. Modifies file or directory owner (and group).",
+              "usermod": "Modifies user account attributes, not file ownership."
+            }
+          },
+          {
+            "number": 88,
+            "question": "Clare, a network administrator at Linux Training, sees that the firewall only allows ports 22, 80, and 443. She needs to allow NTP. Which port must be opened for NTP?",
+            "options": [
+              "23",
+              "110",
+              "123",
+              "445"
+            ],
+            "answer": ["123"],
+            "explanation": {
+              "23": "Telnet, not NTP.",
+              "110": "POP3, for email retrieval, not NTP.",
+              "123": "Correct. NTP default port.",
+              "445": "SMB over TCP, not time syncing."
+            }
+          },
+          {
+            "number": 89,
+            "question": "Rita, a system administrator at Linux Training, sees an error: the filesystem superblock indicates 2 GB, but the physical device is only 1 GB. Which filesystem issue is occurring?",
+            "options": [
+              "Filesystem corruption",
+              "Inode exhaustion",
+              "Filesystem mismatch",
+              "Low IOPS"
+            ],
+            "answer": ["Filesystem mismatch"],
+            "explanation": {
+              "Filesystem corruption": "Possible, but specifically a mismatch means the superblock's stored size differs from actual disk.",
+              "Inode exhaustion": "Involves running out of inodes for files, not a size mismatch.",
+              "Filesystem mismatch": "Correct. The device's actual size differs from what the filesystem superblock states.",
+              "Low IOPS": "Performance metric, not about size mismatch."
+            }
+          },
+          {
+            "number": 90,
+            "question": "Victoria, a system administrator at Linux Training, sees one partition is full and just added a new disk. Which command is used to partition the new disk?",
+            "options": [
+              "fdisk",
+              "vgdisplay",
+              "lvdisplay",
+              "pvcreate"
+            ],
+            "answer": ["fdisk"],
+            "explanation": {
+              "fdisk": "Correct. A menu-driven program to create/modify/delete partitions.",
+              "vgdisplay": "Lists volume group attributes but doesn't partition a disk.",
+              "lvdisplay": "Lists logical volume attributes, not partitioning.",
+              "pvcreate": "Initializes a drive/partition as an LVM physical volume, but only after partitioning is done."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  
+  
