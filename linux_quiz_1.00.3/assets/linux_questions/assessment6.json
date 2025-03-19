@@ -67,10 +67,10 @@
               "TimeOutIdleSec",
               "What"
             ],
-            "answer": ["Where", "Options", "DirectoryMode", "TimeOutIdleSec"],
+            "answer": ["Where", "DirectoryMode", "TimeOutIdleSec"],
             "explanation": {
               "Where": "Correct. Specifies the mount point path for the automount.",
-              "Options": "Correct. Additional mount options can be specified here.",
+              "Options": "Incorrect. This directive is included in the [Mount] section.",
               "DirectoryMode": "Correct. Sets the mode for directories created by automount, if needed.",
               "TimeOutIdleSec": "Correct. Defines how long to wait before unmounting when idle.",
               "What": "Typically found in [Mount] section, not [Automount]."
@@ -340,14 +340,14 @@
               "fdisk -1 /dev/sdb",
               "growpart /dev/mapper/rootvg-rootlv",
               "pvcreate /dev/sdb",
-              "lvresize –L +10G -r /dev/mapper/rootvg-rootlv",
+              "lvresize -L +10G -r /dev/mapper/rootvg-rootlv",
               "lsblk /dev/sda",
               "parted -l /dev/mapper/rootvg-rootlv",
               "vgextend /dev/rootvg /dev/sdb"
             ],
             "answer": [
               "pvcreate /dev/sdb",
-              "lvresize –L +10G -r /dev/mapper/rootvg-rootlv",
+              "lvresize -L +10G -r /dev/mapper/rootvg-rootlv",
               "vgextend /dev/rootvg /dev/sdb"
             ],
             "explanation": {
@@ -355,7 +355,7 @@
               "fdisk -1 /dev/sdb": "Likely a typo for 'fdisk -l', doesn't directly fix the full filesystem issue.",
               "growpart /dev/mapper/rootvg-rootlv": "Used in some distributions (e.g., cloud images) but not always standard LVM approach.",
               "pvcreate /dev/sdb": "Correct. Initializes the new disk as a physical volume for LVM.",
-              "lvresize –L +10G -r /dev/mapper/rootvg-rootlv": "Correct. Resizes the logical volume and filesystem by +10G.",
+              "lvresize -L +10G -r /dev/mapper/rootvg-rootlv": "Correct. Resizes the logical volume and filesystem by +10G.",
               "lsblk /dev/sda": "Lists block devices, does not fix the problem.",
               "parted -l /dev/mapper/rootvg-rootlv": "Shows partition info, doesn't fix the issue.",
               "vgextend /dev/rootvg /dev/sdb": "Correct. Adds the new PV to the existing volume group to allow LV expansion."
@@ -373,7 +373,7 @@
             "answer": ["docker cp container_id:/deployment.yaml deployment.yaml"],
             "explanation": {
               "docker cp container_id/deployment.yaml deployment.yaml": "Missing the colon syntax (container_id:/path). Docker requires container:filepath.",
-              "docker cp container_id:/deployment.yaml deployment.yaml": "Correct. Copies from container’s /deployment.yaml to local system’s deployment.yaml.",
+              "docker cp container_id:/deployment.yaml deployment.yaml": "Correct. Copies from container's /deployment.yaml to local system's deployment.yaml.",
               "docker cp deployment.yaml local://deployment.yaml": "Invalid syntax; docker cp doesn't use 'local://'.",
               "docker cp container_id/deployment.yaml local://deployment.yaml": "Again, invalid local:// usage and missing colon syntax."
             }
@@ -770,10 +770,10 @@
             "options": [
               "grep -i auto /etc/systemd/journald.conf && systemctl restart systemd-journald.service",
               "cat /etc/systemd/journald.conf | awk '(print $1,$3)'",
-              "sed -i 's/auto/persistent/g' /etc/systemd/journald.conf && sed -i 'persistent/s/ˆ#//q' /etc/systemd/journald.conf",
+              "sed -i 's/auto/persistent/g' /etc/systemd/journald.conf && sed -i 'persistent/s/^#//q' /etc/systemd/journald.conf",
               "journalctl --list-boots && systemctl restart systemd-journald.service"
             ],
-            "answer": ["sed -i 's/auto/persistent/g' /etc/systemd/journald.conf && sed -i 'persistent/s/ˆ#//q' /etc/systemd/journald.conf"],
+            "answer": ["sed -i 's/auto/persistent/g' /etc/systemd/journald.conf && sed -i 'persistent/s/^#//q' /etc/systemd/journald.conf"],
             "explanation": {
               "grep -i auto /etc/systemd/journald.conf && systemctl restart systemd-journald.service": "Just searches for 'auto' and restarts, not actually changing persistence to 'persistent'.",
               "cat /etc/systemd/journald.conf | awk '(print $1,$3)'": "Displays lines but doesn't set persistent storage.",
@@ -1398,7 +1398,7 @@
             "explanation": {
               "Add #!/bin/bash to the bottom of the script.": "Shebang line belongs at the top. Also correct syntax is '#!/bin/bash' (one slash).",
               "Create a unit file for the new service in /etc/systemd/system/ with the name helpme.service in the location.": "Correct. Ties the script into systemd at boot time.",
-              "Add #!//bin/bash to the top of the script.": "Correct concept, though typically '#!/bin/bash' (one slash). The question’s text has double slash but presumably means setting the shebang at the top.",
+              "Add #!//bin/bash to the top of the script.": "Correct concept, though typically '#!/bin/bash' (one slash). The question's text has double slash but presumably means setting the shebang at the top.",
               "Restart the computer to enable the new service.": "Often you can systemctl enable and start without a full reboot.",
               "Create a unit file for the new service in /etc/init.d with the name helpme.service in the location.": "That's SysV style, not systemd recommended. Also the question mentions systemd usage.",
               "Shut down the computer to enable the new service.": "Unnecessary step. 'systemctl enable' is enough."

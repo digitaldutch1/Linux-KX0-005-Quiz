@@ -258,7 +258,7 @@
                     "options": ["ifconfig", "iwconfig", "router", "ifup", "ip"],
                     "answer": "ip",
                     "explanation": {
-                        "ifconfig": "This command is used for configuring network interfaces but is deprecated.",
+                        "ifconfig": "This command is used for configuring network interfaces but not the default router.",
                         "iwconfig": "This command is used for configuring wireless interfaces.",
                         "router": "This is not a valid command.",
                         "ifup": "This command brings interfaces up but does not set IP addresses directly.",

@@ -241,7 +241,7 @@
                 },
                 {
                     "number": 153,
-                    "question": "You need to enable the DHCP service on your Red Hat–based SysV init system for runlevels 3 and 5. Which of the following commands should you use?",
+                    "question": "You need to enable the DHCP service on your Red Hat-based SysV init system for runlevels 3 and 5. Which of the following commands should you use?",
                     "options": [
                         "service enable dhcp 3,5",
                         "chkconfig --levels 3,5 dhcp on",

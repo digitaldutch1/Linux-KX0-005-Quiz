@@ -606,14 +606,14 @@
             "number": 36,
             "question": "Danny, a network administrator at Linux Training, reconfigured a network device and now three Linux workstations cannot ping their default gateway. After running the ip addr command, he notices the client IP address is 172.16.2.3/24 and the gateway's address is 172.16.1.2/24. Which of the following is MOST likely the issue with this new network configuration?",
             "options": [
-              "The network gateway’s IP must be the first IP address on the network",
+              "The network gateway's IP must be the first IP address on the network",
               "The client and gateway must be on the same network",
               "Each workstation must use be configured with a public IP address",
               "The gateway must be configured to use a public IP address"
             ],
             "answer": "The client and gateway must be on the same network",
             "explanation": {
-              "The network gateway’s IP must be the first IP address on the network": "Incorrect. It is not required to be the first IP.",
+              "The network gateway's IP must be the first IP address on the network": "Incorrect. It is not required to be the first IP.",
               "The client and gateway must be on the same network": "Correct. They must share the same subnet.",
               "Each workstation must use be configured with a public IP address": "Incorrect. Private IPs can be used within a local network.",
               "The gateway must be configured to use a public IP address": "Incorrect. A private IP is sufficient within a local network."

@@ -107,7 +107,8 @@
                         "22": "Incorrect. Port 22 is used for SSH.",
                         "80": "Correct. Port 80 is the standard port for HTTP.",
                         "443": "Incorrect. Port 443 is used for HTTPS."
-                    }
+                    },
+                    "image_i": "assets/linux_questions_images/exerciseChapter2_Port_Table.jpg"
                 },
                 {
                     "number": 7,
@@ -1236,11 +1237,11 @@
                     "question": "What protocol do Linux servers use to share files with other Linux servers?",
                     "options": [
                         "SMB/CIFS",
-                        "NFS (Network File System)",
+                        "NFS",
                         "FTP",
                         "HTTP"
                     ],
-                    "answer": "NFS (Network File System)",
+                    "answer": "NFS",
                     "explanation": {
                         "SMB/CIFS": "Incorrect. SMB/CIFS is used for Windows network file sharing.",
                         "NFS (Network File System)": "Correct. NFS is used to share files between Linux servers.",
@@ -1417,6 +1418,96 @@
                         "Apache Hadoop": "Correct. Apache Hadoop is used for clustering.",
                         "OpenLDAP": "Incorrect. OpenLDAP is used for directory services."
                     }
+                },
+                {
+                    "number": 84,
+                    "question": "Which of the following ports is used for encrypted web traffic (HTTPS)?",
+                    "options": [
+                        "25",
+                        "53",
+                        "80",
+                        "443"
+                    ],
+                    "answer": "443",
+                    "explanation": {
+                        "25": "Incorrect. Port 25 is used for SMTP (email sending).",
+                        "53": "Incorrect. Port 53 is used for DNS queries.",
+                        "80": "Incorrect. Port 80 is used for unencrypted HTTP traffic.",
+                        "443": "Correct. Port 443 is the standard port for HTTPS (secure web traffic)."
+                    },
+                    "image_i": "assets/linux_questions_images/exerciseChapter2_Port_Table.jpg"
+                },
+                {
+                    "number": 85,
+                    "question": "Which port is commonly used for SSH connections?",
+                    "options": [
+                        "21",
+                        "22",
+                        "23",
+                        "443"
+                    ],
+                    "answer": "22",
+                    "explanation": {
+                        "21": "Incorrect. Port 21 is used for FTP file transfers.",
+                        "22": "Correct. Port 22 is the standard port for SSH (Secure Shell) connections.",
+                        "23": "Incorrect. Port 23 is used for Telnet, which is an unsecure remote shell.",
+                        "443": "Incorrect. Port 443 is used for HTTPS."
+                    },
+                    "image_i": "assets/linux_questions_images/exerciseChapter2_Port_Table.jpg"
+                },
+                {
+                    "number": 86,
+                    "question": "Which port does DNS use for name resolution?",
+                    "options": [
+                        "25",
+                        "53",
+                        "110",
+                        "143"
+                    ],
+                    "answer": "53",
+                    "explanation": {
+                        "25": "Incorrect. Port 25 is used for SMTP (email sending).",
+                        "53": "Correct. Port 53 is the standard port for DNS (Domain Name System) queries.",
+                        "110": "Incorrect. Port 110 is used for POP3 email retrieval.",
+                        "143": "Incorrect. Port 143 is used for IMAP email retrieval."
+                    },
+                    "image_i": "assets/linux_questions_images/exerciseChapter2_Port_Table.jpg"
+                },
+                {
+                    "number": 87,
+                    "question": "Which port is used for file sharing on Microsoft networks (SMB)?",
+                    "options": [
+                        "23",
+                        "53",
+                        "137-139",
+                        "389"
+                    ],
+                    "answer": "137-139",
+                    "explanation": {
+                        "23": "Incorrect. Port 23 is used for Telnet, which is an unsecure remote shell.",
+                        "53": "Incorrect. Port 53 is used for DNS queries.",
+                        "137-139": "Correct. Ports 137-139 are used for SMB (Server Message Block) on Microsoft networks.",
+                        "389": "Incorrect. Port 389 is used for LDAP (Lightweight Directory Access Protocol)."
+                    },
+                    "image_i": "assets/linux_questions_images/exerciseChapter2_Port_Table.jpg"
+                },
+                {
+                    "number": 88,
+                    "question": "Which port is used for email sending via SMTP?",
+                    "options": [
+                        "25",
+                        "110",
+                        "143",
+                        "443"
+                    ],
+                    "answer": "25",
+                    "explanation": {
+                        "25": "Correct. Port 25 is the standard port for SMTP (Simple Mail Transfer Protocol).",
+                        "110": "Incorrect. Port 110 is used for POP3 email retrieval.",
+                        "143": "Incorrect. Port 143 is used for IMAP email retrieval.",
+                        "443": "Incorrect. Port 443 is used for HTTPS (secure web traffic)."
+                    },
+                    "image_i": "assets/linux_questions_images/exerciseChapter2_Port_Table.jpg"
                 }
             ]
         }

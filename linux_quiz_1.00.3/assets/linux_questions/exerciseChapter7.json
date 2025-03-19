@@ -1,0 +1,1714 @@
+
+
+
+{
+    "chapters": [
+      {
+        "description": "Configuring Network Connections",
+        "questions": [
+          {
+            "number": 1,
+            "question": "Which of the following files is commonly used on Debian-based systems to define static IP addresses, subnet mask, and default gateway settings?",
+            "options": [
+              "/etc/sysconfig/network-scripts",
+              "/etc/network/interfaces",
+              "/etc/hosts",
+              "/etc/resolv.conf"
+            ],
+            "answer": ["/etc/network/interfaces"],
+            "explanation": {
+              "/etc/sysconfig/network-scripts": "Used typically on Red Hat-based systems for interface configurations (e.g., ifcfg-*).",
+              "/etc/network/interfaces": "Correct. On Debian-based systems, this file is commonly used for static IP settings.",
+              "/etc/hosts": "Stores mappings between hostnames and IP addresses locally but not the primary location for configuring static IP/gateway.",
+              "/etc/resolv.conf": "Specifies DNS nameserver information, not the static IP/gateway for an interface."
+            }
+          },
+          {
+            "number": 2,
+            "question": "Which of the following commands provides a stripped-down text-based interface for Network Manager to set IP and DNS details?",
+            "options": [
+              "netstat",
+              "ifconfig",
+              "nmtui",
+              "dig"
+            ],
+            "answer": ["nmtui"],
+            "explanation": {
+              "netstat": "Displays network connections, routing tables, etc., not a Network Manager configuration tool.",
+              "ifconfig": "A legacy command from net-tools, used for assigning IP addresses or viewing interface stats, not specifically a text interface for Network Manager.",
+              "nmtui": "Correct. nmtui is a text-based interface for Network Manager to configure network settings.",
+              "dig": "Queries DNS servers for information about domain names, not for setting IP addresses via Network Manager."
+            }
+          },
+          {
+            "number": 3,
+            "question": "On Red Hat-based systems, which directory typically holds interface-specific configuration files like ifcfg-enp0s3?",
+            "options": [
+              "/etc/sysconfig/network-scripts",
+              "/etc/resolv.conf",
+              "/etc/network",
+              "/usr/lib/sysctl.d"
+            ],
+            "answer": ["/etc/sysconfig/network-scripts"],
+            "explanation": {
+              "/etc/sysconfig/network-scripts": "Correct. Contains individual network interface config files (e.g., ifcfg-*).",
+              "/etc/resolv.conf": "Used for DNS server settings.",
+              "/etc/network": "Typical for Debian-based systems, not Red Hat-based.",
+              "/usr/lib/sysctl.d": "Houses sysctl configuration snippets, not interface config."
+            }
+          },
+          {
+            "number": 4,
+            "question": "Which command from the iproute2 suite is considered a modern replacement for ifconfig for configuring IP addresses?",
+            "options": [
+              "ip link",
+              "ip route",
+              "ip address",
+              "ip neighbor"
+            ],
+            "answer": ["ip address"],
+            "explanation": {
+              "ip link": "Used to view or modify link-layer attributes (e.g., enabling/disabling interfaces).",
+              "ip route": "Manages routing tables (default gateway, static routes).",
+              "ip address": "Correct. Used to display or set IPv4/IPv6 addresses on interfaces, analogous to ifconfig's IP assignment.",
+              "ip neighbor": "Manages ARP cache/neighbor discovery. Not for direct IP address assignment."
+            }
+          },
+          {
+            "number": 5,
+            "question": "Which tool would you use on older Linux distributions to set a wireless SSID and encryption key, assuming net-tools are available?",
+            "options": [
+              "ip",
+              "iwconfig",
+              "nmtui",
+              "modprobe"
+            ],
+            "answer": ["iwconfig"],
+            "explanation": {
+              "ip": "Modern command for network configuration, but it doesn't handle wireless SSID/key (that was iwconfig's job under net-tools).",
+              "iwconfig": "Correct. Part of net-tools for setting SSID and encryption key on older systems.",
+              "nmtui": "Network Manager text-based interface, not the classic net-tools utility.",
+              "modprobe": "Loads or removes kernel modules, unrelated to assigning wireless SSID/keys directly."
+            }
+          },
+          {
+            "number": 6,
+            "question": "A system is using IPv6 link-local addresses. Which special format is required when pinging another system's link-local IP?",
+            "options": [
+              "ping6 --link ip6-address@eth0",
+              "ping6 -z link-local ip6-address",
+              "ping6 ip6-address%interface",
+              "ping6 eth0::ip6-address"
+            ],
+            "answer": ["ping6 ip6-address%interface"],
+            "explanation": {
+              "ping6 --link ip6-address@eth0": "Syntax mismatch. The typical method uses '%'.",
+              "ping6 -z link-local ip6-address": "Not a valid option or syntax for specifying link-local interface.",
+              "ping6 ip6-address%interface": "Correct. For IPv6 link-local, you must append '%<interface>' (e.g., fe80::xxxx%enp0s3).",
+              "ping6 eth0::ip6-address": "Invalid format; not how link-local addresses are specified with interface context."
+            }
+          },
+          {
+            "number": 7,
+            "question": "Which of the following files contains host-to-IP address mappings that override DNS, and is checked before DNS lookups if so configured in /etc/nsswitch.conf?",
+            "options": [
+              "/etc/hosts",
+              "/etc/resolv.conf",
+              "/etc/dhcpd.conf",
+              "/etc/hostname"
+            ],
+            "answer": ["/etc/hosts"],
+            "explanation": {
+              "/etc/hosts": "Correct. Local file for manually mapping hostnames to IP addresses. The system checks it first if so configured.",
+              "/etc/resolv.conf": "Lists DNS servers and search domains, not local overrides of hostnames.",
+              "/etc/dhcpd.conf": "Config file for a DHCP server, not local hostname mappings.",
+              "/etc/hostname": "Stores the system’s local hostname, not multiple host-IP mappings."
+            }
+          },
+          {
+            "number": 8,
+            "question": "What is the purpose of the /etc/resolv.conf file on a Linux system using traditional methods?",
+            "options": [
+              "Stores the system’s network interface configurations.",
+              "Contains DHCP client settings for dynamic IP assignment.",
+              "Sets the SELinux security context for network interfaces.",
+              "Specifies DNS servers for hostname resolution."
+            ],
+            "answer": ["Specifies DNS servers for hostname resolution."],
+            "explanation": {
+              "Stores the system’s network interface configurations.": "Interface settings typically reside in /etc/network/interfaces or /etc/sysconfig/network-scripts.",
+              "Contains DHCP client settings for dynamic IP assignment.": "DHCP client config is typically in a separate client config, not resolv.conf.",
+              "Sets the SELinux security context for network interfaces.": "Irrelevant to /etc/resolv.conf's function.",
+              "Specifies DNS servers for hostname resolution.": "Correct. /etc/resolv.conf includes nameserver lines for DNS resolution."
+            }
+          },
+          {
+            "number": 9,
+            "question": "Which command can display or manipulate the ARP cache (neighbor discovery) in the iproute2 framework?",
+            "options": [
+              "ip neighbor",
+              "ip netns",
+              "ip route",
+              "ip address"
+            ],
+            "answer": ["ip neighbor"],
+            "explanation": {
+              "ip neighbor": "Correct. Manages ARP or NDISC cache entries in iproute2.",
+              "ip netns": "Manages network namespaces, not ARP cache directly.",
+              "ip route": "Manipulates the routing table (default gateway, routes).",
+              "ip address": "Displays/sets IP addresses, not ARP entries."
+            }
+          },
+          {
+            "number": 10,
+            "question": "You want to see which processes or applications are listening on TCP port 22. Which command from iproute2 or net-tools can be replaced by the modern ss command to reveal processes bound to sockets?",
+            "options": [
+              "netstat",
+              "nmtui",
+              "ip link",
+              "dig"
+            ],
+            "answer": ["netstat"],
+            "explanation": {
+              "netstat": "Correct. netstat is the older utility that can display listening ports, now replaced by ss for more detailed info.",
+              "nmtui": "Network Manager TUI for configuration, not for listing open sockets with PID info.",
+              "ip link": "Manages link-level settings, not process-level socket usage.",
+              "dig": "DNS query utility, not a socket-listening analysis tool."
+            }
+          },
+          {
+            "number": 11,
+            "question": "Which command can be used on older systems to set or display the Ethernet link speed and duplex for a network interface?",
+            "options": [
+              "ethtool",
+              "iwconfig",
+              "ip route",
+              "netcat"
+            ],
+            "answer": ["ethtool"],
+            "explanation": {
+              "ethtool": "Correct. Provides link-level info such as speed, duplex, and auto-negotiation for Ethernet cards.",
+              "iwconfig": "Used for wireless networks, not Ethernet link speed/duplex.",
+              "ip route": "Manages routing table, not link speed.",
+              "netcat": "Versatile network tool for client/server data, not for NIC speed configuration."
+            }
+          },
+          {
+            "number": 12,
+            "question": "A Linux system is using DHCP for a wired interface. Which line in a Debian-based /etc/network/interfaces file indicates that IPv4 settings should be obtained from DHCP for eth0?",
+            "options": [
+              "iface eth0 inet static",
+              "iface eth0 inet dhcp",
+              "dhcp4 eth0 enable",
+              "iface eth0 inet6 dhcp"
+            ],
+            "answer": ["iface eth0 inet dhcp"],
+            "explanation": {
+              "iface eth0 inet static": "Specifies a static configuration, not DHCP.",
+              "iface eth0 inet dhcp": "Correct. Tells Debian-based systems to use DHCP for IPv4 on eth0.",
+              "dhcp4 eth0 enable": "Not the standard format in /etc/network/interfaces.",
+              "iface eth0 inet6 dhcp": "Configures IPv6 DHCP, not IPv4 settings."
+            }
+          },
+          {
+            "number": 13,
+            "question": "Which command can help you discover which wireless SSIDs are detected by a specific interface, such as wlan0?",
+            "options": [
+              "ethtool wlan0 scan",
+              "iwlist wlan0 scan",
+              "ifconfig wlan0 search",
+              "ip link show wlan0"
+            ],
+            "answer": ["iwlist wlan0 scan"],
+            "explanation": {
+              "ethtool wlan0 scan": "ethtool does not have a 'scan' mode, typically used for Ethernet settings.",
+              "iwlist wlan0 scan": "Correct. iwlist <interface> scan enumerates detected wireless networks.",
+              "ifconfig wlan0 search": "ifconfig doesn't provide scanning capabilities for wireless networks.",
+              "ip link show wlan0": "Displays link info, no scanning of wireless SSIDs."
+            }
+          },
+          {
+            "number": 14,
+            "question": "If you want to see the path (routers) your packets take to reach a remote host using ICMP by manipulating TTL values, which command would you use?",
+            "options": [
+              "ping",
+              "traceroute",
+              "iwconfig",
+              "hostnamectl"
+            ],
+            "answer": ["traceroute"],
+            "explanation": {
+              "ping": "Sends ICMP echo requests but doesn't display intermediate hops.",
+              "traceroute": "Correct. Reveals the route hops by modifying packet TTL.",
+              "iwconfig": "Configures wireless SSIDs and keys, not route paths.",
+              "hostnamectl": "Views/changes the system hostname, irrelevant to tracing routes."
+            }
+          },
+          {
+            "number": 15,
+            "question": "Which command can produce real-time data combining ping and traceroute functionality to monitor latency and packet loss to a destination?",
+            "options": [
+              "mtr",
+              "netstat -r",
+              "route",
+              "nmtui"
+            ],
+            "answer": ["mtr"],
+            "explanation": {
+              "mtr": "Correct. Combines aspects of ping and traceroute into a live network diagnostic tool.",
+              "netstat -r": "Shows the kernel routing table, not real-time path/latency stats.",
+              "route": "Legacy command to view/modify routing, does not provide continuous latency or hop info.",
+              "nmtui": "Text-based Network Manager interface, not for real-time monitoring of routes."
+            }
+          },
+          {
+            "number": 16,
+            "question": "If you need to check which domain name is assigned to an IP address or vice versa, which DNS query tool is particularly helpful for showing all related DNS records?",
+            "options": [
+              "netcat",
+              "dig",
+              "ifcfg",
+              "ss"
+            ],
+            "answer": ["dig"],
+            "explanation": {
+              "netcat": "Used for sending/receiving data, not specifically for DNS record lookups.",
+              "dig": "Correct. Shows DNS records, can query various record types (A, MX, etc.).",
+              "ifcfg": "Not a standard command; ifcfg-* is typically a file or script on Red Hat systems.",
+              "ss": "Socket statistics tool, not a DNS lookup utility."
+            }
+          },
+          {
+            "number": 17,
+            "question": "Which file in Debian-based systems often contains lines such as 'auto eth0' and 'iface eth0 inet static' for manual IP configuration?",
+            "options": [
+              "/etc/default/grub",
+              "/etc/network/interfaces",
+              "/etc/hosts",
+              "/etc/nsswitch.conf"
+            ],
+            "answer": ["/etc/network/interfaces"],
+            "explanation": {
+              "/etc/default/grub": "Stores bootloader default settings, not network interfaces configuration.",
+              "/etc/network/interfaces": "Correct. Debian-based file for defining interface auto or static/dhcp settings.",
+              "/etc/hosts": "Manual host-IP mappings, not interface config lines like 'iface eth0...'.",
+              "/etc/nsswitch.conf": "Defines name service switch order, not interface definitions."
+            }
+          },
+          {
+            "number": 18,
+            "question": "Which command can be used to load the bonding kernel module before creating a bond0 device for interface aggregation?",
+            "options": [
+              "ip link set bond0 up",
+              "modprobe bonding",
+              "nmcli load bond",
+              "ifenslave bond0"
+            ],
+            "answer": ["modprobe bonding"],
+            "explanation": {
+              "ip link set bond0 up": "Brings an interface up, but doesn't load the kernel module initially.",
+              "modprobe bonding": "Correct. Loads the bonding module into the kernel so bond0 can be created.",
+              "nmcli load bond": "Not a valid nmcli command syntax for loading kernel modules.",
+              "ifenslave bond0": "Tool used historically for bonding, but the module must be loaded first."
+            }
+          },
+          {
+            "number": 19,
+            "question": "Which netcat (nc) option listens for an incoming connection on a specified port?",
+            "options": [
+              "-u",
+              "-l",
+              "-i",
+              "-C"
+            ],
+            "answer": ["-l"],
+            "explanation": {
+              "-u": "Switches to UDP mode rather than TCP, not for listening alone.",
+              "-l": "Correct. Tells netcat to listen on a specified port for incoming connections.",
+              "-i": "Specifies delay interval between lines of text sent/received, not listening mode.",
+              "-C": "Adds a carriage return/linefeed on each line, not for listening."
+            }
+          },
+          {
+            "number": 20,
+            "question": "Which file typically includes lines like 'nameserver 8.8.8.8' to specify DNS servers on older, traditional Linux setups?",
+            "options": [
+              "/etc/resolv.conf",
+              "/etc/hostname",
+              "/etc/hosts",
+              "/etc/nsswitch.conf"
+            ],
+            "answer": ["/etc/resolv.conf"],
+            "explanation": {
+              "/etc/resolv.conf": "Correct. Typically includes nameserver lines for DNS resolution.",
+              "/etc/hostname": "Holds local system hostname, not DNS servers.",
+              "/etc/hosts": "Maps hostnames to IP addresses locally, not server addresses for DNS lookups.",
+              "/etc/nsswitch.conf": "Controls search order for services like hosts, but not direct DNS server lines."
+            }
+          },
+          {
+            "number": 21,
+            "question": "If you want to configure a network bonding mode that transmits all packets on both interfaces for redundancy, which mode is that?",
+            "options": [
+              "Mode 0: balanceroundrobin",
+              "Mode 3: broadcast",
+              "Mode 1: activebackup",
+              "Mode 4: 802.3ad"
+            ],
+            "answer": ["Mode 3: broadcast"],
+            "explanation": {
+              "Mode 0: balanceroundrobin": "Distributes packets in a round-robin fashion but doesn't send on all interfaces simultaneously.",
+              "Mode 3: broadcast": "Correct. Transmits packets on all interfaces for redundancy.",
+              "Mode 1: activebackup": "Uses one interface as primary, another as backup, not broadcasting all packets on both.",
+              "Mode 4: 802.3ad": "LACP-based aggregation combining interface bandwidth, not pure broadcast."
+            }
+          },
+          {
+            "number": 22,
+            "question": "Which command, now largely replaced by ss, can still display open ports and listening sockets, as well as provide statistics about protocols (e.g. -s)?",
+            "options": [
+              "netcat",
+              "nmtui",
+              "netstat",
+              "ip link"
+            ],
+            "answer": ["netstat"],
+            "explanation": {
+              "netcat": "Used for raw TCP/UDP read/write, not primarily a listing of all open sockets with stats.",
+              "nmtui": "Network Manager text UI, doesn't display open sockets.",
+              "netstat": "Correct. The legacy tool for listing sockets, states, and protocol stats.",
+              "ip link": "Shows only link-level info for interfaces, not detailed socket-level stats."
+            }
+          },
+          {
+            "number": 23,
+            "question": "In iproute2, which command would you use to add a default route pointing to 192.168.1.254 via interface eth0?",
+            "options": [
+              "ip route add default gw 192.168.1.254 dev eth0",
+              "ip route add default via 192.168.1.254 dev eth0",
+              "route add -net default gw 192.168.1.254 eth0",
+              "ip address add 192.168.1.254 dev eth0"
+            ],
+            "answer": ["ip route add default via 192.168.1.254 dev eth0"],
+            "explanation": {
+              "ip route add default gw 192.168.1.254 dev eth0": "In iproute2 syntax, 'via' replaces 'gw'.",
+              "ip route add default via 192.168.1.254 dev eth0": "Correct. The modern iproute2 syntax to add a default route.",
+              "route add -net default gw 192.168.1.254 eth0": "Legacy route command format, not ip route syntax.",
+              "ip address add 192.168.1.254 dev eth0": "Assigns an address to eth0, not creating a default route."
+            }
+          },
+          {
+            "number": 24,
+            "question": "Which file in Red Hat-based systems might you edit to manually specify a static IP, netmask, and gateway for interface enp0s3?",
+            "options": [
+              "/etc/network/interfaces",
+              "/etc/sysconfig/network-scripts/ifcfg-enp0s3",
+              "/etc/resolv.conf",
+              "/etc/netplan/01-network-manager-all.yaml"
+            ],
+            "answer": ["/etc/sysconfig/network-scripts/ifcfg-enp0s3"],
+            "explanation": {
+              "/etc/network/interfaces": "Used by Debian-based distributions, not Red Hat-based.",
+              "/etc/sysconfig/network-scripts/ifcfg-enp0s3": "Correct. The typical file to configure a static IP for a Red Hat-based interface.",
+              "/etc/resolv.conf": "Specifies DNS servers, not the interface's IP/gateway itself.",
+              "/etc/netplan/01-network-manager-all.yaml": "Used by Netplan (Ubuntu newer versions), not Red Hat-based systems."
+            }
+          },
+          {
+            "number": 25,
+            "question": "Which net-tools command allows you to view or set the IP address on an interface, and must be paired with the route command to set a default gateway if you're not using iproute2?",
+            "options": [
+              "ifconfig",
+              "iwconfig",
+              "netstat",
+              "nmtui"
+            ],
+            "answer": ["ifconfig"],
+            "explanation": {
+              "ifconfig": "Correct. The legacy net-tools command for assigning/viewing IP, though separate 'route' is needed for default gateway.",
+              "iwconfig": "Wireless SSID/key management, not assigning wired IP addresses typically.",
+              "netstat": "Displays socket connections/stats, not used to assign IP.",
+              "nmtui": "NetworkManager text UI, not a net-tools command."
+            }
+          },
+          {
+            "number": 26,
+            "question": "You're editing /etc/resolv.conf by hand. Which directive can specify the domain name your system appends to unqualified hostnames?",
+            "options": [
+              "domain",
+              "search",
+              "nameserver",
+              "hostname"
+            ],
+            "answer": ["domain"],
+            "explanation": {
+              "domain": "Correct. Specifies the domain name appended to short hostnames in some resolvers.",
+              "search": "Lists additional domains to search, can also be used, but 'domain' sets the default domain.",
+              "nameserver": "Indicates the IP address of a DNS server.",
+              "hostname": "Points to the local system's name, not a directive in resolv.conf for domain search."
+            }
+          },
+          {
+            "number": 27,
+            "question": "If you need to connect to a remote server on port 8000 over TCP, piping your local file as input, which command is most suitable?",
+            "options": [
+              "ip neighbor show dev enp0s3",
+              "netstat -lt",
+              "nmcli dev connect eth0 8000 < file.txt",
+              "nc hostname 8000 < file.txt"
+            ],
+            "answer": ["nc hostname 8000 < file.txt"],
+            "explanation": {
+              "ip neighbor show dev enp0s3": "Displays ARP/ND cache for a device, not for sending data to a remote host.",
+              "netstat -lt": "Shows listening TCP sockets, not a data transfer command.",
+              "nmcli dev connect eth0 8000 < file.txt": "Invalid usage. nmcli doesn't function as a raw TCP data pipe like netcat.",
+              "nc hostname 8000 < file.txt": "Correct. Netcat (nc) can pipe a local file to a specified host/port over TCP."
+            }
+          },
+          {
+            "number": 28,
+            "question": "Which tool is the graphical version of a packet capture and analysis utility, providing color-coded protocol details?",
+            "options": [
+              "tcpdump",
+              "wireshark",
+              "nmtui",
+              "modprobe"
+            ],
+            "answer": ["wireshark"],
+            "explanation": {
+              "tcpdump": "Command-line packet capture, no graphical interface or color-coded protocol analysis in the same sense.",
+              "wireshark": "Correct. GUI-based advanced packet analysis tool with color coding and detailed decode features.",
+              "nmtui": "Text-based NetworkManager UI, not a packet capture tool.",
+              "modprobe": "Manages kernel modules, not packet capture or analysis."
+            }
+          },
+          {
+            "number": 29,
+            "question": "If you see references to a 'CNAME' record when using the dig command on a host like www.linux.org, what does CNAME stand for?",
+            "options": [
+              "Current name extension",
+              "Canonical name",
+              "Common net address mapping",
+              "Compressed name"
+            ],
+            "answer": ["Canonical name"],
+            "explanation": {
+              "Current name extension": "Incorrect expansion.",
+              "Canonical name": "Correct. A CNAME record is an alias pointing to a canonical hostname.",
+              "Common net address mapping": "No, not the standard meaning of CNAME.",
+              "Compressed name": "Incorrect guess, not what DNS CNAME stands for."
+            }
+          },
+          {
+            "number": 30,
+            "question": "Which command can display the loaded kernel module name for bonding, given that you want to verify it's loaded properly?",
+            "options": [
+              "lsmod | grep bonding",
+              "ip link show bonding",
+              "bonding -v",
+              "nmcli bonding status"
+            ],
+            "answer": ["lsmod | grep bonding"],
+            "explanation": {
+              "lsmod | grep bonding": "Correct. lsmod lists loaded kernel modules; grep checks for bonding.",
+              "ip link show bonding": "Shows interfaces but won't confirm if the bonding module is loaded at kernel level explicitly by name.",
+              "bonding -v": "Not a standard command.",
+              "nmcli bonding status": "No direct command in nmcli for that exact check."
+            }
+          },
+          {
+            "number": 31,
+            "question": "Which of the following commands would you use to discover the registry information (ownership, contact) for a domain like 'linux.com'?",
+            "options": [
+              "whois linux.com",
+              "host linux.com",
+              "dig linux.com",
+              "nslookup linux.com"
+            ],
+            "answer": ["whois linux.com"],
+            "explanation": {
+              "whois linux.com": "Correct. whois retrieves domain ownership and registration details.",
+              "host linux.com": "Performs a DNS lookup for IP addresses but not the ownership data.",
+              "dig linux.com": "Shows DNS records (A, MX, etc.), not domain registry info.",
+              "nslookup linux.com": "Older DNS lookup tool, does not provide registration contact info."
+            }
+          },
+          {
+            "number": 32,
+            "question": "If you use the 'hostnamectl' command on a systemd-based system, what does it primarily manage?",
+            "options": [
+              "The system's DNS server list",
+              "Kernel modules for network adapters",
+              "The system's hostname and related metadata",
+              "Wireless SSID settings"
+            ],
+            "answer": ["The system's hostname and related metadata"],
+            "explanation": {
+              "The system's DNS server list": "DNS info typically resides in /etc/resolv.conf or systemd-resolved, not managed by hostnamectl.",
+              "Kernel modules for network adapters": "Use modprobe or lsmod to manage modules, not hostnamectl.",
+              "The system's hostname and related metadata": "Correct. hostnamectl sets/gets the system hostname (and can also view pretty-hostname, chassis type, etc.).",
+              "Wireless SSID settings": "Managed by iwconfig, nmcli, or wpa_supplicant, not hostnamectl."
+            }
+          },
+          {
+            "number": 33,
+            "question": "Which file might you configure on a Linux DHCP server so that it can hand out IP addresses, default gateways, and DNS details to DHCP clients on subnet 10.0.2.0?",
+            "options": [
+              "/etc/dhcpd.conf",
+              "/etc/hosts.allow",
+              "/etc/resolv.conf",
+              "/etc/hostname"
+            ],
+            "answer": ["/etc/dhcpd.conf"],
+            "explanation": {
+              "/etc/dhcpd.conf": "Correct. Stores DHCP server settings for subnets, IP ranges, routers, etc.",
+              "/etc/hosts.allow": "TCP wrappers file for controlling service access, unrelated to DHCP server address assignment.",
+              "/etc/resolv.conf": "Specifies DNS servers for the local machine, not for serving addresses to clients.",
+              "/etc/hostname": "Specifies local system hostname, not DHCP server config."
+            }
+          },
+          {
+            "number": 34,
+            "question": "When you assign IPv6 addresses automatically in Debian-based systems, you might write 'iface eth0 inet6 auto'. Which address type does this auto option configure?",
+            "options": [
+              "It sets up a global unicast address from a DHCPv6 server.",
+              "It sets up a NAT64 address for transition.",
+              "It sets up only the link-local address for local network communication.",
+              "It sets up a static IPv6 address with a 64-bit prefix."
+            ],
+            "answer": ["It sets up only the link-local address for local network communication."],
+            "explanation": {
+              "It sets up a global unicast address from a DHCPv6 server.": "That would require 'iface eth0 inet6 dhcp', not 'auto'.",
+              "It sets up a NAT64 address for transition.": "No direct NAT64. 'auto' is for link-local.",
+              "It sets up only the link-local address for local network communication.": "Correct. 'auto' allows an automatic link-local address, not a global unicast from DHCPv6 or static.",
+              "It sets up a static IPv6 address with a 64-bit prefix.": "No, that would be 'iface eth0 inet6 static' with address info."
+            }
+          },
+          {
+            "number": 35,
+            "question": "Which command can forcibly terminate a netcat connection and close it, typically by sending an interrupt signal?",
+            "options": [
+              "Ctrl+Z",
+              "Ctrl+C",
+              "Ctrl+R",
+              "Ctrl+D"
+            ],
+            "answer": ["Ctrl+C"],
+            "explanation": {
+              "Ctrl+Z": "Suspends the process, not a forced termination.",
+              "Ctrl+C": "Correct. Sends SIGINT to netcat, stopping it immediately.",
+              "Ctrl+R": "Usually reverse-i-search in Bash, not relevant to netcat termination.",
+              "Ctrl+D": "End-of-file if reading from stdin, might close input but not always forcibly terminate the entire netcat process."
+            }
+          },
+          {
+            "number": 36,
+            "question": "If the system obtains its IP address and default gateway automatically, which line would you see in /etc/sysconfig/network-scripts/ifcfg-enp0s3 on Red Hat–based distros?",
+            "options": [
+              "BOOTPROTO=dhcp",
+              "iface enp0s3 inet dhcp",
+              "DEVICE=dhcp0",
+              "NETMODE=dynamic"
+            ],
+            "answer": ["BOOTPROTO=dhcp"],
+            "explanation": {
+              "BOOTPROTO=dhcp": "Correct. This is the Red Hat format for obtaining IP via DHCP.",
+              "iface enp0s3 inet dhcp": "Debian-based syntax, not Red Hat-based.",
+              "DEVICE=dhcp0": "Invalid. The device name is typically enp0s3, not 'dhcp0'.",
+              "NETMODE=dynamic": "Not a recognized parameter in ifcfg files."
+            }
+          },
+          {
+            "number": 37,
+            "question": "Which statement best describes the local loopback interface (lo)?",
+            "options": [
+              "It's disabled by default on modern distributions for security purposes.",
+              "It provides a special IP (127.0.0.1) to allow processes to communicate with each other on the same machine.",
+              "It's a specialized bridging interface for aggregating multiple NICs together.",
+              "It's used only for IPv6 link-local packets."
+            ],
+            "answer": ["It provides a special IP (127.0.0.1) to allow processes to communicate with each other on the same machine."],
+            "explanation": {
+              "It's disabled by default on modern distributions for security purposes.": "No, loopback is typically enabled by default for local communications.",
+              "It provides a special IP (127.0.0.1) to allow processes to communicate with each other on the same machine.": "Correct. The loopback interface is used for local inter-process networking.",
+              "It's a specialized bridging interface for aggregating multiple NICs together.": "No, that's bonding or bridging, not the loopback interface's role.",
+              "It’s used only for IPv6 link-local packets.": "Loopback is used for IPv4 (127.0.0.1) and IPv6 (::1), not specifically link-local traffic."
+            }
+          },
+          {
+            "number": 38,
+            "question": "Which kernel parameter in /etc/sysctl.conf must be set to 1 if you want to enable packet forwarding (e.g., for bridging or routing between multiple NICs)?",
+            "options": [
+              "net.ipv4.icmp_echo_ignore_broadcasts",
+              "net.ipv4.ip_forward",
+              "net.ipv6.conf.all.forwarding",
+              "net.core.default_qdisc"
+            ],
+            "answer": ["net.ipv4.ip_forward"],
+            "explanation": {
+              "net.ipv4.icmp_echo_ignore_broadcasts": "Ignores broadcast pings, doesn't enable forwarding.",
+              "net.ipv4.ip_forward": "Correct. Setting this to 1 enables IPv4 packet forwarding.",
+              "net.ipv6.conf.all.forwarding": "Enables IPv6 forwarding, not IPv4 bridging/routing specifically.",
+              "net.core.default_qdisc": "Sets default queuing discipline for traffic shaping, unrelated to IP forwarding."
+            }
+          },
+          {
+            "number": 39,
+            "question": "Which command can you use if you want to decode and display network packets in real time from the CLI, but prefer the advanced decoding features of Wireshark in textual form?",
+            "options": [
+              "tshark",
+              "tcpdump",
+              "mtr",
+              "nmcli device capture"
+            ],
+            "answer": ["tshark"],
+            "explanation": {
+              "tshark": "Correct. Command-line version of Wireshark with advanced protocol decodes.",
+              "tcpdump": "Legacy packet capture tool, less advanced decoding than Wireshark's text output.",
+              "mtr": "Combines ping/traceroute stats, not a packet capture tool.",
+              "nmcli device capture": "No such subcommand in nmcli for capturing raw packets."
+            }
+          },
+          {
+            "number": 40,
+            "question": "Which bonding mode sets one interface as primary and another as backup for fault tolerance (active/passive)?",
+            "options": [
+              "Mode 3: broadcast",
+              "Mode 1: activebackup",
+              "Mode 4: 802.3ad",
+              "Mode 0: balanceroundrobin"
+            ],
+            "answer": ["Mode 1: activebackup"],
+            "explanation": {
+              "Mode 3: broadcast": "Sends packets on both interfaces simultaneously, not active/passive.",
+              "Mode 1: activebackup": "Correct. One interface is active, the other is a backup for failover.",
+              "Mode 4: 802.3ad": "Uses LACP for aggregation, distributing traffic, not simple active/passive.",
+              "Mode 0: balanceroundrobin": "Rotates packets across interfaces, not active/passive."
+            }
+          },
+          {
+            "number": 41,
+            "question": "An administrator wants to retrieve a file from a remote server listening with netcat on port 9000. On the receiving server, netcat is started as 'nc -l 9000 > /tmp/incomingfile'. Which command should the remote client run to send 'data.txt' over?",
+            "options": [
+              "cat data.txt > netcat remotehost 9000",
+              "nc remotehost 9000 --push data.txt",
+              "nc remotehost 9000 < data.txt",
+              "ssh remotehost -p 9000 data.txt"
+            ],
+            "answer": ["nc remotehost 9000 < data.txt"],
+            "explanation": {
+              "cat data.txt > netcat remotehost 9000": "Incorrect syntax for netcat usage. Needs 'nc remotehost 9000 < data.txt'.",
+              "nc remotehost 9000 --push data.txt": "Not valid netcat syntax. There's no --push option.",
+              "nc remotehost 9000 < data.txt": "Correct. Sends data.txt to remotehost's netcat listener on port 9000.",
+              "ssh remotehost -p 9000 data.txt": "SSH usage, not netcat, and doesn't interpret 'data.txt' as a direct file input."
+            }
+          },
+          {
+            "number": 42,
+            "question": "Which net-tools utility is specialized for showing or changing wireless interface parameters such as SSID, frequency, or encryption key?",
+            "options": [
+              "ifconfig",
+              "ethtool",
+              "iwconfig",
+              "ip address"
+            ],
+            "answer": ["iwconfig"],
+            "explanation": {
+              "ifconfig": "Legacy tool for IP addresses on wired or wireless but doesn't handle wireless-specific parameters like SSID/encryption key as elegantly.",
+              "ethtool": "Shows Ethernet card settings (duplex, speed), not wireless SSID.",
+              "iwconfig": "Correct. Part of net-tools for configuring wireless parameters specifically.",
+              "ip address": "Modern tool for addresses, but not specifically for SSID/encryption key."
+            }
+          },
+          {
+            "number": 43,
+            "question": "If you see 'inet6 fe80::...' assigned to an interface, which type of IPv6 address is that?",
+            "options": [
+              "Global unicast address",
+              "Link-local address",
+              "Unique local address (ULA)",
+              "Multicast address"
+            ],
+            "answer": ["Link-local address"],
+            "explanation": {
+              "Global unicast address": "Begins typically with 2000::/3, not fe80.",
+              "Link-local address": "Correct. Addresses starting with fe80:: are link-local.",
+              "Unique local address (ULA)": "Usually starts with fc00:: or fd00::, not fe80.",
+              "Multicast address": "Begins with ff00::, not fe80."
+            }
+          },
+          {
+            "number": 44,
+            "question": "You want to see all established network connections on your system, including the PID of each associated process. Which command would you use, from the new suite replacing netstat?",
+            "options": [
+              "ip link show established",
+              "nmcli status connections -p",
+              "ss -tupan",
+              "mtr --sockets"
+            ],
+            "answer": ["ss -tupan"],
+            "explanation": {
+              "ip link show established": "ip link shows interface link-layer info, not established connections with PIDs.",
+              "nmcli status connections -p": "Displays current network manager connections, not raw TCP/UDP sockets with PID info.",
+              "ss -tupan": "Correct. Shows TCP/UDP, all (-a), listening (-l) or established, with PIDs (-p), numeric addresses (-n).",
+              "mtr --sockets": "No standard option in mtr to display raw sockets or PIDs."
+            }
+          },
+          {
+            "number": 45,
+            "question": "Which kernel parameter is relevant if you need to enable IPv6 forwarding for a Linux router or bridge using IPv6?",
+            "options": [
+              "net.ipv4.ip_forward",
+              "net.ipv6.conf.all.forwarding",
+              "net.ipv6.enable_bridge",
+              "ipv6_forward=1 in /etc/sysctl.conf"
+            ],
+            "answer": ["net.ipv6.conf.all.forwarding"],
+            "explanation": {
+              "net.ipv4.ip_forward": "This is for IPv4 forwarding, not IPv6.",
+              "net.ipv6.conf.all.forwarding": "Correct. Setting it to 1 allows IPv6 packet forwarding.",
+              "net.ipv6.enable_bridge": "No standard parameter named this.",
+              "ipv6_forward=1 in /etc/sysctl.conf": "You must specifically set net.ipv6.conf.all.forwarding=1, not an 'ipv6_forward=1' parameter."
+            }
+          },
+          {
+            "number": 46,
+            "question": "What is the primary function of the auto keyword in a Debian /etc/network/interfaces file, for example 'auto eth0'?",
+            "options": [
+              "Enables automatic IPv6 address assignment only",
+              "Specifies that the interface uses DHCP exclusively",
+              "Ensures the interface is automatically brought up at boot",
+              "Sets the interface in promiscuous mode"
+            ],
+            "answer": ["Ensures the interface is automatically brought up at boot"],
+            "explanation": {
+              "Enables automatic IPv6 address assignment only": "No, 'auto' can be used for any interface to bring it up automatically (IPv4 or IPv6).",
+              "Specifies that the interface uses DHCP exclusively": "Not necessarily; 'auto' doesn't define DHCP vs static, it's about bringing the interface up.",
+              "Ensures the interface is automatically brought up at boot": "Correct. 'auto eth0' means it will be started on system boot.",
+              "Sets the interface in promiscuous mode": "No, 'auto' is not about promiscuous mode."
+            }
+          },
+          {
+            "number": 47,
+            "question": "Which command will show the kernel routing table (including the default gateway) in a legacy net-tools environment?",
+            "options": [
+              "route -n",
+              "ip route show",
+              "ifconfig -r",
+              "tcpdump -r"
+            ],
+            "answer": ["route -n"],
+            "explanation": {
+              "route -n": "Correct. The net-tools approach to displaying numeric routing table info.",
+              "ip route show": "The iproute2 approach, not net-tools specifically. It's correct for modern, but the question references legacy net-tools.",
+              "ifconfig -r": "ifconfig doesn't have '-r' to show routing table.",
+              "tcpdump -r": "Reads previously saved capture file, not the routing table."
+            }
+          },
+          {
+            "number": 48,
+            "question": "Which netcat command option sets it to use UDP instead of the default TCP for sending packets?",
+            "options": [
+              "-u",
+              "-l",
+              "-w",
+              "-t"
+            ],
+            "answer": ["-u"],
+            "explanation": {
+              "-u": "Correct. Switches netcat to UDP mode.",
+              "-l": "Listen mode for inbound connections, not specifying protocol.",
+              "-w": "Sets inactivity timeout.",
+              "-t": "Replies to Telnet protocol options, not forcing UDP."
+            }
+          },
+          {
+            "number": 49,
+            "question": "Which net-tools command specifically allows you to check or change the link speed and duplex settings for an Ethernet card, such as 1000Mb/s Full Duplex?",
+            "options": [
+              "ifconfig eth0 speed 1000 duplex full",
+              "iwconfig eth0 speed 1000 duplex full",
+              "ethtool eth0",
+              "ip link set dev eth0 speed 1000 duplex full"
+            ],
+            "answer": ["ethtool eth0"],
+            "explanation": {
+              "ifconfig eth0 speed 1000 duplex full": "ifconfig doesn't have direct options for speed/duplex.",
+              "iwconfig eth0 speed 1000 duplex full": "iwconfig is for wireless interfaces, not Ethernet speeds.",
+              "ethtool eth0": "Correct. This is the net-tools command to view or change NIC speed/duplex.",
+              "ip link set dev eth0 speed 1000 duplex full": "ip link doesn't typically support setting speed/duplex directly, many drivers rely on ethtool."
+            }
+          },
+          {
+            "number": 50,
+            "question": "In which file would you expect to define 'DNS' or 'PEERDNS' in some Red Hat-based distros so that the DNS server info is written to /etc/resolv.conf at boot?",
+            "options": [
+              "/etc/sysconfig/network-scripts/ifcfg-*",
+              "/etc/nsswitch.conf",
+              "/etc/hosts",
+              "/etc/hosts.deny"
+            ],
+            "answer": ["/etc/sysconfig/network-scripts/ifcfg-*"],
+            "explanation": {
+              "/etc/sysconfig/network-scripts/ifcfg-*": "Correct. These ifcfg files can contain DNS= or PEERDNS settings for writing resolv.conf.",
+              "/etc/nsswitch.conf": "Specifies service lookup order, not direct DNS addresses for the interface.",
+              "/etc/hosts": "Local static name-IP mappings, not specifying DNS servers for ifcfg usage.",
+              "/etc/hosts.deny": "TCP wrappers file for denying services, unrelated to DNS assignment."
+            }
+          },
+          {
+            "number": 51,
+            "question": "Which netcat (nc) option ensures it doesn't attempt to read from STDIN, often used in scripting or silent listening?",
+            "options": [
+              "-d",
+              "-C",
+              "-p",
+              "-n"
+            ],
+            "answer": ["-d"],
+            "explanation": {
+              "-d": "Correct. Tells nc not to read from STDIN (sometimes labeled 'detach' or 'don't read').",
+              "-C": "Adds CR/LF to each line, not ignoring STDIN.",
+              "-p": "Specifies the local port number, not STDIN behavior.",
+              "-n": "No DNS lookups, doesn't skip STDIN."
+            }
+          },
+          {
+            "number": 52,
+            "question": "Which file in Red Hat-based systems might contain entries like 'NETWORKING=yes' and 'HOSTNAME=myserver', controlling some global networking aspects?",
+            "options": [
+              "/etc/network/interfaces",
+              "/etc/sysconfig/network",
+              "/etc/resolv.conf",
+              "/etc/netplan/global.yaml"
+            ],
+            "answer": ["/etc/sysconfig/network"],
+            "explanation": {
+              "/etc/network/interfaces": "Debian-based network interface config file, not Red Hat's global config.",
+              "/etc/sysconfig/network": "Correct. Common place for global network settings like HOSTNAME, NETWORKING, GATEWAY in older Red Hat–based systems.",
+              "/etc/resolv.conf": "DNS server definitions, not general networking yes/no or system hostname directives.",
+              "/etc/netplan/global.yaml": "Netplan is used in newer Ubuntu setups, not in Red Hat-based systems."
+            }
+          },
+          {
+            "number": 53,
+            "question": "Which mode uses LACP for aggregating multiple interfaces into a single connection, combining bandwidth and balancing traffic, as described in Table 7.3?",
+            "options": [
+              "Mode 4: 802.3ad",
+              "Mode 1: activebackup",
+              "Mode 2: balancexor",
+              "Mode 6: balancealb"
+            ],
+            "answer": ["Mode 4: 802.3ad"],
+            "explanation": {
+              "Mode 4: 802.3ad": "Correct. This uses LACP (Link Aggregation Control Protocol).",
+              "Mode 1: activebackup": "Active-passive failover, no link aggregation.",
+              "Mode 2: balancexor": "Uses XOR hashing to distribute traffic, not LACP-based.",
+              "Mode 6: balancealb": "Adaptive load balancing, not the LACP-based standard."
+            }
+          },
+          {
+            "number": 54,
+            "question": "If you see 'iface eth0 inet6 static' in /etc/network/interfaces, which additional lines would you expect for a typical static IPv6 config?",
+            "options": [
+              "address <IPv6> and netmask <value>",
+              "gateway <IPv6> only, no netmask needed",
+              "dns-nameservers <IP> without specifying netmask",
+              "link-local fe80:: automatically generated, no lines needed"
+            ],
+            "answer": ["address <IPv6> and netmask <value>"],
+            "explanation": {
+              "address <IPv6> and netmask <value>": "Correct. For static config, you'd specify the IPv6 address and netmask. Possibly gateway as well if needed.",
+              "gateway <IPv6> only, no netmask needed": "You do need a netmask for static IPv6 in that Debian format.",
+              "dns-nameservers <IP> without specifying netmask": "dns-nameservers is separate, not a minimal requirement for basic static lines though helpful for DNS. Also netmask is still needed for the interface.",
+              "link-local fe80:: automatically generated, no lines needed": "Link-local is auto, but 'static' implies a global unicast address with netmask."
+            }
+          },
+          {
+            "number": 55,
+            "question": "Which command from the iproute2 suite do you use to examine or update neighbor cache entries (ARP for IPv4, NDISC for IPv6)?",
+            "options": [
+              "ip address neighbor",
+              "ip route neighbor",
+              "ip neighbor",
+              "ip ndisc"
+            ],
+            "answer": ["ip neighbor"],
+            "explanation": {
+              "ip address neighbor": "Not the correct usage. 'ip address' handles IP addresses, not neighbor entries.",
+              "ip route neighbor": "Route subcommand manipulates routing table, not ARP/ND caches.",
+              "ip neighbor": "Correct. Allows you to display or modify neighbor cache entries.",
+              "ip ndisc": "No standard subcommand named ndisc in iproute2."
+            }
+          },
+          {
+            "number": 56,
+            "question": "To specify the system's default domain name used for unqualified host lookups in /etc/resolv.conf, which directive is used?",
+            "options": [
+              "search domain.com",
+              "domain domain.com",
+              "host domain.com",
+              "options domain.com"
+            ],
+            "answer": ["domain domain.com"],
+            "explanation": {
+              "search domain.com": "Defines additional domains to try in turn, but 'domain' sets the primary domain for unqualified names in some resolvers.",
+              "domain domain.com": "Correct. Some resolvers use this to specify the local domain appended automatically.",
+              "host domain.com": "Not a valid resolv.conf directive.",
+              "options domain.com": "Used to specify other resolver options, not the domain name."
+            }
+          },
+          {
+            "number": 57,
+            "question": "Which net-tools command do you use to list or remove entries in the ARP table (for IPv4) on older systems?",
+            "options": [
+              "arp",
+              "iwconfig",
+              "ifconfig -arp",
+              "netstat -ic"
+            ],
+            "answer": ["arp"],
+            "explanation": {
+              "arp": "Correct. The net-tools utility specifically for listing or modifying ARP cache entries on older systems.",
+              "iwconfig": "Configures wireless parameters, not ARP.",
+              "ifconfig -arp": "Disables ARP on the interface, but doesn't let you list or remove ARP entries in the same sense.",
+              "netstat -ic": "Displays interface stats, not direct ARP cache manipulation."
+            }
+          },
+          {
+            "number": 58,
+            "question": "Which command in Debian-based Linux can show or change the system's hostname, including 'pretty' hostnames, if systemd is in use?",
+            "options": [
+              "hostnamectl",
+              "update-rc.d hostname",
+              "systemctl hostname set name",
+              "nmtui hostname"
+            ],
+            "answer": ["hostnamectl"],
+            "explanation": {
+              "hostnamectl": "Correct. On systemd-based systems, this manages both static and pretty hostnames.",
+              "update-rc.d hostname": "Handles SysV init scripts, not used for changing the current hostname in systemd environment.",
+              "systemctl hostname set name": "Invalid usage. systemctl manages units, not the hostname directly.",
+              "nmtui hostname": "No direct subcommand in nmtui to set hostname. It's for network interfaces mainly."
+            }
+          },
+          {
+            "number": 59,
+            "question": "Which netcat command line option sets a timeout period for inactivity, after which netcat closes the connection?",
+            "options": [
+              "-u",
+              "-z",
+              "-w",
+              "-h"
+            ],
+            "answer": ["-w"],
+            "explanation": {
+              "-u": "Switches to UDP, not inactivity timeout.",
+              "-z": "Zero-I/O mode used for scanning ports, not a timeout option.",
+              "-w": "Correct. Sets the wait/inactivity timeout in seconds.",
+              "-h": "Displays help, not a timeout setting."
+            }
+          },
+          {
+            "number": 60,
+            "question": "When would you use the 'ifup' and 'ifdown' commands on a Debian-based system?",
+            "options": [
+              "They are used to modify systemd network target states.",
+              "They display ARP cache for a specific interface.",
+              "They read /etc/network/interfaces to bring interfaces up or down.",
+              "They are aliases for ip link set dev eth0 up/down on Red Hat systems."
+            ],
+            "answer": ["They read /etc/network/interfaces to bring interfaces up or down."],
+            "explanation": {
+              "They are used to modify systemd network target states.": "Not quite. ifup/ifdown are older Debian-based scripts tied to /etc/network/interfaces.",
+              "They display ARP cache for a specific interface.": "No, that might be 'ip neighbor' or 'arp -a'.",
+              "They read /etc/network/interfaces to bring interfaces up or down.": "Correct. Debian-based approach to manage interface states from that file.",
+              "They are aliases for ip link set dev eth0 up/down on Red Hat systems.": "No, ifup/ifdown is more typical in Debian. Red Hat uses ifcfg scripts or nmcli."
+            }
+          },
+          {
+            "number": 61,
+            "question": "Which directive in the Debian /etc/network/interfaces file instructs the system to obtain an IPv6 address automatically via DHCPv6?",
+            "options": [
+              "iface eth0 inet6 auto",
+              "iface eth0 inet6 dhcp",
+              "iface eth0 inet static dhcpv6",
+              "iface eth0 inet6 global"
+            ],
+            "answer": ["iface eth0 inet6 dhcp"],
+            "explanation": {
+              "iface eth0 inet6 auto": "Configures only a link-local IPv6 address, not DHCPv6.",
+              "iface eth0 inet6 dhcp": "Correct. Tells Debian to obtain IPv6 from a DHCPv6 server.",
+              "iface eth0 inet static dhcpv6": "Incorrect syntax, mixing static/dhcp.",
+              "iface eth0 inet6 global": "Not standard. 'global' is not a recognized method."
+            }
+          },
+          {
+            "number": 62,
+            "question": "Which command can you use to discover if the bonding module is successfully loaded and recognized by the kernel on any Linux system?",
+            "options": [
+              "bondctl status",
+              "nmcli bond check",
+              "lsmod | grep bonding",
+              "ip link show bond"
+            ],
+            "answer": ["lsmod | grep bonding"],
+            "explanation": {
+              "bondctl status": "Not a standard bonding tool. ifenslave was historically used, but bondctl isn't typical.",
+              "nmcli bond check": "No direct command in nmcli for that. nmcli handles connections but not raw kernel modules.",
+              "lsmod | grep bonding": "Correct. Lists loaded kernel modules, verifying if bonding is present.",
+              "ip link show bond": "Could show bond0 if it exists, but not whether the kernel module is loaded if the bond hasn't been created."
+            }
+          },
+          {
+            "number": 63,
+            "question": "Which netcat option or approach can you use to do a simple port scan, checking if a port is listening without sending data?",
+            "options": [
+              "-i <interval>",
+              "-z",
+              "-C",
+              "-d"
+            ],
+            "answer": ["-z"],
+            "explanation": {
+              "-i <interval>": "Sets delay interval between sending lines, not a scanning mode.",
+              "-z": "Correct. 'Zero-I/O' mode, used for scanning to see if a port is open/listening.",
+              "-C": "Carriage return linefeed on each line, not scanning.",
+              "-d": "Detach, not reading from stdin, not scanning."
+            }
+          },
+          {
+            "number": 64,
+            "question": "Which of the following lines in /etc/resolv.conf instructs the resolver to try 'mycompany.com' after the local domain for an unqualified hostname?",
+            "options": [
+              "domain mycompany.com",
+              "search mycompany.com",
+              "options mycompany.com",
+              "nameserver mycompany.com"
+            ],
+            "answer": ["search mycompany.com"],
+            "explanation": {
+              "domain mycompany.com": "Sets the system domain, not additional search domains. Some resolvers treat domain vs. search differently, but 'search' is typically for listing multiple domains to check.",
+              "search mycompany.com": "Correct. Tells the resolver to also check mycompany.com if unqualified hostnames fail in the primary domain.",
+              "options mycompany.com": "Used for certain resolver options, not search domain.",
+              "nameserver mycompany.com": "Invalid. nameserver lines must be IP addresses, not domains."
+            }
+          },
+          {
+            "number": 65,
+            "question": "Which net-tools command do you use to see the active Internet connections, including the local and foreign addresses and the connection state, e.g., ESTABLISHED or LISTEN?",
+            "options": [
+              "ifconfig -a",
+              "netstat -t",
+              "route -ee",
+              "iwconfig -c"
+            ],
+            "answer": ["netstat -t"],
+            "explanation": {
+              "ifconfig -a": "Shows interface IP details, not connections or states.",
+              "netstat -t": "Correct. Lists TCP connections with states under the net-tools approach.",
+              "route -ee": "Displays routing details with verbose output, not connection states.",
+              "iwconfig -c": "No such -c for connections. iwconfig is for wireless params, not TCP states."
+            }
+          },
+          {
+            "number": 66,
+            "question": "Which mtr feature makes it more useful than plain traceroute for long-term monitoring of network latency?",
+            "options": [
+              "mtr uses ARP directly to find hosts.",
+              "mtr runs a single round of ICMP echos only.",
+              "mtr provides real-time statistics and updates the results continuously.",
+              "mtr is a text user interface to NetworkManager for traceroute."
+            ],
+            "answer": ["mtr provides real-time statistics and updates the results continuously."],
+            "explanation": {
+              "mtr uses ARP directly to find hosts.": "It relies on ICMP, not ARP for remote hosts.",
+              "mtr runs a single round of ICMP echos only.": "No, it runs continuously, updating results.",
+              "mtr provides real-time statistics and updates the results continuously.": "Correct. That is the major advantage over plain traceroute.",
+              "mtr is a text user interface to NetworkManager for traceroute.": "Not accurate. It's an ICMP/traceroute tool with continuous stats, not an NM TUI."
+            }
+          },
+          {
+            "number": 67,
+            "question": "Which file on older Ubuntu systems (pre-17.04) or Debian-based systems is used for storing IPv6 auto, static, or DHCPv6 settings for an interface (e.g. eth0)?",
+            "options": [
+              "/etc/network/interfaces",
+              "/etc/netplan/01-network-manager-all.yaml",
+              "/etc/sysconfig/network-scripts/ifcfg-eth0",
+              "/etc/dhcp/dhclient.conf"
+            ],
+            "answer": ["/etc/network/interfaces"],
+            "explanation": {
+              "/etc/network/interfaces": "Correct. Debian-based location for both IPv4 and IPv6 configurations before Netplan.",
+              "/etc/netplan/01-network-manager-all.yaml": "Used by Netplan on newer Ubuntu versions (17.04+).",
+              "/etc/sysconfig/network-scripts/ifcfg-eth0": "Red Hat-based approach, not Debian/Ubuntu pre-17.04.",
+              "/etc/dhcp/dhclient.conf": "DHCP client settings, but not the main interface config for IPv6 static/auto."
+            }
+          },
+          {
+            "number": 68,
+            "question": "Which statement about netcat is correct?",
+            "options": [
+              "It can only listen for HTTP requests, not custom TCP ports.",
+              "It supports both TCP and UDP connections.",
+              "It is exclusively used for DNS lookups and queries.",
+              "It replaces the ip command for interface assignment."
+            ],
+            "answer": ["It supports both TCP and UDP connections."],
+            "explanation": {
+              "It can only listen for HTTP requests, not custom TCP ports.": "Incorrect; netcat can listen on any chosen port.",
+              "It supports both TCP and UDP connections.": "Correct. netcat can do TCP or UDP with -u.",
+              "It is exclusively used for DNS lookups and queries.": "No, that would be dig, host, or nslookup.",
+              "It replaces the ip command for interface assignment.": "No, netcat is not for IP assignment, it's for reading/writing network data."
+            }
+          },
+          {
+            "number": 69,
+            "question": "Which netstat option will include Unix domain sockets in the output (e.g., showing /run/systemd/journal/socket)?",
+            "options": [
+              "-u",
+              "-l",
+              "-t",
+              "-x"
+            ],
+            "answer": ["-x"],
+            "explanation": {
+              "-u": "Shows UDP connections, not Unix sockets specifically.",
+              "-l": "Shows listening sockets, but not exclusively Unix domain sockets. Also doesn't guarantee them if -x is omitted.",
+              "-t": "Shows TCP connections, not Unix sockets.",
+              "-x": "Correct. Displays Unix domain sockets in netstat output."
+            }
+          },
+          {
+            "number": 70,
+            "question": "Which bridging command might you need on older systems if you want to create a bridge interface br0 combining eth0 and eth1, aside from enabling ip_forward?",
+            "options": [
+              "brctl addbr br0",
+              "modprobe bridging",
+              "netstat -b br0",
+              "nc -l br0"
+            ],
+            "answer": ["brctl addbr br0"],
+            "explanation": {
+              "brctl addbr br0": "Correct. The older bridging utility command to create a bridge interface.",
+              "modprobe bridging": "The module is typically called 'bridge', not bridging. Also you'd use brctl to manage the interface.",
+              "netstat -b br0": "No such option. netstat doesn't create bridges.",
+              "nc -l br0": "Netcat listening on br0, not bridging creation."
+            }
+          },
+          {
+            "number": 71,
+            "question": "Which tool can help you see the default route, plus other routes, in real time on a modern system, showing 'default via <IP> dev <iface>' lines?",
+            "options": [
+              "ip route show",
+              "iwconfig route dev all",
+              "mtr route default",
+              "dig +route"
+            ],
+            "answer": ["ip route show"],
+            "explanation": {
+              "ip route show": "Correct. Shows routing table including default route in iproute2 style.",
+              "iwconfig route dev all": "Manages wireless parameters, not routing.",
+              "mtr route default": "mtr does not show the routing table, it's for latency/hop checks.",
+              "dig +route": "No such option. dig is for DNS queries, not routing table."
+            }
+          },
+          {
+            "number": 72,
+            "question": "If you need advanced load balancing and fault tolerance for both outgoing and incoming traffic on bonded interfaces, which mode might you choose?",
+            "options": [
+              "Mode 0 ",
+              "Mode 6 ",
+              "Mode 3 ",
+              "Mode 1 "
+            ],
+            "answer": ["Mode 6 "],
+            "explanation": {
+              "Mode 0 ": "Balances traffic, but not as advanced as ALB for both transmit and receive adaptation.",
+              "Mode 6 ": "Correct. Offers adaptive load balancing for both transmit and receive paths.",
+              "Mode 3 ": "Sends packets on all interfaces, not dynamic load balancing.",
+              "Mode 1 ": "Active/passive failover, not load balancing."
+            },
+            "image_i": "assets/linux_questions_images/exerciseChapter7_72.jpg"
+          },
+          {
+            "number": 73,
+            "question": "Which statement about systemd-resolved (where used) is correct regarding /etc/resolv.conf on some modern Linux distros?",
+            "options": [
+              "/etc/resolv.conf is always manually edited and never a symlink under systemd-resolved.",
+              "/etc/resolv.conf is often a symlink to a file managed by systemd-resolved for DNS configuration.",
+              "systemd-resolved replaces the ip command for route configuration.",
+              "systemd-resolved uses nmtui exclusively to update /etc/resolv.conf."
+            ],
+            "answer": ["/etc/resolv.conf is often a symlink to a file managed by systemd-resolved for DNS configuration."],
+            "explanation": {
+              "/etc/resolv.conf is always manually edited and never a symlink under systemd-resolved.": "Contrary, it's often a symlink to /run/systemd/resolve/resolv.conf or similar.",
+              "/etc/resolv.conf is often a symlink to a file managed by systemd-resolved for DNS configuration.": "Correct. systemd-resolved setups frequently do this.",
+              "systemd-resolved replaces the ip command for route configuration.": "No, it's for DNS resolution, not route config.",
+              "systemd-resolved uses nmtui exclusively to update /etc/resolv.conf.": "No, it can integrate with multiple tools, not only nmtui."
+            }
+          },
+          {
+            "number": 74,
+            "question": "Which statement is true about the net-tools route command usage?",
+            "options": [
+              "It’s used to manage wireless SSID keys on older systems.",
+              "It manipulates the ARP cache for IPv4 addresses.",
+              "It can add or remove default gateways in a legacy environment.",
+              "It replaces netstat for viewing active connections."
+            ],
+            "answer": ["It can add or remove default gateways in a legacy environment."],
+            "explanation": {
+              "It’s used to manage wireless SSID keys on older systems.": "No, that's iwconfig or wpa_supplicant.",
+              "It manipulates the ARP cache for IPv4 addresses.": "No, that's 'arp' command or 'ip neighbor'.",
+              "It can add or remove default gateways in a legacy environment.": "Correct. route add default gw x or route del default.",
+              "It replaces netstat for viewing active connections.": "No, route is about routing, netstat is about sockets."
+            }
+          },
+          {
+            "number": 75,
+            "question": "Which netcat command allows you to create a simple chat by listening on port 2101 on one side, and connecting from another system to that port?",
+            "options": [
+              "On the listener: `nc -l 2101`; on the client: `nc server 2101`",
+              "On the listener: `nc client 2101 < chat.txt`; on the client: `nc -l 2101 > chat.txt`",
+              "On both sides: `nc -b chat 2101` with bridging",
+              "netcat does not support an interactive chat-like mechanism"
+            ],
+            "answer": ["On the listener: `nc -l 2101`; on the client: `nc server 2101`"],
+            "explanation": {
+              "On the listener: `nc -l 2101`; on the client: `nc server 2101`": "Correct. Each typed line on either side is sent to the other, forming a chat.",
+              "On the listener: `nc client 2101 < chat.txt`; on the client: `nc -l 2101 > chat.txt`": "This sets up file redirection, not an interactive chat.",
+              "On both sides: `nc -b chat 2101` with bridging": "No valid syntax or bridging approach for netcat chat.",
+              "netcat does not support an interactive chat-like mechanism": "It does support it using a listener and a connecting client."
+            }
+          },
+          {
+            "number": 76,
+            "question": "Which short command can show you a real-time summary of CPU usage, memory usage, and running processes, but not the open network connections?",
+            "options": [
+              "top",
+              "netstat",
+              "ss -at",
+              "tcpdump"
+            ],
+            "answer": ["top"],
+            "explanation": {
+              "top": "Correct. Real-time process viewer for CPU/memory usage, not specifically network connections.",
+              "netstat": "Shows network connections, not CPU or memory usage.",
+              "ss -at": "Socket statistics for TCP, not CPU/memory usage.",
+              "tcpdump": "Captures packets, not a CPU or memory usage tool."
+            }
+          },
+          {
+            "number": 77,
+            "question": "To configure a static IPv6 address in /etc/sysconfig/network-scripts/ifcfg-enp0s3 on Red Hat-based systems, which directive might you use?",
+            "options": [
+              "IPV6ADDR=2001:db8::1234/64",
+              "NETMASK6=64 only",
+              "ipv6 auto 1",
+              "ifconfig enp0s3 inet6 static"
+            ],
+            "answer": ["IPV6ADDR=2001:db8::1234/64"],
+            "explanation": {
+              "IPV6ADDR=2001:db8::1234/64": "Correct. Red Hat-style approach for specifying a static IPv6 address in ifcfg files.",
+              "NETMASK6=64 only": "You typically define the address with prefix. This alone isn't enough or correct syntax.",
+              "ipv6 auto 1": "No direct directive like that in ifcfg scripts.",
+              "ifconfig enp0s3 inet6 static": "Not how Red Hat ifcfg is typically set. That's more Debian style or direct ifconfig usage."
+            }
+          },
+          {
+            "number": 78,
+            "question": "Which iproute2 subcommand can you use to display or modify a bonding interface (e.g., bond0) after loading the bonding module?",
+            "options": [
+              "ip bond show",
+              "ip link",
+              "ip route bond0",
+              "ip address add bond0"
+            ],
+            "answer": ["ip link"],
+            "explanation": {
+              "ip bond show": "Not a recognized subcommand, typically you do 'ip link show bond0'.",
+              "ip link": "Correct. Manages link-layer devices, including bond0 interface creation or modifications.",
+              "ip route bond0": "Used for routing, not for configuring the bond device itself.",
+              "ip address add bond0": "You can assign an IP to bond0, but to manage the device itself, 'ip link' is the approach."
+            }
+          },
+          {
+            "number": 79,
+            "question": "Which DNS lookup utility, now considered older, can enter an interactive mode to query various records from a specified DNS server?",
+            "options": [
+              "nslookup",
+              "dig",
+              "host",
+              "whois"
+            ],
+            "answer": ["nslookup"],
+            "explanation": {
+              "nslookup": "Correct. Older tool that can run interactively for DNS queries, though overshadowed by dig.",
+              "dig": "Non-interactive by default, though more modern. Not the 'older' interactive one.",
+              "host": "A simpler DNS lookup tool, lacks an interactive shell mode.",
+              "whois": "Checks domain registry info, not standard DNS record queries."
+            }
+          },
+          {
+            "number": 80,
+            "question": "Which approach is recommended on a new Ubuntu system (>=17.04) for configuring IP addresses and default gateway, replacing the older /etc/network/interfaces method?",
+            "options": [
+              "Using /etc/sysconfig/network-scripts ifcfg-*",
+              "Placing static IP data in /etc/resolv.conf",
+              "Netplan YAML files in /etc/netplan/",
+              "Using iptables config in /etc/iptables.conf"
+            ],
+            "answer": ["Netplan YAML files in /etc/netplan/"],
+            "explanation": {
+              "Using /etc/sysconfig/network-scripts ifcfg-*": "That's Red Hat-based, not Ubuntu.",
+              "Placing static IP data in /etc/resolv.conf": "resolv.conf is for DNS, not the IP/gateway assignment.",
+              "Netplan YAML files in /etc/netplan/": "Correct. Newer Ubuntu versions use Netplan for network config.",
+              "Using iptables config in /etc/iptables.conf": "Used for firewall rules, not IP address assignment."
+            }
+          },
+          {
+            "number": 81,
+            "question": "Which command enables DHCP for a network connection in Linux?",
+            "options": [
+              "sudo nmcli con mod 'Wired connection 1' ipv4.method auto",
+              "sudo ip route add dhcp via eth0",
+              "sudo ip addr add dhcp dev eth0",
+              "sudo nmcli con mod 'Wired connection 1' ipv4.method manual"
+            ],
+            "answer": ["sudo nmcli con mod 'Wired connection 1' ipv4.method auto"],
+            "explanation": {
+              "sudo nmcli con mod 'Wired connection 1' ipv4.method auto": "Correct. This sets DHCP as the IP configuration method.",
+              "sudo ip route add dhcp via eth0": "Incorrect. The 'ip route' command does not configure DHCP.",
+              "sudo ip addr add dhcp dev eth0": "Incorrect. 'ip addr add' does not support DHCP.",
+              "sudo nmcli con mod 'Wired connection 1' ipv4.method manual": "Incorrect. This disables DHCP and requires a manual IP."
+            }
+          },
+          {
+            "number": 82,
+            "question": "Which command displays all active IP addresses and network interfaces?",
+            "options": [
+              "ip addr show",
+              "ifconfig -a",
+              "nmcli con show",
+              "ip route show"
+            ],
+            "answer": ["ip addr show"],
+            "explanation": {
+              "ip addr show": "Correct. This is the modern method to list all IP addresses and interfaces.",
+              "ifconfig -a": "Acceptable, but 'ifconfig' is deprecated and replaced by 'ip'.",
+              "nmcli con show": "Incorrect. This lists saved connections, not active IP addresses.",
+              "ip route show": "Incorrect. This shows routing tables, not interfaces."
+            }
+          },
+          {
+            "number": 83,
+            "question": "Which command assigns a temporary IP address to an interface?",
+            "options": [
+              "ip addr add 192.168.1.1/24 dev eth0",
+              "nmcli con mod 'Wired connection 1' ipv4.addresses 192.168.1.1/24",
+              "ip route add 192.168.1.1/24 dev eth0",
+              "ifconfig eth0 add 192.168.1.1/24"
+            ],
+            "answer": ["ip addr add 192.168.1.1/24 dev eth0"],
+            "explanation": {
+              "ip addr add 192.168.1.1/24 dev eth0": "Correct. This assigns an IP address temporarily until reboot.",
+              "nmcli con mod 'Wired connection 1' ipv4.addresses 192.168.1.1/24": "Incorrect. This changes NetworkManager’s settings, making it permanent.",
+              "ip route add 192.168.1.1/24 dev eth0": "Incorrect. This modifies routing, not the IP itself.",
+              "ifconfig eth0 add 192.168.1.1/24": "Incorrect. 'ifconfig' is deprecated and does not use this syntax."
+            }
+          },
+          {
+            "number": 84,
+            "question": "Which command permanently assigns an IP address using NetworkManager?",
+            "options": [
+              "sudo ip addr add 192.168.2.1/24 dev eth0",
+              "sudo nmcli con mod 'Wired connection 1' ipv4.addresses 192.168.2.1/24 && sudo nmcli con mod 'Wired connection 1' ipv4.method manual",
+              "sudo ip route add default via 192.168.2.1 dev eth0",
+              "sudo nmcli con mod 'Wired connection 1' ipv4.method auto"
+            ],
+            "answer": ["sudo nmcli con mod 'Wired connection 1' ipv4.addresses 192.168.2.1/24 && sudo nmcli con mod 'Wired connection 1' ipv4.method manual"],
+            "explanation": {
+              "sudo ip addr add 192.168.2.1/24 dev eth0": "Incorrect. This sets a temporary IP.",
+              "sudo nmcli con mod 'Wired connection 1' ipv4.addresses 192.168.2.1/24 && sudo nmcli con mod 'Wired connection 1' ipv4.method manual": "Correct. This permanently assigns the IP and disables DHCP.",
+              "sudo ip route add default via 192.168.2.1 dev eth0": "Incorrect. This only sets a default gateway.",
+              "sudo nmcli con mod 'Wired connection 1' ipv4.method auto": "Incorrect. This enables DHCP."
+            }
+          },
+          {
+            "number": 85,
+            "question": "Which command displays the currently configured default gateway?",
+            "options": [
+              "ip addr show",
+              "nmcli con show",
+              "ip route show",
+              "cat /etc/resolv.conf"
+            ],
+            "answer": ["ip route show"],
+            "explanation": {
+              "ip addr show": "Incorrect. This shows IP addresses, not routing.",
+              "nmcli con show": "Incorrect. This shows NetworkManager connections.",
+              "ip route show": "Correct. This command displays the default gateway and routing table.",
+              "cat /etc/resolv.conf": "Incorrect. This shows DNS servers, not the gateway."
+            }
+          },
+          {
+            "number": 86,
+            "question": "Which command temporarily sets a default gateway?",
+            "options": [
+              "sudo nmcli con mod 'Wired connection 1' ipv4.gateway 10.0.2.3",
+              "sudo ip route add default via 10.0.2.3 dev eth0",
+              "sudo route add default gw 10.0.2.3 eth0",
+              "sudo ip addr add 10.0.2.3/24 dev eth0"
+            ],
+            "answer": ["sudo ip route add default via 10.0.2.3 dev eth0"],
+            "explanation": {
+              "sudo nmcli con mod 'Wired connection 1' ipv4.gateway 10.0.2.3": "Incorrect. This makes the gateway permanent.",
+              "sudo ip route add default via 10.0.2.3 dev eth0": "Correct. This sets a temporary default gateway.",
+              "sudo route add default gw 10.0.2.3 eth0": "Incorrect. 'route' is deprecated.",
+              "sudo ip addr add 10.0.2.3/24 dev eth0": "Incorrect. This adds an IP address, not a gateway."
+            }
+          },
+          {
+            "number": 87,
+            "question": "Which command permanently sets a default gateway?",
+            "options": [
+              "sudo ip route add default via 10.0.2.3 dev eth0",
+              "sudo nmcli con mod 'Wired connection 1' ipv4.gateway 10.0.2.3 && sudo nmcli con up 'Wired connection 1'",
+              "echo '10.0.2.3' > /etc/gateway.conf",
+              "sudo ip addr add default via 10.0.2.3 dev eth0"
+            ],
+            "answer": ["sudo nmcli con mod 'Wired connection 1' ipv4.gateway 10.0.2.3 && sudo nmcli con up 'Wired connection 1'"],
+            "explanation": {
+              "sudo ip route add default via 10.0.2.3 dev eth0": "Incorrect. This is temporary and lost after reboot.",
+              "sudo nmcli con mod 'Wired connection 1' ipv4.gateway 10.0.2.3 && sudo nmcli con up 'Wired connection 1'": "Correct. This sets a permanent default gateway using NetworkManager.",
+              "echo '10.0.2.3' > /etc/gateway.conf": "Incorrect. This is not a valid method to set a gateway.",
+              "sudo ip addr add default via 10.0.2.3 dev eth0": "Incorrect. 'ip addr' is used for setting IPs, not gateways."
+            }
+          },
+          {
+            "number": 88,
+            "question": "Which command shows only active network connections?",
+            "options": [
+              "nmcli con show --active",
+              "ip addr show",
+              "nmcli con show",
+              "ifconfig -a"
+            ],
+            "answer": ["nmcli con show --active"],
+            "explanation": {
+              "nmcli con show --active": "Correct. This lists only currently active connections.",
+              "ip addr show": "Incorrect. This shows all interfaces, active or not.",
+              "nmcli con show": "Incorrect. This lists all saved connections, including inactive ones.",
+              "ifconfig -a": "Incorrect. This shows all interfaces, even inactive ones."
+            }
+          },
+          {
+            "number": 89,
+            "question": "Which command checks the configured DNS servers?",
+            "options": [
+              "cat /etc/resolv.conf",
+              "nmcli con show",
+              "dig google.com",
+              "nslookup google.com"
+            ],
+            "answer": ["cat /etc/resolv.conf"],
+            "explanation": {
+              "cat /etc/resolv.conf": "Correct. This file contains the currently configured DNS servers.",
+              "nmcli con show": "Incorrect. This lists network connections but not the active DNS settings.",
+              "dig google.com": "Incorrect. This queries a DNS server but does not list the configured ones.",
+              "nslookup google.com": "Incorrect. This resolves a domain but does not show system-wide DNS settings."
+            }
+          },
+          {
+            "number": 90,
+            "question": "Which command permanently sets a DNS server?",
+            "options": [
+              "sudo nmcli con mod 'Wired connection 1' ipv4.dns '1.1.1.1 8.8.8.8' && sudo nmcli con up 'Wired connection 1'",
+              "echo 'nameserver 1.1.1.1' > /etc/resolv.conf",
+              "sudo ip route add dns 1.1.1.1",
+              "dig 1.1.1.1"
+            ],
+            "answer": ["sudo nmcli con mod 'Wired connection 1' ipv4.dns '1.1.1.1 8.8.8.8' && sudo nmcli con up 'Wired connection 1'"],
+            "explanation": {
+              "sudo nmcli con mod 'Wired connection 1' ipv4.dns '1.1.1.1 8.8.8.8' && sudo nmcli con up 'Wired connection 1'": "Correct. This permanently sets the DNS servers.",
+              "echo 'nameserver 1.1.1.1' > /etc/resolv.conf": "Incorrect. This change is temporary and might be overwritten.",
+              "sudo ip route add dns 1.1.1.1": "Incorrect. 'ip route' does not configure DNS servers.",
+              "dig 1.1.1.1": "Incorrect. 'dig' queries a DNS server but does not configure it."
+            }
+          },
+          {
+            "number": 91,
+            "question": "Which command tests if a remote host is reachable by sending ICMP echo requests?",
+            "options": [
+                "ping google.com",
+                "traceroute google.com",
+                "nslookup google.com",
+                "whois google.com"
+            ],
+            "answer": ["ping google.com"],
+            "explanation": {
+                "ping google.com": "Correct. This command sends ICMP packets to check connectivity.",
+                "traceroute google.com": "Incorrect. 'traceroute' checks the path to the destination, not just reachability.",
+                "nslookup google.com": "Incorrect. 'nslookup' queries DNS records, not connectivity.",
+                "whois google.com": "Incorrect. 'whois' retrieves domain registration information."
+          }
+        },
+        {
+            "number": 92,
+            "question": "Which command shows the network path taken by packets to reach a destination?",
+            "options": [
+                "ping google.com",
+                "traceroute google.com",
+                "nslookup google.com",
+                "whois google.com"
+            ],
+            "answer": ["traceroute google.com"],
+            "explanation": {
+                "ping google.com": "Incorrect. 'ping' tests basic reachability but does not show network paths.",
+                "traceroute google.com": "Correct. This shows each hop along the route to the destination.",
+                "nslookup google.com": "Incorrect. 'nslookup' is used for querying DNS records.",
+                "whois google.com": "Incorrect. 'whois' retrieves domain registration details."
+          }
+        },
+        {
+            "number": 93,
+            "question": "Which command performs a reverse DNS lookup to find the domain associated with an IP?",
+            "options": [
+                "dig -x 8.8.8.8",
+                "traceroute 8.8.8.8",
+                "ping -r 8.8.8.8",
+                "whois 8.8.8.8"
+            ],
+            "answer": ["dig -x 8.8.8.8"],
+            "explanation": {
+                "dig -x 8.8.8.8": "Correct. This performs a reverse DNS lookup.",
+                "traceroute 8.8.8.8": "Incorrect. 'traceroute' maps the route to the destination.",
+                "ping -r 8.8.8.8": "Incorrect. 'ping' does not perform DNS lookups.",
+                "whois 8.8.8.8": "Incorrect. 'whois' retrieves domain registration details but not reverse DNS."
+         }
+        },
+        {
+            "number": 94,
+            "question": "Which command is used to check the registration details of a domain or IP address?",
+            "options": [
+                "whois google.com",
+                "ping google.com",
+                "traceroute google.com",
+                "dig google.com"
+            ],
+            "answer": ["whois google.com"],
+            "explanation": {
+                "whois google.com": "Correct. This retrieves domain ownership and registration details.",
+                "ping google.com": "Incorrect. 'ping' tests network connectivity.",
+                "traceroute google.com": "Incorrect. 'traceroute' shows the network path to a host.",
+                "dig google.com": "Incorrect. 'dig' queries DNS records, not ownership details."
+         }
+        },
+        {
+            "number": 95,
+            "question": "Which command tests if port 80 on a remote host is open?",
+            "options": [
+                "nc -zv google.com 80",
+                "ping google.com",
+                "traceroute google.com",
+                "dig google.com"
+            ],
+            "answer": ["nc -zv google.com 80"],
+            "explanation": {
+                "nc -zv google.com 80": "Correct. 'nc' (Netcat) can check if a specific port is open.",
+                "ping google.com": "Incorrect. 'ping' checks connectivity but not specific ports.",
+                "traceroute google.com": "Incorrect. 'traceroute' maps the path to a host but does not check ports.",
+                "dig google.com": "Incorrect. 'dig' queries DNS records, not open ports."
+        }
+        },
+        {
+          "number": 96,
+          "question": "Which command lists open ports and active connections on the local machine?",
+          "options": [
+              "netstat -tulnp",
+              "ping -a localhost",
+              "traceroute -T localhost",
+              "whois localhost"
+          ],
+          "answer": ["netstat -tulnp"],
+          "explanation": {
+              "netstat -tulnp": "Correct. This lists open ports and active network connections.",
+              "ping -a localhost": "Incorrect. 'ping' tests connectivity but does not show open ports.",
+              "traceroute -T localhost": "Incorrect. 'traceroute' maps routes but does not show listening ports.",
+              "whois localhost": "Incorrect. 'whois' retrieves domain registration details, not open ports."
+         }
+      },
+      {
+          "number": 97,
+          "question": "Which command reloads network settings after modifying configurations in NetworkManager?",
+          "options": [
+              "nmcli con up 'Wired connection 1'",
+              "systemctl restart networking",
+              "service network restart",
+              "ip addr flush eth0"
+          ],
+          "answer": ["nmcli con up 'Wired connection 1'"],
+          "explanation": {
+              "nmcli con up 'Wired connection 1'": "Correct. This activates the connection after modifying settings.",
+              "systemctl restart networking": "Incorrect. This works on some systems but is not specific to NetworkManager.",
+              "service network restart": "Incorrect. This is an older command for restarting networking services.",
+              "ip addr flush eth0": "Incorrect. This removes IP addresses but does not reload NetworkManager settings."
+         }
+      },
+      {
+          "number": 98,
+          "question": "Which command shows the ARP table, listing MAC-to-IP mappings?",
+          "options": [
+              "arp -a",
+              "ip addr show",
+              "netstat -rn",
+              "traceroute -n"
+          ],
+          "answer": ["arp -a"],
+          "explanation": {
+              "arp -a": "Correct. This shows the ARP cache, mapping MAC addresses to IPs.",
+              "ip addr show": "Incorrect. This shows interface IPs but not ARP mappings.",
+              "netstat -rn": "Incorrect. This displays routing tables, not ARP mappings.",
+              "traceroute -n": "Incorrect. 'traceroute' maps routes but does not show MAC-to-IP mappings."
+         }
+      },
+      {
+          "number": 99,
+          "question": "Which command flushes all current IP addresses from an interface?",
+          "options": [
+              "ip addr flush eth0",
+              "ifconfig eth0 down",
+              "ip route del default",
+              "nmcli con down 'Wired connection 1'"
+          ],
+          "answer": ["ip addr flush eth0"],
+          "explanation": {
+              "ip addr flush eth0": "Correct. This removes all assigned IPs from the interface.",
+              "ifconfig eth0 down": "Incorrect. This disables the interface but does not remove IPs.",
+              "ip route del default": "Incorrect. This removes the default gateway, not the IPs.",
+              "nmcli con down 'Wired connection 1'": "Incorrect. This disables the connection but does not remove IPs."
+         }
+      },
+        {
+            "number": 100,
+            "question": "Which command allows you to manually configure a static IP and disable DHCP?",
+            "options": [
+                "nmcli con mod 'Wired connection 1' ipv4.addresses 192.168.2.1/24 && nmcli con mod 'Wired connection 1' ipv4.method manual",
+                "ip route add default via 192.168.2.1",
+                "nmcli con mod 'Wired connection 1' ipv4.method auto",
+                "ifconfig eth0 192.168.2.1/24"
+            ],
+            "answer": ["nmcli con mod 'Wired connection 1' ipv4.addresses 192.168.2.1/24 && nmcli con mod 'Wired connection 1' ipv4.method manual"],
+            "explanation": {
+                "nmcli con mod 'Wired connection 1' ipv4.addresses 192.168.2.1/24 && nmcli con mod 'Wired connection 1' ipv4.method manual": "Correct. This sets a static IP and disables DHCP.",
+                "ip route add default via 192.168.2.1": "Incorrect. This only sets a default gateway, not a full IP configuration.",
+                "nmcli con mod 'Wired connection 1' ipv4.method auto": "Incorrect. This enables DHCP instead of setting a static IP.",
+                "ifconfig eth0 192.168.2.1/24": "Incorrect. 'ifconfig' is deprecated and does not set persistent configurations."
+          }
+        }                                      
+        ]
+      }
+    ]
+  }
+  

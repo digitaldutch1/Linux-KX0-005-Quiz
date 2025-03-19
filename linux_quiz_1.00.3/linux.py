@@ -55,14 +55,6 @@ def chunk_array_in_lines(arr, items_per_line=25):
     """
     Returns a string representation of a list of integers,
     chunked with up to items_per_line items per line.
-
-    For example, if arr = [1..30], items_per_line=10, output might be:
-
-    [
-      1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
-      11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-      21, 22, 23, 24, 25, 26, 27, 28, 29, 30
-    ]
     """
     if not arr:
         return "[]"
@@ -77,14 +69,6 @@ def chunk_array_in_lines(arr, items_per_line=25):
     if chunk:
         lines.append(", ".join(chunk))
 
-    # Construct the final multiline string
-    # with each chunk as a separate line.
-    # We'll indent each line by 2 spaces for clarity.
-    # Example:
-    # [
-    #   1, 2, 3,
-    #   4, 5
-    # ]
     joined_lines = []
     for i, line_content in enumerate(lines):
         # If not the last line, add a comma at end
@@ -112,6 +96,9 @@ class QuizApp:
         self.assessment_mode = False
         self.current_question = None
         self.current_session_title = ""
+
+        # Holds references to info images so they won't get garbage-collected
+        self.info_images = {}
 
         # Load custom assessments
         self.assessments = self.load_assessments()
@@ -147,6 +134,7 @@ class QuizApp:
         self.ebook_menu.menu.add_command(label="Summary Chapter 4: Searching and Analyzing tekst", command=self.open_summary_chapter_4)
         self.ebook_menu.menu.add_command(label="Summary Chapter 5: Explaining the Boot Process", command=self.open_summary_chapter_5)
         self.ebook_menu.menu.add_command(label="Summary Chapter 6: Maintaining System Startup and Services in Linux", command=self.open_summary_chapter_6)
+        self.ebook_menu.menu.add_command(label="Summary Chapter 7: Configuring Network Connections", command=self.open_summary_chapter_7)
 
         # ---------------- Chapters Menu ---------------
         self.chapter_menu = tk.Menubutton(
@@ -206,11 +194,17 @@ class QuizApp:
             command=lambda: self.start_exercise5("exerciseChapter5.json")
         )
 
-        exercise_chapter6_count = get_question_count_from_json("exersiceChapter6.json")
+        exercise_chapter6_count = get_question_count_from_json("exerciseChapter6.json")
         self.exercise_menu.menu.add_command(
             label=f"Chapter 6 Maintaining System Startup and Services in Linux ({exercise_chapter6_count})",
-            command=lambda: self.start_exercise6("exersiceChapter6.json")
-        )     
+            command=lambda: self.start_exercise6("exerciseChapter6.json")
+        )
+
+        exercise_chapter7_count = get_question_count_from_json("exerciseChapter7.json")
+        self.exercise_menu.menu.add_command(
+            label=f"Chapter 7 Configuring Network Conntections ({exercise_chapter7_count})",
+            command=lambda: self.start_exercise7("exerciseChapter7.json")
+        )
 
         # ---------------- Assessment Menu ---------------
         self.assessment_menu = tk.Menubutton(
@@ -251,7 +245,7 @@ class QuizApp:
         self.assessment_menu.menu.add_command(
             label=f"Assessment 5 ({assessment_5_count})",
             command=lambda: self.start_assessment5("assessment5.json")
-        )        
+        )
 
         assessment_6_count = get_question_count_from_json("assessment6.json")
         self.assessment_menu.menu.add_command(
@@ -349,7 +343,6 @@ class QuizApp:
         scrollbar = tk.Scrollbar(list_frame, orient=tk.VERTICAL)
         scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
 
-        # Single selection, but we want toggle on second click:
         self.assessment_listbox = tk.Listbox(
             list_frame,
             width=70,
@@ -371,7 +364,6 @@ class QuizApp:
         button_frame = tk.Frame(content_frame)
         button_frame.pack(pady=10)
 
-        # Edit Assessment button in gray until selection
         self.edit_assessment_button = tk.Button(
             button_frame,
             text="Edit Assessment",
@@ -562,12 +554,10 @@ class QuizApp:
                 questions = data['chapters'][0]['questions']
 
             if not questions:
-                # Geen vragen? Toon placeholder en disable de listbox
                 self.edit_question_listbox.insert(tk.END, '                     First add question via "Add Questions"')
                 self.edit_question_listbox.configure(state='disabled')
                 return
 
-            # Anders alle vragen tonen
             for question in questions:
                 display_text = f"Nr. {question['number']}: {question['question']}"
                 self.edit_question_listbox.insert(tk.END, display_text)
@@ -682,9 +672,7 @@ class QuizApp:
     ### CUSTOM CODE TO SAVE ASSESSMENTS WITH CHUNKED QUESTIONS ARRAY ###
     def save_assessments_to_json(self):
         """
-        Saves self.assessments to addedAssessments.json.
-        Instead of letting json.dump() automatically put each question ID on its own line,
-        we chunk them so that there are up to 25 IDs per line in the 'questions' array.
+        Saves self.assessments to addedAssessments.json with custom chunking.
         """
         try:
             if getattr(sys, 'frozen', False):
@@ -694,32 +682,17 @@ class QuizApp:
 
             full_path = os.path.join(current_directory, 'assets', 'linux_questions', 'addedAssessments.json')
 
-            # We'll manually build the JSON text with chunked questions arrays.
-            # Because we want a list of assessments, we will do a custom approach:
             items = []
             for assessment in self.assessments:
-                # Make a shallow copy so we can replace 'questions' temporarily.
                 temp_dict = dict(assessment)
-                # We'll store a placeholder for the 'questions' key.
-                # Then we'll replace that placeholder with a chunked string.
                 questions_list = temp_dict.pop("questions", [])
                 placeholder = "###QUESTIONS_PLACEHOLDER###"
                 temp_dict["questions"] = placeholder
-
-                # Dump the dictionary with standard indentation.
                 partial_json = json.dumps(temp_dict, indent=4)
-
-                # Now produce a chunked string for the actual question IDs.
-                chunked_str = chunk_array_in_lines(questions_list, 25)  # up to 25 IDs per line
-
-                # Replace the quoted placeholder in partial_json with chunked_str
+                chunked_str = chunk_array_in_lines(questions_list, 25)
                 partial_json = partial_json.replace('"###QUESTIONS_PLACEHOLDER###"', chunked_str)
-
                 items.append(partial_json)
 
-            # Now we have a list of JSON objects, each is a string with chunked 'questions'.
-            # We want to form the final array of objects: [ {..}, {..}, ... ]
-            # We'll join them with commas in between.
             final_text = "[\n" + ",\n".join(items) + "\n]\n"
 
             with open(full_path, 'w') as file:
@@ -776,6 +749,9 @@ class QuizApp:
     def open_summary_chapter_6(self):
         self.open_pdf_in_browser('Chapter 6 Maintaining System Startup and Services in Linux.pdf')
 
+    def open_summary_chapter_7(self):
+        self.open_pdf_in_browser('Chapter 7 Configuring Network Connections.pdf')
+
     def open_pdf_in_browser(self, filename):
         if getattr(sys, 'frozen', False):
             current_directory = os.path.dirname(sys.executable)
@@ -808,25 +784,21 @@ class QuizApp:
         title_label = tk.Label(content_frame, text="Create Assessment", font=("Helvetica", 16, "bold"))
         title_label.grid(row=0, column=0, columnspan=2, pady=(10, 0))
 
-        # ---- Title ----
         tk.Label(content_frame, text="Title:", font=("Helvetica", 14)).grid(
             row=1, column=0, padx=10, pady=10, sticky="e"
         )
         self.title_entry = tk.Entry(content_frame, width=50)
         self.title_entry.grid(row=1, column=1, padx=10, pady=10, ipady=5, sticky="ew")
 
-        # ---- Description ----
         tk.Label(content_frame, text="Description:", font=("Helvetica", 14)).grid(
             row=2, column=0, padx=10, pady=10, sticky="e"
         )
         self.description_entry = tk.Text(content_frame, height=5, width=50, font=("Helvetica", 12))
         self.description_entry.grid(row=2, column=1, padx=10, pady=10, sticky="ew")
 
-        # ---- Button: Add Question ----
         self.add_question_button = tk.Button(content_frame, text="Add Question", command=self.open_add_questions_window)
         self.add_question_button.grid(row=3, column=0, columnspan=2, pady=10)
 
-        # ---- Selected Questions listbox ----
         tk.Label(content_frame, text="Selected Questions:", font=("Helvetica", 14)).grid(
             row=4, column=0, padx=10, pady=(10, 5), sticky="e"
         )
@@ -840,7 +812,6 @@ class QuizApp:
         )
         self.delete_selected_questions_button.grid(row=5, column=0, columnspan=2, pady=(10, 0))
 
-        # ---- Final Create button ----
         self.create_assessment_btn = tk.Button(content_frame, text="Create", command=self.save_assessment)
         self.create_assessment_btn.grid(row=6, column=0, columnspan=2, pady=10)
 
@@ -934,11 +905,9 @@ class QuizApp:
                                 parent=self.assessment_win)
 
     def save_assessment(self):
-        # Haal tekst uit title en description
         title = self.title_entry.get().strip()
         description = self.description_entry.get("1.0", tk.END).strip()
 
-        # Verzamel de geselecteerde vragen
         selected_questions = []
         for i in range(self.selected_questions_listbox.size()):
             item = self.selected_questions_listbox.get(i)
@@ -953,7 +922,6 @@ class QuizApp:
             self.show_error_message("Title and Description cannot be empty.")
             return
 
-        # Bouw het assessment_data dictionary
         assessment_data = {
             "chapter": "Custom Assessment",
             "title": title,
@@ -962,7 +930,6 @@ class QuizApp:
             "questions_count": len(selected_questions)
         }
 
-        # Voeg deze toe aan self.assessments en sla op
         self.assessments.append(assessment_data)
         self.update_assessment_json()
 
@@ -971,7 +938,6 @@ class QuizApp:
         self.update_assessment_menu()
         self.assessment_win.destroy()
 
-    ### The new custom chunking logic is inside save_assessments_to_json above ###
     def update_assessment_json(self):
         try:
             if getattr(sys, 'frozen', False):
@@ -980,8 +946,7 @@ class QuizApp:
                 current_directory = os.path.dirname(os.path.abspath(__file__))
 
             full_path = os.path.join(current_directory, 'assets', 'linux_questions', 'addedAssessments.json')
-
-            # We simply call our custom saver that includes chunking for 'questions'
+            # We'll just call our custom saver
             self.save_assessments_to_json()
 
         except Exception as e:
@@ -1010,7 +975,7 @@ class QuizApp:
         static_items_end_index = 6
         end_index = self.assessment_menu.menu.index('end')
 
-        # Remove old dynamically-added items first (anything beyond the static 4)
+        # Remove old dynamically-added items first (anything beyond the static 6)
         if end_index is not None and end_index >= static_items_end_index:
             for index in range(static_items_end_index, end_index + 1):
                 self.assessment_menu.menu.delete(static_items_end_index)
@@ -1439,8 +1404,36 @@ class QuizApp:
         self.session_active = True
         self.assessment_mode = False
 
-        chapter_number = self.current_chapter_data.get('chapter', '5')
-        chapter_title = self.current_chapter_data.get('description', 'Explaining the Boot Process')
+        chapter_number = self.current_chapter_data.get('chapter', '6')
+        chapter_title = self.current_chapter_data.get('description', 'Maintainng System Startup and Services')
+        self.current_session_title = f"Exercise Chapter {chapter_number}: {chapter_title}"
+
+        self.question_window()
+
+    def start_exercise7(self, filename):
+        self.reset_statistics()
+        self.current_chapter_data = load_questions_from_json(filename)
+
+        if not self.current_chapter_data or "questions" not in self.current_chapter_data:
+            self.show_error_message("No questions found in Exercise Chapter 7.")
+            return
+
+        self.questions = self.current_chapter_data['questions']
+        random.shuffle(self.questions)
+
+        self.shuffled_options = []
+        for question in self.questions:
+            opts = list(question["options"])
+            random.shuffle(opts)
+            self.shuffled_options.append(opts)
+
+        self.current_question_index = 0
+        self.user_answers = [None] * len(self.questions)
+        self.session_active = True
+        self.assessment_mode = False
+
+        chapter_number = self.current_chapter_data.get('chapter', '7')
+        chapter_title = self.current_chapter_data.get('description', 'Configuring Network Connections')
         self.current_session_title = f"Exercise Chapter {chapter_number}: {chapter_title}"
 
         self.question_window()
@@ -1477,10 +1470,8 @@ class QuizApp:
 
         self.question_content_frame.bind("<Configure>", self._configure_question_content)
 
-        # ↓↓↓ PIJLEN WEER TERUG NAAR DIKKE VARIANT (⬆, ⬇) ↓↓↓
         self.q_arrow_up_label = tk.Label(container, text="⬆", font=("Helvetica", 32, "bold"), fg="black")
         self.q_arrow_down_label = tk.Label(container, text="⬇", font=("Helvetica", 32, "bold"), fg="black")
-        # ^^^ ZE VERSCHIJNEN NU HOPELIJK WEER DIK / BREEDE ARROWS ^^^
 
         self.question_canvas.bind_all("<MouseWheel>", self._on_mousewheel_question)
 
@@ -1624,24 +1615,19 @@ class QuizApp:
             if os.path.exists(full_image_path):
                 try:
                     image = Image.open(full_image_path)
-                    
-                    # ----- DYNAMIC SCALING (Option #2) -----
                     max_width = 800
                     max_height = 600
                     orig_w, orig_h = image.size
                     scale_factor = min(max_width / orig_w, max_height / orig_h)
-                    
-                    # Scale the image only if it exceeds max dimensions.
+
                     if scale_factor < 1:
                         new_w = int(orig_w * scale_factor)
                         new_h = int(orig_h * scale_factor)
                         image = image.resize((new_w, new_h), Image.LANCZOS)
-                    # ---------------------------------------
 
                     self.question_img = ImageTk.PhotoImage(image)
                     self.question_img_label = tk.Label(self.question_content_frame, image=self.question_img)
                     self.question_img_label.image = self.question_img
-                    # Display the image above/before the options frame
                     self.question_img_label.pack(before=self.options_frame, pady=10)
                 except Exception as e:
                     print(f"Could not load/resize image: {e}")
@@ -1740,6 +1726,8 @@ class QuizApp:
 
     # -------------------------------------------------------------------------
     # REVIEW UI (WITH SCROLLING ONLY IF CONTENT > WINDOW) + THICK ARROWS
+    #   We keep a dedicated frame for the i-button so that other nav buttons
+    #   do NOT shift left/right, but we show/hide the i button as needed.
     # -------------------------------------------------------------------------
     def review_window(self):
         self.review_win = tk.Toplevel(self.master)
@@ -1766,7 +1754,6 @@ class QuizApp:
 
         self.review_content_frame.bind("<Configure>", self._configure_review_content)
 
-        # ↓↓↓ TERUG NAAR “⬆” / “⬇” ↓↓↓
         self.arrow_up_label = tk.Label(container, text="⬆", font=("Helvetica", 32, "bold"), fg="black")
         self.arrow_down_label = tk.Label(container, text="⬇", font=("Helvetica", 32, "bold"), fg="black")
 
@@ -1803,6 +1790,7 @@ class QuizApp:
         self.options_frame_review = tk.Frame(self.review_content_frame)
         self.options_frame_review.pack(pady=15)
 
+        # Navigation row
         btn_frame = tk.Frame(bottom_frame)
         btn_frame.pack()
 
@@ -1825,6 +1813,23 @@ class QuizApp:
             btn_frame, text="Finish", font=("Helvetica", 18), command=self.finish_review
         )
         self.finish_review_button.pack(side=tk.LEFT, padx=20)
+
+        # A dedicated frame for the i button - keeps the layout stable.
+        self.info_frame = tk.Frame(btn_frame, width=60, height=40)
+        self.info_frame.pack(side=tk.LEFT)
+
+        self.info_button = tk.Button(
+            self.info_frame,
+            text="     ℹ️",
+            font=("Helvetica", 18),
+            width=2,
+            height=1,  # <-- Maak de knop smaller
+            command=self.show_review_info_image
+        )
+        # We do NOT pack it yet; we will do so in load_review_question if image_i exists.
+
+        self.image_i_shown = False
+        self.review_img_i_label = None
 
         self.load_review_question()
 
@@ -1869,11 +1874,17 @@ class QuizApp:
             self.arrow_down_label.place_forget()
 
     def load_review_question(self):
+        # Remove any old info image from the previous question
+        if hasattr(self, 'review_img_i_label') and self.review_img_i_label:
+            self.review_img_i_label.destroy()
+            self.review_img_i_label = None
+        self.image_i_shown = False
+
         for widget in self.options_frame_review.winfo_children():
             widget.destroy()
 
         for child in self.review_content_frame.winfo_children():
-            if isinstance(child, tk.Label) and getattr(child, 'image', None):
+            if isinstance(child, tk.Label) and getattr(child, 'image', None) and child != self.review_img_i_label:
                 child.destroy()
 
         self.review_title_label.pack_forget()
@@ -1900,25 +1911,30 @@ class QuizApp:
             if os.path.exists(full_image_path):
                 try:
                     img = Image.open(full_image_path)
-                    
-                    # ----- DYNAMIC SCALING (Option #2) -----
                     max_width = 800
                     max_height = 600
                     orig_w, orig_h = img.size
                     scale_factor = min(max_width / orig_w, max_height / orig_h)
-                    
+
                     if scale_factor < 1:
                         new_w = int(orig_w * scale_factor)
                         new_h = int(orig_h * scale_factor)
                         img = img.resize((new_w, new_h), Image.LANCZOS)
-                    # ---------------------------------------
-                    
+
                     self.review_img = ImageTk.PhotoImage(img)
                     self.review_img_label = tk.Label(self.review_content_frame, image=self.review_img)
                     self.review_img_label.image = self.review_img
                     self.review_img_label.pack(before=self.options_frame_review, pady=10)
                 except Exception as e:
                     print(f"Could not load/resize image: {e}")
+
+        # Hide or show the i button depending on the presence of image_i
+        if "image_i" in current_q:
+            # If there's image_i, pack the button so it's visible
+            self.info_button.pack(side="left")
+        else:
+            # If no image_i, hide the i button
+            self.info_button.pack_forget()
 
         correct_answers = current_q["answer"]
         user_selected = self.user_answers[self.current_question_index] if self.user_answers[self.current_question_index] is not None else []
@@ -2023,6 +2039,50 @@ class QuizApp:
         self.review_win.destroy()
         self.session_active = False
 
+    def show_review_info_image(self):
+        """
+        If user clicks ℹ️, toggle showing/hiding the 'image_i'.
+        """
+        current_q = self.questions[self.current_question_index]
+        image_i_path = current_q.get("image_i")
+        if not image_i_path:
+            return  # No image_i to show, do nothing
+
+        # If we have it already displayed, remove it (toggle off)
+        if self.image_i_shown and self.review_img_i_label:
+            self.review_img_i_label.destroy()
+            self.review_img_i_label = None
+            self.image_i_shown = False
+            return
+
+        # Otherwise, show it
+        if getattr(sys, 'frozen', False):
+            current_directory = os.path.dirname(sys.executable)
+        else:
+            current_directory = os.path.dirname(os.path.abspath(__file__))
+
+        full_path = os.path.join(current_directory, os.path.normpath(image_i_path))
+        if not os.path.exists(full_path):
+            messagebox.showerror("Error", f"image_i not found at: {full_path}", parent=self.review_win)
+            return
+
+        try:
+            pil_img = Image.open(full_path)
+            max_width, max_height = 800, 600
+            w, h = pil_img.size
+            scale = min(max_width / w, max_height / h)
+            if scale < 1:
+                pil_img = pil_img.resize((int(w*scale), int(h*scale)), Image.LANCZOS)
+
+            self.info_images[image_i_path] = ImageTk.PhotoImage(pil_img)
+            self.review_img_i_label = tk.Label(self.review_content_frame, image=self.info_images[image_i_path])
+            self.review_img_i_label.image = self.info_images[image_i_path]
+            self.review_img_i_label.pack(before=self.options_frame_review, pady=10)
+            self.image_i_shown = True
+
+        except Exception as e:
+            messagebox.showerror("Error", f"Could not load image_i: {e}", parent=self.review_win)
+
     def close_question_window(self):
         if hasattr(self, 'question_win') and self.question_win:
             self.question_win.destroy()
@@ -2032,18 +2092,16 @@ class QuizApp:
     # -------------------------------------------------------------------------
     def open_add_question_window(self, is_edit=False, question_win=None, question_number=None):
         self.temp_image_source = None  # Original path from file dialog
-        self.temp_image_target = None  # Path in linux_questions_images (with forced .jpg)
+        self.temp_image_target = None  # Path in linux_questions_images
         self.renamed_filename = None
 
         self.question_win = tk.Toplevel(self.master)
         self.question_win.geometry("1600x900")
         self.center_toplevel(self.question_win, 1600, 900)
 
-        # Determine window title text
         window_title = "Add New Question" if not is_edit else "Edit Question"
         self.question_win.title(window_title)
 
-        # Title label at top
         title_label = tk.Label(self.question_win, text=window_title, font=("Helvetica", 16, "bold"))
         title_label.pack(pady=(20, 10))
 
@@ -2274,13 +2332,12 @@ class QuizApp:
                 data = {"chapters": [{"description": "Added Questions", "questions": []}]}
 
             questions_in_file = data['chapters'][0]['questions']
-            # --- Find the maximum 'number' among existing questions ---
             if questions_in_file:
                 max_number = max(q['number'] for q in questions_in_file)
             else:
                 max_number = 0
 
-            new_question['number'] = max_number + 1  # Next unique question number
+            new_question['number'] = max_number + 1
 
             questions_in_file.append(new_question)
 
@@ -2303,8 +2360,6 @@ class QuizApp:
         listbox_frame.pack(pady=10)
 
         scrollbar = tk.Scrollbar(listbox_frame, orient=tk.VERTICAL)
-
-        # We want multiple selection & toggling
         self.question_listbox = tk.Listbox(
             listbox_frame,
             font=("Helvetica", 12),
@@ -2318,7 +2373,6 @@ class QuizApp:
         scrollbar.config(command=self.question_listbox.yview)
         scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
 
-        # Toggle on single-click
         self.question_listbox.bind("<Button-1>", self.toggle_question_selection, add="+")
 
         self.load_questions_for_editing()
@@ -2328,7 +2382,6 @@ class QuizApp:
 
         button_font = ("Helvetica", 14, "bold")
 
-        # View & Edit start out disabled (gray)
         self.view_button = tk.Button(button_frame, text="👁️ View", font=button_font, command=self.view_question)
         self.view_button.configure(state="disabled", fg="gray")
         self.view_button.pack(side=tk.LEFT, padx=10)
@@ -2337,7 +2390,6 @@ class QuizApp:
         self.edit_button.configure(state="disabled", fg="gray")
         self.edit_button.pack(side=tk.LEFT, padx=10)
 
-        # "Add New Question" button (always black)
         self.new_question_button = tk.Button(
             button_frame,
             text="Add New Question",
@@ -2347,7 +2399,6 @@ class QuizApp:
         self.new_question_button.configure(state="normal", fg="black")
         self.new_question_button.pack(side=tk.LEFT, padx=10)
 
-        # Delete button
         self.delete_button = tk.Button(button_frame, text="🗑️ Delete", font=button_font, command=self.delete_question)
         self.delete_button.configure(state="disabled", fg="gray")
         self.delete_button.pack(side=tk.LEFT, padx=10)
@@ -2372,7 +2423,6 @@ class QuizApp:
 
     def on_question_listbox_select(self):
         sel = self.question_listbox.curselection()
-        # If exactly 1 is selected -> enable view & edit
         if len(sel) == 1:
             self.view_button.configure(state="normal", fg="black")
             self.edit_button.configure(state="normal", fg="black")
@@ -2380,7 +2430,6 @@ class QuizApp:
             self.view_button.configure(state="disabled", fg="gray")
             self.edit_button.configure(state="disabled", fg="gray")
 
-        # Delete button: if >= 1 selected -> black, else gray
         if len(sel) >= 1:
             self.delete_button.configure(state="normal", fg="black")
         else:
@@ -2406,7 +2455,6 @@ class QuizApp:
 
     def view_question(self):
         sel = self.question_listbox.curselection()
-        # Only allow view if exactly 1 question is selected
         if len(sel) != 1:
             return
         question_index_in_list = sel[0]
@@ -2505,7 +2553,6 @@ class QuizApp:
 
     def edit_question(self):
         sel = self.question_listbox.curselection()
-        # Only allow edit if exactly 1 is selected
         if len(sel) != 1:
             return
         question_index_in_list = sel[0]
@@ -2524,7 +2571,6 @@ class QuizApp:
                 data = json.load(f)
                 question = data['chapters'][0]['questions'][question_index_in_list]
 
-                # The real 'number' of the question in the JSON, not the index:
                 actual_question_number = question['number']
 
                 self.open_add_question_window(is_edit=True, question_win=self.edit_question_win, question_number=actual_question_number)
@@ -2566,7 +2612,6 @@ class QuizApp:
 
         if messagebox.askyesno("Confirm Delete", "Are you sure you want to delete the selected question(s)?",
                                parent=self.edit_question_win):
-            # We can delete multiple
             for index in reversed(sel):
                 self.delete_question_final(index)
             self.edit_question_win.lift()
@@ -2666,11 +2711,6 @@ class QuizApp:
     # General error popup
     # -------------------------------------------------------------------------
     def show_error_message(self, message):
-        """
-        We show an error, with a parent if we know the relevant window.
-        Then we raise (lift) that window again to keep it in the foreground.
-        """
-        # Zoek een geschikte parent:
         if hasattr(self, 'question_win') and self.question_win and self.question_win.winfo_exists():
             parent_window = self.question_win
         elif hasattr(self, 'edit_assessment_details_win') and self.edit_assessment_details_win and self.edit_assessment_details_win.winfo_exists():
@@ -2693,6 +2733,9 @@ if __name__ == "__main__":
     root = tk.Tk()
     app = QuizApp(root)
     root.mainloop()
+
+
+
     
 
 
