@@ -279,7 +279,7 @@
                     "number": 193,
                     "question": "Which of the following are remote desktops typically used with virtual machines? (Choose all that apply.)",
                     "options": ["SPICE", "NX", "Xrdp", "VNC", "All of the above"],
-                    "answer": ["SPICE", "NX", "Xrdp", "VNC"],
+                    "answer": ["SPICE", "Xrdp", "VNC"],
                     "explanation": {
                         "SPICE": "This is typically used with KVM virtual machines.",
                         "NX": "This is not typically used with virtual machines.",

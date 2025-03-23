@@ -312,7 +312,7 @@
               "iface eth0 inet dhcp": "Correct. Tells ifup/ifdown to use DHCP on eth0.",
               "auto eth0": "Ensures interface is started automatically but doesn't specify DHCP by itself.",
               "iface eth0 inet6 auto": "Indicates IPv6, not IPv4 DHCP.",
-              "BOOTPROTO=dynamic": "Red Hat–style configuration, not typical Debian /etc/network/interfaces syntax."
+              "BOOTPROTO=dynamic": "Red Hat-style configuration, not typical Debian /etc/network/interfaces syntax."
             }
           },
           {

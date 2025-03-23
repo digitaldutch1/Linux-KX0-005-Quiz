@@ -135,6 +135,8 @@ class QuizApp:
         self.ebook_menu.menu.add_command(label="Summary Chapter 5: Explaining the Boot Process", command=self.open_summary_chapter_5)
         self.ebook_menu.menu.add_command(label="Summary Chapter 6: Maintaining System Startup and Services in Linux", command=self.open_summary_chapter_6)
         self.ebook_menu.menu.add_command(label="Summary Chapter 7: Configuring Network Connections", command=self.open_summary_chapter_7)
+        self.ebook_menu.menu.add_command(label="Summary Chapter 8: Focusing on the GUI", command=self.open_summary_chapter_8)
+        self.ebook_menu.menu.add_command(label="Summary Chapter 9: Adjusting Localization Options", command=self.open_summary_chapter_9)
 
         # ---------------- Chapters Menu ---------------
         self.chapter_menu = tk.Menubutton(
@@ -204,6 +206,18 @@ class QuizApp:
         self.exercise_menu.menu.add_command(
             label=f"Chapter 7 Configuring Network Conntections ({exercise_chapter7_count})",
             command=lambda: self.start_exercise7("exerciseChapter7.json")
+        )
+
+        exercise_chapter8_count = get_question_count_from_json("exerciseChapter8.json")
+        self.exercise_menu.menu.add_command(
+            label=f"Chapter 8 Focusing on the GUI ({exercise_chapter8_count})",
+            command=lambda: self.start_exercise8("exerciseChapter8.json")
+        )
+
+        exercise_chapter9_count = get_question_count_from_json("exerciseChapter9.json")
+        self.exercise_menu.menu.add_command(
+            label=f"Chapter 9 Adjusting Localization Options ({exercise_chapter9_count})",
+            command=lambda: self.start_exercise9("exerciseChapter9.json")
         )
 
         # ---------------- Assessment Menu ---------------
@@ -751,6 +765,12 @@ class QuizApp:
 
     def open_summary_chapter_7(self):
         self.open_pdf_in_browser('Chapter 7 Configuring Network Connections.pdf')
+
+    def open_summary_chapter_8(self):
+        self.open_pdf_in_browser('Chapter 8 Focusing on the GUI.pdf')
+
+    def open_summary_chapter_9(self):
+        self.open_pdf_in_browser('Chapter 9 Adjusting Localization Options.pdf')
 
     def open_pdf_in_browser(self, filename):
         if getattr(sys, 'frozen', False):
@@ -1434,6 +1454,62 @@ class QuizApp:
 
         chapter_number = self.current_chapter_data.get('chapter', '7')
         chapter_title = self.current_chapter_data.get('description', 'Configuring Network Connections')
+        self.current_session_title = f"Exercise Chapter {chapter_number}: {chapter_title}"
+
+        self.question_window()
+
+    def start_exercise8(self, filename):
+        self.reset_statistics()
+        self.current_chapter_data = load_questions_from_json(filename)
+
+        if not self.current_chapter_data or "questions" not in self.current_chapter_data:
+            self.show_error_message("No questions found in Exercise Chapter 8.")
+            return
+
+        self.questions = self.current_chapter_data['questions']
+        random.shuffle(self.questions)
+
+        self.shuffled_options = []
+        for question in self.questions:
+            opts = list(question["options"])
+            random.shuffle(opts)
+            self.shuffled_options.append(opts)
+
+        self.current_question_index = 0
+        self.user_answers = [None] * len(self.questions)
+        self.session_active = True
+        self.assessment_mode = False
+
+        chapter_number = self.current_chapter_data.get('chapter', '8')
+        chapter_title = self.current_chapter_data.get('description', 'Focusing on the GUI')
+        self.current_session_title = f"Exercise Chapter {chapter_number}: {chapter_title}"
+
+        self.question_window()
+
+    def start_exercise9(self, filename):
+        self.reset_statistics()
+        self.current_chapter_data = load_questions_from_json(filename)
+
+        if not self.current_chapter_data or "questions" not in self.current_chapter_data:
+            self.show_error_message("No questions found in Exercise Chapter 9.")
+            return
+
+        self.questions = self.current_chapter_data['questions']
+        random.shuffle(self.questions)
+
+        self.shuffled_options = []
+        for question in self.questions:
+            opts = list(question["options"])
+            random.shuffle(opts)
+            self.shuffled_options.append(opts)
+
+        self.current_question_index = 0
+        self.user_answers = [None] * len(self.questions)
+        self.session_active = True
+        self.assessment_mode = False
+
+        chapter_number = self.current_chapter_data.get('chapter', '9')
+        chapter_title = self.current_chapter_data.get('description', 'Adjusting Localization Options')
         self.current_session_title = f"Exercise Chapter {chapter_number}: {chapter_title}"
 
         self.question_window()
