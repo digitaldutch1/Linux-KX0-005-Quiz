@@ -1,0 +1,1534 @@
+
+
+
+{
+    "chapters": [
+      {
+        "description": "Administering Users and Groups",
+        "questions": [
+          {
+            "number": 1,
+            "question": "Which file contains directives that control how the shadow password suite commands behave when creating new user accounts?",
+            "options": [
+              "/etc/passwd",
+              "/etc/default/useradd",
+              "/etc/login.defs",
+              "/etc/group"
+            ],
+            "answer": [
+              "/etc/login.defs"
+            ],
+            "explanation": {
+              "/etc/passwd": "Stores account records but not the main file for controlling shadow password suite defaults.",
+              "/etc/default/useradd": "Also influences defaults, but the question specifically points to the file that sets many broader directives like PASS_MAX_DAYS, CREATE_HOME, etc. which is /etc/login.defs.",
+              "/etc/login.defs": "Correct. It includes directives such as UID_MIN, CREATE_HOME, PASS_MAX_DAYS, and more.",
+              "/etc/group": "Stores group definitions, not the primary file for user-creation directives."
+            }
+          },
+          {
+            "number": 2,
+            "question": "What is the default behavior if CREATE_HOME is set to no in /etc/login.defs?",
+            "options": [
+              "No user accounts can be created",
+              "Useradd will not prompt for a password",
+              "No home directory is created for new accounts by default",
+              "The user creation process removes the /etc/skel folder"
+            ],
+            "answer": [
+              "No home directory is created for new accounts by default"
+            ],
+            "explanation": {
+              "No user accounts can be created": "You can still create accounts; the home directory simply is not auto-created.",
+              "Useradd will not prompt for a password": "That is unrelated to CREATE_HOME.",
+              "No home directory is created for new accounts by default": "Correct. If CREATE_HOME=no, useradd does not auto-create the home directory unless overridden by options like -m.",
+              "The user creation process removes the /etc/skel folder": "No, that folder is not removed. It's still there to copy files from if needed."
+            }
+          },
+          {
+            "number": 3,
+            "question": "When creating a user with useradd on a system where SHELL is set to /bin/sh in /etc/default/useradd, how can you override it to /bin/bash?",
+            "options": [
+              "Use the -s /bin/bash option with useradd",
+              "Use the -g /bin/bash option with useradd",
+              "Set SHELL=/bin/bash in /etc/login.defs",
+              "You cannot override the default shell once set"
+            ],
+            "answer": [
+              "Use the -s /bin/bash option with useradd"
+            ],
+            "explanation": {
+              "Use the -s /bin/bash option with useradd": "Correct. The -s switch designates the login shell explicitly.",
+              "Use the -g /bin/bash option with useradd": "-g is for specifying a group, not a shell.",
+              "Set SHELL=/bin/bash in /etc/login.defs": "That is not typically how you set the default user shell. /etc/login.defs does not handle the shell directive used by useradd in this manner.",
+              "You cannot override the default shell once set": "You can override it at creation time or even later with usermod."
+            }
+          },
+          {
+            "number": 4,
+            "question": "Which file holds salted and hashed passwords for local user accounts, preventing them from appearing in /etc/passwd?",
+            "options": [
+              "/etc/group",
+              "/etc/shadow",
+              "/etc/gshadow",
+              "/etc/default/useradd"
+            ],
+            "answer": [
+              "/etc/shadow"
+            ],
+            "explanation": {
+              "/etc/group": "Stores group information, not user passwords.",
+              "/etc/shadow": "Correct. This is the locked-down file with hashed passwords.",
+              "/etc/gshadow": "Stores group passwords (if any) for groups, not user account passwords.",
+              "/etc/default/useradd": "Configures default settings for user creation, does not store hashed passwords."
+            }
+          },
+          {
+            "number": 5,
+            "question": "Which command can you use to quickly view a single user's /etc/passwd record or /etc/shadow record, honoring the file's permissions?",
+            "options": [
+              "id",
+              "getent",
+              "cat",
+              "shadowcheck"
+            ],
+            "answer": [
+              "getent"
+            ],
+            "explanation": {
+              "id": "Displays a user's UID and groups, not the raw file record lines from /etc/passwd or /etc/shadow.",
+              "getent": "Correct. getent passwd username or getent shadow username queries the system's databases and respects file permissions.",
+              "cat": "Works but you must manually parse the file. Also won't automatically filter for one user, and normal users cannot cat /etc/shadow unless they have privileges.",
+              "shadowcheck": "Not a standard command."
+            }
+          },
+          {
+            "number": 6,
+            "question": "What does an exclamation mark '!' in front of a hashed password in the /etc/shadow file typically indicate?",
+            "options": [
+              "That the password is set to '!' literally",
+              "That the account is locked and cannot log in with that password",
+              "That the user account has no password at all",
+              "That the user can only log in via SSH keys"
+            ],
+            "answer": [
+              "That the account is locked and cannot log in with that password"
+            ],
+            "explanation": {
+              "That the password is set to '!' literally": "No, it's a marker that modifies login ability.",
+              "That the account is locked and cannot log in with that password": "Correct. Placing '!' at the front of the hashed password field locks the account password.",
+              "That the user account has no password at all": "No password is indicated differently, for instance '!!' if never set or '*' in certain contexts.",
+              "That the user can only log in via SSH keys": "Locking the password does not automatically allow only SSH keys. It's simply preventing password-based login."
+            }
+          },
+          {
+            "number": 7,
+            "question": "Which command is used to remove an account's password, making it so the user cannot log in with a password, but not necessarily locking it if other auth methods exist?",
+            "options": [
+              "passwd -l",
+              "passwd -d",
+              "passwd -S",
+              "passwd -e"
+            ],
+            "answer": [
+              "passwd -d"
+            ],
+            "explanation": {
+              "passwd -l": "Locks the password by placing an exclamation point, preventing password login.",
+              "passwd -d": "Correct. This deletes the password from the account, leaving it with none.",
+              "passwd -S": "Shows status of a password, does not remove it.",
+              "passwd -e": "Expires the password, forcing a change at next login."
+            }
+          },
+          {
+            "number": 8,
+            "question": "After creating a user with useradd, which command should typically be run immediately to set a password for that user if it has '!' or '!!' in /etc/shadow?",
+            "options": [
+              "passwd username",
+              "userdel -p username",
+              "usermod -m username",
+              "groupmod -p username"
+            ],
+            "answer": [
+              "passwd username"
+            ],
+            "explanation": {
+              "passwd username": "Correct. This sets or updates the account password and removes '!' or '!!'.",
+              "userdel -p username": "userdel is for deleting an account, not setting a password.",
+              "usermod -m username": "The -m option moves a home directory, not a password operation.",
+              "groupmod -p username": "Manages group info, not user account passwords."
+            }
+          },
+          {
+            "number": 9,
+            "question": "Which usermod option both adds a user to secondary groups and ensures existing group memberships are preserved?",
+            "options": [
+              "-G alone",
+              "-a -G",
+              "-M -G",
+              "-A group1,group2"
+            ],
+            "answer": [
+              "-a -G"
+            ],
+            "explanation": {
+              "-G alone": "Using -G alone overwrites any existing secondary groups.",
+              "-a -G": "Correct. -a appends groups, and -G specifies which groups to add.",
+              "-M -G": "Not valid for preserving or adding memberships. -M typically is 'no-createhome' for useradd, not usermod.",
+              "-A group1,group2": "Not a standard usermod syntax."
+            }
+          },
+          {
+            "number": 10,
+            "question": "Which command and option can you use to rename an existing user account from bob to robert?",
+            "options": [
+              "usermod -l robert bob",
+              "useradd -l robert bob",
+              "userdel -r bob robert",
+              "groupmod -n robert bob"
+            ],
+            "answer": [
+              "usermod -l robert bob"
+            ],
+            "explanation": {
+              "usermod -l robert bob": "Correct. The -l switch changes the login name for that account.",
+              "useradd -l robert bob": "useradd is for creating new accounts, not renaming existing ones.",
+              "userdel -r bob robert": "Removes bob entirely, not renaming to robert, and also doesn't add robert.",
+              "groupmod -n robert bob": "Groupmod changes group names, not user accounts."
+            }
+          },
+          {
+            "number": 11,
+            "question": "How do you remove a group called devgroup on a Linux system?",
+            "options": [
+              "usermod -r devgroup",
+              "groupdel devgroup",
+              "delgroup devgroup -f",
+              "rm /etc/group devgroup"
+            ],
+            "answer": [
+              "groupdel devgroup"
+            ],
+            "explanation": {
+              "usermod -r devgroup": "usermod modifies user accounts, not group removal.",
+              "groupdel devgroup": "Correct. groupdel is the standard command to remove an existing group.",
+              "delgroup devgroup -f": "Not a typical command on most distributions (Debian-based might have addgroup/delgroup, but the question references standard usage). The real standard is groupdel.",
+              "rm /etc/group devgroup": "Never remove the entire file, that would remove all groups. Also not how we remove a single group."
+            }
+          },
+          {
+            "number": 12,
+            "question": "Which command can you run to list all groups a user is currently a member of?",
+            "options": [
+              "groups username",
+              "getent passwd username",
+              "chage -l username",
+              "id -u username"
+            ],
+            "answer": [
+              "groups username"
+            ],
+            "explanation": {
+              "groups username": "Correct. It displays all the group names the user belongs to (including the default group).",
+              "getent passwd username": "Shows the user's /etc/passwd record, not all secondary groups unless combined with other logic.",
+              "chage -l username": "Lists password aging info, unrelated to group memberships.",
+              "id -u username": "Shows only the UID, not the group memberships. 'id' without -u would show groups, but -u is specifically UID."
+            }
+          },
+          {
+            "number": 13,
+            "question": "Which field in /etc/passwd stores the numeric value the system uses to identify a user's primary group membership?",
+            "options": [
+              "Field 1",
+              "Field 3",
+              "Field 4",
+              "Field 7"
+            ],
+            "answer": [
+              "Field 4"
+            ],
+            "explanation": {
+              "Field 1": "Username (e.g., bob).",
+              "Field 3": "UID numeric value.",
+              "Field 4": "Correct. GID is the fourth field in /etc/passwd.",
+              "Field 7": "Default shell for the user."
+            }
+          },
+          {
+            "number": 14,
+            "question": "Which default shell program is assigned to a user if their /etc/passwd record includes /sbin/nologin as the shell field?",
+            "options": [
+              "They receive /bin/sh automatically",
+              "They receive /bin/bash automatically",
+              "They do not get an interactive shell login",
+              "They must run newgrp to get a shell"
+            ],
+            "answer": [
+              "They do not get an interactive shell login"
+            ],
+            "explanation": {
+              "They receive /bin/sh automatically": "No, /sbin/nologin literally disallows interactive login.",
+              "They receive /bin/bash automatically": "No, they are kicked off if they attempt to login interactively.",
+              "They do not get an interactive shell login": "Correct. /sbin/nologin logs them out with a polite message (or no message).",
+              "They must run newgrp to get a shell": "No, newgrp changes the group context, not the shell for nologin."
+            }
+          },
+          {
+            "number": 15,
+            "question": "If a system uses user private groups, and you create a user account named valerie with no -g option, which group is typically assigned as her primary group?",
+            "options": [
+              "She is assigned the root group automatically",
+              "She is assigned the 'users' group with GID 100",
+              "She is assigned a new group named valerie matching her username",
+              "She is unassigned any group"
+            ],
+            "answer": [
+              "She is assigned a new group named valerie matching her username"
+            ],
+            "explanation": {
+              "She is assigned the root group automatically": "No, that would be a major security risk. Root group is GID 0.",
+              "She is assigned the 'users' group with GID 100": "Some older distros did this, but user private group is more common now, meaning you get your own group.",
+              "She is assigned a new group named valerie matching her username": "Correct. Distros typically create a private group with the same name as the user if no group is specified.",
+              "She is unassigned any group": "Impossible. A user must have a default primary group."
+            }
+          },
+          {
+            "number": 16,
+            "question": "Which useradd switch ensures a home directory is created even if CREATE_HOME is set to no?",
+            "options": [
+              "-N",
+              "-m",
+              "-M",
+              "-r"
+            ],
+            "answer": [
+              "-m"
+            ],
+            "explanation": {
+              "-N": "Not a standard useradd switch for forcing home directory creation.",
+              "-m": "Correct. Forces creation of the user's home directory.",
+              "-M": "Often means 'do not create home' in certain distros, the opposite of what we want.",
+              "-r": "Creates a system account, not specifically forcing a home directory for a normal user."
+            }
+          },
+          {
+            "number": 17,
+            "question": "Which usermod switch changes a user's default login name in /etc/passwd, but does NOT move or rename their home directory automatically?",
+            "options": [
+              "-d",
+              "-l",
+              "-U",
+              "-o"
+            ],
+            "answer": [
+              "-l"
+            ],
+            "explanation": {
+              "-d": "Specifies a new home directory path, not the user login name.",
+              "-l": "Correct. The login name switch changes the username field in /etc/passwd.",
+              "-U": "Unlocks an account that was locked, not the login name.",
+              "-o": "Allows the reuse of a UID already in use, not the login name."
+            }
+          },
+          {
+            "number": 18,
+            "question": "Which useradd command would create a system account with the name websvc and no home directory by default?",
+            "options": [
+              "useradd -r websvc",
+              "useradd -m websvc",
+              "useradd -d /dev/null websvc",
+              "useradd -o websvc"
+            ],
+            "answer": [
+              "useradd -r websvc"
+            ],
+            "explanation": {
+              "useradd -r websvc": "Correct. -r commonly creates a system account, which typically does not get a home directory.",
+              "useradd -m websvc": "Would create a normal user account with a home directory.",
+              "useradd -d /dev/null websvc": "Unusual approach, not the standard method for system accounts, and /dev/null is not a typical home path.",
+              "useradd -o websvc": "Allows duplicate UIDs, unrelated to system vs normal account creation."
+            }
+          },
+          {
+            "number": 19,
+            "question": "If you want to give an existing user a new numeric UID, which command is appropriate?",
+            "options": [
+              "groupmod -u username",
+              "usermod -u newUID username",
+              "usermod -o username newUID",
+              "chown -R newUID username"
+            ],
+            "answer": [
+              "usermod -u newUID username"
+            ],
+            "explanation": {
+              "groupmod -u username": "Affects group IDs, not user IDs.",
+              "usermod -u newUID username": "Correct. The -u option sets a new numeric UID for the account.",
+              "usermod -o username newUID": "-o allows non-unique UID usage, but doesn't specify how we set the UID. The correct syntax is usermod -u.",
+              "chown -R newUID username": "This is for changing file ownership, not reassigning the user's UID in the system."
+            }
+          },
+          {
+            "number": 20,
+            "question": "Which file is scanned to determine the current number of files (or inodes) and blocks used by each user when enabling quotas for the first time?",
+            "options": [
+              "aquota.user",
+              "/etc/fstab",
+              "The actual filesystem itself",
+              "The /etc/mtab file"
+            ],
+            "answer": [
+              "The actual filesystem itself"
+            ],
+            "explanation": {
+              "aquota.user": "This file is created by quotacheck but isn't the source of usage data. The usage data is initially compiled from the filesystem.",
+              "/etc/fstab": "Lists mount info and options, not actual usage data.",
+              "The actual filesystem itself": "Correct. quotacheck scans the filesystem to gather usage info.",
+              "The /etc/mtab file": "Lists currently mounted filesystems, but not user usage data."
+            }
+          },
+          {
+            "number": 21,
+            "question": "Which command do you use to lock a user's password, preventing password-based login, but not removing the password entirely?",
+            "options": [
+              "passwd -d user",
+              "usermod -l user",
+              "passwd -l user",
+              "shadowcfg lock user"
+            ],
+            "answer": [
+              "passwd -l user"
+            ],
+            "explanation": {
+              "passwd -d user": "Removes the password, not lock it.",
+              "usermod -l user": "Changes the login name. Not about locking password.",
+              "passwd -l user": "Correct. Locks the password by putting '!' in front of it in /etc/shadow.",
+              "shadowcfg lock user": "Not a standard command."
+            }
+          },
+          {
+            "number": 22,
+            "question": "What is the purpose of the /etc/skel directory in user account management?",
+            "options": [
+              "It stores hashed passwords for new users",
+              "It stores skeleton files that get copied to a new user's home directory",
+              "It defines group membership rules for new accounts",
+              "It holds cron job backups for all users"
+            ],
+            "answer": [
+              "It stores skeleton files that get copied to a new user's home directory"
+            ],
+            "explanation": {
+              "It stores hashed passwords for new users": "No, that belongs in /etc/shadow.",
+              "It stores skeleton files that get copied to a new user's home directory": "Correct. /etc/skel contents get cloned when creating a new user's home directory.",
+              "It defines group membership rules for new accounts": "Group membership is in /etc/login.defs or useradd config, not /etc/skel.",
+              "It holds cron job backups for all users": "Irrelevant to user account creation files."
+            }
+          },
+          {
+            "number": 23,
+            "question": "Which file in /etc/ is typically edited so that a filesystem uses user or group quotas at mount time?",
+            "options": [
+              "/etc/fstab",
+              "/etc/login.defs",
+              "/etc/profile",
+              "/etc/quota.conf"
+            ],
+            "answer": [
+              "/etc/fstab"
+            ],
+            "explanation": {
+              "/etc/fstab": "Correct. This is where the usrquota or grpquota options are added to the relevant filesystem line.",
+              "/etc/login.defs": "Controls user creation directives, not filesystem mount quota settings.",
+              "/etc/profile": "Global environment file, unrelated to disk quotas.",
+              "/etc/quota.conf": "No default file named like this for system quotas. The actual usage is aquota.user or aquota.group files typically."
+            }
+          },
+          {
+            "number": 24,
+            "question": "Which command is used to initially create or update the aquota.user and aquota.group files by scanning a filesystem for usage?",
+            "options": [
+              "quotacheck",
+              "quotaon",
+              "edquota",
+              "repquota"
+            ],
+            "answer": [
+              "quotacheck"
+            ],
+            "explanation": {
+              "quotacheck": "Correct. Creates or updates the quota database files by scanning usage on the filesystem.",
+              "quotaon": "Enables quotas on the filesystem once aquota.* files exist.",
+              "edquota": "Edits a user's or group's quota limits, not scanning usage.",
+              "repquota": "Reports the usage and limits, not building the database files."
+            }
+          },
+          {
+            "number": 25,
+            "question": "After setting a soft limit for a user's block usage, which concept allows the user to exceed that limit for a certain amount of time?",
+            "options": [
+              "Grace period",
+              "Hard limit override",
+              "Inode extension mode",
+              "runquota extension"
+            ],
+            "answer": [
+              "Grace period"
+            ],
+            "explanation": {
+              "Grace period": "Correct. The user can exceed the soft limit for the configured grace time.",
+              "Hard limit override": "Hard limit is not exceeded unless forcibly changed.",
+              "Inode extension mode": "No such standard term in quotas. Inode usage also can have soft/hard limits though.",
+              "runquota extension": "Not a recognized term or feature."
+            }
+          },
+          {
+            "number": 26,
+            "question": "Which command would you use to interactively edit an individual user's quota settings, such as soft and hard block limits?",
+            "options": [
+              "repquota -e user",
+              "chage user",
+              "edquota -u user",
+              "useradd -q user"
+            ],
+            "answer": [
+              "edquota -u user"
+            ],
+            "explanation": {
+              "repquota -e user": "Displays a report, but does not edit user quotas.",
+              "chage user": "Edits password aging info, not quotas.",
+              "edquota -u user": "Correct. edquota modifies that user's disk quota settings.",
+              "useradd -q user": "No standard -q switch for useradd to set disk quotas. Not valid."
+            }
+          },
+          {
+            "number": 27,
+            "question": "If a user's password is set to expire, but the user has not logged in before it expires, the user is effectively locked out unless the admin intervenes. This scenario is caused by which /etc/shadow fields interplay?",
+            "options": [
+              "The day of last password change and maximum days (fields #3 and #5)",
+              "The PASS_WARN_AGE field in /etc/login.defs alone",
+              "The GID field in /etc/passwd",
+              "The shell field in /etc/shadow"
+            ],
+            "answer": [
+              "The day of last password change and maximum days (fields #3 and #5)"
+            ],
+            "explanation": {
+              "The day of last password change and maximum days (fields #3 and #5)": "Correct. If the user does not log in by the expiry date, they're locked out after the grace period or forced expiration.",
+              "The PASS_WARN_AGE field in /etc/login.defs alone": "That only warns the user, does not lock them out.",
+              "The GID field in /etc/passwd": "Unrelated to password expiry lockouts.",
+              "The shell field in /etc/shadow": "No such field. The shell is in /etc/passwd, and that doesn't handle password expiration lockouts."
+            }
+          },
+          {
+            "number": 28,
+            "question": "Which passwd option forces a user to change their password immediately at next login, marking it as expired?",
+            "options": [
+              "-S",
+              "-e",
+              "-l",
+              "-d"
+            ],
+            "answer": [
+              "-e"
+            ],
+            "explanation": {
+              "-S": "Displays password status, does not expire it.",
+              "-e": "Correct. Expires the account's current password, forcing a change at next login.",
+              "-l": "Locks the account password, preventing logins with it.",
+              "-d": "Deletes the password, leaving no password set at all."
+            }
+          },
+          {
+            "number": 29,
+            "question": "Which command output specifically includes 'real', 'user', and 'sys' times for how long a process runs, but does not set the system clock?",
+            "options": [
+              "time somecommand",
+              "timedatectl show",
+              "hwclock --systohc",
+              "date -s somecommand"
+            ],
+            "answer": [
+              "time somecommand"
+            ],
+            "explanation": {
+              "time somecommand": "Correct. Displays real/user/sys durations for the command's execution.",
+              "timedatectl show": "Shows system time info, not user process timing.",
+              "hwclock --systohc": "Copies system time to hardware clock, not measuring a process run time.",
+              "date -s somecommand": "Sets the date/time or attempts to, not measuring CPU usage."
+            }
+          },
+          {
+            "number": 30,
+            "question": "Which command is used to display or change password aging information, such as the account's password expiration date and warning period?",
+            "options": [
+              "passwd -S",
+              "chage",
+              "usermod -w",
+              "useradd -i"
+            ],
+            "answer": [
+              "chage"
+            ],
+            "explanation": {
+              "passwd -S": "Shows a brief status of the password, but not an interactive tool for aging info.",
+              "chage": "Correct. It can display (-l) or change password aging parameters.",
+              "usermod -w": "No direct -w parameter for usermod for that. Warning days can be set with passwd -w, or changed in /etc/shadow, but not usermod -w.",
+              "useradd -i": "No standard -i for password aging. Not correct."
+            }
+          },
+          {
+            "number": 31,
+            "question": "Which user account creation utility is considered low-level on Debian/Ubuntu systems, overshadowed by the friendlier adduser script?",
+            "options": [
+              "useradd",
+              "adduser",
+              "userdel",
+              "passwd"
+            ],
+            "answer": [
+              "useradd"
+            ],
+            "explanation": {
+              "useradd": "Correct. Debian/Ubuntu refer to it as low-level, while adduser is a higher-level script.",
+              "adduser": "This is the friendlier script on Debian-based distros, not the low-level utility.",
+              "userdel": "Removes accounts, not the creation utility in question.",
+              "passwd": "Sets passwords, not specifically creating accounts."
+            }
+          },
+          {
+            "number": 32,
+            "question": "Which environment file is typically sourced by a Bash login shell first, if present in the home directory: .bash_profile, .bash_login, or .profile?",
+            "options": [
+              ".bashrc is always first",
+              ".bash_profile is used first if found",
+              ".bash_login overrides .bash_profile",
+              ".profile always overrides the others"
+            ],
+            "answer": [
+              ".bash_profile is used first if found"
+            ],
+            "explanation": {
+              ".bashrc is always first": "No, .bashrc is typically for non-login shells, or is called from the login file. Not the first login script.",
+              ".bash_profile is used first if found": "Correct. Then .bash_login, then .profile, in that order.",
+              ".bash_login overrides .bash_profile": "Actually if .bash_profile is present, .bash_login is ignored.",
+              ".profile always overrides the others": "Not correct; .profile is used only if .bash_profile and .bash_login are absent."
+            }
+          },
+          {
+            "number": 33,
+            "question": "Which global file can be used to set environment variables for all users and is often supplemented by files in /etc/profile.d/?",
+            "options": [
+              "/etc/shadow",
+              "/etc/profile",
+              "/etc/passwd",
+              "/etc/bashrc"
+            ],
+            "answer": [
+              "/etc/profile"
+            ],
+            "explanation": {
+              "/etc/shadow": "Stores hashed passwords, not environment variables.",
+              "/etc/profile": "Correct. It's a global file for login shells. The directory /etc/profile.d/ can also contain scripts sourced by /etc/profile.",
+              "/etc/passwd": "Stores account info, not environment variables.",
+              "/etc/bashrc": "May also be used in some distros, but typically /etc/profile is the main for login shell environment settings. /etc/bashrc or /etc/bash.bashrc is often for interactive non-login shells."
+            }
+          },
+          {
+            "number": 34,
+            "question": "If you want to show all environment variables set in your current shell session, which command might you use?",
+            "options": [
+              "env",
+              "whoami",
+              "id",
+              "locale -a"
+            ],
+            "answer": [
+              "env"
+            ],
+            "explanation": {
+              "env": "Correct. Displays all environment variables for the current shell if used alone.",
+              "whoami": "Shows only your current username, not environment variables.",
+              "id": "Shows UID, GIDs, not environment variables.",
+              "locale -a": "Shows installed locales, not all environment variables."
+            }
+          },
+          {
+            "number": 35,
+            "question": "Which environment variable typically controls how many commands are retained in your shell's command history buffer?",
+            "options": [
+              "HISTSIZE",
+              "PATH",
+              "PS1",
+              "USER"
+            ],
+            "answer": [
+              "HISTSIZE"
+            ],
+            "explanation": {
+              "HISTSIZE": "Correct. Tells bash how many lines of history to store in memory.",
+              "PATH": "Search path for commands, not related to history.",
+              "PS1": "Defines the primary prompt string.",
+              "USER": "Name of the current user, not related to history size."
+            }
+          },
+          {
+            "number": 36,
+            "question": "How does the 'newgrp' command help a user who belongs to multiple groups?",
+            "options": [
+              "It modifies the user's /etc/shadow password",
+              "It changes the default group ID of the current shell to another group the user is a member of",
+              "It locks or unlocks a group password",
+              "It merges multiple groups into one supergroup"
+            ],
+            "answer": [
+              "It changes the default group ID of the current shell to another group the user is a member of"
+            ],
+            "explanation": {
+              "It modifies the user's /etc/shadow password": "newgrp does not change passwords. It's about changing the current group context.",
+              "It changes the default group ID of the current shell to another group the user is a member of": "Correct. The new shell session has that group as the effective default group.",
+              "It locks or unlocks a group password": "No, that would be gpasswd -r or something similar if group passwords were used.",
+              "It merges multiple groups into one supergroup": "No such concept. newgrp just shifts your current GID context."
+            }
+          },
+          {
+            "number": 37,
+            "question": "Which commands can display which users are currently logged into the system and from what terminal or remote address?",
+            "options": [
+              "who and w",
+              "useradd and userdel",
+              "quotaon and repquota",
+              "userconf and groupconf"
+            ],
+            "answer": [
+              "who and w"
+            ],
+            "explanation": {
+              "who and w": "Correct. Both show info about currently logged-in users, with w providing additional details.",
+              "useradd and userdel": "Create or delete user accounts, not display who is logged in.",
+              "quotaon and repquota": "Enable quotas and show quota usage, not logged-in users.",
+              "userconf and groupconf": "Not standard commands for listing current logins."
+            }
+          },
+          {
+            "number": 38,
+            "question": "Which command can reveal the last logins of users on a system by reading the /var/log/wtmp file?",
+            "options": [
+              "last",
+              "lastb",
+              "lastlog",
+              "id"
+            ],
+            "answer": [
+              "last"
+            ],
+            "explanation": {
+              "last": "Correct. Displays login sessions, reboots, etc. from /var/log/wtmp.",
+              "lastb": "Shows unsuccessful (bad) login attempts from /var/log/btmp, not wtmp.",
+              "lastlog": "Shows the time of last login for each user from /var/log/lastlog, not wtmp content specifically.",
+              "id": "Shows identity info, not login history."
+            }
+          },
+          {
+            "number": 39,
+            "question": "Which file is used to store group passwords if they exist, acting as a shadow file for groups?",
+            "options": [
+              "/etc/group.shadow",
+              "/etc/gshadow",
+              "/etc/shadowgroup",
+              "/etc/group.conf"
+            ],
+            "answer": [
+              "/etc/gshadow"
+            ],
+            "explanation": {
+              "/etc/group.shadow": "Not a standard file name. The real one is /etc/gshadow.",
+              "/etc/gshadow": "Correct. Holds group passwords and info about administrators, members, etc.",
+              "/etc/shadowgroup": "Not the typical name for group shadow info on Linux.",
+              "/etc/group.conf": "Does not exist by default as a group password file."
+            }
+          },
+          {
+            "number": 40,
+            "question": "Which command changes the default shell assigned to a user named megan to /bin/zsh, without affecting other properties?",
+            "options": [
+              "usermod -l /bin/zsh megan",
+              "useradd -s /bin/zsh megan",
+              "usermod -s /bin/zsh megan",
+              "passwd -s megan /bin/zsh"
+            ],
+            "answer": [
+              "usermod -s /bin/zsh megan"
+            ],
+            "explanation": {
+              "usermod -l /bin/zsh megan": "The -l option changes login name, not shell path.",
+              "useradd -s /bin/zsh megan": "useradd is for creating a new user, not modifying an existing user named megan.",
+              "usermod -s /bin/zsh megan": "Correct. -s changes the shell for the megan account.",
+              "passwd -s megan /bin/zsh": "Invalid usage. 'passwd -s' is for short info. Also does not set shell."
+            }
+          },
+          {
+            "number": 41,
+            "question": "Which command quickly displays only a user's current UID, GID, and group memberships in a short line format?",
+            "options": [
+              "id",
+              "groups",
+              "whoami",
+              "getent passwd user"
+            ],
+            "answer": [
+              "id"
+            ],
+            "explanation": {
+              "id": "Correct. Shows UID, default GID, and all groups in numeric and name form by default.",
+              "groups": "Lists group names but not always the numeric UID or GID.",
+              "whoami": "Shows only the current username, not group memberships or GID numeric info.",
+              "getent passwd user": "Displays the /etc/passwd line, not the user's group memberships in a short line."
+            }
+          },
+          {
+            "number": 42,
+            "question": "Which field in the /etc/group file can list multiple user names separated by commas?",
+            "options": [
+              "First field",
+              "Second field",
+              "Third field",
+              "Fourth field"
+            ],
+            "answer": [
+              "Fourth field"
+            ],
+            "explanation": {
+              "First field": "Group name, not membership listing.",
+              "Second field": "Password placeholder (often 'x').",
+              "Third field": "Numeric GID.",
+              "Fourth field": "Correct. Comma-separated list of group members."
+            }
+          },
+          {
+            "number": 43,
+            "question": "Which option with groupadd sets a numeric GID explicitly instead of letting the system assign one automatically?",
+            "options": [
+              "-g",
+              "-u",
+              "-n",
+              "-G"
+            ],
+            "answer": [
+              "-g"
+            ],
+            "explanation": {
+              "-g": "Correct. Sets the GID explicitly for group creation.",
+              "-u": "This is for UID, relevant to user accounts, not groups.",
+              "-n": "Some distros interpret -n differently, but not standard for group GID assignment.",
+              "-G": "Used by usermod to specify groups a user belongs to, not group creation GID."
+            }
+          },
+          {
+            "number": 44,
+            "question": "Which command can you use to set or change the password used by a group, if group passwords were in use?",
+            "options": [
+              "gpasswd groupname",
+              "grpmod -p groupname",
+              "chpass groupname",
+              "shadow -G groupname"
+            ],
+            "answer": [
+              "gpasswd groupname"
+            ],
+            "explanation": {
+              "gpasswd groupname": "Correct. Used to set or remove a group's password and also manage group admins and membership.",
+              "grpmod -p groupname": "No standard grpmod command in most Linux distros. groupmod is the name, but -p is not typical for setting a group password.",
+              "chpass groupname": "Not a standard Linux command for group passwords.",
+              "shadow -G groupname": "No standard command either."
+            }
+          },
+          {
+            "number": 45,
+            "question": "Which environment file is typically invoked for non-login interactive shells, often containing alias definitions and additional environment variables, and is usually called from .bash_profile?",
+            "options": [
+              ".bashrc",
+              ".bash_profile",
+              ".profile",
+              ".loginrc"
+            ],
+            "answer": [
+              ".bashrc"
+            ],
+            "explanation": {
+              ".bashrc": "Correct. Used commonly for interactive shells that are not login shells, or invoked by .bash_profile so it applies to login sessions too.",
+              ".bash_profile": "Used for login shells only, not repeated for subshells typically.",
+              ".profile": "Generic shell profile for certain shells, fallback if .bash_profile or .bash_login doesn't exist.",
+              ".loginrc": "Not a standard Bash environment file name."
+            }
+          },
+          {
+            "number": 46,
+            "question": "Which command do you use to display a quick summary of an account's password status, including the hashing method if set, minimum days, maximum days, and so on?",
+            "options": [
+              "passwd -S username",
+              "chage -S username",
+              "usermod -s username",
+              "useradd -S username"
+            ],
+            "answer": [
+              "passwd -S username"
+            ],
+            "explanation": {
+              "passwd -S username": "Correct. Shows a short summary line about the password's status and crypt method.",
+              "chage -S username": "chage does not use -S for summary. Instead we do chage -l for a list or run interactively.",
+              "usermod -s username": "Sets the shell, not about displaying password info.",
+              "useradd -S username": "No standard -S for useradd to display password status."
+            }
+          },
+          {
+            "number": 47,
+            "question": "Which command can be used to produce a report of current disk usage by each user or group on a quota-enabled filesystem, showing who is near or over their limits?",
+            "options": [
+              "edquota -r",
+              "repquota",
+              "quotaoff -a",
+              "quotaname"
+            ],
+            "answer": [
+              "repquota"
+            ],
+            "explanation": {
+              "edquota -r": "edquota is for editing quotas, not reporting all usage.",
+              "repquota": "Correct. Produces usage reports for user or group quotas on the specified or all filesystems.",
+              "quotaoff -a": "Turns off quotas, no reporting.",
+              "quotaname": "Not a standard command."
+            }
+          },
+          {
+            "number": 48,
+            "question": "How would you enable quotas after creating aquota.user and aquota.group and mounting the filesystem with usrquota and grpquota in /etc/fstab?",
+            "options": [
+              "quotaon -a",
+              "quotacheck -m",
+              "setquota -e /dev/partition",
+              "qon /home"
+            ],
+            "answer": [
+              "quotaon -a"
+            ],
+            "explanation": {
+              "quotaon -a": "Correct. This enables quota enforcement on all filesystems indicated in /etc/fstab that have them enabled.",
+              "quotacheck -m": "Scans usage or updates quota files, not enabling enforcement.",
+              "setquota -e /dev/partition": "setquota can set limits, not enable quotas system-wide in one command.",
+              "qon /home": "Not a standard command."
+            }
+          },
+          {
+            "number": 49,
+            "question": "Which command changes a group's name from oldgrp to newgrp but retains its existing GID?",
+            "options": [
+              "groupmod -n newgrp oldgrp",
+              "groupadd -n newgrp oldgrp",
+              "groupdel -r oldgrp newgrp",
+              "usermod -l newgrp oldgrp"
+            ],
+            "answer": [
+              "groupmod -n newgrp oldgrp"
+            ],
+            "explanation": {
+              "groupmod -n newgrp oldgrp": "Correct. -n changes the group's name while keeping the same GID unless changed with -g.",
+              "groupadd -n newgrp oldgrp": "groupadd is for creating a new group, not renaming.",
+              "groupdel -r oldgrp newgrp": "Removes a group, not rename. The -r typically doesn't apply to groupdel anyway.",
+              "usermod -l newgrp oldgrp": "That modifies a user login name, not a group."
+            }
+          },
+          {
+            "number": 50,
+            "question": "Which of the following is placed in the second field of a /etc/passwd entry when passwords are stored in /etc/shadow?",
+            "options": [
+              "The actual hashed password",
+              "An x character",
+              "An asterisk *",
+              "The UID"
+            ],
+            "answer": [
+              "An x character"
+            ],
+            "explanation": {
+              "The actual hashed password": "Not recommended and generally not used if shadow passwords are enabled.",
+              "An x character": "Correct. This indicates the real password is in /etc/shadow.",
+              "An asterisk *": "Means something else in /etc/shadow often indicates locked or no password there.",
+              "The UID": "The UID is in field #3, not #2."
+            }
+          },
+          {
+            "number": 51,
+            "question": "If you set the shell field to /bin/false in /etc/passwd for a system account, which effect does it have?",
+            "options": [
+              "It allows the user to interact only via the GUI, no console",
+              "It prevents interactive shell logins for that account",
+              "It forces the user to always use newgrp to get a shell",
+              "It turns the account into a locked user environment"
+            ],
+            "answer": [
+              "It prevents interactive shell logins for that account"
+            ],
+            "explanation": {
+              "It allows the user to interact only via the GUI, no console": "No, /bin/false simply returns false, disallowing a shell session.",
+              "It prevents interactive shell logins for that account": "Correct. The user is immediately disconnected with no shell upon login attempt.",
+              "It forces the user to always use newgrp to get a shell": "No, they'd be logged out anyway.",
+              "It turns the account into a locked user environment": "Locked is typically done in /etc/shadow with '!' or something similar. /bin/false is just no interactive shell."
+            }
+          },
+          {
+            "number": 52,
+            "question": "Which command is recommended to place at the end of /etc/profile if you want to manage global environment additions in separate .sh files within /etc/profile.d/?",
+            "options": [
+              "for script in /etc/profile.d/*.sh; do . $script; done",
+              "cat /etc/profile.d/*.sh >> /etc/profile",
+              "chown -R root:root /etc/profile.d",
+              "chmod +x /etc/profile.d/*.sh"
+            ],
+            "answer": [
+              "for script in /etc/profile.d/*.sh; do . $script; done"
+            ],
+            "explanation": {
+              "for script in /etc/profile.d/*.sh; do . $script; done": "Correct. It sources all .sh scripts in that directory, applying them globally.",
+              "cat /etc/profile.d/*.sh >> /etc/profile": "That merges everything permanently into /etc/profile, losing modular approach.",
+              "chown -R root:root /etc/profile.d": "Good practice for ownership but doesn't auto-source them.",
+              "chmod +x /etc/profile.d/*.sh": "Makes them executable, but doesn't guarantee they're sourced."
+            }
+          },
+          {
+            "number": 53,
+            "question": "Which usermod option updates the user's home directory path and also moves the contents from the old directory to the new directory if you specify -m as well?",
+            "options": [
+              "-d",
+              "-l",
+              "-g",
+              "-e"
+            ],
+            "answer": [
+              "-d"
+            ],
+            "explanation": {
+              "-d": "Correct. usermod -d /new/path -m user moves the user's home dir to the new path.",
+              "-l": "Changes the login name, not the home directory path.",
+              "-g": "Changes the default group membership, not the home directory.",
+              "-e": "Sets account expiration date, not the home path."
+            }
+          },
+          {
+            "number": 54,
+            "question": "What is the effect of a 'hard limit' set for a user's disk quota on a particular filesystem?",
+            "options": [
+              "The user can exceed it but must revert within 24 hours",
+              "The user can never exceed that limit, and disk operations fail if they do",
+              "The user sees only a warning but can proceed",
+              "It is the limit for inodes only, not blocks"
+            ],
+            "answer": [
+              "The user can never exceed that limit, and disk operations fail if they do"
+            ],
+            "explanation": {
+              "The user can exceed it but must revert within 24 hours": "That's a soft limit and grace period scenario, not hard limit.",
+              "The user can never exceed that limit, and disk operations fail if they do": "Correct. Hard limit is strictly enforced.",
+              "The user sees only a warning but can proceed": "That is a characteristic of surpassing a soft limit.",
+              "It is the limit for inodes only, not blocks": "Hard limits can apply to both block usage and inode usage."
+            }
+          },
+          {
+            "number": 55,
+            "question": "Which command can forcibly turn off all quotas on all quota-enabled filesystems so you can troubleshoot issues?",
+            "options": [
+              "edquota -a",
+              "quotaoff -a",
+              "repquota --disable",
+              "quotaon -r"
+            ],
+            "answer": [
+              "quotaoff -a"
+            ],
+            "explanation": {
+              "edquota -a": "Edits quotas for all users, not disabling them.",
+              "quotaoff -a": "Correct. Turns quotas off for all filesystems listed in /etc/mtab that have them enabled.",
+              "repquota --disable": "No such standard option --disable for repquota.",
+              "quotaon -r": "No standard -r to forcibly disable. quotaon actually enables quotas."
+            }
+          },
+          {
+            "number": 56,
+            "question": "Which is a valid reason to apply group quotas instead of only user quotas in certain systems?",
+            "options": [
+              "Groups can set environment variables for user shells more easily",
+              "Group membership never changes once assigned",
+              "A project or department collectively shares a pool of disk blocks, so a group limit is practical",
+              "It is mandatory to always use group quotas or you cannot use user quotas"
+            ],
+            "answer": [
+              "A project or department collectively shares a pool of disk blocks, so a group limit is practical"
+            ],
+            "explanation": {
+              "Groups can set environment variables for user shells more easily": "Not relevant to quotas.",
+              "Group membership never changes once assigned": "Group membership can change, that is not a reason for group quotas specifically.",
+              "A project or department collectively shares a pool of disk blocks, so a group limit is practical": "Correct. They can collectively share or approach the limit as a team.",
+              "It is mandatory to always use group quotas or you cannot use user quotas": "Untrue, you can have user-only or group-only or both."
+            }
+          },
+          {
+            "number": 57,
+            "question": "Which command is used to show or set an account's inactivity period after a password expires, beyond which the account is locked?",
+            "options": [
+              "passwd -l",
+              "chage -I",
+              "useradd -f",
+              "usermod -t"
+            ],
+            "answer": [
+              "chage -I"
+            ],
+            "explanation": {
+              "passwd -l": "Locks the password, not inactivity after expiry.",
+              "chage -I": "Correct. Sets the inactivity days after the password expiration.",
+              "useradd -f": "Sets the inactivity default for new accounts, not an existing user's inactivity. The question is about 'show or set an account's inactivity period' specifically using a standard command, which is chage -I or chage --inactive.",
+              "usermod -t": "No standard -t for inactivity period."
+            }
+          },
+          {
+            "number": 58,
+            "question": "Which file must be updated to reflect that a filesystem is to be mounted with user or group quota support at boot, using usrquota or grpquota?",
+            "options": [
+              "/etc/mtab",
+              "/etc/fstab",
+              "/etc/login.defs",
+              "/etc/profile.d/quota.sh"
+            ],
+            "answer": [
+              "/etc/fstab"
+            ],
+            "explanation": {
+              "/etc/mtab": "Lists currently mounted filesystems but is not the persistent configuration file for next boot.",
+              "/etc/fstab": "Correct. This is the persistent mount configuration, including quota options.",
+              "/etc/login.defs": "Controls user creation defaults, not the mount options for quotas.",
+              "/etc/profile.d/quota.sh": "Potential environment script, not where mount options are set."
+            }
+          },
+          {
+            "number": 59,
+            "question": "Which environment variable might you modify to change your Bash shell prompt from '$' to something else on a persistent basis?",
+            "options": [
+              "PATH",
+              "PS1",
+              "USER",
+              "HISTCONTROL"
+            ],
+            "answer": [
+              "PS1"
+            ],
+            "explanation": {
+              "PATH": "Controls where commands are searched, not the shell prompt text.",
+              "PS1": "Correct. The primary prompt is stored in PS1.",
+              "USER": "Stores the username environment, not the prompt string.",
+              "HISTCONTROL": "Manages how commands are saved in history, not the prompt."
+            }
+          },
+          {
+            "number": 60,
+            "question": "Which command is used to remove a user account from the system, and optionally remove the home directory using -r?",
+            "options": [
+              "userdel",
+              "usermod",
+              "deluser only",
+              "passdel"
+            ],
+            "answer": [
+              "userdel"
+            ],
+            "explanation": {
+              "userdel": "Correct. userdel -r removes the user plus the home directory if the -r option is used.",
+              "usermod": "Modifies an existing user, not deletes the account.",
+              "deluser only": "On Debian-based systems deluser is a script, but standard tool is userdel. The question references the typical Linux usage which is userdel.",
+              "passdel": "Not a standard utility for removing user accounts."
+            }
+          },
+  
+          {
+            "number": 61,
+            "question": "Exam Essentials: Which file is critical to the user account creation process, storing hashed passwords, expiration dates, and more?",
+            "options": [
+              "/etc/passwd",
+              "/etc/login.defs",
+              "/etc/shadow",
+              "/etc/skel"
+            ],
+            "answer": [
+              "/etc/shadow"
+            ],
+            "explanation": {
+              "/etc/passwd": "Stores basic user info but typically not the hashed passwords if shadow is used.",
+              "/etc/login.defs": "Configuration file for user creation defaults, not storing password data.",
+              "/etc/shadow": "Correct. Holds hashed passwords, aging info, etc.",
+              "/etc/skel": "Skeleton files for new user home directories."
+            }
+          },
+          {
+            "number": 62,
+            "question": "Exam Essentials: Which command is used to create user accounts, respecting directives from /etc/login.defs and /etc/default/useradd, but can be overridden with options?",
+            "options": [
+              "useradd",
+              "adduser",
+              "usermod",
+              "passwd"
+            ],
+            "answer": [
+              "useradd"
+            ],
+            "explanation": {
+              "useradd": "Correct. The fundamental command for creating new user accounts.",
+              "adduser": "Debian-based script, but the exam essential typically focuses on useradd as the low-level tool.",
+              "usermod": "Modifies existing accounts, not new creation.",
+              "passwd": "Sets or changes passwords, does not create accounts."
+            }
+          },
+          {
+            "number": 63,
+            "question": "Exam Essentials: Why is /etc/skel important in user account creation?",
+            "options": [
+              "It stores the default group GID for all new users",
+              "It is where hashed user passwords are placed",
+              "Its files are copied to each new user's home directory as initial environment files",
+              "It sets the shell prompt to # for new accounts"
+            ],
+            "answer": [
+              "Its files are copied to each new user's home directory as initial environment files"
+            ],
+            "explanation": {
+              "It stores the default group GID for all new users": "No, that is handled in other config files or automatically assigned.",
+              "It is where hashed user passwords are placed": "Passwords go in /etc/shadow, not /etc/skel.",
+              "Its files are copied to each new user's home directory as initial environment files": "Correct. They are skeleton files for new accounts.",
+              "It sets the shell prompt to # for new accounts": "No, prompt changes occur in shell config files, but there's no guaranteed # prompt."
+            }
+          },
+          {
+            "number": 64,
+            "question": "Exam Essentials: Which commands are used to add, modify, or remove groups in Linux?",
+            "options": [
+              "addgroup, modgroup, and rmgroup",
+              "groupadd, groupmod, and groupdel",
+              "grpasswd, groupedit, and groupdrop",
+              "group -create, group -edit, group -delete"
+            ],
+            "answer": [
+              "groupadd, groupmod, and groupdel"
+            ],
+            "explanation": {
+              "addgroup, modgroup, and rmgroup": "Not the standard commands on most Linux distributions, though Debian might have addgroup. The exam essential typically references groupadd, groupmod, groupdel.",
+              "groupadd, groupmod, and groupdel": "Correct. The standard tools for group management.",
+              "grpasswd, groupedit, and groupdrop": "Not standard commands.",
+              "group -create, group -edit, group -delete": "Not valid commands."
+            }
+          },
+          {
+            "number": 65,
+            "question": "Exam Essentials: How do you lock or unlock a user's password so they cannot or can log in with that password again?",
+            "options": [
+              "Use usermod -l or usermod -u",
+              "Use passwd -l or passwd -u",
+              "Use chage -L or chage -U",
+              "Use useradd -lock or userdel -unlock"
+            ],
+            "answer": [
+              "Use passwd -l or passwd -u"
+            ],
+            "explanation": {
+              "Use usermod -l or usermod -u": "-l changes the login name, -u changes the UID, not password lock/unlock.",
+              "Use passwd -l or passwd -u": "Correct. -l places an '!' in shadow, -u removes it, controlling password lock state.",
+              "Use chage -L or chage -U": "Not standard chage arguments for lock/unlock. chage modifies password aging not direct lock state.",
+              "Use useradd -lock or userdel -unlock": "No such usage for these commands."
+            }
+          },
+          {
+            "number": 66,
+            "question": "Exam Essentials: Which command can change or display an account's password aging information, such as min days, max days, and warning period before expiration?",
+            "options": [
+              "chage",
+              "passwd -S",
+              "useradd -p",
+              "groupmod"
+            ],
+            "answer": [
+              "chage"
+            ],
+            "explanation": {
+              "chage": "Correct. It handles password aging details.",
+              "passwd -S": "Shows a quick summary, not a full editing of min days and max days. It is more limited.",
+              "useradd -p": "Sets an already-encrypted password at account creation, not aging details.",
+              "groupmod": "Alters group info, not password aging for a user."
+            }
+          },
+          {
+            "number": 67,
+            "question": "Exam Essentials: How can you place a strict limit on how many files or how much disk space a user or group can consume on a filesystem?",
+            "options": [
+              "By using pluggable authentication modules (PAM)",
+              "By configuring environment variables in /etc/profile",
+              "By setting up disk quotas (user and/or group) and specifying soft/hard limits",
+              "By placing an alias in .bashrc that blocks large file creation"
+            ],
+            "answer": [
+              "By setting up disk quotas (user and/or group) and specifying soft/hard limits"
+            ],
+            "explanation": {
+              "By using pluggable authentication modules (PAM)": "PAM is for authentication, not limiting disk usage.",
+              "By configuring environment variables in /etc/profile": "That won't strictly prevent a user from using more disk space.",
+              "By setting up disk quotas (user and/or group) and specifying soft/hard limits": "Correct. Quotas enforce usage limits automatically.",
+              "By placing an alias in .bashrc that blocks large file creation": "Not a reliable system-wide approach."
+            }
+          },
+          {
+            "number": 68,
+            "question": "Exam Essentials: Which command do you use to see a summary of each user's or group's current quota usage and limits on a filesystem?",
+            "options": [
+              "quotacheck -c",
+              "repquota",
+              "setquota",
+              "quotaoff"
+            ],
+            "answer": [
+              "repquota"
+            ],
+            "explanation": {
+              "quotacheck -c": "Scans or initializes quota usage data, not the user-friendly summary of usage and limits.",
+              "repquota": "Correct. It reports the usage of disk quotas for all or one filesystem.",
+              "setquota": "Manually sets or modifies quota limits for a user or group, not listing them all in summary.",
+              "quotaoff": "Turns off quota enforcement, no summary given."
+            }
+          },
+          {
+            "number": 69,
+            "question": "Exam Essentials: Why might you place /sbin/nologin or /bin/false in an account's default shell field in /etc/passwd?",
+            "options": [
+              "To force them to change their password on next login",
+              "To allow them interactive usage on only TTY consoles, not remote",
+              "To prevent any interactive shell sessions for that account",
+              "To forcibly remove them from all groups"
+            ],
+            "answer": [
+              "To prevent any interactive shell sessions for that account"
+            ],
+            "explanation": {
+              "To force them to change their password on next login": "That is done with passwd -e or chage, not by setting nologin or false shell.",
+              "To allow them interactive usage on only TTY consoles, not remote": "No, nologin or false disallows shell usage entirely.",
+              "To prevent any interactive shell sessions for that account": "Correct. This is typically used for system or service accounts.",
+              "To forcibly remove them from all groups": "No, group memberships are unrelated to the shell specification."
+            }
+          },
+          {
+            "number": 70,
+            "question": "Exam Essentials: What is the function of the /etc/default/useradd file in user account creation?",
+            "options": [
+              "It stores environment variables for the global shell sessions",
+              "It sets additional default settings for the useradd command, such as SKEL or SHELL",
+              "It hashes new user passwords with SHA512",
+              "It replaces /etc/shadow for all new accounts"
+            ],
+            "answer": [
+              "It sets additional default settings for the useradd command, such as SKEL or SHELL"
+            ],
+            "explanation": {
+              "It stores environment variables for the global shell sessions": "No, that's more of /etc/profile or /etc/bashrc territory.",
+              "It sets additional default settings for the useradd command, such as SKEL or SHELL": "Correct. Variables like HOME, SHELL, CREATE_MAIL_SPOOL, etc.",
+              "It hashes new user passwords with SHA512": "Password hashing is typically defined in /etc/login.defs ENCRYPT_METHOD, or performed by passwd/pam, not /etc/default/useradd.",
+              "It replaces /etc/shadow for all new accounts": "No, /etc/shadow is still used for password data."
+            }
+          },
+          {
+            "number": 71,
+            "question": "Exam Essentials: Which command is used to remove a user account, optionally removing their home directory with the -r switch?",
+            "options": [
+              "usermod -D",
+              "groupdel -r",
+              "userdel -r",
+              "delacc -home"
+            ],
+            "answer": [
+              "userdel -r"
+            ],
+            "explanation": {
+              "usermod -D": "No such usage. -D is for displaying defaults in useradd, not removing accounts.",
+              "groupdel -r": "Removes groups, not users.",
+              "userdel -r": "Correct. Removes the user account plus home directory if used with -r.",
+              "delacc -home": "Not a standard command."
+            }
+          },
+          {
+            "number": 72,
+            "question": "Exam Essentials: What does the usermod -U switch accomplish?",
+            "options": [
+              "It unlocks the user's password so they can log in with it again",
+              "It updates the user's UID to a new numeric value",
+              "It unsets environment variables for the user",
+              "It unlinks the user's home directory from /etc/skel"
+            ],
+            "answer": [
+              "It unlocks the user's password so they can log in with it again"
+            ],
+            "explanation": {
+              "It unlocks the user's password so they can log in with it again": "Correct. -U is the opposite of -L, removing the exclamation or lock in shadow.",
+              "It updates the user's UID to a new numeric value": "That is usermod -u.",
+              "It unsets environment variables for the user": "No standard usermod function does that.",
+              "It unlinks the user's home directory from /etc/skel": "No, /etc/skel is only used at creation time."
+            }
+          },
+          {
+            "number": 73,
+            "question": "Exam Essentials: How do you move a user's home directory to a new location while also updating /etc/passwd to reflect it?",
+            "options": [
+              "usermod -d newdir -m username",
+              "chown -R username newdir",
+              "edquota -m user",
+              "useradd -d newdir username"
+            ],
+            "answer": [
+              "usermod -d newdir -m username"
+            ],
+            "explanation": {
+              "usermod -d newdir -m username": "Correct. -d sets new path, -m moves the directory contents.",
+              "chown -R username newdir": "Just changes ownership, does not update /etc/passwd or move the original home directory data automatically.",
+              "edquota -m user": "Edits quota info, not home directory location.",
+              "useradd -d newdir username": "Used at initial creation, not for moving an existing home directory."
+            }
+          },
+          {
+            "number": 74,
+            "question": "Exam Essentials: Why might an administrator set password expiry and warning days via chage?",
+            "options": [
+              "To ensure users change passwords regularly and get notified in advance",
+              "To lock out users from running systemctl",
+              "To rename user groups automatically",
+              "To block any environment file usage"
+            ],
+            "answer": [
+              "To ensure users change passwords regularly and get notified in advance"
+            ],
+            "explanation": {
+              "To ensure users change passwords regularly and get notified in advance": "Correct. chage sets required password changes and warns users.",
+              "To lock out users from running systemctl": "Unrelated to password aging.",
+              "To rename user groups automatically": "Group changes are separate from password expiration settings.",
+              "To block any environment file usage": "Chage is about password aging, not environment files."
+            }
+          },
+          {
+            "number": 75,
+            "question": "Exam Essentials: What is the recommended approach if you want to set environment variables globally for all Bash login users, but keep them modular?",
+            "options": [
+              "Place them in /etc/bash.bashrc directly",
+              "Add them to /etc/profile or put scripts in /etc/profile.d/",
+              "Use usermod -e for each user",
+              "Set them in the /etc/shadow file"
+            ],
+            "answer": [
+              "Add them to /etc/profile or put scripts in /etc/profile.d/"
+            ],
+            "explanation": {
+              "Place them in /etc/bash.bashrc directly": "It is possible but /etc/profile or /etc/profile.d/ is more typical for login shells. Also many distros use /etc/profile.d/ for modular scripts.",
+              "Add them to /etc/profile or put scripts in /etc/profile.d/": "Correct. This is the recommended approach so it's modular and system-wide.",
+              "Use usermod -e for each user": "That sets account expiration date, not environment variables.",
+              "Set them in the /etc/shadow file": "Shadow is for password data, not environment variables."
+            }
+          },
+          {
+            "number": 76,
+            "question": "Exam Essentials: Which command can show who is logged into a system and also display how long they have been idle and what command they're running?",
+            "options": [
+              "groups",
+              "w",
+              "last",
+              "id -a"
+            ],
+            "answer": [
+              "w"
+            ],
+            "explanation": {
+              "groups": "Shows the groups for a user, not who is logged in with idle times or commands.",
+              "w": "Correct. Lists current users, idle times, JCPU, PCPU, and what they're doing.",
+              "last": "Shows recent login sessions from wtmp, not current running commands or idle times in real-time.",
+              "id -a": "Shows your identity and group memberships, not real-time usage data."
+            }
+          },
+          {
+            "number": 77,
+            "question": "Exam Essentials: How can you list user or group quotas that are currently enforced on each filesystem?",
+            "options": [
+              "quota -u username only",
+              "repquota -a",
+              "edquota -L all",
+              "quotacheck -update"
+            ],
+            "answer": [
+              "repquota -a"
+            ],
+            "explanation": {
+              "quota -u username only": "Displays usage for that user, not all or a global summary. Also misses group quotas or other users.",
+              "repquota -a": "Correct. Summaries for all mounted filesystems with quotas.",
+              "edquota -L all": "edquota modifies settings for a user or group, no -L all standard usage.",
+              "quotacheck -update": "Scans or updates quota files, not listing them in summary."
+            }
+          },
+          {
+            "number": 78,
+            "question": "Exam Essentials: Which environment file is typically sourced for an interactive shell that is not a login shell, and often includes aliases or functions the user wants always?",
+            "options": [
+              ".bashrc",
+              ".bash_profile",
+              "/etc/default/useradd",
+              ".profile"
+            ],
+            "answer": [
+              ".bashrc"
+            ],
+            "explanation": {
+              ".bashrc": "Correct. Non-login interactive shells typically read .bashrc.",
+              ".bash_profile": "Read by login shells. Usually calls .bashrc but is distinct for login sessions.",
+              "/etc/default/useradd": "Defines defaults for user creation, not a user environment script.",
+              ".profile": "Generic for some shells if .bash_profile or .bash_login isn't present."
+            }
+          },
+          {
+            "number": 79,
+            "question": "Exam Essentials: Which command do you use to quickly check or set a user's 'grace period' after their password expires, beyond which the account is locked if not changed?",
+            "options": [
+              "passwd -n user",
+              "chage -I days",
+              "useradd -f days user",
+              "usermod -i days user"
+            ],
+            "answer": [
+              "chage -I days"
+            ],
+            "explanation": {
+              "passwd -n user": "Sets minimum days before the next password change, not the inactivity grace period.",
+              "chage -I days": "Correct. The -I or --inactive sets how many days after expiration until lock.",
+              "useradd -f days user": "Applies to new accounts if used, but not typically how you update an existing user. Also the question focuses on the standard chage usage.",
+              "usermod -i days user": "No standard -i for inactivity in usermod."
+            }
+          },
+          {
+            "number": 80,
+            "question": "Exam Essentials: Which command and option forcibly expires a user's password so they must immediately change it on the next login?",
+            "options": [
+              "passwd -e user",
+              "chage -M 0 user",
+              "useradd -expire user",
+              "groupmod -E user"
+            ],
+            "answer": [
+              "passwd -e user"
+            ],
+            "explanation": {
+              "passwd -e user": "Correct. Expires the password promptly so next login triggers a password change.",
+              "chage -M 0 user": "A possible approach but typically 'passwd -e' is the direct method. The question specifically focuses on the 'expires the password so user must change' which is commonly done with passwd -e. (chage -M 0 is also a trick, but less direct in typical usage examples.)",
+              "useradd -expire user": "No. useradd is for new users, not expiring an existing user's password.",
+              "groupmod -E user": "Not relevant to user passwords, modifies group info."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  
